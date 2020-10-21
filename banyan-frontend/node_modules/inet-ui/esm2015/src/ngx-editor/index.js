@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NgxEditorMessageComponent } from './ngx-editor-message/ngx-editor-message.component';
+export { NgxEditorToolbarComponent } from './ngx-editor-toolbar/ngx-editor-toolbar.component';
+export { NgxGrippieComponent } from './ngx-grippie/ngx-grippie.component';
+export { NgxEditorComponent } from './ngx-editor.component';
+export { NgxEditorModule } from './ngx-editor.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL25neC1lZGl0b3IvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLDBDQUFjLG1EQUFtRCxDQUFDO0FBQ2xFLDBDQUFjLG1EQUFtRCxDQUFDO0FBQ2xFLG9DQUFjLHFDQUFxQyxDQUFDO0FBQ3BELG1DQUFjLHdCQUF3QixDQUFDO0FBQ3ZDLGdDQUFjLHFCQUFxQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9uZ3gtZWRpdG9yLW1lc3NhZ2Uvbmd4LWVkaXRvci1tZXNzYWdlLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL25neC1lZGl0b3ItdG9vbGJhci9uZ3gtZWRpdG9yLXRvb2xiYXIuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbmd4LWdyaXBwaWUvbmd4LWdyaXBwaWUuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbmd4LWVkaXRvci5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9uZ3gtZWRpdG9yLm1vZHVsZSc7XG4iXX0=

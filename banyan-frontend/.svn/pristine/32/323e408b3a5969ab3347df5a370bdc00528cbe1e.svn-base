@@ -1,0 +1,74 @@
+// Transformation
+.text-lowercase      { text-transform: lowercase !important; }
+.text-uppercase      { text-transform: uppercase !important; }
+.text-capitalize     { text-transform: capitalize !important; }
+
+// Size
+.text-xs { font-size: 50% !important; }
+.text-sm { font-size: 70% !important; }
+.text-md { font-size: 80% !important; }
+.text-df { font-size: 13px !important; }
+.text-lg { font-size: 110% !important; }
+.text-xl { font-size: 120% !important; }
+.text-xxl { font-size: 60px !important; }
+
+// Weight and italics
+.font-weight-normal  { font-weight: normal!important; }
+.font-weight-bold    { font-weight: 700!important; }
+.font-italic         { font-style: italic!important; }
+
+// Alignment
+.text-justify        { text-align: justify !important; }
+.text-nowrap         { white-space: nowrap !important; }
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.lbl-bold {
+  font-weight: bold;
+}
+
+form.bs-form, .bs-form.input-group-addon {
+  font-size: 14px;
+}
+form.bs-form {
+  padding-top: 10px;
+}
+
+.required:before {
+  color: #ff0000;
+  content: "*";
+}
+
+.hide {
+  display: none !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.app-component-content {
+  background-color: #FFFFFF;
+}
+
+.datagrid .advance-search-form {
+  display: none;
+  box-shadow: rgba(30, 30, 100, 0.25) 0px 2px 4px;
+  top: 55px;
+  right: 10px;
+  left: 10px;
+  background-color: rgb(236, 242, 247);
+  z-index: 9999;
+  border-color: rgb(188, 212, 229);
+  padding: 4px;
+  position: absolute;
+
+}

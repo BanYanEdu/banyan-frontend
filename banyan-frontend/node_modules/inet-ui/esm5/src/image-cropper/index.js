@@ -1,0 +1,9 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { ImageUtils } from './image.utils';
+export { ImageCropperComponent } from './image-cropper.component';
+export { CropperAvatarDialogComponent } from './cropper-avatar/cropper-avatar-dialog.component';
+export { ImageCropperModule } from './image-cropper.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2ltYWdlLWNyb3BwZXIvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLDJCQUFjLGVBQWUsQ0FBQztBQUM5QixzQ0FBYywyQkFBMkIsQ0FBQztBQUMxQyw2Q0FBYyxrREFBa0QsQ0FBQztBQUNqRSxtQ0FBYyx3QkFBd0IsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vaW1hZ2UudXRpbHMnO1xuZXhwb3J0ICogZnJvbSAnLi9pbWFnZS1jcm9wcGVyLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2Nyb3BwZXItYXZhdGFyL2Nyb3BwZXItYXZhdGFyLWRpYWxvZy5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9pbWFnZS1jcm9wcGVyLm1vZHVsZSc7Il19

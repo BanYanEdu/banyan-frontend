@@ -1,0 +1,35 @@
+import { ElementRef, EventEmitter } from '@angular/core';
+import { ModalSelectComponent } from "./modal-select/modal-select.component";
+import { CoreService } from "inet-core";
+export declare class SelectUserComponent {
+    private coreService;
+    id: string;
+    selectUsers: any[];
+    isSingle: boolean;
+    isValid: boolean;
+    onAdd: EventEmitter<any>;
+    modalSelect: ModalSelectComponent;
+    inputUser: ElementRef;
+    isMouseEnter: boolean;
+    isFocus: boolean;
+    users: any[];
+    private timer;
+    private searchValue;
+    constructor(coreService: CoreService);
+    valid(): boolean;
+    clearValid(): void;
+    validInput(): void;
+    searchUser(): void;
+    removeUser(item: any): void;
+    private setDefault;
+    addUser(item: any): void;
+    clickUser(e: any, el: any): void;
+    removeLastUser(): void;
+    openModal(): void;
+    private hasUser;
+    private setUser;
+    private focusInput;
+    private getKeyword;
+    onMouseEnter(): void;
+    onMouseDown(): void;
+}

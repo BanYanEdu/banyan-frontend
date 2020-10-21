@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { AutocompleteListDirective } from './autocomplete-list.directive';
+export { AutocompleteInputDirective } from './autocomplete-input.directive';
+export { AutocompleteModule } from './autocomplete.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2F1dG9jb21wbGV0ZS9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsMENBQWMsK0JBQStCLENBQUE7QUFDN0MsMkNBQWMsZ0NBQWdDLENBQUE7QUFDOUMsbUNBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL2F1dG9jb21wbGV0ZS1saXN0LmRpcmVjdGl2ZSdcbmV4cG9ydCAqIGZyb20gJy4vYXV0b2NvbXBsZXRlLWlucHV0LmRpcmVjdGl2ZSdcbmV4cG9ydCAqIGZyb20gJy4vYXV0b2NvbXBsZXRlLm1vZHVsZSc7Il19

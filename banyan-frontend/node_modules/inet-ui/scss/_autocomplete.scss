@@ -1,0 +1,87 @@
+$tagsize: 24px;
+
+.autocomplete-container {
+  position: relative;
+}
+
+.autocomplete-list {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.autocomplete-list > li {
+  padding: 10px;
+  cursor: pointer;
+  border-width: 0 1px 0 1px;
+}
+
+.autocomplete-list > li:first-child {
+  border-top-width: 1px;
+}
+
+.autocomplete-list > li:last-child {
+  border-bottom-width: 1px;
+}
+
+.auto-item-image {
+  img, i {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  i {
+    text-align: center;
+    line-height: 30px;
+    background: rgba(0, 0, 0, .05);
+    color: rgba(0, 0, 0, .5);
+  }
+  div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.auto-tag {
+  padding: 2px 7px 7px;
+  min-height: $tagsize + 14px;
+  height: auto;
+}
+
+.auto-tag-input {
+  border: 0;
+  padding: 0;
+  margin-top: 5px;
+  height: $tagsize;
+  line-height: $tagsize - 2;
+  &:focus {
+    outline: none;
+  }
+}
+
+.auto-tag-item {
+  font-size: 14px;
+  line-height: $tagsize;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px;
+  float: left;
+  background: #e9ebee;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 2px;
+  i {
+    float: right;
+    margin-right: -5px;
+    height: $tagsize;
+    width: $tagsize;
+    line-height: $tagsize;
+    text-align: center;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,30 @@
+import { EventEmitter, OnInit } from '@angular/core';
+import { Contact } from "../../model/contact";
+import { LocationService } from "../../common/location.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { DictionaryService } from "../../common/dictionary.service";
+export declare class UserProfileInfoComponent implements OnInit {
+    private dictionaryService;
+    private locationService;
+    private fb;
+    profile: Contact;
+    profileForm: FormGroup;
+    countries: Array<any>;
+    provinces: Array<any>;
+    districts: Array<any>;
+    genders: Array<any>;
+    private countryCode;
+    private provinceCode;
+    onValidate: EventEmitter<{}>;
+    editable: boolean;
+    private formChanged;
+    constructor(dictionaryService: DictionaryService, locationService: LocationService, fb: FormBuilder);
+    ngOnInit(): void;
+    private loadAddress;
+    private loadProvinceByCountryCode;
+    private loadDistrictByCode;
+    onChangeCountry($event: any): void;
+    onChangeProvince($event: any): void;
+    onChangeDate(event?: any): void;
+    private onChanges;
+}

@@ -1,0 +1,547 @@
+@charset "UTF-8";
+/* plugin variables */
+/*!
+ * SlickGrid custom styling for Bootstrap (https://github.com/ghiscoding/angular-slickgrid)
+ * Licensed under MIT (https://github.com/ghiscoding/angular-slickgrid/blob/master/LICENSE)
+ * @author: Ghislain B. (ghiscoding)
+ */
+/*!
+
+/* SlickGrid Bootstrap variables */
+/* Used by slick-bootstrap.scss */
+/* Slickgrid container, including headers but excluding pagination */
+/* grid */
+/* cell */
+/* row */
+/* Pre-Header - Header Grouping colspan */
+/* header */
+/* Frozen pinned rows/columns */
+/* icon font is using Font-Awesome by default but could be changed to any other icon package like Glyphicons, ... */
+/* AutoComplete */
+/* Sorting */
+/* Grouping Totals Formatter */
+/* Column picker */
+/** Detail View Plugin */
+/* Excel copy plugin */
+/* Grid Menu - hamburger menu */
+/* Header Menu Plugin */
+/* Checkbox Selector / Row Selection */
+/* Editors */
+/* negative number to cancel inside padding */
+/* Compound Filters */
+/* Draggable Grouping Plugin */
+/* Input Range Filter */
+/* ms only */
+/* ms only */
+/* Multiple-Select Filter */
+/* pagination variables */
+/* Row Move Manager Plugin */
+/* selector plugin */
+/* Viewport */
+.slick-column-name,
+.slick-sort-indicator {
+  /**
+   * This makes all "float:right" elements after it that spill over to the next line
+   * display way below the lower boundary of the column thus hiding them.
+   */
+  float: left;
+  margin-bottom: 100px; }
+
+.slick-header-button {
+  /**
+  * This makes all "float:right" elements after it that spill over to the next line
+  * display way below the lower boundary of the column thus hiding them.
+  */
+  float: right;
+  vertical-align: top;
+  margin: 1px;
+  margin-bottom: 100px;
+  height: 15px;
+  width: 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer; }
+
+.slick-header-button-hidden {
+  width: 0;
+  margin-right: -8px;
+  transition: 0.2s width; }
+
+.slick-header-column:hover > .slick-header-button {
+  width: 15px; }
+
+.slick-header-menubutton {
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 3px;
+  top: 0;
+  width: 14px; }
+
+.slick-header-menubutton:before {
+  font-family: "FontAwesome";
+  font-size: 14px;
+  content: "\f13a"; }
+
+.slick-header-column:hover .slick-header-menubutton {
+  display: inline-block; }
+
+.slick-header-menu {
+  position: absolute;
+  margin: 0;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #BFBDBD;
+  border-radius: 2px;
+  min-width: 175px;
+  padding: 4px;
+  z-index: 100000;
+  cursor: default;
+  display: inline-block; }
+  .slick-header-menu button {
+    border: 1px solid #BFBDBD;
+    background-color: #ffffff;
+    width: 45px;
+    padding: 4px;
+    margin: 4px 4px 4px 0; }
+  .slick-header-menu .filter {
+    border: 1px solid #BFBDBD;
+    font-size: 8pt;
+    height: 400px;
+    margin-top: 6px;
+    overflow: scroll;
+    padding: 4px;
+    white-space: nowrap;
+    width: 200px; }
+  .slick-header-menu .textfilter > label {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 10px; }
+  .slick-header-menu .textfilter > input[type=text] {
+    width: 70%; }
+
+.slick-header-menuitem {
+  cursor: pointer;
+  border: none;
+  padding: 2px 4px;
+  list-style: none outside none;
+  margin: 0; }
+  .slick-header-menuitem.slick-header-menuitem-divider {
+    cursor: default;
+    border: none;
+    overflow: hidden;
+    padding: 0;
+    height: 1px;
+    margin: 8px 3px;
+    background-color: #e5e5e5; }
+
+.slick-header-menuitem-divider.slick-header-menuitem:hover {
+  background-color: #e5e5e5; }
+
+.slick-header-menuicon {
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
+  width: 16px;
+  /* Font Awesome sorting icons are not aligned in middle, let's align them ourselves */ }
+  .slick-header-menuicon.fa-sort-asc {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px); }
+  .slick-header-menuicon.fa-sort-desc {
+    -webkit-transform: translateY(-2px);
+            transform: translateY(-2px); }
+
+.slick-header-menucontent {
+  display: inline-block;
+  vertical-align: middle; }
+
+.slick-header-menuitem:hover {
+  border-color: #BFBDBD;
+  background-color: #f3f3f3; }
+
+.slick-header-menuitem-disabled {
+  border-color: transparent !important;
+  background: inherit !important; }
+
+/* Disabled */
+.slick-header-menuitem-disabled {
+  color: silver; }
+
+.slick-cell.cell-reorder:before {
+  font-family: "FontAwesome";
+  font-size: 14px;
+  content: ""; }
+
+.slick-cell.cell-reorder {
+  cursor: move; }
+
+.slick-headerrow-column input[type=checkbox],
+.slick-headerrow-column #filter-checkbox-selectall-container > input[type=checkbox],
+.slick-column-name input[type=checkbox],
+.slick-column-name #filter-checkbox-selectall-container > input[type=checkbox],
+.slick-cell-checkboxsel input[type=checkbox],
+.slick-cell-checkboxsel #filter-checkbox-selectall-container > input[type=checkbox] {
+  display: none;
+  /* to hide the checkbox itself */ }
+
+.slick-headerrow-column input[type=checkbox],
+.slick-headerrow-column #filter-checkbox-selectall-container > input[type=checkbox] + label,
+.slick-column-name input[type=checkbox],
+.slick-column-name #filter-checkbox-selectall-container > input[type=checkbox] + label,
+.slick-cell-checkboxsel input[type=checkbox],
+.slick-cell-checkboxsel #filter-checkbox-selectall-container > input[type=checkbox] + label {
+  margin-left: 4px;
+  margin-top: 3px; }
+
+.slick-headerrow-column input[type=checkbox] + label:before,
+.slick-headerrow-column #filter-checkbox-selectall-container > input[type=checkbox] + label:before,
+.slick-column-name input[type=checkbox] + label:before,
+.slick-column-name #filter-checkbox-selectall-container > input[type=checkbox] + label:before,
+.slick-cell-checkboxsel input[type=checkbox] + label:before,
+.slick-cell-checkboxsel #filter-checkbox-selectall-container > input[type=checkbox] + label:before {
+  cursor: pointer;
+  content: "";
+  color: #31708F;
+  display: inline-block;
+  font-weight: bold;
+  font-family: "FontAwesome";
+  font-size: 13px;
+  opacity: 0.15;
+  /* unchecked icon */ }
+
+.slick-headerrow-column input[type=checkbox] + label:hover:before,
+.slick-headerrow-column #filter-checkbox-selectall-container > input[type=checkbox] + label:hover:before,
+.slick-column-name input[type=checkbox] + label:hover:before,
+.slick-column-name #filter-checkbox-selectall-container > input[type=checkbox] + label:hover:before,
+.slick-cell-checkboxsel input[type=checkbox] + label:hover:before,
+.slick-cell-checkboxsel #filter-checkbox-selectall-container > input[type=checkbox] + label:hover:before {
+  opacity: 0.35; }
+
+.slick-headerrow-column input[type=checkbox]:checked + label:before,
+.slick-headerrow-column #filter-checkbox-selectall-container > input[type=checkbox]:checked + label:before,
+.slick-column-name input[type=checkbox]:checked + label:before,
+.slick-column-name #filter-checkbox-selectall-container > input[type=checkbox]:checked + label:before,
+.slick-cell-checkboxsel input[type=checkbox]:checked + label:before,
+.slick-cell-checkboxsel #filter-checkbox-selectall-container > input[type=checkbox]:checked + label:before {
+  opacity: 1;
+  /* checked icon */ }
+
+.search-filter :focus {
+  outline-color: #73b3e5; }
+
+.ms-choice {
+  border: 1px solid #ccc;
+  background-color: transparent; }
+  .ms-choice span {
+    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial; }
+
+.ms-filter.search-filter {
+  width: 100% !important; }
+
+.ms-drop {
+  max-width: 250px;
+  border: 1px solid #bbb;
+  z-index: 9999; }
+  .ms-drop input[type="checkbox"],
+  .ms-drop input[type="radio"] {
+    /* make input checkbox invisible but don't hide it since multiple-select uses hide for something else */
+    opacity: 0;
+    width: 0; }
+    .ms-drop input[type="checkbox"] + span:before,
+    .ms-drop input[type="radio"] + span:before {
+      cursor: pointer;
+      color: #31708F;
+      content: "";
+      display: inline-block;
+      font-family: "FontAwesome";
+      font-size: 16px;
+      font-weight: normal;
+      width: 20px;
+      opacity: 0.5; }
+    .ms-drop input[type="checkbox"]:checked + span:before,
+    .ms-drop input[type="radio"]:checked + span:before {
+      content: "";
+      opacity: 1; }
+  .ms-drop input[type="radio"] + span:before {
+    content: ""; }
+  .ms-drop input[type="radio"]:checked + span:before {
+    content: ""; }
+  .ms-drop label {
+    margin-bottom: 5px; }
+    .ms-drop label span {
+      cursor: pointer;
+      margin-left: 4px;
+      position: relative;
+      top: 1px; }
+    .ms-drop label:hover {
+      cursor: pointer;
+      background-color: #eff5fc; }
+  .ms-drop .ms-select-all {
+    border-bottom: 1px solid #ddd; }
+    .ms-drop .ms-select-all label {
+      font-weight: normal;
+      padding: 5px 8px;
+      color: #2a617c; }
+      .ms-drop .ms-select-all label:hover {
+        color: #245269; }
+  .ms-drop .ms-ok-button {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 26px;
+    padding: 0;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: #31708F;
+    font-weight: 600;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #fff; }
+    .ms-drop .ms-ok-button:hover {
+      background-color: #e2edfa;
+      color: #2a617c; }
+
+.search-filter .operator.input-group-addon {
+  margin: 0;
+  padding: 0;
+  min-width: 25px;
+  border: none; }
+  .search-filter .operator.input-group-addon select.form-control {
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none; }
+  .search-filter .operator.input-group-addon select.form-control::-ms-expand {
+    display: none; }
+  .search-filter .operator.input-group-addon select.form-control .empty {
+    color: #c0c0c0; }
+  .search-filter .operator.input-group-addon .form-control {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+    padding: 0 0 0 2px !important;
+    font-size: 13px;
+    color: #31708F;
+    font-weight: bold;
+    background-color: #e4eacf; }
+
+.search-filter .operator-char3.input-group-addon {
+  min-width: 30px; }
+
+input.search-filter {
+  font-family: "Segoe UI Symbol"; }
+
+.search-filter input {
+  font-family: "Segoe UI Symbol"; }
+
+.input-group.flatpickr .flatpickr {
+  flex: 1; }
+  .input-group.flatpickr .flatpickr .flatpickr-input.form-control {
+    background-color: #f7f7f7;
+    font-family: "Segoe UI Symbol";
+    font-size: 14px;
+    border-radius: 0 4px 4px 0; }
+
+.slick-preheader-panel .ui-droppable, .slick-preheader-panel .ui-droppable-hover {
+  padding: 5px 10px;
+  height: 35px;
+  border: 1px solid #e0e0e0 !important;
+  width: calc(100% - 25px) !important;
+  border-radius: 4px;
+  background-color: #ffffff; }
+  .slick-preheader-panel .ui-droppable .slick-placeholder, .slick-preheader-panel .ui-droppable-hover .slick-placeholder {
+    font-style: italic;
+    color: #616161; }
+  .slick-preheader-panel .ui-droppable .slick-group-toggle-all, .slick-preheader-panel .ui-droppable-hover .slick-group-toggle-all {
+    position: absolute;
+    cursor: pointer;
+    font-family: "FontAwesome";
+    color: #31708F;
+    display: none !important;
+    top: 7px;
+    right: 40px; }
+    .slick-preheader-panel .ui-droppable .slick-group-toggle-all.expanded:before, .slick-preheader-panel .ui-droppable-hover .slick-group-toggle-all.expanded:before {
+      content: ""; }
+    .slick-preheader-panel .ui-droppable .slick-group-toggle-all.collapsed:before, .slick-preheader-panel .ui-droppable-hover .slick-group-toggle-all.collapsed:before {
+      content: ""; }
+  .slick-preheader-panel .ui-droppable .slick-dropped-grouping, .slick-preheader-panel .ui-droppable-hover .slick-dropped-grouping {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: move; }
+  .slick-preheader-panel .ui-droppable .slick-groupby-remove, .slick-preheader-panel .ui-droppable-hover .slick-groupby-remove {
+    cursor: pointer;
+    display: inline-flex;
+    color: pink;
+    padding-left: 5px;
+    padding-right: 7px;
+    font-size: 16px; }
+    .slick-preheader-panel .ui-droppable .slick-groupby-remove:hover, .slick-preheader-panel .ui-droppable-hover .slick-groupby-remove:hover {
+      color: red; }
+
+.slick-preheader-panel .ui-droppable-active {
+  background-color: #fafafa; }
+
+.slick-preheader-panel .ui-droppable-hover {
+  background-color: #ededed; }
+
+.slick-header .slick-header-columns .slick-column-groupable {
+  display: inline-block;
+  font-weight: normal;
+  color: #707070;
+  width: 9px;
+  height: 9px;
+  margin-left: 4px; }
+
+input.slider-editor-input[type=range],
+input.slider-filter-input[type=range] {
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+  height: 27px;
+  padding: 0 6px;
+  /* change runnable track color while in focus on all browsers */
+  /* WebKit specific (Opera/Chrome/Safari) */
+  /* Mozilla Firefox specific */
+  /*fix for FF unable to apply focus style bug */
+  border: 1px solid #ccc;
+  /*hide the outline behind the border*/
+  /* Microsoft IE specific */ }
+  input.slider-editor-input[type=range]:focus,
+  input.slider-filter-input[type=range]:focus {
+    outline: none; }
+    input.slider-editor-input[type=range]:focus::-webkit-slider-runnable-track,
+    input.slider-filter-input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #ddd; }
+    input.slider-editor-input[type=range]:focus::-moz-range-track,
+    input.slider-filter-input[type=range]:focus::-moz-range-track {
+      background: #ddd; }
+    input.slider-editor-input[type=range]:focus::-ms-fill-lower,
+    input.slider-filter-input[type=range]:focus::-ms-fill-lower {
+      background: #aaa; }
+    input.slider-editor-input[type=range]:focus::-ms-fill-upper,
+    input.slider-filter-input[type=range]:focus::-ms-fill-upper {
+      background: #ddd; }
+  input.slider-editor-input[type=range]::-webkit-slider-runnable-track,
+  input.slider-filter-input[type=range]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #eee;
+    border: none;
+    border-radius: 3px; }
+  input.slider-editor-input[type=range]::-webkit-slider-thumb,
+  input.slider-filter-input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border: 1px solid #9bbc9f;
+    background: #c9dbcb;
+    margin-top: -4px; }
+  input.slider-editor-input[type=range]::-moz-range-track,
+  input.slider-filter-input[type=range]::-moz-range-track {
+    height: 4px;
+    background: #eee;
+    border: none;
+    border-radius: 3px; }
+  input.slider-editor-input[type=range]::-moz-range-thumb,
+  input.slider-filter-input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 1px solid #9bbc9f;
+    background: #c9dbcb; }
+  input.slider-editor-input[type=range]:-moz-focusring,
+  input.slider-filter-input[type=range]:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px; }
+  input.slider-editor-input[type=range]::-ms-track,
+  input.slider-filter-input[type=range]::-ms-track {
+    height: 4px;
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+    /*remove default tick marks*/
+    color: transparent; }
+  input.slider-editor-input[type=range]::-ms-fill-lower,
+  input.slider-filter-input[type=range]::-ms-fill-lower {
+    background: #ddd;
+    border-radius: 10px; }
+  input.slider-editor-input[type=range]::-ms-fill-upper,
+  input.slider-filter-input[type=range]::-ms-fill-upper {
+    background: #eee;
+    border-radius: 10px; }
+  input.slider-editor-input[type=range]::-ms-thumb,
+  input.slider-filter-input[type=range]::-ms-thumb {
+    border: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 1px solid #9bbc9f;
+    background: #c9dbcb;
+    margin-top: 1px; }
+  input.slider-editor-input[type=range]::-ms-tooltip,
+  input.slider-filter-input[type=range]::-ms-tooltip {
+    display: none; }
+
+.search-filter .slider-value {
+  padding: 0; }
+  .search-filter .slider-value .input-group-text {
+    padding: 4px 8px;
+    font-size: 13px; }
+
+input.slider-filter-input[type=range] {
+  padding: 0 6px;
+  height: 27px; }
+
+/* Slider Editor */
+input.slider-editor-input[type=range] {
+  padding: 0 6px;
+  height: 24px; }
+
+.slider-editor .slider-value {
+  padding: 0; }
+  .slider-editor .slider-value .input-group-text {
+    padding: 4px 6px;
+    font-size: 13px;
+    height: 24px; }
+
+.slick-row .detail-view-toggle {
+  display: inline-block;
+  cursor: pointer; }
+  .slick-row .detail-view-toggle.expand {
+    display: inline-block;
+    color: #71b0ce; }
+    .slick-row .detail-view-toggle.expand:hover {
+      color: #4b9ac1; }
+    .slick-row .detail-view-toggle.expand:before {
+      font-family: "FontAwesome";
+      font-size: 16px;
+      content: ""; }
+  .slick-row .detail-view-toggle.collapse {
+    display: inline-block;
+    color: #31708F; }
+    .slick-row .detail-view-toggle.collapse:hover {
+      color: #245269; }
+    .slick-row .detail-view-toggle.collapse:before {
+      font-family: "FontAwesome";
+      font-size: 16px;
+      content: ""; }
+
+.slick-row .dynamic-cell-detail {
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #c0c0c0;
+  background-color: #f7f7f7;
+  padding: 10px;
+  z-index: 1000; }
+  .slick-row .dynamic-cell-detail :first-child {
+    vertical-align: middle;
+    line-height: 13px; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNsaWNrLXBsdWdpbnMuY3NzIiwiLi4vLi4vLi4vc3JjL2FwcC9tb2R1bGVzL2FuZ3VsYXItc2xpY2tncmlkL3N0eWxlcy9zbGljay1wbHVnaW5zLnNjc3MiLCIuLi8uLi8uLi9zcmMvYXBwL21vZHVsZXMvYW5ndWxhci1zbGlja2dyaWQvc3R5bGVzL192YXJpYWJsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEIscUJBQUE7QUNBQTs7OztFRk1FO0FFRkM7O2tDRksrQjtBRUZsQyxpQ0FBQTtBQVVBLG9FQUFBO0FBTUEsU0FBQTtBQU1BLFNBQUE7QUFXQSxRQUFBO0FBU0EseUNBQUE7QUFPQSxXQUFBO0FBeUJBLCtCQUFBO0FBS0EsbUhBQUE7QUFtQkEsaUJBQUE7QUFjQSxZQUFBO0FBWUEsOEJBQUE7QUFLQSxrQkFBQTtBQVlBLHdCQUFBO0FBV0Esc0JBQUE7QUFJQSwrQkFBQTtBQWFBLHVCQUFBO0FBa0JBLHNDQUFBO0FBT0EsWUFBQTtBQVl5RCw2Q0FBQTtBQVd6RCxxQkFBQTtBQVNBLDhCQUFBO0FBNEJBLHVCQUFBO0FBTXlELFlBQUE7QUFDQSxZQUFBO0FBUXpELDJCQUFBO0FBOEJBLHlCQUFBO0FBMEJBLDRCQUFBO0FBS0Esb0JBQUE7QUFHQSxhQUFBO0FEN1VBOztFQUVFOzs7SURvQ0U7RUNoQ0YsV0FBVztFQUNYLG9CQUFvQixFQUFBOztBQUd0QjtFQUNDOzs7R0RtQ0U7RUMvQkQsWUFBWTtFQUNaLG1CQUFtQjtFQUNuQixXQUFXO0VBQ1gsb0JBQW9CO0VBQ3BCLFlBQVk7RUFDWixXQUFXO0VBQ1gsNEJBQTRCO0VBQzVCLGtDQUFrQztFQUNsQyxlQUFlLEVBQUE7O0FBR2pCO0VBQ0UsUUFBUTtFQUNSLGtCQUFrQjtFQUlsQixzQkFBc0IsRUFBQTs7QUFHeEI7RUFDRSxXQUFXLEVBQUE7O0FBT2I7RUFDRSxrQ0FBa0M7RUFDbEMsNEJBQTRCO0VBQzVCLGVBQWU7RUFDZixhQUFhO0VBQ2Isa0JBQWtCO0VB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 */

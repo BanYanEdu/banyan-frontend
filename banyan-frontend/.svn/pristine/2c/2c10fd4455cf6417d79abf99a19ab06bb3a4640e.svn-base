@@ -1,0 +1,32 @@
+import { OnInit, EventEmitter, TemplateRef, OnChanges, ElementRef } from '@angular/core';
+export declare class ListViewComponent implements OnInit, OnChanges {
+    listItems: any[];
+    selectedItems: any[];
+    activeItem: number;
+    items: any[];
+    onSelectionChanged: EventEmitter<{}>;
+    listBody: any;
+    toolbar: TemplateRef<ElementRef>;
+    template: TemplateRef<ElementRef>;
+    search: TemplateRef<ElementRef>;
+    footer: TemplateRef<ElementRef>;
+    idProperty: string;
+    autoSelect: boolean;
+    singleSelect: boolean;
+    constructor();
+    ngOnInit(): void;
+    ngOnChanges(changes: any): void;
+    private autoSelectItem;
+    requestFocus(): void;
+    handleKeyPress(event: KeyboardEvent): void;
+    handleClick(event: any, index: any): void;
+    updateItemState(): void;
+    scrollItemIntoView(index: any): void;
+    toggleItem(index: any): void;
+    deselectItem(index: any): void;
+    selectItem(index: any): void;
+    selectAll(): void;
+    clearSelection(): void;
+    selectById(id: string): void;
+    getIdProperty(): string;
+}

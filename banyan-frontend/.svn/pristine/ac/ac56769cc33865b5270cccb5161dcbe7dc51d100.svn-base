@@ -1,0 +1,271 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "unicorn": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng/unicorn",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "node_modules/flatpickr/dist/flatpickr.min.css",
+              "node_modules/angular-slickgrid/lib/multiple-select/multiple-select.css",
+              "node_modules/angular-slickgrid/styles/css/slickgrid-theme-bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "src/vendor/jitsi/external_api.js",
+              "node_modules/jquery-ui-dist/jquery-ui.min.js",
+              "node_modules/slickgrid/lib/jquery.event.drag-2.3.0.js",
+              "node_modules/angular-slickgrid/lib/multiple-select/multiple-select.js",
+              "node_modules/leaflet/dist/leaflet.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "unicorn:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "unicorn:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "unicorn:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "unicorn-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "unicorn:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "collaboration-task-list": {
+      "root": "projects/collaboration-task-list/",
+      "sourceRoot": "projects/collaboration-task-list/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng/collaboration-task-list",
+            "index": "projects/collaboration-task-list/src/index.html",
+            "main": "projects/collaboration-task-list/src/main.ts",
+            "polyfills": "projects/collaboration-task-list/src/polyfills.ts",
+            "tsConfig": "projects/collaboration-task-list/tsconfig.app.json",
+            "assets": [
+              "projects/collaboration-task-list/src/favicon.ico",
+              "projects/collaboration-task-list/src/assets"
+            ],
+            "styles": [
+              "projects/collaboration-task-list/src/styles.css"
+            ],
+            "scripts": [
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/collaboration-task-list/src/environments/environment.ts",
+                  "with": "projects/collaboration-task-list/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "collaboration-task-list:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "collaboration-task-list:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "collaboration-task-list:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/collaboration-task-list/src/test.ts",
+            "polyfills": "projects/collaboration-task-list/src/polyfills.ts",
+            "tsConfig": "projects/collaboration-task-list/tsconfig.spec.json",
+            "karmaConfig": "projects/collaboration-task-list/karma.conf.js",
+            "styles": [
+              "projects/collaboration-task-list/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/collaboration-task-list/src/favicon.ico",
+              "projects/collaboration-task-list/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/collaboration-task-list/tsconfig.app.json",
+              "projects/collaboration-task-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "collaboration-task-list-e2e": {
+      "root": "projects/collaboration-task-list-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/collaboration-task-list-e2e/protractor.conf.js",
+            "devServerTarget": "collaboration-task-list:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "collaboration-task-list:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/collaboration-task-list-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "unicorn",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
+}

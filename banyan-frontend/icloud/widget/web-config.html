@@ -1,0 +1,20 @@
+<script type="text/javascript">
+    iNet.apply(iNet, {
+        prefix: '$ctx.site.prefix',
+        firmPrefix: ('$ctx.firmPrefix'!=='$ctx.webcontext()') ? '$ctx.firmPrefix' : 'smartcloud',
+        extension: '$ctx.extension()',
+        path: '$ctx.path()',
+        username: '$ctx.usercode()',
+        displayName: '$ctx.getUsername()',
+        fileServer: '$ctx.mediaRoot("")',
+        imgFolder: '$ctx.resource("/images/unicorn/")',
+        commonImageFolder: '$ctx.resource("/images/common/")',
+        jsFolder: '$ctx.mediaRoot("js")'.indexOf('.mediaRoot') > -1 ? '$ctx.path()/js/unicorn/' : '$ctx.mediaRoot("js")/unicorn/',
+        externalUser: '$ctx.externalUser()',
+        webContext: '$ctx.webcontext()',
+        webchat: '$ctx.global("unifiedpush").webchat',
+        organId: '$ctx.organization().organId',
+        orgName: '$ctx.global("glCtx").organ.name',
+        hasOnlineEditor: !!'#visible($ctx.page("onlineditor/page/loading"))1#end'
+    });
+</script>

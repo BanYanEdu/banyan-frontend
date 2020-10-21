@@ -1,0 +1,31 @@
+import { ElementRef, EventEmitter, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+export declare class CustomPaginationComponent implements OnInit, OnChanges {
+    pageSize: number;
+    pageNumber: number;
+    totalItems: number;
+    firstLoad: boolean;
+    params: {};
+    basicSearch: TemplateRef<ElementRef>;
+    advanceSearch: TemplateRef<ElementRef>;
+    query: any;
+    pageCount: number;
+    onLoad: EventEmitter<any>;
+    constructor();
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    changeToFirstPage(event: any): void;
+    changeToLastPage(event: any): void;
+    changeToNextPage(event: any): void;
+    changeToPreviousPage(event: any): void;
+    changeToCurrentPage(event: any): void;
+    readonly maxPage: number;
+    getQuery(): any;
+    setTotalItems(v: number): void;
+    setParams(params?: any): void;
+    getParams(): any;
+    reload(event?: any): void;
+    load(): void;
+    onPageChanged(event?: Event, pageNumber?: number): void;
+    processOnPaginationChanged(event: Event, args: any): string;
+    processOnTotalChanged(): void;
+}

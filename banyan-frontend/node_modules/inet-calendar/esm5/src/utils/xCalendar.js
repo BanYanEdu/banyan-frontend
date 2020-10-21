@@ -1,0 +1,9 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { CalBuilder } from "./CalBuilder";
+/** @type {?} */
+export var xCalendar = new CalBuilder();
+xCalendar._applyConfig();
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoieENhbGVuZGFyLmpzIiwic291cmNlUm9vdCI6Im5nOi8vaW5ldC1jYWxlbmRhci8iLCJzb3VyY2VzIjpbInNyYy91dGlscy94Q2FsZW5kYXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFBQyxVQUFVLEVBQUMsTUFBTSxjQUFjLENBQUM7O0FBQ3hDLE1BQU0sS0FBSyxTQUFTLEdBQUcsSUFBSSxVQUFVLEVBQUU7QUFDdkMsU0FBUyxDQUFDLFlBQVksRUFBRSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDYWxCdWlsZGVyfSBmcm9tIFwiLi9DYWxCdWlsZGVyXCI7XG5leHBvcnQgbGV0IHhDYWxlbmRhciA9IG5ldyBDYWxCdWlsZGVyKCk7XG54Q2FsZW5kYXIuX2FwcGx5Q29uZmlnKCk7Il19

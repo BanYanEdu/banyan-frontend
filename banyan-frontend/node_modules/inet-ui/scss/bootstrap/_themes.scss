@@ -1,0 +1,78 @@
+@import "variables";
+
+$themes: (
+        light: (
+                backgroundColor: $white,
+                textColor: $white,
+                inputBorder: 1px solid rgba(129, 138, 145, 0.3),
+                borderColor: rgba(129, 138, 145, 0.3),
+                navbarBgColor: #438EB9,
+                navbarMinHeight: $nav-height,
+                navbarSearchBgColor: #26719f,
+                searchButtonColor: none,
+                searchButonHoverColor: none,
+                searchInputColor: #708090,
+                activeMenuBgColor: #438EB9,
+                activeMenuColor: #25476a,
+                hoverMenuBgColor:  rgba(33, 33, 33, 0.05)
+        ),
+        dark: (
+                backgroundColor: rgba(129, 138, 145, 0.1),
+                textColor: #eee,
+                inputBorder: 1px solid rgba(129, 138, 145, 0.3),
+                borderColor: rgba(129, 138, 145, 0.3),
+                navbarBgColor: #343a40,
+                navbarMinHeight: $nav-height,
+                navbarSearchBgColor: rgba(255, 255, 255, 0.06),
+                searchButtonColor: $white,
+                searchButonHoverColor: none,
+                activeMenuBgColor: #343a40,
+                activeMenuColor: #25476a,
+                hoverMenuBgColor:  rgba(33, 33, 33, 0.05)
+        ),
+        silver: (
+                backgroundColor: $white,
+                textColor: #878787,
+                inputBorder: 1px solid rgba(129, 138, 145, 0.3),
+                borderColor: rgba(129, 138, 145, 0.3),
+                navbarBgColor: $white,
+                navbarMinHeight: $nav-height,
+                navbarSearchBgColor: $white,
+                searchButtonColor: #000000,
+                searchButonHoverColor: none,
+                searchInputColor: #708090,
+                activeMenuBgColor: rgba(33, 33, 33, 0.05),
+                activeMenuColor: #878787,
+                hoverMenuBgColor:  rgba(33, 33, 33, 0.05)
+        )
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@mixin text-contrast($color) {
+  $color-brightness: round((red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000);
+  $light-color: round((red($white) * 299) + (green($white) * 587) + (blue($white) * 114) / 1000);
+
+  @if abs($color-brightness) < ($light-color / 2) {
+    color: $white;
+  }
+  @else {
+    color: #333333;
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

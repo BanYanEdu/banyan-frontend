@@ -1,0 +1,11 @@
+export declare enum CalAttendeeState {
+    NEEDS_ACTION = "NEEDS_ACTION",
+    ACCEPTED = "ACCEPTED",
+    DECLINED = "DECLINED",
+    TENTATIVE = "TENTATIVE",
+    DELEGATED = "DELEGATED",
+    COMPLETED = "COMPLETED",
+    IN_PROCESS = "IN_PROCESS",
+    NONE = "NONE",
+    OTHERS = "OTHERS"
+}

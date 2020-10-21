@@ -1,0 +1,174 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { ApplicationRef, ComponentFactoryResolver, Injectable } from '@angular/core';
+import { DomPortalHost } from '../portal/dom-portal-host';
+import { OverlayRef } from './overlay-ref';
+import { OverlayContainer } from './overlay-container';
+/**
+ * Service to create Overlays. Overlays are dynamically added pieces of floating UI, meant to be
+ * used as a low-level building building block for other components. Dialogs, tooltips, menus,
+ * selects, etc. can all be built using overlays. The service should primarily be used by authors
+ * of re-usable components rather than developers building end-user applications.
+ *
+ * An overlay *is* a PortalHost, so any kind of Portal can be loaded into one.
+ */
+var Overlay = /** @class */ (function () {
+    function Overlay(_overlayContainer, _componentFactoryResolver, _appRef) {
+        this._overlayContainer = _overlayContainer;
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._appRef = _appRef;
+        this._paneElements = {};
+    }
+    /**
+     * Creates an overlay.
+     * @returns A reference to the created overlay.
+     */
+    /**
+     * Creates an overlay.
+     * @param {?=} positionClass
+     * @param {?=} overlayContainer
+     * @return {?} A reference to the created overlay.
+     */
+    Overlay.prototype.create = /**
+     * Creates an overlay.
+     * @param {?=} positionClass
+     * @param {?=} overlayContainer
+     * @return {?} A reference to the created overlay.
+     */
+    function (positionClass, overlayContainer) {
+        // get existing pane if possible
+        return this._createOverlayRef(this.getPaneElement(positionClass, overlayContainer));
+    };
+    /**
+     * @param {?=} positionClass
+     * @param {?=} overlayContainer
+     * @return {?}
+     */
+    Overlay.prototype.getPaneElement = /**
+     * @param {?=} positionClass
+     * @param {?=} overlayContainer
+     * @return {?}
+     */
+    function (positionClass, overlayContainer) {
+        if (positionClass === void 0) { positionClass = ''; }
+        if (!this._paneElements[positionClass]) {
+            this._paneElements[positionClass] = this._createPaneElement(positionClass, overlayContainer);
+        }
+        return this._paneElements[positionClass];
+    };
+    /**
+     * Creates the DOM element for an overlay and appends it to the overlay container.
+     * @returns Newly-created pane element
+     */
+    /**
+     * Creates the DOM element for an overlay and appends it to the overlay container.
+     * @private
+     * @param {?} positionClass
+     * @param {?=} overlayContainer
+     * @return {?} Newly-created pane element
+     */
+    Overlay.prototype._createPaneElement = /**
+     * Creates the DOM element for an overlay and appends it to the overlay container.
+     * @private
+     * @param {?} positionClass
+     * @param {?=} overlayContainer
+     * @return {?} Newly-created pane element
+     */
+    function (positionClass, overlayContainer) {
+        /** @type {?} */
+        var pane = document.createElement('div');
+        pane.id = 'toast-container';
+        pane.classList.add(positionClass);
+        pane.classList.add('toast-container');
+        if (!overlayContainer) {
+            this._overlayContainer.getContainerElement().appendChild(pane);
+        }
+        else {
+            overlayContainer.getContainerElement().appendChild(pane);
+        }
+        return pane;
+    };
+    /**
+     * Create a DomPortalHost into which the overlay content can be loaded.
+     * @param pane The DOM element to turn into a portal host.
+     * @returns A portal host for the given DOM element.
+     */
+    /**
+     * Create a DomPortalHost into which the overlay content can be loaded.
+     * @private
+     * @param {?} pane The DOM element to turn into a portal host.
+     * @return {?} A portal host for the given DOM element.
+     */
+    Overlay.prototype._createPortalHost = /**
+     * Create a DomPortalHost into which the overlay content can be loaded.
+     * @private
+     * @param {?} pane The DOM element to turn into a portal host.
+     * @return {?} A portal host for the given DOM element.
+     */
+    function (pane) {
+        return new DomPortalHost(pane, this._componentFactoryResolver, this._appRef);
+    };
+    /**
+     * Creates an OverlayRef for an overlay in the given DOM element.
+     * @param pane DOM element for the overlay
+     */
+    /**
+     * Creates an OverlayRef for an overlay in the given DOM element.
+     * @private
+     * @param {?} pane DOM element for the overlay
+     * @return {?}
+     */
+    Overlay.prototype._createOverlayRef = /**
+     * Creates an OverlayRef for an overlay in the given DOM element.
+     * @private
+     * @param {?} pane DOM element for the overlay
+     * @return {?}
+     */
+    function (pane) {
+        return new OverlayRef(this._createPortalHost(pane));
+    };
+    Overlay.decorators = [
+        { type: Injectable }
+    ];
+    /** @nocollapse */
+    Overlay.ctorParameters = function () { return [
+        { type: OverlayContainer },
+        { type: ComponentFactoryResolver },
+        { type: ApplicationRef }
+    ]; };
+    return Overlay;
+}());
+export { Overlay };
+if (false) {
+    /**
+     * @type {?}
+     * @private
+     */
+    Overlay.prototype._paneElements;
+    /**
+     * @type {?}
+     * @private
+     */
+    Overlay.prototype._overlayContainer;
+    /**
+     * @type {?}
+     * @private
+     */
+    Overlay.prototype._componentFactoryResolver;
+    /**
+     * @type {?}
+     * @private
+     */
+    Overlay.prototype._appRef;
+}
+/**
+ * Providers for Overlay and its related injectables.
+ * @type {?}
+ */
+export var OVERLAY_PROVIDERS = [
+    Overlay,
+    OverlayContainer,
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib3ZlcmxheS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2luZXQtdWkvIiwic291cmNlcyI6WyJzcmMvbm90aWZ5L292ZXJsYXkvb3ZlcmxheS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsT0FBTyxFQUFFLGNBQWMsRUFBRSx3QkFBd0IsRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDckYsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLDJCQUEyQixDQUFDO0FBQzFELE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFHM0MsT0FBTyxFQUFFLGdCQUFnQixFQUFFLE1BQU0scUJBQXFCLENBQUM7Ozs7Ozs7OztBQVd0RDtJQUdHLGlCQUFvQixpQkFBbUMsRUFDbkMseUJBQW1ELEVBQ25ELE9BQXVCO1FBRnZCLHNCQUFpQixHQUFqQixpQkFBaUIsQ0FBa0I7UUFDbkMsOEJBQXlCLEdBQXpCLHlCQUF5QixDQUEwQjtRQUNuRCxZQUFPLEdBQVAsT0FBTyxDQUFnQjtRQUhuQyxrQkFBYSxHQUEyQixFQUFFLENBQUM7SUFHTCxDQUFDO0lBQ2pEOzs7T0FHRzs7Ozs7OztJQUNILHdCQUFNOzs7Ozs7SUFBTixVQUFPLGFBQXNCLEVBQUUsZ0JBQTBDO1FBQ3ZFLGdDQUFnQztRQUNoQyxPQUFPLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsY0FBYyxDQUFDLGFBQWEsRUFBRSxnQkFBZ0IsQ0FBQyxDQUFDLENBQUM7SUFDdEYsQ0FBQzs7Ozs7O0lBRUQsZ0NBQWM7Ozs7O0lBQWQsVUFBZSxhQUEwQixFQUFFLGdCQUEwQztRQUF0RSw4QkFBQSxFQUFBLGtCQUEwQjtRQUN2QyxJQUFJLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxhQUFhLENBQUMsRUFBRTtZQUN0QyxJQUFJLENBQUMsYUFBYSxDQUFDLGFBQWEsQ0FBQyxHQUFHLElBQUksQ0FBQyxrQkFBa0IsQ0FBQyxhQUFhLEVBQUUsZ0JBQWdCLENBQUMsQ0FBQztTQUM5RjtRQUNELE9BQU8sSUFBSSxDQUFDLGFBQWEsQ0FBQyxhQUFhLENBQUMsQ0FBQztJQUMzQyxDQUFDO0lBRUQ7OztPQUdHOzs7Ozs7OztJQUNLLG9DQUFrQjs7Ozs7OztJQUExQixVQUEyQixhQUFxQixFQUFFLGdCQUEwQzs7WUFDcEYsSUFBSSxHQUFHLFFBQVEsQ0FBQyxhQUFhLENBQUMsS0FBSyxDQUFDO1FBQzFDLElBQUksQ0FBQyxFQUFFLEdBQUcsaUJBQWlCLENBQUM7UUFDNUIsSUFBSSxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsYUFBYSxDQUFDLENBQUM7UUFDbEMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsaUJBQWlCLENBQUMsQ0FBQztRQUV0QyxJQUFJLENBQUMsZ0JBQWdCLEVBQUU7WUFDckIsSUFBSSxDQUFDLGlCQUFpQixDQUFDLG1CQUFtQixFQUFFLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDO1NBQ2hFO2FBQU07WUFDTCxnQkFBZ0IsQ0FBQyxtQkFBbUIsRUFBRSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsQ0FBQztTQUMxRDtRQUNELE9BQU8sSUFBSSxDQUFDO0lBQ2QsQ0FBQztJQUVEOzs7O09BSUc7Ozs7Ozs7SUFDSyxtQ0FBaUI7Ozs7OztJQUF6QixVQUEwQixJQUFpQjtRQUN6QyxPQUFPLElBQUksYUFBYSxDQUFDLElBQUksRUFBRSxJQUFJLENBQUMseUJBQXlCLEVBQUUsSUFBSSxDQUFDLE9BQU8sQ0FBQyxDQUFDO0lBQy9FLENBQUM7SUFFRDs7O09BR0c7Ozs7Ozs7SUFDSyxtQ0FBaUI7Ozs7OztJQUF6QixVQUEwQixJQUFpQjtRQUN6QyxPQUFPLElBQUksVUFBVSxDQUFDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDO0lBQ3RELENBQUM7O2dCQXZERCxVQUFVOzs7O2dCQVhILGdCQUFnQjtnQkFMQSx3QkFBd0I7Z0JBQXhDLGNBQWM7O0lBd0V2QixjQUFDO0NBQUEsQUF4REEsSUF3REE7U0F2RGMsT0FBTzs7Ozs7O0lBQ2xCLGdDQUFtRDs7Ozs7SUFDdkMsb0NBQTJDOzs7OztJQUMzQyw0Q0FBMkQ7Ozs7O0lBQzNELDBCQUErQjs7Ozs7O0FBdUQvQyxNQUFNLEtBQU8saUJBQWlCLEdBQUc7SUFDL0IsT0FBTztJQUNQLGdCQUFnQjtDQUNqQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEFwcGxpY2F0aW9uUmVmLCBDb21wb25lbnRGYWN0b3J5UmVzb2x2ZXIsIEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IERvbVBvcnRhbEhvc3QgfSBmcm9tICcuLi9wb3J0YWwvZG9tLXBvcnRhbC1ob3N0JztcbmltcG9ydCB7IE92ZXJsYXlSZWYgfSBmcm9tICcuL292ZXJsYXktcmVmJztcblxuaW1wb3J0IHsgVG9hc3RDb250YWluZXJEaXJlY3RpdmUgfSBmcm9tICcuLi90b2FzdHIvdG9hc3QuZGlyZWN0aXZlJztcbmltcG9ydCB7IE92ZXJsYXlDb250YWluZXIgfSBmcm9tICcuL292ZXJsYXktY29udGFpbmVyJztcblxuXG4vKipcbiAqIFNlcnZpY2UgdG8gY3JlYXRlIE92ZXJsYXlzLiBPdmVybGF5cyBhcmUgZHluYW1pY2FsbHkgYWRkZWQgcGllY2VzIG9mIGZsb2F0aW5nIFVJLCBtZWFudCB0byBiZVxuICogdXNlZCBhcyBhIGxvdy1sZXZlbCBidWlsZGluZyBidWlsZGluZyBibG9jayBmb3Igb3RoZXIgY29tcG9uZW50cy4gRGlhbG9ncywgdG9vbHRpcHMsIG1lbnVzLFxuICogc2VsZWN0cywgZXRjLiBjYW4gYWxsIGJlIGJ1aWx0IHVzaW5nIG92ZXJsYXlzLiBUaGUgc2VydmljZSBzaG91bGQgcHJpbWFyaWx5IGJlIHVzZWQgYnkgYXV0aG9yc1xuICogb2YgcmUtdXNhYmxlIGNvbXBvbmVudHMgcmF0aGVyIHRoYW4gZGV2ZWxvcGVycyBidWlsZGluZyBlbmQtdXNlciBhcHBsaWNhdGlvbnMuXG4gKlxuICogQW4gb3ZlcmxheSAqaXMqIGEgUG9ydGFsSG9zdCwgc28gYW55IGtpbmQgb2YgUG9ydGFsIGNhbiBiZSBsb2FkZWQgaW50byBvbmUuXG4gKi9cbiBASW5qZWN0YWJsZSgpXG4gIGV4cG9ydCBjbGFzcyBPdmVybGF5IHtcbiAgICBwcml2YXRlIF9wYW5lRWxlbWVudHM6IHtzdHJpbmc/OiBIVE1MRWxlbWVudH0gPSB7fTtcbiAgICBjb25zdHJ1Y3Rvcihwcml2YXRlIF9vdmVybGF5Q29udGFpbmVyOiBPdmVybGF5Q29udGFpbmVyLFxuICAgICAgICAgICAgICAgIHByaXZhdGUgX2NvbXBvbmVudEZhY3RvcnlSZXNvbHZlcjogQ29tcG9uZW50RmFjdG9yeVJlc29sdmVyLFxuICAgICAgICAgICAgICAgIHByaXZhdGUgX2FwcFJlZjogQXBwbGljYXRpb25SZWYpIHt9XG4gIC8qKlxuICAgKiBDcmVhdGVzIGFuIG92ZXJsYXkuXG4gICAqIEByZXR1cm5zIEEgcmVmZXJlbmNlIHRvIHRoZSBjcmVhdGVkIG92ZXJsYXkuXG4gICAqL1xuICBjcmVhdGUocG9zaXRpb25DbGFzcz86IHN0cmluZywgb3ZlcmxheUNvbnRhaW5lcj86IFRvYXN0Q29udGFpbmVyRGlyZWN0aXZlKTogT3ZlcmxheVJlZiB7XG4gICAgLy8gZ2V0IGV4aXN0aW5nIHBhbmUgaWYgcG9zc2libGVcbiAgICByZXR1cm4gdGhpcy5fY3JlYXRlT3ZlcmxheVJlZih0aGlzLmdldFBhbmVFbGVtZW50KHBvc2l0aW9uQ2xhc3MsIG92ZXJsYXlDb250YWluZXIpKTtcbiAgfVxuXG4gIGdldFBhbmVFbGVtZW50KHBvc2l0aW9uQ2xhc3M6IHN0cmluZyA9ICcnLCBvdmVybGF5Q29udGFpbmVyPzogVG9hc3RDb250YWluZXJEaXJlY3RpdmUpOiBIVE1MRWxlbWVudCB7XG4gICAgaWYgKCF0aGlzLl9wYW5lRWxlbWVudHNbcG9zaXRpb25DbGFzc10pIHtcbiAgICAgIHRoaXMuX3BhbmVFbGVtZW50c1twb3NpdGlvbkNsYXNzXSA9IHRoaXMuX2NyZWF0ZVBhbmVFbGVtZW50KHBvc2l0aW9uQ2xhc3MsIG92ZXJsYXlDb250YWluZXIpO1xuICAgIH1cbiAgICByZXR1cm4gdGhpcy5fcGFuZUVsZW1lbnRzW3Bvc2l0aW9uQ2xhc3NdO1xuICB9XG5cbiAgLyoqXG4gICAqIENyZWF0ZXMgdGhlIERPTSBlbGVtZW50IGZvciBhbiBvdmVybGF5IGFuZCBhcHBlbmRzIGl0IHRvIHRoZSBvdmVybGF5IGNvbnRhaW5lci5cbiAgICogQHJldHVybnMgTmV3bHktY3JlYXRlZCBwYW5lIGVsZW1lbnRcbiAgICovXG4gIHByaXZhdGUgX2NyZWF0ZVBhbmVFbGVtZW50KHBvc2l0aW9uQ2xhc3M6IHN0cmluZywgb3ZlcmxheUNvbnRhaW5lcj86IFRvYXN0Q29udGFpbmVyRGlyZWN0aXZlKTogSFRNTEVsZW1lbnQge1xuICAgIGNvbnN0IHBhbmUgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcbiAgICBwYW5lLmlkID0gJ3RvYXN0LWNvbnRhaW5lcic7XG4gICAgcGFuZS5jbGFzc0xpc3QuYWRkKHBvc2l0aW9uQ2xhc3MpO1xuICAgIHBhbmUuY2xhc3NMaXN0LmFkZCgndG9hc3QtY29udGFpbmVyJyk7XG5cbiAgICBpZiAoIW92ZXJsYXlDb250YWluZXIpIHtcbiAgICAgIHRoaXMuX292ZXJsYXlDb250YWluZXIuZ2V0Q29udGFpbmVyRWxlbWVudCgpLmFwcGVuZENoaWxkKHBhbmUpO1xuICAgIH0gZWxzZSB7XG4gICAgICBvdmVybGF5Q29udGFpbmVyLmdldENvbnRhaW5lckVsZW1lbnQoKS5hcHBlbmRDaGlsZChwYW5lKTtcbiAgICB9XG4gICAgcmV0dXJuIHBhbmU7XG4gIH1cblxuICAvKipcbiAgICogQ3JlYXRlIGEgRG9tUG9ydGFsSG9zdCBpbnRvIHdoaWNoIHRoZSBvdmVybGF5IGNvbnRlbnQgY2FuIGJlIGxvYWRlZC5cbiAgICogQHBhcmFtIHBhbmUgVGhlIERPTSBlbGVtZW50IHRvIHR1cm4gaW50byBhIHBvcnRhbCBob3N0LlxuICAgKiBAcmV0dXJucyBBIHBvcnRhbCBob3N0IGZvciB0aGUgZ2l2ZW4gRE9NIGVsZW1lbnQuXG4gICAqL1xuICBwcml2YXRlIF9jcmVhdGVQb3J0YWxIb3N0KHBhbmU6IEhUTUxFbGVtZW50KTogRG9tUG9ydGFsSG9zdCB7XG4gICAgcmV0dXJuIG5ldyBEb21Qb3J0YWxIb3N0KHBhbmUsIHRoaXMuX2NvbXBvbmVudEZhY3RvcnlSZXNvbHZlciwgdGhpcy5fYXBwUmVmKTtcbiAgfVxuXG4gIC8qKlxuICAgKiBDcmVhdGVzIGFuIE92ZXJsYXlSZWYgZm9yIGFuIG92ZXJsYXkgaW4gdGhlIGdpdmVuIERPTSBlbGVtZW50LlxuICAgKiBAcGFyYW0gcGFuZSBET00gZWxlbWVudCBmb3IgdGhlIG92ZXJsYXlcbiAgICovXG4gIHByaXZhdGUgX2NyZWF0ZU92ZXJsYXlSZWYocGFuZTogSFRNTEVsZW1lbnQpOiBPdmVybGF5UmVmIHtcbiAgICByZXR1cm4gbmV3IE92ZXJsYXlSZWYodGhpcy5fY3JlYXRlUG9ydGFsSG9zdChwYW5lKSk7XG4gIH1cbn1cblxuXG4vKiogUHJvdmlkZXJzIGZvciBPdmVybGF5IGFuZCBpdHMgcmVsYXRlZCBpbmplY3RhYmxlcy4gKi9cbmV4cG9ydCBjb25zdCBPVkVSTEFZX1BST1ZJREVSUyA9IFtcbiAgT3ZlcmxheSxcbiAgT3ZlcmxheUNvbnRhaW5lcixcbl07XG4iXX0=

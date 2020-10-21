@@ -1,0 +1,4 @@
+export declare enum CalSubType {
+    MEET_PEOPLE = "COMMUNITY;MEET_PEOPLE",
+    PERSONAL = "ORGANIZATION;PERSONAL"
+}

@@ -1,0 +1,11 @@
+import { SelectEditor } from './selectEditor';
+export class SingleSelectEditor extends SelectEditor {
+    /**
+     * Initialize the Editor
+     */
+    constructor(args) {
+        super(args, false);
+        this.args = args;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2luZ2xlU2VsZWN0RWRpdG9yLmpzIiwic291cmNlUm9vdCI6Im5nOi8vYW5ndWxhci1zbGlja2dyaWQvIiwic291cmNlcyI6WyJhcHAvbW9kdWxlcy9hbmd1bGFyLXNsaWNrZ3JpZC9lZGl0b3JzL3NpbmdsZVNlbGVjdEVkaXRvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFOUMsTUFBTSxPQUFPLGtCQUFtQixTQUFRLFlBQVk7SUFDbEQ7O09BRUc7SUFDSCxZQUFzQixJQUFTO1FBQzdCLEtBQUssQ0FBQyxJQUFJLEVBQUUsS0FBSyxDQUFDLENBQUM7UUFEQyxTQUFJLEdBQUosSUFBSSxDQUFLO0lBRS9CLENBQUM7Q0FDRiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFNlbGVjdEVkaXRvciB9IGZyb20gJy4vc2VsZWN0RWRpdG9yJztcclxuXHJcbmV4cG9ydCBjbGFzcyBTaW5nbGVTZWxlY3RFZGl0b3IgZXh0ZW5kcyBTZWxlY3RFZGl0b3Ige1xyXG4gIC8qKlxyXG4gICAqIEluaXRpYWxpemUgdGhlIEVkaXRvclxyXG4gICAqL1xyXG4gIGNvbnN0cnVjdG9yKHByb3RlY3RlZCBhcmdzOiBhbnkpIHtcclxuICAgIHN1cGVyKGFyZ3MsIGZhbHNlKTtcclxuICB9XHJcbn1cclxuIl19

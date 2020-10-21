@@ -1,0 +1,13 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { ChatMessageModule } from './message.module';
+export { ChatMessageService } from './message.service';
+export { VideoConferenceService } from './video-conference.service';
+export { ContactListComponent } from './component/contact-list/contact-list.component';
+export { MessageChatComponent } from './component/message-chat/message-chat.component';
+export { MessagePanelComponent } from './component/message-panel/message-panel.component';
+export { RoomChatComponent } from './component/room-chat/room-chat.component';
+export { DateFormatter } from './DateFormatter';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LWNoYXQvIiwic291cmNlcyI6WyJzcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLGtDQUFjLGtCQUFrQixDQUFDO0FBQ2pDLG1DQUFjLG1CQUFtQixDQUFDO0FBQ2xDLHVDQUFjLDRCQUE0QixDQUFDO0FBQzNDLHFDQUFjLGlEQUFpRCxDQUFDO0FBQ2hFLHFDQUFjLGlEQUFpRCxDQUFDO0FBQ2hFLHNDQUFjLG1EQUFtRCxDQUFDO0FBQ2xFLGtDQUFjLDJDQUEyQyxDQUFDO0FBQzFELDhCQUFjLGlCQUFpQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9tZXNzYWdlLm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL21lc3NhZ2Uuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3ZpZGVvLWNvbmZlcmVuY2Uuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2NvbXBvbmVudC9jb250YWN0LWxpc3QvY29udGFjdC1saXN0LmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2NvbXBvbmVudC9tZXNzYWdlLWNoYXQvbWVzc2FnZS1jaGF0LmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2NvbXBvbmVudC9tZXNzYWdlLXBhbmVsL21lc3NhZ2UtcGFuZWwuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vY29tcG9uZW50L3Jvb20tY2hhdC9yb29tLWNoYXQuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vRGF0ZUZvcm1hdHRlcic7XG4iXX0=

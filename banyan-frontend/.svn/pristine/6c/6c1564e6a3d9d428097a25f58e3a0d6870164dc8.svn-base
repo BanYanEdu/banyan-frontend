@@ -1,0 +1,15 @@
+import * as tslib_1 from "tslib";
+import { CompoundInputFilter } from './compoundInputFilter';
+var CompoundInputPasswordFilter = /** @class */ (function (_super) {
+    tslib_1.__extends(CompoundInputPasswordFilter, _super);
+    /** Initialize the Filter */
+    function CompoundInputPasswordFilter(translate) {
+        var _this = _super.call(this, translate) || this;
+        _this.translate = translate;
+        _this.inputType = 'password';
+        return _this;
+    }
+    return CompoundInputPasswordFilter;
+}(CompoundInputFilter));
+export { CompoundInputPasswordFilter };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tcG91bmRJbnB1dFBhc3N3b3JkRmlsdGVyLmpzIiwic291cmNlUm9vdCI6Im5nOi8vYW5ndWxhci1zbGlja2dyaWQvIiwic291cmNlcyI6WyJhcHAvbW9kdWxlcy9hbmd1bGFyLXNsaWNrZ3JpZC9maWx0ZXJzL2NvbXBvdW5kSW5wdXRQYXNzd29yZEZpbHRlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLG1CQUFtQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFFNUQ7SUFBaUQsdURBQW1CO0lBQ2xFLDRCQUE0QjtJQUM1QixxQ0FBc0IsU0FBMkI7UUFBakQsWUFDRSxrQkFBTSxTQUFTLENBQUMsU0FFakI7UUFIcUIsZUFBUyxHQUFULFNBQVMsQ0FBa0I7UUFFL0MsS0FBSSxDQUFDLFNBQVMsR0FBRyxVQUFVLENBQUM7O0lBQzlCLENBQUM7SUFDSCxrQ0FBQztBQUFELENBQUMsQUFORCxDQUFpRCxtQkFBbUIsR0FNbkUiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBUcmFuc2xhdGVTZXJ2aWNlIH0gZnJvbSAnQG5neC10cmFuc2xhdGUvY29yZSc7XHJcbmltcG9ydCB7IENvbXBvdW5kSW5wdXRGaWx0ZXIgfSBmcm9tICcuL2NvbXBvdW5kSW5wdXRGaWx0ZXInO1xyXG5cclxuZXhwb3J0IGNsYXNzIENvbXBvdW5kSW5wdXRQYXNzd29yZEZpbHRlciBleHRlbmRzIENvbXBvdW5kSW5wdXRGaWx0ZXIge1xyXG4gIC8qKiBJbml0aWFsaXplIHRoZSBGaWx0ZXIgKi9cclxuICBjb25zdHJ1Y3Rvcihwcm90ZWN0ZWQgdHJhbnNsYXRlOiBUcmFuc2xhdGVTZXJ2aWNlKSB7XHJcbiAgICBzdXBlcih0cmFuc2xhdGUpO1xyXG4gICAgdGhpcy5pbnB1dFR5cGUgPSAncGFzc3dvcmQnO1xyXG4gIH1cclxufVxyXG4iXX0=

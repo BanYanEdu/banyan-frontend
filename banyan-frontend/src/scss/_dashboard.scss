@@ -1,0 +1,58 @@
+.panel-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.dashboard-secondary .card-header {
+  min-height: 40px;
+}
+
+.text-work {
+  background-color: #d9eaf6;
+  display: inline-block;
+}
+
+.card-data {
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05), 0 -2px 1px -6px rgba(0, 0, 0, 0.04), 0 0 0 -1px rgba(0, 0, 0, 0.05);
+}
+
+.header-tittle {
+  display: inline-block;
+}
+
+.right-action {
+  display: inline-block;
+}
+
+.dropdown-menu-right li {
+  display: inline;
+}
+
+.img-chart {
+  max-height: 100%;
+}
+
+.time-work, .content-work {
+  display: inline-block;
+}
+
+.time-work {
+  min-width: 40px;
+}
+
+.content-list {
+  display: flex;
+}
+
+.content-work ul {
+  list-style: none;
+}
+
+.dlg-process {
+  max-width: 680px !important;
+  width: 100%;
+}

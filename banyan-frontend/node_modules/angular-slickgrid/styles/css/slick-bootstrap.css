@@ -1,0 +1,314 @@
+@charset "UTF-8";
+/*!
+ * SlickGrid custom styling for Bootstrap (https://github.com/ghiscoding/angular-slickgrid)
+ * Licensed under MIT (https://github.com/ghiscoding/angular-slickgrid/blob/master/LICENSE)
+ * @author: Ghislain B. (ghiscoding)
+ */
+/*!
+
+/* Mixins for SlickGrid */
+/*!
+ * SlickGrid custom styling for Bootstrap (https://github.com/ghiscoding/angular-slickgrid)
+ * Licensed under MIT (https://github.com/ghiscoding/angular-slickgrid/blob/master/LICENSE)
+ * @author: Ghislain B. (ghiscoding)
+ */
+/*!
+
+/* SlickGrid Bootstrap variables */
+/* Used by slick-bootstrap.scss */
+/* Slickgrid container, including headers but excluding pagination */
+/* grid */
+/* cell */
+/* row */
+/* Pre-Header - Header Grouping colspan */
+/* header */
+/* Frozen pinned rows/columns */
+/* icon font is using Font-Awesome by default but could be changed to any other icon package like Glyphicons, ... */
+/* AutoComplete */
+/* Sorting */
+/* Grouping Totals Formatter */
+/* Column picker */
+/** Detail View Plugin */
+/* Excel copy plugin */
+/* Grid Menu - hamburger menu */
+/* Header Menu Plugin */
+/* Checkbox Selector / Row Selection */
+/* Editors */
+/* negative number to cancel inside padding */
+/* Compound Filters */
+/* Draggable Grouping Plugin */
+/* Input Range Filter */
+/* ms only */
+/* ms only */
+/* Multiple-Select Filter */
+/* pagination variables */
+/* Row Move Manager Plugin */
+/* selector plugin */
+/* Viewport */
+@-webkit-keyframes highlight-start {
+  to {
+    background: #c8ddea; }
+  from {
+    background: none; } }
+
+@keyframes highlight-start {
+  to {
+    background: #c8ddea; }
+  from {
+    background: none; } }
+
+@-webkit-keyframes highlight-end {
+  from {
+    background: 0.3s ease 1; }
+  to {
+    background: none; } }
+
+@keyframes highlight-end {
+  from {
+    background: 0.3s ease 1; }
+  to {
+    background: none; } }
+
+.slickgrid-container {
+  border-top: 0 none;
+  border-bottom: 1px solid #dddddd;
+  border-left: 0 none;
+  border-right: 0 none;
+  position: relative;
+  /** Frozen/Pinned styling */ }
+  .slickgrid-container input[type="checkbox"] {
+    vertical-align: baseline;
+    margin: 0; }
+  .slickgrid-container .slick-viewport {
+    border-top: 0 none;
+    border-bottom: 0 none;
+    border-left: 0 none;
+    border-right: 0 none; }
+  .slickgrid-container .ui-state-default {
+    border: 0; }
+  .slickgrid-container .grid-canvas .slick-row {
+    position: absolute;
+    width: 100%; }
+    .slickgrid-container .grid-canvas .slick-row:hover {
+      background-color: #eff5fc; }
+    .slickgrid-container .grid-canvas .slick-row.active {
+      padding: 5px 7.5834px; }
+    .slickgrid-container .grid-canvas .slick-row.highlight {
+      background-color: #c8ddea;
+      -webkit-animation: highlight-start 1.5s ease 1;
+              animation: highlight-start 1.5s ease 1; }
+      .slickgrid-container .grid-canvas .slick-row.highlight .slick-cell.copied {
+        background: rgba(0, 0, 255, 0.2);
+        transition: 0.5s background; }
+      .slickgrid-container .grid-canvas .slick-row.highlight.odd {
+        background-color: #c8ddea;
+        -webkit-animation: highlight-start 1.5s ease 1;
+                animation: highlight-start 1.5s ease 1; }
+      .slickgrid-container .grid-canvas .slick-row.highlight.odd .slick-cell.copied {
+        background: rgba(0, 0, 255, 0.2);
+        transition: 0.5s background; }
+    .slickgrid-container .grid-canvas .slick-row.highlight-end {
+      background-color: #c8ddea;
+      -webkit-animation: highlight-end 1.5s ease 1;
+              animation: highlight-end 1.5s ease 1; }
+      .slickgrid-container .grid-canvas .slick-row.highlight-end.odd {
+        background-color: #c8ddea;
+        -webkit-animation: highlight-end 1.5s ease 1;
+                animation: highlight-end 1.5s ease 1; }
+    .slickgrid-container .grid-canvas .slick-row.highlighter {
+      background: orange !important;
+      transition-property: background;
+      transition-duration: 3s;
+      transition-timing-function: ease-in; }
+    .slickgrid-container .grid-canvas .slick-row.copied {
+      background: rgba(0, 0, 255, 0.2);
+      transition: 0.5s background; }
+    .slickgrid-container .grid-canvas .slick-row.odd {
+      background: #f7f7f7; }
+      .slickgrid-container .grid-canvas .slick-row.odd:hover {
+        background-color: #eff5fc; }
+    .slickgrid-container .grid-canvas .slick-row.odd .slick-cell {
+      background: inherit; }
+      .slickgrid-container .grid-canvas .slick-row.odd .slick-cell.selected {
+        background-color: #dae8f1; }
+      .slickgrid-container .grid-canvas .slick-row.odd .slick-cell.copied {
+        background: rgba(0, 0, 255, 0.2);
+        transition: 0.5s background; }
+    .slickgrid-container .grid-canvas .slick-row.odd .slick-cell {
+      background: inherit; }
+      .slickgrid-container .grid-canvas .slick-row.odd .slick-cell.selected {
+        background-color: #dae8f1; }
+      .slickgrid-container .grid-canvas .slick-row.odd .slick-cell.copied {
+        background: rgba(0, 0, 255, 0.2);
+        transition: 0.5s background; }
+    .slickgrid-container .grid-canvas .slick-row.slick-group-totals {
+      color: gray;
+      background: #fff; }
+      .slickgrid-container .grid-canvas .slick-row.slick-group-totals .slick-cell {
+        font-size: 14px; }
+  .slickgrid-container .grid-canvas .slick-cell, .slickgrid-container .grid-canvas .slick-headerrow-column {
+    border-top: 1px solid #dddddd;
+    border-bottom: 0 none;
+    border-left: 0 none;
+    border-right: 0 none; }
+  .slickgrid-container .grid-canvas .even {
+    background: #ffffff; }
+  .slickgrid-container .grid-canvas .slick-cell {
+    padding: 5px 7.5834px;
+    font-size: 14px; }
+    .slickgrid-container .grid-canvas .slick-cell td {
+      font-size: 14px; }
+    body .slickgrid-container .grid-canvas .slick-cell {
+      line-height: 20px; }
+    .slickgrid-container .grid-canvas .slick-cell a, .slickgrid-container .grid-canvas .slick-cell a:visited, .slickgrid-container .grid-canvas .slick-cell .ui-widget-content a, .slickgrid-container .grid-canvas .slick-cell .ui-widget-content a:visited {
+      color: #08c; }
+    .slickgrid-container .grid-canvas .slick-cell a:hover, .slickgrid-container .grid-canvas .slick-cell .ui-widget-content a:hover {
+      color: darker(#08c, 15%);
+      border-bottom: none; }
+    .slickgrid-container .grid-canvas .slick-cell table {
+      height: 100%;
+      border: 0 none;
+      padding: 0;
+      background: none; }
+    .slickgrid-container .grid-canvas .slick-cell td {
+      border: 0 none;
+      padding: 0;
+      vertical-align: middle;
+      text-align: left; }
+    .slickgrid-container .grid-canvas .slick-cell.selected {
+      background-color: #dae8f1; }
+    .slickgrid-container .grid-canvas .slick-cell.copied {
+      background: rgba(0, 0, 255, 0.2);
+      transition: 0.5s background; }
+    .slickgrid-container .grid-canvas .slick-cell select:not([multiple]).form-control {
+      height: 100%;
+      padding: 0; }
+    .slickgrid-container .grid-canvas .slick-cell .slick-group-toggle {
+      color: #31708F;
+      font-weight: bold;
+      width: 14px;
+      height: 20px;
+      margin-right: 2px;
+      cursor: pointer; }
+      .slickgrid-container .grid-canvas .slick-cell .slick-group-toggle.expanded:before {
+        content: "";
+        font-family: "FontAwesome";
+        font-size: 18px; }
+      .slickgrid-container .grid-canvas .slick-cell .slick-group-toggle.collapsed:before {
+        content: "";
+        font-family: "FontAwesome";
+        font-size: 18px; }
+  .slickgrid-container .slick-header {
+    border-top: 0 none;
+    border-right: 0 none;
+    border-bottom: 0 none;
+    border-left: 0 none;
+    width: 100%;
+    box-shadow: none !important; }
+  .slickgrid-container .slick-headerrow {
+    border-bottom: 0 none;
+    border-top: 0 none;
+    border-left: 0 none;
+    border-right: 0 none; }
+    .slickgrid-container .slick-headerrow .slick-headerrow-columns .slick-headerrow-column {
+      border: none;
+      padding: 4px;
+      background: #ffffff; }
+    .slickgrid-container .slick-headerrow .slick-headerrow-columns .slick-headerrow-column input,
+    .slickgrid-container .slick-headerrow .slick-headerrow-columns .slick-headerrow-column select,
+    .slickgrid-container .slick-headerrow .slick-headerrow-columns .slick-headerrow-column textarea {
+      margin-right: 0;
+      padding: 0 6px;
+      width: none;
+      height: 27px;
+      box-sizing: border-box; }
+  .slickgrid-container .slick-preheader-panel.ui-state-default .slick-header-column {
+    border-left: none !important;
+    font-size: 16px !important; }
+  .slickgrid-container .slick-header-columns {
+    background: transparent;
+    width: calc(100% - 16px); }
+    .slickgrid-container .slick-header-columns .slick-header-sortable .slick-column-name {
+      margin-left: 0; }
+    .slickgrid-container .slick-header-columns .slick-header-column {
+      height: 34px;
+      line-height: 14px;
+      margin: 0;
+      border-top: 0 none;
+      border-right: 0 none;
+      border-bottom: 0 none;
+      border-left: 0 none;
+      white-space: normal;
+      /* like TH  */
+      background: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #000000;
+      font-weight: bold; }
+      .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default {
+        padding: 5px 7.5834px;
+        font-size: 14px; }
+        .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default td {
+          font-size: 14px; }
+        body .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default {
+          line-height: 20px; }
+      .slickgrid-container .slick-header-columns .slick-header-column a, .slickgrid-container .slick-header-columns .slick-header-column a:visited {
+        color: #333; }
+      .slickgrid-container .slick-header-columns .slick-header-column a:hover {
+        color: #333; }
+      .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default {
+        /* like TH  */
+        background: transparent;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #000000;
+        font-weight: bold; }
+        .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default a, .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default a:visited {
+          color: #333; }
+        .slickgrid-container .slick-header-columns .slick-header-column.ui-state-default a:hover {
+          color: #333; }
+      .slickgrid-container .slick-header-columns .slick-header-column.slick-header-column-sorted {
+        font-style: normal;
+        color: #333; }
+      .slickgrid-container .slick-header-columns .slick-header-column:hover {
+        color: #333; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-sort-indicator {
+        background: none;
+        font-family: "FontAwesome";
+        font-size: 14px;
+        position: absolute;
+        display: inline-block;
+        color: #4c80be;
+        width: 8px;
+        height: 5px;
+        left: auto;
+        right: 10px;
+        top: 15px; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-sort-indicator-numbered {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 10px;
+        position: absolute;
+        display: inline-block;
+        color: #4c80be;
+        width: 8px;
+        left: auto;
+        right: 0px;
+        top: 26px; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-sort-indicator-asc:before {
+        content: ""; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-sort-indicator-desc:before {
+        content: ""; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-resizable-handle {
+        width: 7px;
+        right: 0px;
+        z-index: 1; }
+      .slickgrid-container .slick-header-columns .slick-header-column .slick-resizable-handle:hover {
+        border-right: 1px solid #d0d0d0;
+        right: 0; }
+  .slickgrid-container .slick-row .slick-cell.frozen:last-child,
+  .slickgrid-container .slick-headerrow-column.frozen:last-child,
+  .slickgrid-container .slick-footerrow-column.frozen:last-child {
+    border-right: 1px solid #a5a5a5; }
+  .slickgrid-container .slick-pane-bottom {
+    border-top: 1px solid #a5a5a5; }
+  .slickgrid-container .slick-viewport-bottom.slick-viewport-right {
+    overflow-y: scroll !important; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNsaWNrLWJvb3RzdHJhcC5jc3MiLCIuLi8uLi8uLi9zcmMvYXBwL21vZHVsZXMvYW5ndWxhci1zbGlja2dyaWQvc3R5bGVzL3NsaWNrLWJvb3RzdHJhcC5zY3NzIiwiLi4vLi4vLi4vc3JjL2FwcC9tb2R1bGVzL2FuZ3VsYXItc2xpY2tncmlkL3N0eWxlcy9fdmFyaWFibGVzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0JBQWdCO0FDQWhCOzs7O0VES0U7QUNEQzs7eUJESXNCO0FFUnpCOzs7O0VGYUU7QUVUQzs7a0NGWStCO0FFVGxDLGlDQUFBO0FBVUEsb0VBQUE7QUFNQSxTQUFBO0FBTUEsU0FBQTtBQVdBLFFBQUE7QUFTQSx5Q0FBQTtBQU9BLFdBQUE7QUF5QkEsK0JBQUE7QUFLQSxtSEFBQTtBQW1CQSxpQkFBQTtBQWNBLFlBQUE7QUFZQSw4QkFBQTtBQUtBLGtCQUFBO0FBWUEsd0JBQUE7QUFXQSxzQkFBQTtBQUlBLCtCQUFBO0FBYUEsdUJBQUE7QUFrQkEsc0NBQUE7QUFPQSxZQUFBO0FBWXlELDZDQUFBO0FBV3pELHFCQUFBO0FBU0EsOEJBQUE7QUE0QkEsdUJBQUE7QUFNeUQsWUFBQTtBQUNBLFlBQUE7QUFRekQsMkJBQUE7QUE4QkEseUJBQUE7QUEwQkEsNEJBQUE7QUFLQSxvQkFBQTtBQUdBLGFBQUE7QUQzVUE7RUFDRTtJQUFJLG1CQ2lDbUUsRUFBQTtFRGhDdkU7SUFBTSxnQkFBZ0IsRUFBQSxFQUFBOztBQUd4QjtFQUNFO0lBQUksbUJDNEJtRSxFQUFBO0VEM0J2RTtJQUFNLGdCQUFnQixFQUFBLEVBQUE7O0FBR3hCO0VBQ0U7SUFBTSx1QkN5QjZDLEVBQUE7RUR4Qm5EO0lBQUksZ0JBQWdCLEVBQUEsRUFBQTs7QUFHdEI7RUFDRTtJQUFNLHVCQ29CNkMsRUFBQTtFRG5CbkQ7SUFBSSxnQkFBZ0IsRUFBQSxFQUFBOztBQUd0QjtFQUNFLGtCQ1o4QztFRGE5QyxnQ0N2QitDO0VEd0IvQyxtQkNYOEM7RURZOUMsb0JDZDhDO0VEZTlDLGtCQUFrQjtFQW1VbEIsMkJBQUEsRUFBNEI7RUF4VTlCO0lBdUJJLHdCQUF3QjtJQUN4QixTQUFTLEVBQUE7RUF4QmI7SUE0Qkksa0JDNFI0QztJRDNSNUMscUJDNlI0QztJRDVSNUMsbUJDNlI0QztJRDVSNUMsb0JDMFI0QyxFQUFBO0VEelRoRDtJQWtDSSxTQUFTLEVBQUE7RUFsQ2I7SUF1Q00sa0JBQWtCO0lBQ2xCLFdBQVcsRUFBQTtJQXhDakI7TUEyQ1EseUJDL0J5QyxFQUFBO0lEWmpEO01BOENRLHFCQ3JDOEMsRUFBQTtJRFR0RDtNQWlEUSx5QkNuQ2lFO01Eb0NqRSw4Q0NuQzZDO2NEbUM3QyxzQ0NuQzZDLEVBQUE7TURmckQ7UUFxRFksZ0NDOEVrRDtRRDdFbEQsMkJDOEU2QyxFQUFBO01EcEl6RDtRQTBEVSx5QkM1QytEO1FENkMvRCw4Q0M1QzJDO2dCRDRDM0Msc0NDNUMyQyxFQUFBO01EZnJEO1FBK0RZLGdDQ29Fa0Q7UURuRWxELDJCQ29FNkMsRUFBQTtJRHBJekQ7TUFxRVEseUJDdkRpRTtNRHdEakUsNENDdkQ2QztjRHVEN0Msb0NDdkQ2QyxFQUFBO01EZnJEO1FBd0VVLHlCQzFEK0Q7UUQyRC9ELDRDQzFEMkM7Z0JEMEQzQyxvQ0MxRDJDLEVBQUE7SURmckQ7TUE2RVEsNkJBQTZCO01BQzdCLCtCQUErQjtNQUMvQix1QkFBdUI7TUFDdkIsbUNBQW1DLEVBQUE7SUFoRjNDO01BbUZRLGdDQ2dEc0Q7TUQvQ3RELDJCQ2dEaUQsRUFBQTtJRHBJekQ7TUF1RlEsbUJDaEY4RCxFQUFBO01EUHRFO1FBeUZVLHlCQzdFdUMsRUFBQTtJRFpqRDtNQW9HUSxtQkFBbUIsRUFBQTtNQXBHM0I7UUE4RlUseUJDakZ1QyxFQUFBO01EYmpEO1FBaUdVLGdDQ2tDb0Q7UURqQ3BELDJCQ2tDK0MsRUFBQTtJRHBJekQ7TUE4R1EsbUJBQW1CLEVBQUE7TUE5RzNCO1FBd0dVLHlCQzNGdUMsRUFBQTtNRGJqRDtRQTJHVSxnQ0N3Qm9EO1FEdkJwRCwyQkN3QitDLEVBQUE7SURwSXpEO01BaUhRLFdDVnNDO01EV3RDLGdCQ1ZzQyxFQUFBO01EeEc5QztRQW9IVSxlQ1hvQyxFQUFBO0VEekc5QztJQXlITSw2QkM5STJDO0lEK0kzQyxxQkN0SDBDO0lEdUgxQyxtQkN0SDBDO0lEdUgxQyxvQkN6SDBDLEVBQUE7RURIaEQ7SUFnSU0sbUJDMUh5QyxFQUFBO0VETi9DO0lBUUkscUJDQ2tEO0lEQWxELGVDNUI4RCxFQUFBO0lEbUJsRTtNQVdNLGVDOUI0RCxFQUFBO0lEZ0M5RDtNQUNFLGlCQUFpQixFQUFBO0lBZHZCO01Bd0lRLFdDbEVrQyxFQUFBO0lEdEUxQztNQTJJUSx3QkNwRTBEO01EcUUxRCxtQkFBbUIsRUFBQTtJQTVJM0I7TUErSVEsWUFBWTtNQUNaLGNBQWM7TUFDZCxVQUFVO01BQ1YsZ0JBQWdCLEVBQUE7SUFsSnhCO01BcUpRLGNBQWM7TUFDZCxVQUFVO01BQ1Ysc0JBQXNCO01BQ3RCLGdCQUFnQixFQUFBO0lBeEp4QjtNQTJKUSx5QkM5SXlDLEVBQUE7SURiakQ7TUE4SlEsZ0NDM0JzRDtNRDRCdEQsMkJDM0JpRCxFQUFBO0lEcEl6RDtNQWtLUSxZQUFZO01BQ1osVUFBVSxFQUFBO0lBbktsQjtNQXNLUSxjQ3ZMeUM7TUR3THpDLGlCQ3ZHc0M7TUR3R3RDLFdDckdzQztNRHNHdEMsWUN2R3NDO01Ed0d0QyxpQkN6R3FDO01EMEdyQyxlQUFlLEVBQUE7TUEzS3ZCO1FBOEtVLFlDakhnQztRRGtIaEMsMEJDckg2QztRRHNIN0MsZUNqSHVELEVBQUE7TUQvRGpFO1FBb0xVLFlDdEhnQztRRHVIaEMsMEJDM0g2QztRRDRIN0MsZUN2SHVELEVBQUE7RUQvRGpFO0lBNkxJLGtCQ3BKNEM7SURxSjVDLG9CQ3BKNEM7SURxSjVDLHFCQ3BKNEM7SURxSjVDLG1CQ3BKNEM7SURxSjVDLFdBQVc7SUFDWCwyQkFBMkIsRUFBQTtFQWxNL0I7SUFzTUkscUJDdko0QztJRHdKNUMsa0JDMUo0QztJRDJKNUMsbUJDeEo0QztJRHlKNUMsb0JDM0o0QyxFQUFBO0lEOUNoRDtNQTZNUSxZQUFZO01BQ1osWUN2S3FDO01Ed0tyQyxtQkMxS3lDLEVBQUE7SURyQ2pEOzs7TUFvTlEsZUFBZTtNQUNmLGNDakx1QztNRGtMdkMsV0NuTHNDO01Eb0x0QyxZQ3JMc0M7TUR3THRDLHNCQUFzQixFQUFBO0VBMU45QjtJQWlPTSw0QkFBOEM7SUFDOUMsMEJBQTBDLEVBQUE7RUFsT2hEO0lBdU9JLHVCQ25LaUQ7SURvS2pELHdCQUFxRCxFQUFBO0lBeE96RDtNQTRPUSxjQUFjLEVBQUE7SUE1T3RCO01BZ1BNLFlDeE04RDtNRHlNOUQsaUJDcFE0RDtNRHFRNUQsU0FBUztNQUNULGtCQzFNMEM7TUQyTTFDLG9CQzFNMEM7TUQyTTFDLHFCQzFNMEM7TUQyTTFDLG1CQzFNMEM7TUQyTTFDLG1CQUFtQjtNQVNqQixhQUFBO01BQ0EsdUJDN0w2QztNRDhMN0MsdUdDcFI0SDtNRHFSNUgsY0N0T3lDO01EdU96QyxpQkN4T3NDLEVBQUE7TUQ1QjlDO1FBUUkscUJDQ2tEO1FEQWxELGVDNUI4RCxFQUFBO1FEbUJsRTtVQVdNLGVDOUI0RCxFQUFBO1FEZ0M5RDtVQUNFLGlCQUFpQixFQUFBO01BZHZCO1FBc1FVLFdDOUxrQyxFQUFBO01EeEU1QztRQXlRVSxXQ2pNa0MsRUFBQTtNRHhFNUM7UUFnUVEsYUFBQTtRQUNBLHVCQzdMNkM7UUQ4TDdDLHVHQ3BSNEg7UURxUjVILGNDdE95QztRRHVPekMsaUJDeE9zQyxFQUFBO1FENUI5QztVQXNRVSxXQzlMa0MsRUFBQTtRRHhFNUM7VUF5UVUsV0NqTWtDLEVBQUE7TUR4RTVDO1FBbVJRLGtCQUFrQjtRQUNsQixXQzVNb0MsRUFBQTtNRHhFNUM7UUF1UlEsV0MvTW9DLEVBQUE7TUR4RTVDO1FBMlJRLGdCQUFnQjtRQUNoQiwwQkNsTytDO1FEbU8vQyxlQ2xPc0M7UURtT3RDLGtCQUFrQjtRQUNsQixxQkFBcUI7UUFDckIsY0NuTW1EO1FEb01uRCxVQUFVO1FBQ1YsV0FBVztRQUNYLFVBQVU7UUFDVixXQ3RNc0M7UUR1TXRDLFNDdE1xRSxFQUFBO01EL0Y3RTtRQXdTUSx1R0MxVDRIO1FEMlQ1SCxlQ3pNc0M7UUQwTXRDLGtCQUFrQjtRQUNsQixxQkFBcUI7UUFDckIsY0MvTW1EO1FEZ05uRCxVQzVNcUM7UUQ2TXJDLFVDNU1zQztRRDZNdEMsVUM1TXFDO1FENk1yQyxTQzVNNEQsRUFBQTtNRHBHcEU7UUFvVFUsWUN6TmdDLEVBQU87TUQzRmpEO1FBeVRVLFlDN05nQyxFQUFPO01ENUZqRDtRQTZUUSxVQUFVO1FBQ1YsVUFBVTtRQUNWLFVBQVUsRUFBQTtNQS9UbEI7UUFrVVEsK0JDalJtRDtRRGtSbkQsUUFBUSxFQUFBO0VBblVoQjs7O0lBOFVJLCtCQ3hSdUQsRUFBQTtFRHREM0Q7SUFrVkksNkJDN1J1RCxFQUFBO0VEckQzRDtJQXFWSSw2QkFBNkMsRUFBQSIsImZpbGUiOiJzbGljay1ib290c3RyYXAuY3NzIn0= */

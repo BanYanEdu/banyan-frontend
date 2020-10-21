@@ -1,0 +1,59 @@
+$padding-content: 20px;
+$side-width: 50px;
+$side-btn-height: 40px;
+$background-color: rgba(0, 0, 0, .5);
+$border-color: rgba(0, 0, 0, .2);
+
+.front-view {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  background: $background-color;
+  display: none;
+}
+.front-view__container {
+  position: absolute;
+  background: #fff;
+  top: $padding-content;
+  right: $padding-content;
+  bottom: $padding-content;
+  left: $padding-content;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  overflow: hidden;
+}
+.front-view__side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $side-width;
+  border-right: 1px solid $border-color;
+  padding: 5px 0;
+}
+.front-view__action {
+  width: 100%;
+  line-height: $side-btn-height;
+  text-align: center;
+  color: $background-color;
+  cursor: pointer;
+  &:hover {
+    color: #2067b0;
+  }
+}
+.front-view__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $side-width;
+  overflow: hidden;
+}
+.front-view__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

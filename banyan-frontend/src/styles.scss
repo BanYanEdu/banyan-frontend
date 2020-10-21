@@ -1,0 +1,10 @@
+@import "~inet-ui/scss/listview";
+@import "~inet-ui/scss/bootstrap/admin.css";
+@import '~inet-ui/scss/common';
+@import './scss/app';
+@import "./scss/dashboard";
+
+// fullcalendar
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';

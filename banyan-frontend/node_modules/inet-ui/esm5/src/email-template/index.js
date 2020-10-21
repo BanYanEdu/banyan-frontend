@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { EmailTemplate } from './email-template';
+export { EmailTemplateEditComponent } from './email-template-edit/email-template-edit.component';
+export { GlobalEmailTemplateModule } from './global-email-template.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2VtYWlsLXRlbXBsYXRlL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSw4QkFBYyxrQkFBa0IsQ0FBQztBQUNqQywyQ0FBYyxxREFBcUQsQ0FBQztBQUNwRSwwQ0FBYyxnQ0FBZ0MsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vZW1haWwtdGVtcGxhdGUnO1xuZXhwb3J0ICogZnJvbSAnLi9lbWFpbC10ZW1wbGF0ZS1lZGl0L2VtYWlsLXRlbXBsYXRlLWVkaXQuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vZ2xvYmFsLWVtYWlsLXRlbXBsYXRlLm1vZHVsZSc7XG4iXX0=

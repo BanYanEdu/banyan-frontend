@@ -1,0 +1,75 @@
+import { ElementRef, EventEmitter, OnChanges, SimpleChanges, ChangeDetectorRef, NgZone } from '@angular/core';
+import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
+export interface CropperPosition {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+}
+export interface ImageCroppedEvent {
+    base64?: string | null;
+    file?: Blob | null;
+    width: number;
+    height: number;
+    cropperPosition: CropperPosition;
+}
+export declare class ImageCropperComponent implements OnChanges {
+    private elementRef;
+    private sanitizer;
+    private cd;
+    private zone;
+    private originalImage;
+    private moveStart;
+    private maxSize;
+    private originalSize;
+    safeImgDataUrl: SafeUrl | string;
+    marginLeft: SafeStyle | string;
+    imageVisible: boolean;
+    imageFileChanged: File;
+    imageChangedEvent: any;
+    imageBase64: string;
+    format: 'png' | 'jpeg' | 'bmp' | 'webp' | 'ico';
+    outputType: 'base64' | 'file' | 'both';
+    maintainAspectRatio: boolean;
+    aspectRatio: number;
+    resizeToWidth: number;
+    roundCropper: boolean;
+    onlyScaleDown: boolean;
+    imageQuality: number;
+    autoCrop: boolean;
+    cropper: CropperPosition;
+    imageCropped: EventEmitter<ImageCroppedEvent>;
+    imageCroppedBase64: EventEmitter<string>;
+    imageCroppedFile: EventEmitter<Blob>;
+    imageLoaded: EventEmitter<void>;
+    loadImageFailed: EventEmitter<void>;
+    constructor(elementRef: ElementRef, sanitizer: DomSanitizer, cd: ChangeDetectorRef, zone: NgZone);
+    ngOnChanges(changes: SimpleChanges): void;
+    private initCropper;
+    private loadImageFile;
+    private isValidImageType;
+    private checkExifRotationAndLoadImage;
+    private loadBase64Image;
+    imageLoadedInView(): void;
+    onResize(event: Event): void;
+    private resizeCropperPosition;
+    private resetCropperPosition;
+    startMove(event: any, moveType: string, position?: string | null): void;
+    moveImg(event: any): void;
+    private setMaxSize;
+    private checkCropperPosition;
+    moveStop(event: any): void;
+    private move;
+    private resize;
+    private checkAspectRatio;
+    private doAutoCrop;
+    crop(): void;
+    private cropToOutputType;
+    private cropToBase64;
+    private cropToFile;
+    private getCanvasBlob;
+    private getQuality;
+    private getResizeRatio;
+    private getClientX;
+    private getClientY;
+}

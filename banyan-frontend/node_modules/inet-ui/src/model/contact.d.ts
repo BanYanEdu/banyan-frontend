@@ -1,0 +1,31 @@
+import { Address } from './address';
+export declare class Contact {
+    salutationType: string;
+    sex: string;
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    fullName: string;
+    primaryEmail: string;
+    officePhone: number;
+    mobilePhone: string;
+    homePhone: string;
+    fax: number;
+    dateOfBirth: number;
+    fullDateOfBirth?: any;
+    organId: string;
+    organName: string;
+    title: string;
+    department: string;
+    contactType: string;
+    leadSource: string;
+    address: Address;
+    addressStr: string;
+    description: string;
+    status: string;
+    uuid: string;
+    type: string;
+    avatar: string;
+    readonly userCode: string;
+    constructor();
+}

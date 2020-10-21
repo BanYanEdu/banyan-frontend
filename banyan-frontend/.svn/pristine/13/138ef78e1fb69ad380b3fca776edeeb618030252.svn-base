@@ -1,0 +1,3 @@
+#html({"scriptDefault":"off", "inherit":"true","secure":"community"})
+    #widget("/task/widget/task",{"provider":"PagePluginContext","theme":"task"})
+#end

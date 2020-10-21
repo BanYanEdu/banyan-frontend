@@ -1,0 +1,35 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DataTable } from './components/table/table.component';
+import { DataTableColumn } from './components/column/column.component';
+import { DataTableRow } from './components/row/row.component';
+import { DataTablePagination } from './components/pagination/pagination.component';
+import { DataTableHeader } from './components/header/header.component';
+import { PixelConverter } from './utils/px';
+import { Hide } from './utils/hide';
+import { MinPipe } from './utils/min';
+import { defaultTranslations } from './types/default-translations.type';
+import { TranslateModule } from "@ngx-translate/core";
+export { DataTableResource } from './datasource/data-table-resource';
+export { DataTable, DataTableColumn, DataTableRow, DataTablePagination, DataTableHeader, defaultTranslations };
+/** @type {?} */
+export const DATA_TABLE_DIRECTIVES = [DataTable, DataTableColumn];
+export class GridModule {
+}
+GridModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [CommonModule, FormsModule, TranslateModule],
+                declarations: [
+                    DataTable, DataTableColumn,
+                    DataTableRow, DataTablePagination, DataTableHeader,
+                    PixelConverter, Hide, MinPipe
+                ],
+                exports: [DataTable, DataTableColumn]
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ3JpZC1tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2dyaWQvZ3JpZC1tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFBQyxRQUFRLEVBQUMsTUFBTSxlQUFlLENBQUM7QUFDdkMsT0FBTyxFQUFDLFlBQVksRUFBQyxNQUFNLGlCQUFpQixDQUFDO0FBQzdDLE9BQU8sRUFBQyxXQUFXLEVBQUMsTUFBTSxnQkFBZ0IsQ0FBQztBQUUzQyxPQUFPLEVBQUMsU0FBUyxFQUFDLE1BQU0sb0NBQW9DLENBQUM7QUFDN0QsT0FBTyxFQUFDLGVBQWUsRUFBQyxNQUFNLHNDQUFzQyxDQUFDO0FBQ3JFLE9BQU8sRUFBQyxZQUFZLEVBQUMsTUFBTSxnQ0FBZ0MsQ0FBQztBQUM1RCxPQUFPLEVBQUMsbUJBQW1CLEVBQUMsTUFBTSw4Q0FBOEMsQ0FBQztBQUNqRixPQUFPLEVBQUMsZUFBZSxFQUFDLE1BQU0sc0NBQXNDLENBQUM7QUFDckUsT0FBTyxFQUFDLGNBQWMsRUFBQyxNQUFNLFlBQVksQ0FBQztBQUMxQyxPQUFPLEVBQUMsSUFBSSxFQUFDLE1BQU0sY0FBYyxDQUFDO0FBQ2xDLE9BQU8sRUFBQyxPQUFPLEVBQUMsTUFBTSxhQUFhLENBQUM7QUFLcEMsT0FBTyxFQUFDLG1CQUFtQixFQUFDLE1BQU0sbUNBQW1DLENBQUM7QUFDdEUsT0FBTyxFQUFDLGVBQWUsRUFBQyxNQUFNLHFCQUFxQixDQUFDO0FBR3BELGtDQUFjLGtDQUFrQyxDQUFDO0FBQ2pELE9BQU8sRUFDSCxTQUFTLEVBQUUsZUFBZSxFQUFFLFlBQVksRUFBRSxtQkFBbUIsRUFDN0QsZUFBZSxFQUFxRSxtQkFBbUIsRUFDMUcsQ0FBQzs7QUFDRixNQUFNLE9BQU8scUJBQXFCLEdBQUcsQ0FBQyxTQUFTLEVBQUUsZUFBZSxDQUFDO0FBV2pFLE1BQU0sT0FBTyxVQUFVOzs7WUFUdEIsUUFBUSxTQUFDO2dCQUNOLE9BQU8sRUFBRSxDQUFDLFlBQVksRUFBRSxXQUFXLEVBQUUsZUFBZSxDQUFDO2dCQUNyRCxZQUFZLEVBQUU7b0JBQ1YsU0FBUyxFQUFFLGVBQWU7b0JBQzFCLFlBQVksRUFBRSxtQkFBbUIsRUFBRSxlQUFlO29CQUNsRCxjQUFjLEVBQUUsSUFBSSxFQUFFLE9BQU87aUJBQ2hDO2dCQUNELE9BQU8sRUFBRSxDQUFDLFNBQVMsRUFBRSxlQUFlLENBQUM7YUFDeEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge05nTW9kdWxlfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7Q29tbW9uTW9kdWxlfSBmcm9tICdAYW5ndWxhci9jb21tb24nO1xuaW1wb3J0IHtGb3Jtc01vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvZm9ybXMnO1xuXG5pbXBvcnQge0RhdGFUYWJsZX0gZnJvbSAnLi9jb21wb25lbnRzL3RhYmxlL3RhYmxlLmNvbXBvbmVudCc7XG5pbXBvcnQge0RhdGFUYWJsZUNvbHVtbn0gZnJvbSAnLi9jb21wb25lbnRzL2NvbHVtbi9jb2x1bW4uY29tcG9uZW50JztcbmltcG9ydCB7RGF0YVRhYmxlUm93fSBmcm9tICcuL2NvbXBvbmVudHMvcm93L3Jvdy5jb21wb25lbnQnO1xuaW1wb3J0IHtEYXRhVGFibGVQYWdpbmF0aW9ufSBmcm9tICcuL2NvbXBvbmVudHMvcGFnaW5hdGlvbi9wYWdpbmF0aW9uLmNvbXBvbmVudCc7XG5pbXBvcnQge0RhdGFUYWJsZUhlYWRlcn0gZnJvbSAnLi9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50JztcbmltcG9ydCB7UGl4ZWxDb252ZXJ0ZXJ9IGZyb20gJy4vdXRpbHMvcHgnO1xuaW1wb3J0IHtIaWRlfSBmcm9tICcuL3V0aWxzL2hpZGUnO1xuaW1wb3J0IHtNaW5QaXBlfSBmcm9tICcuL3V0aWxzL21pbic7XG5pbXBvcnQge0RhdGFUYWJsZVRyYW5zbGF0aW9uc30gZnJvbSAnLi90eXBlcy9kYXRhLXRhYmxlLXRyYW5zbGF0aW9ucy50eXBlJztcbmltcG9ydCB7Q2VsbENhbGxiYWNrfSBmcm9tICcuL3R5cGVzL2NlbGwtY2FsbGJhY2sudHlwZSc7XG5pbXBvcnQge1Jvd0NhbGxiYWNrfSBmcm9tICcuL3R5cGVzL3Jvdy1jYWxsYmFjay50eXBlJztcbmltcG9ydCB7RGF0YVRhYmxlUGFyYW1zfSBmcm9tICcuL3R5cGVzL2RhdGEtdGFibGUtcGFyYW1zLnR5cGUnO1xuaW1wb3J0IHtkZWZhdWx0VHJhbnNsYXRpb25zfSBmcm9tICcuL3R5cGVzL2RlZmF1bHQtdHJhbnNsYXRpb25zLnR5cGUnO1xuaW1wb3J0IHtUcmFuc2xhdGVNb2R1bGV9IGZyb20gXCJAbmd4LXRyYW5zbGF0ZS9jb3JlXCI7XG5pbXBvcnQge0Nsb3VkVHJhbnNsYXRlTW9kdWxlfSBmcm9tIFwiLi4vdHJhbnNsYXRlL2Nsb3VkLXRyYW5zbGF0ZS5tb2R1bGVcIjtcblxuZXhwb3J0ICogZnJvbSAnLi9kYXRhc291cmNlL2RhdGEtdGFibGUtcmVzb3VyY2UnO1xuZXhwb3J0IHtcbiAgICBEYXRhVGFibGUsIERhdGFUYWJsZUNvbHVtbiwgRGF0YVRhYmxlUm93LCBEYXRhVGFibGVQYWdpbmF0aW9uLFxuICAgIERhdGFUYWJsZUhlYWRlciwgRGF0YVRhYmxlVHJhbnNsYXRpb25zLCBDZWxsQ2FsbGJhY2ssIFJvd0NhbGxiYWNrLCBEYXRhVGFibGVQYXJhbXMsIGRlZmF1bHRUcmFuc2xhdGlvbnNcbn07XG5leHBvcnQgY29uc3QgREFUQV9UQUJMRV9ESVJFQ1RJVkVTID0gW0RhdGFUYWJsZSwgRGF0YVRhYmxlQ29sdW1uXTtcblxuQE5nTW9kdWxlKHtcbiAgICBpbXBvcnRzOiBbQ29tbW9uTW9kdWxlLCBGb3Jtc01vZHVsZSwgVHJhbnNsYXRlTW9kdWxlXSxcbiAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgRGF0YVRhYmxlLCBEYXRhVGFibGVDb2x1bW4sXG4gICAgICAgIERhdGFUYWJsZVJvdywgRGF0YVRhYmxlUGFnaW5hdGlvbiwgRGF0YVRhYmxlSGVhZGVyLFxuICAgICAgICBQaXhlbENvbnZlcnRlciwgSGlkZSwgTWluUGlwZVxuICAgIF0sXG4gICAgZXhwb3J0czogW0RhdGFUYWJsZSwgRGF0YVRhYmxlQ29sdW1uXVxufSlcbmV4cG9ydCBjbGFzcyBHcmlkTW9kdWxlIHtcbn1cbiJdfQ==

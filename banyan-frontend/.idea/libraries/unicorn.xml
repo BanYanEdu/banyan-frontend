@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="unicorn">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/target/unicorn.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

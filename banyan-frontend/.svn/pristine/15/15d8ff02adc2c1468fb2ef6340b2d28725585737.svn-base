@@ -1,0 +1,25 @@
+<div class="container" *ngIf="showDemo" style="margin-top: 30px;">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h1>Core - Basic Filter</h1>
+			<leafletFilterCoreDemo></leafletFilterCoreDemo>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h1>Programmatic Manipulation of Filters</h1>
+			<leafletFilterProgrammaticDemo></leafletFilterProgrammaticDemo>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+

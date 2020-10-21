@@ -1,0 +1,105 @@
+#zone({"sercure":"$community","links":"COLLADOC_CONVERSATION,MOBILE_COLLADOC_CONVERSATION,PROJECT_TASK_LIST,MOBILE_PROJECT_TASK_LIST","inherit": true})
+
+#set($referenceType = $ctx.value("referenceType"))
+#set($uuid = $ctx.value("uuid"))
+
+#dataservice("colla_task_checkpermissionservice")
+#set($permission = $colla_task_checkpermissionservice)
+#set($responsibility = $permission.responsibility)
+#set($status = $permission.status)
+
+#if(!!$action)
+#if($status == 'not_found' && $status == 'forbidden')
+<style>
+    body {
+        background-color: gray;
+    }
+
+    .alert-warning {
+        font-size: 14px;
+        margin: 20px;
+        padding: 8px;
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border: 1px solid #faebcc;
+    }
+
+    h4 {
+        color: #31708f;
+        margin: 0;
+        background-color: #d9edf7;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 20px;
+    }
+
+    .content {
+        text-align: center;
+        border-radius: 3px;
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        width: 30em;
+        height: 8em;
+        margin-left: -15em;
+        border: 1px solid #ccc;
+        background-color: #fff;
+    }
+</style>
+
+<div class="content">
+    <h4>Thông báo</h4>
+    #if($status == 'not_found')
+    <div class="alert-warning">Công việc không tồn tại.</div>
+    #else
+    <div class="alert-warning">Bạn không có quyền xem công việc này.</div>
+    #end
+</div>
+#else
+<script>
+  var referenceType = '$referenceType';
+  var uuid = '$uuid';
+  var responsibility = '$responsibility';
+  var status = '$status';
+  var urlRedirect = '$ctx.page("unicorn/page/index")' + '#/documents/tasks/';
+  if (referenceType === 'task') {
+    switch (responsibility) {
+      case 'main':
+        if (status === 'processing') {
+          location.replace(urlRedirect + 'process/' + uuid + '/processing');
+          break;
+        }
+        if (status === 'waiting') {
+          location.replace(urlRedirect + 'process/' + uuid + '/waiting');
+          break;
+        }
+      case 'watcher':
+        if (status !== 'completed') {
+          location.replace(urlRedirect + 'review/' + uuid + '/watch');
+          break;
+        }
+      case 'creator':
+        if (status !== 'completed') {
+          location.replace(urlRedirect + 'review/' + uuid + '/author');
+          break;
+        }
+      default:
+        location.replace(urlRedirect + 'lookup');
+        break;
+    }
+  }
+</script>
+#end
+
+#else
+
+Action is not found
+
+#end
+
+## support mobile + desktop path later
+##computer()
+##end
+##anydevice("phone","tablet")
+##end
+
+#end

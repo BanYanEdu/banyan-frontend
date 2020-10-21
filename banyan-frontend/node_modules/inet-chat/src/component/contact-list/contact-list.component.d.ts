@@ -1,0 +1,37 @@
+import { AfterViewInit, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
+import { MessageContact } from "../../model/MessageContact";
+import { ChatMessageService } from "../../message.service";
+import { WebSocketClientService } from "inet-core";
+export declare class ContactListComponent implements OnDestroy, AfterViewInit {
+    private messageService;
+    private webSocketService;
+    contactSelected: EventEmitter<MessageContact>;
+    roomSelected: EventEmitter<string>;
+    callTo: EventEmitter<string>;
+    contactRef: ElementRef;
+    contacts: MessageContact[];
+    statusText: string;
+    userInteract: boolean;
+    lastPage: boolean;
+    username: any;
+    fullname: any;
+    private _contacts;
+    private _statusObserver;
+    private _pageNumber;
+    private _pageSize;
+    private _loading;
+    private _timer;
+    private _contactEl;
+    private _keyword;
+    private _messageObserver;
+    constructor(messageService: ChatMessageService, webSocketService: WebSocketClientService);
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    selectContact(contact: MessageContact): void;
+    searchContacts(value?: string): void;
+    loadContacts(): void;
+    decodeBase64(str: string): string;
+    private _detectUserInteract;
+    selectRoom(roomName: string): void;
+    callToContact(usercode: any): void;
+}

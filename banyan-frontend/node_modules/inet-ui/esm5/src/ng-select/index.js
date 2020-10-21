@@ -1,0 +1,21 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { newId } from './model/id';
+export { ItemsList } from './model/items-list';
+export { KeyCode } from './model/ng-select.types';
+export { DefaultSelectionModelFactory, DefaultSelectionModel } from './model/selection-model';
+export { NgDropdownPanelComponent } from './components/dropdown/ng-dropdown-panel.component';
+export { NgOptionComponent } from './components/option/ng-option.component';
+export { SELECTION_MODEL_FACTORY, NgSelectComponent } from './components/select/ng-select.component';
+export { NgOptionHighlightDirective } from './directive/ng-option-highlight.directive';
+export { NgOptionTemplateDirective, NgOptgroupTemplateDirective, NgLabelTemplateDirective, NgMultiLabelTemplateDirective, NgHeaderTemplateDirective, NgFooterTemplateDirective, NgNotFoundTemplateDirective, NgTypeToSearchTemplateDirective, NgLoadingTextTemplateDirective, NgTagTemplateDirective } from './directive/ng-templates.directive';
+export { NgSelectConfig } from './service/config.service';
+export { ConsoleService } from './service/console.service';
+export { VirtualScrollService } from './service/virtual-scroll.service';
+export { WindowService } from './service/window.service';
+export { stripSpecialChars } from './utils/search-helper';
+export { isDefined, isObject, isPromise, isFunction } from './utils/value-utils';
+export { NgSelectModule } from './ng-select.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL25nLXNlbGVjdC9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsc0JBQWMsWUFBWSxDQUFDO0FBQzNCLDBCQUFjLG9CQUFvQixDQUFDO0FBQ25DLHdCQUFjLHlCQUF5QixDQUFDO0FBQ3hDLG9FQUFjLHlCQUF5QixDQUFDO0FBRXhDLHlDQUFjLG1EQUFtRCxDQUFDO0FBQ2xFLGtDQUFjLHlDQUF5QyxDQUFDO0FBQ3hELDJEQUFjLHlDQUF5QyxDQUFDO0FBRXhELDJDQUFjLDJDQUEyQyxDQUFDO0FBQzFELDRTQUFjLG9DQUFvQyxDQUFDO0FBRW5ELCtCQUFjLDBCQUEwQixDQUFBO0FBQ3hDLCtCQUFjLDJCQUEyQixDQUFBO0FBQ3pDLHFDQUFjLGtDQUFrQyxDQUFBO0FBQ2hELDhCQUFjLDBCQUEwQixDQUFBO0FBRXhDLGtDQUFjLHVCQUF1QixDQUFDO0FBQ3RDLDJEQUFjLHFCQUFxQixDQUFDO0FBRXBDLCtCQUFjLG9CQUFvQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9tb2RlbC9pZCc7XG5leHBvcnQgKiBmcm9tICcuL21vZGVsL2l0ZW1zLWxpc3QnO1xuZXhwb3J0ICogZnJvbSAnLi9tb2RlbC9uZy1zZWxlY3QudHlwZXMnO1xuZXhwb3J0ICogZnJvbSAnLi9tb2RlbC9zZWxlY3Rpb24tbW9kZWwnO1xuXG5leHBvcnQgKiBmcm9tICcuL2NvbXBvbmVudHMvZHJvcGRvd24vbmctZHJvcGRvd24tcGFuZWwuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vY29tcG9uZW50cy9vcHRpb24vbmctb3B0aW9uLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2NvbXBvbmVudHMvc2VsZWN0L25nLXNlbGVjdC5jb21wb25lbnQnO1xuXG5leHBvcnQgKiBmcm9tICcuL2RpcmVjdGl2ZS9uZy1vcHRpb24taGlnaGxpZ2h0LmRpcmVjdGl2ZSc7XG5leHBvcnQgKiBmcm9tICcuL2RpcmVjdGl2ZS9uZy10ZW1wbGF0ZXMuZGlyZWN0aXZlJztcblxuZXhwb3J0ICogZnJvbSAnLi9zZXJ2aWNlL2NvbmZpZy5zZXJ2aWNlJ1xuZXhwb3J0ICogZnJvbSAnLi9zZXJ2aWNlL2NvbnNvbGUuc2VydmljZSdcbmV4cG9ydCAqIGZyb20gJy4vc2VydmljZS92aXJ0dWFsLXNjcm9sbC5zZXJ2aWNlJ1xuZXhwb3J0ICogZnJvbSAnLi9zZXJ2aWNlL3dpbmRvdy5zZXJ2aWNlJ1xuXG5leHBvcnQgKiBmcm9tICcuL3V0aWxzL3NlYXJjaC1oZWxwZXInO1xuZXhwb3J0ICogZnJvbSAnLi91dGlscy92YWx1ZS11dGlscyc7XG5cbmV4cG9ydCAqIGZyb20gJy4vbmctc2VsZWN0Lm1vZHVsZSc7XG5cbiJdfQ==

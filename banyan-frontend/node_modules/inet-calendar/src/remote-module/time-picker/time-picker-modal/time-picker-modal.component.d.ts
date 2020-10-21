@@ -1,0 +1,30 @@
+import { ElementRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { TimepickerComponent } from "ngx-bootstrap";
+export declare class TimePickerModalComponent implements OnInit, OnDestroy {
+    el: ElementRef;
+    arrowkeys: boolean;
+    hourStep: number;
+    max: Date;
+    min: Date;
+    minuteStep: number;
+    mousewheel: boolean;
+    readonlyInput: boolean;
+    secondsStep: number;
+    showMeridian: boolean;
+    showMinutes: boolean;
+    showSeconds: boolean;
+    showSpinners: boolean;
+    time: Date | null;
+    onChange: EventEmitter<{}>;
+    timePicker: TimepickerComponent;
+    timeStr: string;
+    $modal: any;
+    $modalContent: any;
+    private _timeDate;
+    constructor(el: ElementRef);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    close(): void;
+    open(css: any): void;
+    private static _formatDate;
+}

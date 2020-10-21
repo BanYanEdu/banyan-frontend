@@ -1,0 +1,43 @@
+#html({"scriptDefault":"off", "inherit":"true", "forward":"HomepageForward", "type":"collaboration", "secure":"community"})
+#keywords({"title":'$text.getText("Unicorn")'})
+#defined("link",{"rel":"shortcut icon", "type":"image/x-icon", "href":'$ctx.resource("/images/unicorn/unicorn.png")?v=$ctx.version()'})
+#meta({"title":"Unicorn","http-equiv":"X-UA-Compatible", "content":"ie=edge",
+"description": "iNet, iNet Solutions, iCloud Platform, Calista, Social, Sharing, Collaboration, CRM, HRM, E-Invoice, Signature, E-Commerce, POS, Project Management",
+"viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"})
+<style type="text/css">
+    @keyframes spinner {
+        to {transform: rotate(360deg);}
+    }
+    .loading:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-top: -15px;
+        margin-left: -15px;
+        border: 1px solid #ccc;
+        border-top-color: #07d;
+        animation: spinner .6s linear infinite;
+    }
+</style>
+<app-root>
+    <div class="loading"></div>
+</app-root>
+
+#theme("/common/css/bootstrap.min")
+#theme("/common/css/font-awesome-4.7")
+#theme("/unicorn/css/__RESOURCE__CSS{styles}")
+#script("/js/common/inet/lib/inet-core.min.js")
+#widget("/unicorn/widget/web-config")
+#script("/js/common/jquery/jquery-3.2.1.min.js", "bottom")
+#script("/js/common/bootstrap/bs4/plugins/popper.min.js", "bottom")
+#script("/js/common/bootstrap/bs4/bootstrap.min.js", "bottom")
+#script("/js/unicorn/__RESOURCE__JS{runtime}", "bottom")
+#script("/js/unicorn/__RESOURCE__JS{polyfills}", "bottom")
+#script("/js/unicorn/__RESOURCE__JS{scripts}", "bottom")
+#script("/js/unicorn/__RESOURCE__JS{main}", "bottom")
+#end

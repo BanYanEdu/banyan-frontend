@@ -1,0 +1,13 @@
+export { SocialModule } from './social.module';
+export { SocialService } from './social.service';
+export { ActivityComponent } from './activity/activity.component';
+export { ActivityListComponent } from './activity-list/activity-list.component';
+export { ActivityPostComponent } from './activity-post/activity-post.component';
+export { ActivityViewComponent } from './activity-view/activity-view.component';
+export { SocialEmbedComponent } from './embed/social-embed.component';
+export { SocialGroupComponent } from './social-friend/group/group.component';
+export { FriendBrowseComponent } from './social-friend/browse/friend-browse.component';
+export { FriendInvitationComponent } from './social-friend/invitation/friend-invitation.component';
+export { SocialComponent } from './wall/social.component';
+export { SocialLatestComponent } from "./widget/social-latest.component";
+export { SocialAppModule } from './routing/social-app.module';

@@ -1,0 +1,22 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BootstrapUserProfileComponent } from "./user-profile/bootstrap-user-profile.component";
+import { BootstrapCompanyProfileComponent } from "./company-profile/bootstrap-company-profile.component";
+/** @type {?} */
+const routes = [
+    { path: 'user-profile', component: BootstrapUserProfileComponent },
+    { path: 'company-profile', component: BootstrapCompanyProfileComponent }
+];
+export class BootstrapLayoutRoutingModule {
+}
+BootstrapLayoutRoutingModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [RouterModule.forChild(routes)],
+                exports: [RouterModule]
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYm9vdHN0cmFwLWxheW91dC1yb3V0aW5nLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2luZXQtdWkvIiwic291cmNlcyI6WyJzcmMvbGF5b3V0L2Jvb3RzdHJhcC9ib290c3RyYXAtbGF5b3V0LXJvdXRpbmcubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUMsUUFBUSxFQUFDLE1BQU0sZUFBZSxDQUFDO0FBQ3ZDLE9BQU8sRUFBUyxZQUFZLEVBQUMsTUFBTSxpQkFBaUIsQ0FBQztBQUNyRCxPQUFPLEVBQUMsNkJBQTZCLEVBQUMsTUFBTSxpREFBaUQsQ0FBQztBQUM5RixPQUFPLEVBQUMsZ0NBQWdDLEVBQUMsTUFBTSx1REFBdUQsQ0FBQzs7TUFFakcsTUFBTSxHQUFXO0lBQ25CLEVBQUMsSUFBSSxFQUFFLGNBQWMsRUFBRSxTQUFTLEVBQUUsNkJBQTZCLEVBQUM7SUFDaEUsRUFBQyxJQUFJLEVBQUUsaUJBQWlCLEVBQUUsU0FBUyxFQUFFLGdDQUFnQyxFQUFDO0NBQ3pFO0FBTUQsTUFBTSxPQUFPLDRCQUE0Qjs7O1lBSnhDLFFBQVEsU0FBQztnQkFDTixPQUFPLEVBQUUsQ0FBQyxZQUFZLENBQUMsUUFBUSxDQUFDLE1BQU0sQ0FBQyxDQUFDO2dCQUN4QyxPQUFPLEVBQUUsQ0FBQyxZQUFZLENBQUM7YUFDMUIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge05nTW9kdWxlfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7Um91dGVzLCBSb3V0ZXJNb2R1bGV9IGZyb20gJ0Bhbmd1bGFyL3JvdXRlcic7XG5pbXBvcnQge0Jvb3RzdHJhcFVzZXJQcm9maWxlQ29tcG9uZW50fSBmcm9tIFwiLi91c2VyLXByb2ZpbGUvYm9vdHN0cmFwLXVzZXItcHJvZmlsZS5jb21wb25lbnRcIjtcbmltcG9ydCB7Qm9vdHN0cmFwQ29tcGFueVByb2ZpbGVDb21wb25lbnR9IGZyb20gXCIuL2NvbXBhbnktcHJvZmlsZS9ib290c3RyYXAtY29tcGFueS1wcm9maWxlLmNvbXBvbmVudFwiO1xuXG5jb25zdCByb3V0ZXM6IFJvdXRlcyA9IFtcbiAgICB7cGF0aDogJ3VzZXItcHJvZmlsZScsIGNvbXBvbmVudDogQm9vdHN0cmFwVXNlclByb2ZpbGVDb21wb25lbnR9LFxuICAgIHtwYXRoOiAnY29tcGFueS1wcm9maWxlJywgY29tcG9uZW50OiBCb290c3RyYXBDb21wYW55UHJvZmlsZUNvbXBvbmVudH1cbl07XG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW1JvdXRlck1vZHVsZS5mb3JDaGlsZChyb3V0ZXMpXSxcbiAgICBleHBvcnRzOiBbUm91dGVyTW9kdWxlXVxufSlcbmV4cG9ydCBjbGFzcyBCb290c3RyYXBMYXlvdXRSb3V0aW5nTW9kdWxlIHtcbn1cbiJdfQ==

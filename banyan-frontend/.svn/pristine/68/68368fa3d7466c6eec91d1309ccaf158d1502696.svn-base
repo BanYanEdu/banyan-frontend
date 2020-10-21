@@ -1,0 +1,33 @@
+import { ElementRef, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Location } from '@angular/common';
+import { NotificationService } from 'inet-core';
+import { OrganizationInformation } from '../../model/organization-information';
+import { TranslateService } from '@ngx-translate/core';
+import { OrganizationService } from '../organization.service';
+import { Organization } from '../../model/organization';
+export declare class OrganizationInformationComponent implements OnInit, OnDestroy {
+    private location;
+    private orgService;
+    private notification;
+    private translate;
+    orgInfo: OrganizationInformation;
+    organization: Organization;
+    editable: boolean;
+    logoUrl: string;
+    fileUpload: ElementRef;
+    logoFrmElementRef: ElementRef;
+    tabContent: TemplateRef<ElementRef>;
+    private orgTranslations;
+    private readonly translateSubscription;
+    isAvatarExist: boolean;
+    isChanged: boolean;
+    constructor(location: Location, orgService: OrganizationService, notification: NotificationService, translate: TranslateService);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    onSelectFile($event: any): void;
+    onSave(): void;
+    updateBlankImage($event: any): void;
+    removeImage(): void;
+    changeFile(event: any): void;
+    private updateLogo;
+}

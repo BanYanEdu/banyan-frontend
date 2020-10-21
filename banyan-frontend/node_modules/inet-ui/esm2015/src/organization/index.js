@@ -1,0 +1,9 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { OrganizationGeneralInformationComponent } from './organization-general-information/organization-general-information.component';
+export { OrganizationInformationComponent } from './organization-information/organization-information.component';
+export { OrganizationService } from './organization.service';
+export { OrganizationModule } from './organization.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL29yZ2FuaXphdGlvbi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsd0RBQWMsK0VBQStFLENBQUM7QUFDOUYsaURBQWMsK0RBQStELENBQUM7QUFDOUUsb0NBQWMsd0JBQXdCLENBQUM7QUFDdkMsbUNBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL29yZ2FuaXphdGlvbi1nZW5lcmFsLWluZm9ybWF0aW9uL29yZ2FuaXphdGlvbi1nZW5lcmFsLWluZm9ybWF0aW9uLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL29yZ2FuaXphdGlvbi1pbmZvcm1hdGlvbi9vcmdhbml6YXRpb24taW5mb3JtYXRpb24uY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vb3JnYW5pemF0aW9uLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9vcmdhbml6YXRpb24ubW9kdWxlJztcbiJdfQ==

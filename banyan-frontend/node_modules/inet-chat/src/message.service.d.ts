@@ -1,0 +1,37 @@
+import { HttpClientService, WebSocketClientService } from "inet-core";
+import { MessageContact } from "./model/MessageContact";
+import { Observable } from "rxjs";
+import { MessageChat } from "./model/MessageChat";
+import { EnvelopBody, WebSocketEnvelop } from 'inet-core/src/websocket/websocket-abstract';
+export declare class ChatMessageService {
+    private httpService;
+    socketService: WebSocketClientService;
+    private static _instance;
+    private _socketObserver;
+    private _messageSubject;
+    private _unreadSubject;
+    contacts: MessageContact[];
+    messageReceived: Observable<MessageChat>;
+    unreadMessageChange: Observable<number>;
+    constructor(httpService: HttpClientService, socketService: WebSocketClientService);
+    destroy(): void;
+    loadFriends(): Observable<MessageContact[]>;
+    loadContacts(callback: Function): void;
+    updateUnreadMessage(): void;
+    getContactByUserCode(usercode: string, callback: Function): void;
+    hasContact(usercode: string): boolean;
+    send(username: string, message: string): Promise<boolean>;
+    sendEnvelop(envelop: WebSocketEnvelop): Promise<boolean>;
+    buildEnvelop(address: string, message: string, join?: string): WebSocketEnvelop;
+    pushMessage(params: any, callback: Function): void;
+    loadMessages(params: any, callback: Function): void;
+    updateLastMessage(usercode: string, message: EnvelopBody): void;
+    decodeBase64(str: string): string;
+    resetUnreadMessage(username: string): void;
+    searchContacts(keyword: string, callback: Function): void;
+    private _filterUsers;
+    revertMessage(message: string): string;
+    revertMessageDisplay(message: string): string;
+    reconnetSocket(): void;
+    checkJoinVideoCall(message: any): void;
+}

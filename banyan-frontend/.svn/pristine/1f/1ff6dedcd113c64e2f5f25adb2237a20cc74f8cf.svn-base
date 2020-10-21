@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NumberSeparatorDirective } from './number-separator.directive';
+export { NumberUtilsService } from './number-utils.service';
+export { NumberFormatModule } from './number-format.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL251bWJlci1mb3JtYXQvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHlDQUFjLDhCQUE4QixDQUFDO0FBQzdDLG1DQUFjLHdCQUF3QixDQUFDO0FBQ3ZDLG1DQUFjLHdCQUF3QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9udW1iZXItc2VwYXJhdG9yLmRpcmVjdGl2ZSc7XG5leHBvcnQgKiBmcm9tICcuL251bWJlci11dGlscy5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbnVtYmVyLWZvcm1hdC5tb2R1bGUnO1xuXG4iXX0=

@@ -1,0 +1,35 @@
+import { WebSocketAbstract, WebSocketEnvelop, EnvelopBody } from './websocket-abstract';
+import { Subject } from 'rxjs';
+export declare class WebSocketClient {
+    static instance: WebSocketClient;
+    socket: WebSocketAbstract;
+    onMessage: Subject<EnvelopBody>;
+    onStateChange: Subject<any>;
+    sendTimeout: number;
+    private _username;
+    private _autoconnect;
+    private _autoconnectAfter;
+    private _autoconnectRepeat;
+    private _autoconnectRetryAfter;
+    private _autoconectCount;
+    private _autoconectTimer;
+    private _envelopQueue;
+    readonly readyState: number;
+    readonly connecting: boolean;
+    readonly connected: boolean;
+    readonly closing: boolean;
+    readonly closed: boolean;
+    readonly autoconnect: boolean;
+    constructor();
+    close(): void;
+    send(address: string, message: string, application?: string): Promise<boolean>;
+    sendEnvelop(envelop: WebSocketEnvelop): Promise<boolean>;
+    buildEnvelop(address: string, message: string, application?: string, join?: string): WebSocketEnvelop;
+    private _sendEnvelopQueue;
+    private _completeEnvelopQueue;
+    private _register;
+    private _getAccountInfo;
+    private _stateChange;
+    private _runAutoConnect;
+    private _cancelAutoConnect;
+}

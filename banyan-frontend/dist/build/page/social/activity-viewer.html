@@ -1,0 +1,20 @@
+#html({"secure":"$firm_user","lang":"en","dir":"ltr","xmlns":"http://www.w3.org/1999/xhtml","inherit":true})
+#theme("/onlineditor/css/viewonly")
+<script type="text/javascript">
+  var params = {
+    binary: '#if(!!$ctx.value("binary"))$ctx.value("binary")#end',
+    activity: '#if(!!$ctx.value("activity"))$ctx.value("activity")#end',
+    redirect: false
+  };
+  params.docID = params.binary;
+  window.onlineDocument = {
+    urlClose: '$ctx.action("social/activity/onlineclose")',
+    urlCreate: '$ctx.action("social/activity/onlineview")',
+    docParams: params,
+    getParams: function () {
+      return this.docParams;
+    }
+  };
+</script>
+#widget("/onlineditor/widget/online")
+#end

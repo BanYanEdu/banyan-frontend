@@ -1,0 +1,109 @@
+{
+  "_args": [
+    [
+      "inet-calendar@0.0.1",
+      "/home/viltt/IdeaProjects/project-inet/unicorn"
+    ]
+  ],
+  "_from": "inet-calendar@0.0.1",
+  "_id": "inet-calendar@0.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-zxGSYUP9JgvPZd5mTmNhWbruB8zYnrl8duqCM1qeNJTV5Kowt1F+TiQoPllmqSAFjsEBzxueOXN/5CSWRnGHpg==",
+  "_location": "/inet-calendar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "inet-calendar@0.0.1",
+    "name": "inet-calendar",
+    "escapedName": "inet-calendar",
+    "rawSpec": "0.0.1",
+    "saveSpec": null,
+    "fetchSpec": "0.0.1"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/inet-calendar/-/inet-calendar-0.0.1.tgz",
+  "_spec": "0.0.1",
+  "_where": "/home/viltt/IdeaProjects/project-inet/unicorn",
+  "author": {
+    "name": "support@inetcloud.vn"
+  },
+  "bugs": {
+    "url": "https://bugs.inetcloud.vn"
+  },
+  "dependencies": {
+    "@angular/common": "~7.0.4",
+    "@angular/core": "~7.0.4",
+    "@angular/forms": "~7.0.4",
+    "@angular/router": "~7.0.4",
+    "@fullcalendar/core": "^4.4.0",
+    "@fullcalendar/daygrid": "^4.4.0",
+    "@fullcalendar/interaction": "^4.4.0",
+    "@fullcalendar/timegrid": "^4.4.0",
+    "inet-core": "^0.8.7",
+    "moment": "^2.26.0",
+    "ngx-bootstrap": "~3.1.2",
+    "rxjs": "~6.3.3",
+    "rxjs-compat": "~6.3.3",
+    "tslib": "^1.9.0"
+  },
+  "description": "iNet Calendar Module",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular/cli": "~7.0.6",
+    "@angular/compiler": "~7.0.4",
+    "@angular/compiler-cli": "~7.0.4",
+    "@angular/language-service": "~7.0.4",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "caniuse-lite": "^1.0.30001031",
+    "codelyzer": "~4.5.0",
+    "copyfiles": "^1.2.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~3.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^5.7.0",
+    "protractor": "~5.4.0",
+    "semantic-release": "^8.2.0",
+    "ts-node": "~7.0.1",
+    "tsickle": "^0.34.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.6"
+  },
+  "es2015": "fesm2015/inet-calendar.js",
+  "esm2015": "esm2015/inet-calendar.js",
+  "esm5": "esm5/inet-calendar.js",
+  "fesm2015": "fesm2015/inet-calendar.js",
+  "fesm5": "fesm5/inet-calendar.js",
+  "homepage": "https://inetcloud.vn",
+  "keywords": [
+    "inet",
+    "inet-core",
+    "inet-ui",
+    "iNet core",
+    "iNet UI",
+    "inet typescript",
+    "inet angular",
+    "inet ng-core",
+    "iNet Layout",
+    "iNet Solutions"
+  ],
+  "license": "MIT",
+  "main": "bundles/inet-calendar.umd.js",
+  "metadata": "inet-calendar.metadata.json",
+  "module": "fesm5/inet-calendar.js",
+  "name": "inet-calendar",
+  "sideEffects": false,
+  "typings": "inet-calendar.d.ts",
+  "version": "0.0.1"
+}

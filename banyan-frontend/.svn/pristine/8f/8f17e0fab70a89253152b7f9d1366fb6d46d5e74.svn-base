@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/typing"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "allowJs":true,
+    "baseUrl": "./src",
+    "paths": {
+      "stream": ["../node_modules/stream-browserify/index.js"],
+      "zlib": ["../node_modules/browserify-zlib/lib/index.js"]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}
