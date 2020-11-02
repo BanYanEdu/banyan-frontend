@@ -1,8 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { ModalSelectComponent } from './modal-select/modal-select.component';
-export { SelectUserComponent } from './select-user.component';
-export { SelectUserModule } from './select-user.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL3NlbGVjdC11c2VyL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxxQ0FBYyx1Q0FBdUMsQ0FBQztBQUN0RCxvQ0FBYyx5QkFBeUIsQ0FBQztBQUN4QyxpQ0FBYyxzQkFBc0IsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vbW9kYWwtc2VsZWN0L21vZGFsLXNlbGVjdC5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9zZWxlY3QtdXNlci5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9zZWxlY3QtdXNlci5tb2R1bGUnO1xuIl19

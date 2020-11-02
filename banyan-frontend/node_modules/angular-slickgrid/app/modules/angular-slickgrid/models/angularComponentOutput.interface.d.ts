@@ -1,5 +1,0 @@
-import { ComponentRef } from '@angular/core';
-export interface AngularComponentOutput {
-    componentRef: ComponentRef<any>;
-    domElement: HTMLElement;
-}

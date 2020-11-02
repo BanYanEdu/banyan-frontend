@@ -1,9 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { CloudPluginComponent } from './cloud-plugin.component';
-export { PluginToolbarDirective, ToolbarContainer } from './plugin-toolbar.directive';
-export { PluginManagerService } from './plugin-manager.service';
-export { PluginManagerModule } from './plugin-manager.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL3BsdWdpbi1tYW5hZ2VyL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxxQ0FBYywwQkFBMEIsQ0FBQztBQUN6Qyx5REFBYyw0QkFBNEIsQ0FBQztBQUMzQyxxQ0FBYywwQkFBMEIsQ0FBQztBQUN6QyxvQ0FBYyx5QkFBeUIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vY2xvdWQtcGx1Z2luLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL3BsdWdpbi10b29sYmFyLmRpcmVjdGl2ZSc7XG5leHBvcnQgKiBmcm9tICcuL3BsdWdpbi1tYW5hZ2VyLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9wbHVnaW4tbWFuYWdlci5tb2R1bGUnO1xuIl19

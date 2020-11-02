@@ -1,3 +1,0 @@
-#html({"scriptDefault":"off", "inherit":"true","secure":"community"})
-    #widget("/unicorn/widget/biolap-log-analytics",{"provider":"PageOlapBIContext","area":"biolap-log-analytics"})
-#end

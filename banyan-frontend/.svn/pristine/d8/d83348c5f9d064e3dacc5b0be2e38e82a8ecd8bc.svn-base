@@ -1,7 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { CustomPaginationComponent } from './custom-pagination.component';
-export { CustomPaginationModule } from './custom-pagination.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2N1c3RvbS1wYWdpbmF0aW9uL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSwwQ0FBYywrQkFBK0IsQ0FBQztBQUM5Qyx1Q0FBYyw0QkFBNEIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vY3VzdG9tLXBhZ2luYXRpb24uY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vY3VzdG9tLXBhZ2luYXRpb24ubW9kdWxlJztcbiJdfQ==

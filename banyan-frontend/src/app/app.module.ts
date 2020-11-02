@@ -15,7 +15,7 @@ import {
     WebsocketModule
 } from 'inet-ui';
 import {UnicornCommonModule} from './pages/layout/common/unicorn-common.module';
-import {MenuComponent} from './pages/layout/menu/menu.component';
+import {TopMenuComponent} from './pages/layout/menu/menu.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {CustomTranslateLoader} from "./i18n/custom-translate-loader";
 import {NavbarComponent} from "./pages/layout/navbar/navbar.component";
@@ -25,11 +25,15 @@ import {CustomCacheRouteReuseStrategy} from "./pages/common/custom-route.strateg
 import {CalendarModule} from "inet-calendar";
 import { SocialModule, SocialAppModule } from 'inet-social';
 import {ChatMessageModule} from "inet-chat";
+import { HomeComponent } from './pages/home/home.component';
+import { ComingMessageComponent } from './pages/system/coming.message';
 @NgModule({
     declarations: [
         AppComponent,
-        MenuComponent,
+        TopMenuComponent,
         NavbarComponent,
+        HomeComponent,
+        ComingMessageComponent
 
     ],
     imports: [

@@ -1,7 +1,12 @@
 @import "~inet-ui/scss/listview";
 @import "~inet-ui/scss/bootstrap/admin.css";
 @import '~inet-ui/scss/common';
+
+@import './scss/variables';
 @import './scss/app';
+@import './scss/menu';
+// @import './scss/buttons';
+// @import './scss/treeList';
 @import "./scss/dashboard";
 
 // fullcalendar

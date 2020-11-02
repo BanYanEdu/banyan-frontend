@@ -1,5 +1,0 @@
-export declare enum CalType {
-    COMMUNITY = "COMMUNITY",
-    ORGANIZATION = "ORGANIZATION",
-    DEPARTMENT = "DEPARTMENT"
-}

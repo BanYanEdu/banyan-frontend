@@ -1,15 +1,21 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 
 @Component({
-    selector: 'app-unicorn-menu',
-    templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss']
+    selector: 'app-top-menu',
+    templateUrl: './menu.component.html'
 })
-export class MenuComponent implements OnInit {
+export class TopMenuComponent implements OnInit {
+    username: string;
 
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+
+        this.username = iNet.username;
+        // console.log('Load menu ...');
+        // console.log(iNet.username);
+        console.log(iNet);
+    }
 
 }

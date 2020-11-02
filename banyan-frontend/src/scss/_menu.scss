@@ -1,0 +1,32 @@
+@import 'variables';
+
+.menu-panel {
+    background-color: $default-theme-color;
+    height: 52px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+.menu-item {
+    color: white;
+}
+.menu-item:hover {
+    color: #d4ae3d;
+}
+
+.menu-icon {    // convert to #819a9e
+    filter: invert(65%) sepia(7%) saturate(787%) hue-rotate(140deg) brightness(91%) contrast(84%);
+    height: 36px;
+    margin-top: 8px;
+    // padding-left: 10px;
+    // width: 48px;
+}
+.menu-icon:hover,focus {    // convert to white #ffffff
+    filter: invert(95%) sepia(99%) saturate(3%) hue-rotate(179deg) brightness(105%) contrast(100%);
+
+}
+
+.menu-button { 
+    height: 36px;
+    margin-top: 8px;
+}

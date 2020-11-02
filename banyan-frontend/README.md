@@ -1,5 +1,5 @@
 ### Tasks to do for running the project:
-Unicorn
+Banyan EMS
 ===
 Provides secure online dashboard. Marketplace, social, sharing, collaboration and synchronisation and of files and folders across desktop computers and mobile devices
 

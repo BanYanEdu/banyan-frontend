@@ -4,16 +4,19 @@ import {ConfirmDialogComponent} from "inet-ui";
 
 @Component({
     selector: 'app-root',
-    template: `        <app-layout  [expandedMenu]="false"  (routeChange)="onChange($event)"
-                     [visibleOverlay]="visibleMenu"
-                     [hideToggler]="true"
-                     [hideTogglerButton]="true"
-                     [homeRouterLink]="'home'" [hideBrandName]="true" [visibleToolbar]="visibleToolbar"
-                     [fullLayoutWithUrls]="[]" [theme]="'theme-light'">
-            <ng-template #navbarMenu>
-            </ng-template>
-        </app-layout>
-
+    template: `        
+                <div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <app-top-menu></app-top-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
     `
 
 })

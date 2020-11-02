@@ -1,7 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { ReportTemplateEditComponent } from './report-template-edit/report-template-edit.component';
-export { GlobalReportTemplateModule } from './global-report-template.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL3JlcG9ydC10ZW1wbGF0ZS9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsNENBQWMsdURBQXVELENBQUM7QUFDdEUsMkNBQWMsaUNBQWlDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL3JlcG9ydC10ZW1wbGF0ZS1lZGl0L3JlcG9ydC10ZW1wbGF0ZS1lZGl0LmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2dsb2JhbC1yZXBvcnQtdGVtcGxhdGUubW9kdWxlJztcbiJdfQ==

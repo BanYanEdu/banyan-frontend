@@ -1,9 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { FrontViewDirective } from './front-view.directive';
-export { FrontViewModule } from './front-view.module';
-export { FrontViewService } from './front-view.service';
-export { FrontViewComponent } from './component/viewer.component';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL2Zyb250LXZpZXcvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFBQyxrQkFBa0IsRUFBQyxNQUFNLHdCQUF3QixDQUFDO0FBQzFELE9BQU8sRUFBQyxlQUFlLEVBQUMsTUFBTSxxQkFBcUIsQ0FBQztBQUNwRCxPQUFPLEVBQUMsZ0JBQWdCLEVBQUMsTUFBTSxzQkFBc0IsQ0FBQztBQUN0RCxPQUFPLEVBQUMsa0JBQWtCLEVBQUMsTUFBTSw4QkFBOEIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7RnJvbnRWaWV3RGlyZWN0aXZlfSBmcm9tICcuL2Zyb250LXZpZXcuZGlyZWN0aXZlJztcbmV4cG9ydCB7RnJvbnRWaWV3TW9kdWxlfSBmcm9tICcuL2Zyb250LXZpZXcubW9kdWxlJztcbmV4cG9ydCB7RnJvbnRWaWV3U2VydmljZX0gZnJvbSAnLi9mcm9udC12aWV3LnNlcnZpY2UnO1xuZXhwb3J0IHtGcm9udFZpZXdDb21wb25lbnR9IGZyb20gJy4vY29tcG9uZW50L3ZpZXdlci5jb21wb25lbnQnO1xuIl19

@@ -1,7 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { NavigationTab } from './navigation-tab.component';
-export { NavigationTabModule } from './navigation-tab.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9pbmV0LXVpLyIsInNvdXJjZXMiOlsic3JjL25hdmlnYXRpb24tdGFiL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUMsYUFBYSxFQUFpQixNQUFNLDRCQUE0QixDQUFDO0FBQ3pFLE9BQU8sRUFBQyxtQkFBbUIsRUFBQyxNQUFNLHlCQUF5QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHtOYXZpZ2F0aW9uVGFiLCBOYXZpZ2F0aW9uRGF0YX0gZnJvbSAnLi9uYXZpZ2F0aW9uLXRhYi5jb21wb25lbnQnO1xuZXhwb3J0IHtOYXZpZ2F0aW9uVGFiTW9kdWxlfSBmcm9tICcuL25hdmlnYXRpb24tdGFiLm1vZHVsZSc7XG4iXX0=
