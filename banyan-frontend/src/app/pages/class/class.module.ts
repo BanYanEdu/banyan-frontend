@@ -7,6 +7,12 @@ import { CommonService } from 'app/shared/services/common.service';
 import { FocusService } from 'app/shared/services/focus.service';
 import { ClassRoutingModule } from './class-routing.module';
 import { ClassHomeComponent } from './class-home/class-home.component';
+import { CourseListComponent } from './course/course-list.component';
+import { CourseAddComponent } from './course/course-add.component';
+import { ClassListComponent } from './class/class-list.component';
+import { ClassAddComponent } from './class/class-add.component';
+import { RegistrationListComponent } from './registration/registration-list.component';
+import { RegistrationAddComponent } from './registration/registration-add.component';
 
 @NgModule({
     imports: [
@@ -17,7 +23,13 @@ import { ClassHomeComponent } from './class-home/class-home.component';
         ClassRoutingModule
     ],
     declarations: [
-        ClassHomeComponent
+        ClassHomeComponent,
+        CourseListComponent,
+        CourseAddComponent,
+        ClassListComponent,
+        ClassAddComponent,
+        RegistrationListComponent,
+        RegistrationAddComponent
 
     ],
     providers: [

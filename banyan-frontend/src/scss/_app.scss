@@ -73,7 +73,37 @@ body {
   text-decoration: none;
 }
 
+/* LABELS */
+.form-label{
+  text-align: right;
+  color: #7f7f7f;
+}
+.form-sub-label{
+  font-size: small;
+  color: #7f7f7f;
+}
 
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}  
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.ng-select-invalid {
+  border-color: #dc3545;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #dc3545;
+  border-radius: 4px ;
+}
+.error-message {
+  color: $error-message-color;
+}
+.form-required {
+  border-left-color: $default-theme-opposite-color;
+  border-left-width: 2px;
+}
+.selected {
+  background-color: whitesmoke;
+}
 
 
 
@@ -385,4 +415,15 @@ img.avatar-error {
   iframe{
     height: 100vh!important;
   }
+}
+
+
+.full-screen-modal {
+  height: 200vh !important;
+  width: 200vw !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  // background-color: blue;
 }

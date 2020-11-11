@@ -10,7 +10,7 @@ const exec = require('child_process').exec;
 const fs = require('fs');
 
 const distFolder = "dist";
-const moduleName = "banyan-ems.zip";
+const moduleName = "banyan.zip";
 const buildDir = 'dist/build';
 
 const jsFolder = 'iNet.jsFolder';

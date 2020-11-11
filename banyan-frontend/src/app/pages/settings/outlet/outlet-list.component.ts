@@ -11,7 +11,6 @@ import { DataTableResource } from 'inet-ui';
     selector: 'app-outlet-list',
     templateUrl: './outlet-list.component.html'
 })
-// export class OutletListComponent extends BaseListComponent<Outlet> implements OnInit, OnDestroy {
 export class OutletListComponent extends BaseListComponent<Outlet> implements OnInit, OnDestroy {
     
     constructor(
@@ -38,9 +37,23 @@ export class OutletListComponent extends BaseListComponent<Outlet> implements On
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
         var criteria: any;
-        
+        var mockedData = {
+            items: [
+                {code: "001", name:"Kanata Nam Kỳ Khởi Nghĩa", sortIndex: 10, inactive: false,
+                    addressInfo: {fullAddress: "282 Nam Kỳ Khởi Nghĩa, Quận 3, TPHCM"}
+                },
+                {code: "002", name:"Kanata Phú Mỹ Hưng", sortIndex: 20, inactive: false,
+                    addressInfo: {fullAddress: "123 Nguyễn Văn Linh, Quận 7, TPHCM"}
+                },
+                {code: "003", name:"Kanata Trương Công Định", sortIndex:30, inactive: true,
+                    addressInfo: {fullAddress: "22 Trương Công Định, Quận Tân Bình, TPHCM"}
+                },
+            ], 
+            total: 3}
+
+
         // this.dataResource = new DataTableResource([]);
-        this.settingsService.outletList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
+        this.settingsService.outletList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
     }
 
     ngOnDestroy() {

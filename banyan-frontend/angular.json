@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "unicorn": {
+    "banyan": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng/unicorn",
+            "outputPath": "dist/ng/banyan",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "unicorn:build"
+            "browserTarget": "banyan:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "unicorn:build:production"
+              "browserTarget": "banyan:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "unicorn:build"
+            "browserTarget": "banyan:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "unicorn-e2e": {
+    "banyan-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -113,7 +113,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "unicorn:serve"
+            "devServerTarget": "banyan:serve"
           }
         },
         "lint": {
@@ -258,7 +258,7 @@
       }
     }
   },
-  "defaultProject": "unicorn",
+  "defaultProject": "banyan",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

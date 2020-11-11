@@ -25,7 +25,7 @@ export abstract class BaseListComponent<TModel extends BaseEditableModel> extend
     config = {
         backdrop: false,
         ignoreBackdropClick: true,
-        class: 'modal-xl'
+        class: 'modal-lg'
     };
     constructor(protected commonService: CommonService,
         protected modalService: BsModalService,
@@ -91,7 +91,15 @@ export abstract class BaseListComponent<TModel extends BaseEditableModel> extend
             const items = data['items'];
             this.itemCount = data['total'];
             this.dataResource = new DataTableResource(items);
-            this.itemCount = data['total'] || items.length;
+
+            console.log(items);
+
+            if (items) {
+                this.itemCount = data['total'] || items.length;
+            } else {
+                this.itemCount = 0;
+            }
+            // this.itemCount = data['total'] || items.length;
             this.items = items;
 
             //this.dataResource.query(params).then(items => this.items = items);

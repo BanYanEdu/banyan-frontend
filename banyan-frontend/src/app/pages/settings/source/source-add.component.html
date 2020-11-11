@@ -1,0 +1,68 @@
+<form [formGroup]="mainForm">
+    <div class="row mt-2">
+        <div class="col-sm-3 form-label">
+            <label for="code">Mã</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
+                maxlength="20" formControlName="code">
+            <span
+                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
+                class="help-block error-message">
+                Bắt buộc nhập
+            </span>
+            <span
+                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
+                class="help-block error-message">
+                Mã đã tồn tại
+            </span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3 form-label">
+            <label for="name">Tên</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
+                formControlName="name">
+            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
+                Bắt buộc nhập
+            </span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3 form-label">
+            <label for="sortIndex">Thứ tự hiển thị</label>
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
+                numericInputOnly maxlength="10" formControlName="sortIndex">
+            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
+                class="help-block error-message">
+                Bắt buộc nhập
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3 form-label">
+            <label for="inactive" class="lbl">NTD</label>
+        </div>
+        <div class="col-sm-4">
+            <div class="custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
+                <label for="inactive" class="lbl"></label>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row mt-2">
+        <div class="col-sm-3"> </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                Lưu
+            </button>
+        </div>
+    </div>
+</form>
