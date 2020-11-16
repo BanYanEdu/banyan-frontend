@@ -11,7 +11,6 @@ import { Program } from 'app/model/settings/Program';
     selector: 'app-program-list',
     templateUrl: './program-list.component.html'
 })
-// export class OutletListComponent extends BaseListComponent<Outlet> implements OnInit, OnDestroy {
 export class ProgramListComponent extends BaseListComponent<Program> implements OnInit, OnDestroy {
     
     constructor(
@@ -37,18 +36,10 @@ export class ProgramListComponent extends BaseListComponent<Program> implements 
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "P01", name:"Tiếng Hàn phổ thông", sortIndex: 10, inactive: false},
-                {code: "P02", name:"Biên phiên dịch", sortIndex: 20, inactive: false},
-                {code: "P03", name:"Bổ sung", sortIndex:30, inactive: false},
-                {code: "P10", name:"Khác", sortIndex:100, inactive: true}
-            ], 
-            total: 4}
+        var criteria: any = this.params;
         
         // this.dataResource = new DataTableResource([]);
-        this.settingsService.programList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.settingsService.programList(this.params).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

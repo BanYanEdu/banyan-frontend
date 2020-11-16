@@ -36,19 +36,9 @@ export class SourceListComponent extends BaseListComponent<Source> implements On
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "S01", name:"Facebook", sortIndex: 10, inactive: false},
-                {code: "S02", name:"Zalo", sortIndex: 20, inactive: false},
-                {code: "S03", name:"Website", sortIndex:30, inactive: false},
-                {code: "S04", name:"Giới thiệu", sortIndex:40, inactive: false},
-                {code: "S05", name:"Khác", sortIndex:50, inactive: true},
-            ], 
-            total: 5}
+        var criteria: any = this.params;
         
-        // this.dataResource = new DataTableResource([]);
-        this.settingsService.sourceList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.settingsService.sourceList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

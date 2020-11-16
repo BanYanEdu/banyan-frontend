@@ -27,6 +27,8 @@ import { SocialModule, SocialAppModule } from 'inet-social';
 import {ChatMessageModule} from "inet-chat";
 import { HomeComponent } from './pages/home/home.component';
 import { ComingMessageComponent } from './pages/system/coming.message';
+import { CommonService } from './shared/services/common.service';
+import { FocusService } from './shared/services/focus.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -57,8 +59,12 @@ import { ComingMessageComponent } from './pages/system/coming.message';
     ],
     providers: [{
         provide: RouteReuseStrategy,
-        useClass: CustomCacheRouteReuseStrategy
-    }],
+        useClass: CustomCacheRouteReuseStrategy,
+    }, 
+    CommonService,
+    FocusService
+],
+
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

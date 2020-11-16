@@ -1,0 +1,88 @@
+// @import "node_modules/bootstrap/scss/bootstrap";
+@import 'variables';
+
+.btn-default { 
+    // @include button-outline-variant($cal-btn-color);
+    color: $default-font-color;
+    background-color: rgb(246, 247, 248);
+}
+
+.btn-default:hover { 
+    background-color: white;
+}
+
+.btn-primary { 
+    // background-color: rgb(27, 101, 161);
+    background-color: $default-theme-color-light;
+    border: none;
+}
+.btn-primary:hover { 
+    // background-color: rgb(27, 101, 161);
+    background-color: $default-theme-color;
+}
+.btn-primary:disabled { 
+    background-color: gray;
+}
+
+
+.btn-add { 
+    // background-color: rgb(27, 101, 161);
+    background-color: white;
+    border-width: thin;
+    border-color: $default-line-color;
+}
+.btn-add{
+    .fa{
+        color: $default-theme-opposite-color;
+    }
+}
+
+.btn-add:hover { 
+    background-color: whitesmoke;
+}
+
+.btn-save { 
+    background-color: $default-theme-color;
+    color: white;
+    border-width: thin;
+    border-color: white;
+    // border-width: thin;
+    // border-color: $default-line-color;
+}
+.btn-save:hover { 
+    // background-color: rgb(27, 101, 161);
+    // background-color: $default-theme-color-light;
+    // background-color: red;
+    border-width: thin;
+    border-color: $default-theme-opposite-color;
+}
+.btn-save:disabled { 
+    background-color: $default-theme-color-light;
+}
+.btn-save:disabled:hover { 
+    border-width: thin;
+    border-color: white;
+}
+
+
+.badge-primary{
+    background-color: transparent;
+    color: $default-font-color;
+}
+.custom-checkbox{
+    .custom-control-label::before,
+    .custom-control-label::after{
+        top: -10px;
+    }
+}
+.cal-button-icon-only{
+    border: none;
+    
+}
+.space-lelf{
+    margin-left: 5px;
+}
+.badge-button{
+    background-color: $default-theme-color;
+    color: $text-color-bg;
+}

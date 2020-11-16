@@ -72,6 +72,9 @@ body {
   border-bottom: 1px dotted $default-font-highlight;
   text-decoration: none;
 }
+.disabled-link {
+  pointer-events: none;
+}
 
 /* LABELS */
 .form-label{
@@ -426,4 +429,20 @@ img.avatar-error {
   left: 0;
   margin: 0;
   // background-color: blue;
+}
+
+// Modal
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+.modal-form {
+  border: none;
+  // border-style: solid;
+  // border-color: #b96a43;
+  // border-color: blue;
+  // border-width: 1px;
+  // border-radius: 10px;
 }

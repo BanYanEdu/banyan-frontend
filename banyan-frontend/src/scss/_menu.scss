@@ -3,9 +3,13 @@
 .menu-panel {
     background-color: $default-theme-color;
     height: 52px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.menu-item-panel {
+    margin-top: 12px ;
 }
 .menu-item {
     color: white;
@@ -17,7 +21,7 @@
 .menu-icon {    // convert to #819a9e
     filter: invert(65%) sepia(7%) saturate(787%) hue-rotate(140deg) brightness(91%) contrast(84%);
     height: 36px;
-    margin-top: 8px;
+    margin-top: 3px;
     // padding-left: 10px;
     // width: 48px;
 }
@@ -26,7 +30,9 @@
 
 }
 
+.menu-button-panel {
+    margin-top: 3px ;
+}
 .menu-button { 
     height: 36px;
-    margin-top: 8px;
 }

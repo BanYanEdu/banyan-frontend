@@ -3,14 +3,14 @@ import { SystemInfo } from "./SystemInfo";
 export class BaseEditableModel {
     uuid?: string;
     organId?: string;
-    // createdByCode?: string;
-    // createdByName?: string;
-    // createdAt?: number;
-    // modifiedByCode?: string;
-    // modifiedByName?: string;
-    // modifiedAt?: number;
-    // lockedByCode?: string;
-    // lockedByName?: string;
-    // lockedAt?: number;
-    systemInfo?: SystemInfo
+    createdByCode?: string;
+    createdByName?: string;
+    createdAt?: number;
+    modifiedByCode?: string;
+    modifiedByName?: string;
+    modifiedAt?: number;
+    lockedByCode?: string;
+    lockedByName?: string;
+    lockedAt?: number;
+    // systemInfo?: SystemInfo
 }

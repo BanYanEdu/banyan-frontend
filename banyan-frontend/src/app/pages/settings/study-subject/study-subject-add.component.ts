@@ -28,17 +28,13 @@ export class StudySubjectAddComponent extends BaseAddDialogComponent<StudySubjec
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.settingsService.studySubjectList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
         
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.studySubjectCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.studySubjectUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 }

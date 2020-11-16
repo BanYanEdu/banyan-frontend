@@ -25,24 +25,22 @@ export class OutletAddComponent extends BaseAddDialogComponent<Outlet>{
             'name': new FormControl(null, [Validators.required]),
             'sortIndex': new FormControl(null, [Validators.required]),
             'fullAddress': new FormControl(null),
+            'phoneNo': new FormControl(null),
+            'email': new FormControl(null),
             'workingTimes': new FormControl(null),
-            'longtitude': new FormControl(null),
+            'longitude': new FormControl(null),
             'latitude': new FormControl(null),
             'inactive': new FormControl(null)
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.settingsService.outletList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
         
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.outletCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.outletUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 }

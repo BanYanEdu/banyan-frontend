@@ -6,16 +6,12 @@ import {ConfirmDialogComponent} from "inet-ui";
     selector: 'app-root',
     template: `        
                 <div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <app-top-menu></app-top-menu>
-                        </div>
+                    <div class="col-sm-12">
+                        <app-top-menu></app-top-menu>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
+                    <div class="col-sm-12">
                             <router-outlet></router-outlet>
                         </div>
-                    </div>
                 </div>
     `
 

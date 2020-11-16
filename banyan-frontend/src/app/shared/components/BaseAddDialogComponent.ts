@@ -76,6 +76,7 @@ export class BaseAddDialogComponent<TModel extends BaseEditableModel> extends Ba
         return this.mainForm.valid;
     }
     protected populateFormValue(): void {
+        
         Object.assign(this.requestItem, <TModel>this.mainForm.getRawValue());
 
         this.requestItem.organId = iNet.organId;
@@ -89,14 +90,11 @@ export class BaseAddDialogComponent<TModel extends BaseEditableModel> extends Ba
         return "code";
     }
     onSave() {
-        console.log("Saving ....");
-        this.populateFormValue();
-        console.log(this.requestItem);
-
         if (this.mode === FormMode.E_ADD) {
             let businessIdValue = this.mainForm.get(this.businessIdField) && this.mainForm.get(this.businessIdField).value;
             if (businessIdValue) {
                 // check unique business id
+                // console.log("Check code  ....");
                 let criteria = {};
                 criteria[this.businessIdField] = businessIdValue;
                 this.callSearch(criteria, data => {
@@ -109,6 +107,7 @@ export class BaseAddDialogComponent<TModel extends BaseEditableModel> extends Ba
                     }
                 });
             } else {
+                // console.log("No check Code ...");
                 this.doSave();
             }
         } else {

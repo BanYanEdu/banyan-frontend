@@ -36,19 +36,11 @@ export class StudySubjectListComponent extends BaseListComponent<StudySubject> i
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "SS01", name:"Ngữ pháp + từ vựng âm Hán", sortIndex: 10, inactive: false},
-                {code: "SS02", name:"Nghe nói", sortIndex: 20, inactive: false},
-                {code: "SS03", name:"Từ vựng Tiếng Hàn", sortIndex:30, inactive: false},
-                {code: "SS04", name:"Tiếng Hàn nhập môn", sortIndex:40, inactive: false},
-                {code: "SS05", name:"Văn hóa Hàn", sortIndex:50, inactive: true},
-            ], 
-            total: 5}
+        var criteria: any = this.params;
+
 
         // this.dataResource = new DataTableResource([]);
-        this.settingsService.studySubjectList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.settingsService.studySubjectList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

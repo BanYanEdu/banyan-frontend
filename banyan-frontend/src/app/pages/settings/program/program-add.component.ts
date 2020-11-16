@@ -28,17 +28,13 @@ export class ProgramAddComponent extends BaseAddDialogComponent<Program>{
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.settingsService.programList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
-        
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        // console.log(requestItem);        
+        this.settingsService.programCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.programUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 }

@@ -5,7 +5,9 @@ export class Outlet extends BaseEditableMdModel {
     sortIndex?: number;
     remark?: string;
     workingTimes?: string;
-    addressInfo?: AddressInfo;
-    contactInfo?: ContactInfo
-    // fullAddress?: string;
+    longitude?: number;
+    latitude?: number;
+    phoneNo?: string;
+    email?: string;
+    fullAddress?: string;
 }

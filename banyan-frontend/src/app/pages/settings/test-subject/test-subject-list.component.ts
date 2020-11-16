@@ -36,19 +36,9 @@ export class TestSubjectListComponent extends BaseListComponent<TestSubject> imp
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "TS01", name:"Nghe", sortIndex: 10, inactive: false},
-                {code: "TS02", name:"Nói", sortIndex: 20, inactive: false},
-                {code: "TS03", name:"Đọc", sortIndex:30, inactive: false},
-                {code: "TS04", name:"Thuyết trình", sortIndex:40, inactive: false},
-                {code: "TS05", name:"Từ vựng", sortIndex:50, inactive: true},
-            ], 
-            total: 5}
-        
-        // this.dataResource = new DataTableResource([]);
-        this.settingsService.testSubjectList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        var criteria: any = this.params;
+
+        this.settingsService.testSubjectList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

@@ -28,17 +28,15 @@ export class SourceAddComponent extends BaseAddDialogComponent<Source>{
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.settingsService.sourceList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
         // var outlet: Outlet = new Outlet();
         // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
         
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.sourceCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.sourceUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 }

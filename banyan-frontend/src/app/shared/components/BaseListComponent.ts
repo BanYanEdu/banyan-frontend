@@ -19,13 +19,13 @@ export abstract class BaseListComponent<TModel extends BaseEditableModel> extend
     pageNumber = 1;
     selectedItem: TModel;
     mode: FormMode;
-    protected params: any; // to reload dataa
+    protected params: any; // to reload data
 
     modalRef: BsModalRef;
     config = {
         backdrop: false,
         ignoreBackdropClick: true,
-        class: 'modal-lg'
+        class: 'modal-xl'
     };
     constructor(protected commonService: CommonService,
         protected modalService: BsModalService,
@@ -86,13 +86,12 @@ export abstract class BaseListComponent<TModel extends BaseEditableModel> extend
     public load(params): void {
         //this.dataResource.query(params).then(function () {
         this.params = params;
+        // console.log(this.params);
 
         this.callLoadList(data => {
             const items = data['items'];
             this.itemCount = data['total'];
             this.dataResource = new DataTableResource(items);
-
-            console.log(items);
 
             if (items) {
                 this.itemCount = data['total'] || items.length;

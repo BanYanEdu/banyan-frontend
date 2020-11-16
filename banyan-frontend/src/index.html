@@ -51,7 +51,7 @@
 
         // Config server here
         /*var pathServer = 'http://172.16.3.166:8080/collaboration/vinaco';*/
-        var pathServer = 'https://calista-dev.inetcloud.vn/collaboration/vinaco';
+        var pathServer = 'https://calista-dev.inetcloud.vn/hrm/vinaco';
          // var pathServer = 'https://app.dxsoft.vn/collaboration/inetcorp';
         // Don't need config anything else`
         var arrPath = pathServer.split('/');
@@ -75,7 +75,7 @@
         // Load user info from remote server
 
         function loadUserInfo() {
-            fetch(iNet.getPUrl('unicorn/page/user-info'))
+            fetch(iNet.getPUrl('crm/page/user-info'))
                 .then(function(response) {
                     return response.json();
                 })

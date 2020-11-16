@@ -36,24 +36,9 @@ export class OutletListComponent extends BaseListComponent<Outlet> implements On
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "001", name:"Kanata Nam Kỳ Khởi Nghĩa", sortIndex: 10, inactive: false,
-                    addressInfo: {fullAddress: "282 Nam Kỳ Khởi Nghĩa, Quận 3, TPHCM"}
-                },
-                {code: "002", name:"Kanata Phú Mỹ Hưng", sortIndex: 20, inactive: false,
-                    addressInfo: {fullAddress: "123 Nguyễn Văn Linh, Quận 7, TPHCM"}
-                },
-                {code: "003", name:"Kanata Trương Công Định", sortIndex:30, inactive: true,
-                    addressInfo: {fullAddress: "22 Trương Công Định, Quận Tân Bình, TPHCM"}
-                },
-            ], 
-            total: 3}
+        var criteria: any = this.params;
 
-
-        // this.dataResource = new DataTableResource([]);
-        this.settingsService.outletList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.settingsService.outletList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {
