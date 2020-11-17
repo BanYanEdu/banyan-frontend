@@ -1,0 +1,30 @@
+@import 'variables';
+
+// Datagrid
+.datagrid {
+    // background-color: whitesmoke;
+    padding: 5px;
+}
+.datagrid-header {
+    border-bottom: 1px solid $default-line-color;
+    background-color:rgb(235, 236, 239);
+    margin:0px;
+    color: rgb(135, 146, 157);
+    font-weight: bold;
+    height: 30px;
+    padding: 5px;
+}
+.datagrid-row {
+    border-bottom: 1px solid $default-line-color;
+    background-color: white;
+    margin:0px;
+    padding: 5px;
+    // vertical-align: middle;
+    // line-height: 60px;
+    // height: 60px;
+}
+.datagrid-cell {
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -1,6 +1,7 @@
 export let koLocale = {
     MENU: {
         CLASS: '수업',
+        CLASSES: '수업',
         CURRENCY: 'Currency',
         CURRENCIES: 'Currencies',
         CRM: 'Customer Relationship Management',
@@ -9,11 +10,15 @@ export let koLocale = {
         EMPLOYEES: 'Employees',
         HOME: 'Home',
         LECTURER: '강사',
+        LECTURERS: '강사',
         PRODUCTS: 'Products',
+        PROGRAM: '프로그램',
+        PROGRAMS: '프로그램',
         SETTINGS: '설정',
         SOURCE: 'Source',
         SOURCES: 'Sources',
         STUDENT: '학생',
+        STUDENTS: '학생',
         TASK: 'Task',
         TASKS: 'Tasks'
     },

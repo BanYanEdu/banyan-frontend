@@ -1,7 +1,7 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
         <div class="col-sm-2 form-label">
-            <label for="code">Mã</label>
+            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
@@ -9,27 +9,27 @@
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </span>
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Mã đã tồn tại
+                {{ 'MESSAGE.CODE_EXISTS' | translate }}
             </span>
         </div>
         <div class="col-sm-2 form-label">
-            <label for="sortIndex">TTHT</label>
+            <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX_SHORT' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <input type="text" class="form-control form-control-block form-required" id="sortIndex" numericInputOnly
                 maxlength="10" formControlName="sortIndex">
             <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
                 class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </div>
         </div>
         <div class="col-sm-2 form-label">
-            <label for="inactive" class="lbl">NTD</label>
+            <label for="inactive" class="lbl">{{ 'COMMON.GENERAL.INACTIVE_SHORT' | translate }}</label>
         </div>
         <div class="col-sm-1">
             <div class="custom-checkbox">
@@ -40,38 +40,38 @@
     </div>
     <div class="row mt-2">
         <div class="col-sm-2 form-label">
-            <label for="name">Tên</label>
+            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
         </div>
         <div class="col-sm-6">
             <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
                 formControlName="name">
             <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-2 form-label">
-            <label for="name">Hình thức chấm</label>
+            <label for="name">{{ 'MODULE.SETTINGS.EVALUATION_TYPE' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <select class="form-control form-required" formControlName="evaluationType" (click)="changeEvaType()">
                 <option value="{{ evaType.value }}" *ngFor="let evaType of evaTypes">
-                    {{evaType.value}}
+                    {{ 'MODULE.SETTINGS.EVALUATION_TYPE_VALUES.' + evaType.value | translate }}
                 </option>
             </select>
         </div>
     </div>
     <div class="row mt-2" *ngIf="evaType =='E_SCORES'">
         <div class="col-sm-2 form-label">
-            <label for="maxScores">Điểm tối đa</label>
+            <label for="maxScores">{{ 'MODULE.SETTINGS.MAX_SCORES' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <input type="text" class="form-control form-control-block form-required" id="maxScores" numericInputOnly
                 maxlength="10" formControlName="maxScores">
         </div>
         <div class="col-sm-2 form-label">
-            <label for="decimals">Số thập phân</label>
+            <label for="decimals">{{ 'MODULE.SETTINGS.DECIMALS' | translate }}</label>
         </div>
         <div class="col-sm-1">
             <select class="form-control form-required" formControlName="decimals">
@@ -87,21 +87,30 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-9">
-        <div class="row mt-2">
-            Cấp bậc
+        <div class="row mt-2 datagrid-header">
+            <div class="col-sm-2">
+                {{ 'COMMON.GENERAL.CODE' | translate }}
+            </div>
+            <div class="col-sm-4">
+                {{ 'COMMON.GENERAL.DESCRIPTION' | translate }}
+            </div>
+            <div class="col-sm-2">
+                {{ 'COMMON.GENERAL.SCORES' | translate }}
+            </div>
         </div>
-        <div class="row mt-2" *ngFor="let level of levels; index as i; last as isLast">
+
+        <div class="row mt-2 datagrid-row" *ngFor="let level of levels; index as i; last as isLast">
             <div class="col-sm-2">
                 <input type="text" class="form-control" maxlength="20" [(ngModel)]="level.code"
-                    class="form-control form-required" placeholder="Mã">
+                    class="form-control form-required">
             </div>
             <div class="col-sm-4">
                 <input type="text" class="form-control" maxlength="150" [(ngModel)]="level.description"
-                    class="form-control form-required" placeholder="Diễn giải">
+                    class="form-control form-required">
             </div>
             <div class="col-sm-2">
                 <input type="text" class="form-control" maxlength="4" [(ngModel)]="level.scores"
-                    class="form-control form-required" placeholder="Điểm số" numericInputOnly>
+                    class="form-control form-required" numericInputOnly>
             </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-default" (click)="onUp(i)" style="margin-left: 5px;"
@@ -133,8 +142,8 @@
 <div class="row mt-2">
     <div class="col-sm-2"> </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
-            <i class="fa fa-save"></i> Lưu
+        <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+            <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
         </button>
     </div>
 </div>

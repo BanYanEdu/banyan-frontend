@@ -19,11 +19,11 @@ import { TestSubjectListComponent } from './test-subject/test-subject-list.compo
 import { TestSubjectAddComponent } from './test-subject/test-subject-add.component';
 import { SchedulePaternAddComponent } from './schedule-pattern/schedule-pattern-add.component';
 import { SchedulePatternListComponent } from './schedule-pattern/schedule-pattern-list.component';
-import { RoomListComponent } from './room/room-list.component';
-import { RoomAddComponent } from './room/room-add.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
 import { HolidayAddComponent } from './holiday/holiday-add.component';
 import { AppCommonModule } from '../common/app-common.module';
+import { FacilityListComponent } from './facility/facility-list.component';
+import { FacilityAddComponent } from './facility/facility-add.component';
 
 @NgModule({
     imports: [
@@ -48,8 +48,8 @@ import { AppCommonModule } from '../common/app-common.module';
         TestSubjectAddComponent,
         SchedulePatternListComponent,
         SchedulePaternAddComponent,
-        RoomListComponent,
-        RoomAddComponent,
+        FacilityListComponent,
+        FacilityAddComponent,
         HolidayListComponent,
         HolidayAddComponent
 

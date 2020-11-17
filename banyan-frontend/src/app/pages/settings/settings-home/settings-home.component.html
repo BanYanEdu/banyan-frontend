@@ -2,7 +2,7 @@
     <br>
     <div class="row">
         <div class="col-sm-12">
-            <span class="form-title">THIẾT LẬP</span>
+            <span class="form-title">{{ 'MENU.SETTINGS' | translate }}</span>
         </div>   
     </div>
     <br>
@@ -11,22 +11,17 @@
             <ul>
                 <li routerLinkActive="active">
                     <a routerLink="../program" routerLinkActive="active" class="link-text">
-                        <h5>Chương trình</h5>
+                        <h5>{{ 'MENU.PROGRAMS' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="../study-subject" routerLinkActive="active" class="link-text">
-                        <h5>Môn học</h5>
+                        <h5>{{ 'MENU.STUDY_SUBJECTS' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="../test-subject" routerLinkActive="active" class="link-text">
-                        <h5>Môn thi</h5>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../schedule-pattern" routerLinkActive="active" class="link-text disabled-link">
-                        <h5>Thời khóa biểu</h5>
+                        <h5>{{ 'MENU.TEST_SUBJECTS' | translate }}</h5>
                     </a>
                 </li>
             </ul>
@@ -35,26 +30,25 @@
             <ul>
                 <li routerLinkActive="active">
                     <a routerLink="../outlet" routerLinkActive="active" class="link-text">
-                        <h5>Chi nhánh</h5>
+                        <h5>{{ 'MENU.OUTLETS' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="../source" routerLinkActive="active" class="link-text">
-                        <h5>Nguồn</h5>
+                        <h5>{{ 'MENU.SOURCES' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
-                    <a routerLink="../holiday" routerLinkActive="active" class="link-text disabled-link">
-                        <h5>Ngày nghỉ lễ</h5>
+                    <a routerLink="../facility" routerLinkActive="active" class="link-text">
+                        <h5>{{ 'MENU.FACILITIES' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
-                    <a routerLink="../room" routerLinkActive="active" class="link-text disabled-link">
-                        <h5>Phòng ốc</h5>
+                    <a routerLink="../schedule-pattern" routerLinkActive="active" class="link-text disabled-link">
+                        <h5>{{ 'MENU.SCHEDULE_PATTERNS' | translate }}</h5>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-
 </div>

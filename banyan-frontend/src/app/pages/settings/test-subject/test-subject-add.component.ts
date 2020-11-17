@@ -98,6 +98,11 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
 
     changeEvaType() {
         this.evaType = this.mainForm.get('evaluationType').value;
+        if (this.evaType == "E_LEVEL") {
+            if (this.levels.length == 0) {
+                this.onAddRow();
+            }
+        }
     }
 
     onAddRow() {

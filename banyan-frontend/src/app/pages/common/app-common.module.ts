@@ -26,6 +26,7 @@ import { CommonService } from 'app/shared/services/common.service';
 import { FocusService } from 'app/shared/services/focus.service';
 // import {NgxMaskModule} from 'ngx-mask';
 import { RouterModule } from '@angular/router';
+import { OutletSelectorComponent } from './outlet-selector/outlet-selector.component';
 
 
 
@@ -57,6 +58,7 @@ import { RouterModule } from '@angular/router';
         InputCharacterMaskDirective,
         // NumericSeparatorDirective,
         NumericOnlyDirective,
+        OutletSelectorComponent,
         // ProspectStatusSelectorComponent
     ],
     exports: [
@@ -79,6 +81,7 @@ import { RouterModule } from '@angular/router';
         // NumericSeparatorDirective,
         NumericOnlyDirective,
         DialogModule,
+        OutletSelectorComponent
     ],
     providers: [
         ComponentLoaderFactory,

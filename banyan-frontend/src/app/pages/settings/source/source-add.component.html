@@ -1,7 +1,7 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
         <div class="col-sm-3 form-label">
-            <label for="code">Mã</label>
+            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-3">
             <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
@@ -9,44 +9,44 @@
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </span>
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Mã đã tồn tại
+                {{ 'MESSAGE.CODE_EXISTS' | translate }}
             </span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-3 form-label">
-            <label for="name">Tên</label>
+            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
         </div>
         <div class="col-sm-6">
             <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
                 formControlName="name">
             <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-3 form-label">
-            <label for="sortIndex">Thứ tự hiển thị</label>
+            <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <input type="text" class="form-control form-control-block form-required" id="sortIndex"
                 numericInputOnly maxlength="10" formControlName="sortIndex">
             <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
                 class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </div>
 
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-3 form-label">
-            <label for="inactive" class="lbl">NTD</label>
+            <label for="inactive" class="lbl">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</label>
         </div>
         <div class="col-sm-4">
             <div class="custom-checkbox">
@@ -60,8 +60,8 @@
     <div class="row mt-2">
         <div class="col-sm-3"> </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
-                Lưu
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
         </div>
     </div>

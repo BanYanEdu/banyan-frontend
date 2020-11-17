@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FacilityListComponent } from './facility/facility-list.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
 import { OutletListComponent } from './outlet/outlet-list.component';
 import { ProgramListComponent } from './program/program-list.component';
-import { RoomListComponent } from './room/room-list.component';
 import { SchedulePatternListComponent } from './schedule-pattern/schedule-pattern-list.component';
 import { SettingsHomeComponent } from './settings-home/settings-home.component';
 import { SourceListComponent } from './source/source-list.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
     { path: 'test-subject', component: TestSubjectListComponent },
     { path: 'schedule-pattern', component: SchedulePatternListComponent },
     { path: 'holiday', component: HolidayListComponent },
-    { path: 'room', component: RoomListComponent },
+    { path: 'facility', component: FacilityListComponent },
 ]
 @NgModule({
     imports: [RouterModule.forChild(routes)],

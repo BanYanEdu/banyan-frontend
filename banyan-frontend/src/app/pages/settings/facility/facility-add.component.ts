@@ -5,13 +5,13 @@ import { SettingsService } from '../settings.service';
 import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogComponent"
 import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
-import { Room } from 'app/model/settings/Room';
+import { Facility } from 'app/model/settings/Facility';
 
 @Component({
-    selector: 'app-room-add',
-    templateUrl: './room-add.component.html'
+    selector: 'app-facility-add',
+    templateUrl: './facility-add.component.html'
 })
-export class RoomAddComponent extends BaseAddDialogComponent<Room>{
+export class FacilityAddComponent extends BaseAddDialogComponent<Facility>{
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
@@ -24,21 +24,28 @@ export class RoomAddComponent extends BaseAddDialogComponent<Room>{
             'code': new FormControl(null, [Validators.required]),
             'name': new FormControl(null, [Validators.required]),
             'sortIndex': new FormControl(null, [Validators.required]),
-            'inactive': new FormControl(null)
+            'inactive': new FormControl(null),
+            'facilityNo': new FormControl(null, [Validators.required]),
+            'seatCount': new FormControl(null, [Validators.required]),
+            'outletId': new FormControl(null, [Validators.required]),
+            'outletCode': new FormControl(null),
+            'outletName': new FormControl(null),
+            
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.settingsService.facilityList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
-        
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.facilityCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.settingsService.facilityUpdate(requestItem).subscribe(data => callbackFn(data));
+    }
+
+    onChangeOutlet(event) {
+        this.mainForm.controls['outletId'].setValue(event[0]);
+        this.mainForm.controls['outletCode'].setValue(event[1]);
+        this.mainForm.controls['outletName'].setValue(event[2]);
     }
 }

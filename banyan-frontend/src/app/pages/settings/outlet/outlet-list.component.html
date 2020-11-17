@@ -1,9 +1,9 @@
 <div class="app-content">
     <div class="row form-header">
         <div class="col-sm-12">
-            <span class="form-title">Chi nhánh</span>
-            <button type="button" class="btn btn-primary ml-2" (click)="onAdd(editDialog)">
-                Thêm
+            <span class="form-title">{{ 'MENU.OUTLETS' | translate }}</span>
+            <button type="button" class="btn btn-add ml-4" (click)="onAdd(editDialog)">
+                <i class="fa fa-plus"></i> {{ 'COMMON.ACTION.ADD' | translate }}
             </button>
         </div>
     </div>
@@ -12,18 +12,15 @@
             (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
             [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
             [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
-            <data-table-column [property]="'code'" [header]="'Mã'" [width]="100">
+            <data-table-column [property]="'code'" [header]="'COMMON.GENERAL.CODE' | translate" [width]="100">
             </data-table-column>
-            <data-table-column [property]="'name'" [header]="'Tên'">
+            <data-table-column [property]="'name'" [header]="'COMMON.GENERAL.NAME' | translate">
             </data-table-column>
-            <data-table-column [property]="" [header]="'Địa chỉ'">
-                <ng-template #dataTableCell let-item="item">
-                    {{ item.fullAddress }}
-                </ng-template>
+            <data-table-column [property]="'fullAddress'" [header]="'COMMON.CONTACT_INFO.ADDRESS' | translate">
             </data-table-column>
-            <data-table-column [property]="'sortIndex'" [header]="'TTHT'" [styleClass]="'text-center'" [width]="120">
+            <data-table-column [property]="'sortIndex'" [header]="'COMMON.GENERAL.SORT_INDEX_SHORT' | translate" [styleClass]="'text-center'" [width]="120">
             </data-table-column>
-            <data-table-column [property]="" [header]="'NTD'" [styleClass]="'text-center'" [width]="100">
+            <data-table-column [property]="" [header]="'COMMON.GENERAL.INACTIVE_SHORT' | translate" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
                     <div class="">
                         <span *ngIf="item.inactive"><i class="fa fa-check"></i></span>
@@ -46,9 +43,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title pull-left">
-                        Chi nhánh
-                        <span *ngIf="isEditMode"> - Sửa</span>
-                        <span *ngIf="!isEditMode"> - Thêm</span></h4>
+                        {{ 'MENU.OUTLET' | translate }}
+                        <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                        <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span></h4>
                     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                         <span aria-hidden="true">&times;</span>
                     </button>

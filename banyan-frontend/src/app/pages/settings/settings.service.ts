@@ -34,6 +34,14 @@ export class SettingsService {
         banyan_ems_settings_test_subject_create: iNet.getPUrl('crm/ems/test-subject/create'),
         banyan_ems_settings_test_subject_update: iNet.getPUrl('crm/ems/test-subject/update'),
         banyan_ems_settings_test_subject_list: iNet.getPUrl('crm/ems/test-subject/list'),
+        // Facility
+        banyan_ems_settings_facility_create: iNet.getPUrl('crm/ems/facility/create'),
+        banyan_ems_settings_facility_update: iNet.getPUrl('crm/ems/facility/update'),
+        banyan_ems_settings_facility_list: iNet.getPUrl('crm/ems/facility/list'),
+        // Schedule Pattern
+        banyan_ems_settings_schedule_pattern_create: iNet.getPUrl('crm/ems/schedule-pattern/create'),
+        banyan_ems_settings_schedule_pattern_update: iNet.getPUrl('crm/ems/schedule-pattern/update'),
+        banyan_ems_settings_schedule_pattern_list: iNet.getPUrl('crm/ems/schedule-pattern/list'),
         
     };
 
@@ -55,17 +63,21 @@ export class SettingsService {
     studySubjectCreate(item: StudySubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_study_subject_create, item); }
     studySubjectUpdate(item: StudySubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_study_subject_update, item); }
     studySubjectList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_study_subject_list, criteria); }
-    // Study Subject
+    // Test Subject
     testSubjectCreate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_test_subject_create, item); }
     testSubjectUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_test_subject_update, item); }
     testSubjectList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_test_subject_list, criteria); }
-    
-    
+    // Facility
+    facilityCreate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_create, item); }
+    facilityUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_update, item); }
+    facilityList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_list, criteria); } 
     // Schedule Pattern
-    schedulePatternList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
-    // Room
-    roomList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+    schedulePatternCreate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_create, item); }
+    schedulePatternUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_update, item); }
+    schedulePatternList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_list, criteria); } 
+
+   
     // Holiday
-    holidayList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+    holidayList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_program_list, criteria); }
     
   }
