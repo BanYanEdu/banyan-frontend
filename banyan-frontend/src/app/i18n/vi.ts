@@ -9,6 +9,8 @@ export let viLocale = {
         COLLEAGUES: 'Đồng nghiệp',
         CONTACT: 'Liên hệ',
         CONTACTS: 'Liên hệ',
+        COURSE: 'Khóa học',
+        COURSES: 'Khóa học',
         CURRENCY: 'Loại tiền',
         CURRENCIES: 'Loại tiền',
         EMPLOYEES: 'Nhân viên',
@@ -106,9 +108,32 @@ export let viLocale = {
             MODIFIED_AT: 'Ngày sửa',
             MODIFIED_BY: 'Người sửa'
         },
+        TIME: {
+            MONDAY: 'Thứ hai',
+            MONDAY_SHORT: 'T2',
+            TUESDAY: 'Thứ ba',
+            TUESDAY_SHORT: 'T3',
+            WEDNESDAY: 'Thứ tư',
+            WEDNESDAY_SHORT: 'T4',
+            THURSDAY: 'Thứ năm',
+            THURSDAY_SHORT: 'T5',
+            FRIDAY: 'Thứ sáu',
+            FRIDAY_SHORT: 'T6',
+            SATURDAY: 'Thứ bảy',
+            SATURDAY_SHORT: 'T7',
+            SUNDAY: 'Chủ nhật',
+            SUNDAY_SHORT: 'CN',
+            WEEK_DAYS: 'Ngày trong tuần',
+            START_TIME: 'Thời gian bắt đầu',
+            END_TIME: 'Thời gian kết thúc'
+        }
 
     },
     MODULE: {
+        CLASS: {
+            CHECKING_REQUIRED: 'Kiểm tra đầu vào',
+            CURRICULUM: 'Giáo trình',
+        },
         COMMON: {
             GENERIC: {
                 ADDRESS: 'Địa chỉ',
@@ -175,6 +200,7 @@ export let viLocale = {
                 E_LEVEL: 'Cấp độ',
             },
             FACILITY_NO: 'Số hiệu',
+            LECTURE_UNIT_COUNT: 'Số tiết',
             MAX_SCORES: 'Điểm tối đa',
             SEATCOUNT: 'Tổng chỗ ngồi',
             CURRENCY: {

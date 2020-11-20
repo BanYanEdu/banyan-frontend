@@ -37,19 +37,8 @@ export class SchedulePatternListComponent extends BaseListComponent<SchedulePatt
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "SP01", name:"T2-T4-T6 19h-21h", sortIndex: 10, inactive: false},
-                {code: "SP02", name:"T2-T4-T6 8h30-10h30", sortIndex: 20, inactive: false},
-                {code: "SP03", name:"T3-T5-T7 19h-21h", sortIndex:30, inactive: false},
-                {code: "SP04", name:"T3-T5-T7 8h30-10h30", sortIndex:40, inactive: false},
-                {code: "SP05", name:"T7 & CN 8h30-12h00", sortIndex:50, inactive: true},
-            ], 
-            total: 5}
-        
-        // this.dataResource = new DataTableResource([]);
-        this.settingsService.schedulePatternList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        var criteria: any = this.params;
+        this.settingsService.schedulePatternList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

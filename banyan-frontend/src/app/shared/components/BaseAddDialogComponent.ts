@@ -124,5 +124,6 @@ export class BaseAddDialogComponent<TModel extends BaseEditableModel> extends Ba
     protected handlePostResult(data): void {
         this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
         this.valueChange.emit(data);
+        // console.log(data);
     }
 }

@@ -17,7 +17,7 @@ import {AuthenticateGuard, CloudTranslateModule, InterceptorModule, GridModule, 
 import {CustomTranslateLoader} from '../../i18n/custom-translate-loader';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
-// import { MomentPipe } from "../../shared/pipes/moment/moment.pipe";
+import { MomentPipe } from "../../shared/pipes/moment.pipe";
 // import { ReversePipe } from "../../shared/pipes/reverse/reverse.pipe";
 import { BsModalService } from 'ngx-bootstrap/modal';
 // import { TreeviewModule } from 'ngx-treeview';
@@ -27,6 +27,10 @@ import { FocusService } from 'app/shared/services/focus.service';
 // import {NgxMaskModule} from 'ngx-mask';
 import { RouterModule } from '@angular/router';
 import { OutletSelectorComponent } from './outlet-selector/outlet-selector.component';
+import { HourSelectorComponent } from './time-selector/hour-selector.component';
+import { MinuteSelectorComponent } from './time-selector/minute-selector.component';
+import { ProgramSelectorComponent } from './program-selector/program-selector.component';
+import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
 
 
 
@@ -53,12 +57,16 @@ import { OutletSelectorComponent } from './outlet-selector/outlet-selector.compo
         RouterModule
     ],
     declarations: [ 
-        // MomentPipe,
+        MomentPipe,
         // ReversePipe,
         InputCharacterMaskDirective,
         // NumericSeparatorDirective,
         NumericOnlyDirective,
         OutletSelectorComponent,
+        ProgramSelectorComponent,
+        StudySubjectSelectorComponent,
+        HourSelectorComponent,
+        MinuteSelectorComponent
         // ProspectStatusSelectorComponent
     ],
     exports: [
@@ -75,13 +83,17 @@ import { OutletSelectorComponent } from './outlet-selector/outlet-selector.compo
         PopoverModule,
         TabsModule,
         BsDatepickerModule,
-        // MomentPipe,
+        MomentPipe,
         // ReversePipe,
         InputCharacterMaskDirective,
         // NumericSeparatorDirective,
         NumericOnlyDirective,
         DialogModule,
-        OutletSelectorComponent
+        OutletSelectorComponent,
+        ProgramSelectorComponent,
+        StudySubjectSelectorComponent,
+        HourSelectorComponent,
+        MinuteSelectorComponent
     ],
     providers: [
         ComponentLoaderFactory,

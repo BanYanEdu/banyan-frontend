@@ -8,6 +8,8 @@ import { Program } from 'app/model/settings/Program';
 import { Source } from 'app/model/settings/Source';
 import { StudySubject } from 'app/model/settings/StudySubject';
 import { TestSubject } from 'app/model/settings/TestSubject';
+import { Facility } from 'app/model/settings/Facility';
+import { SchedulePattern } from 'app/model/settings/SchedulePattern';
 
 @Injectable({
     providedIn: 'root'
@@ -68,13 +70,13 @@ export class SettingsService {
     testSubjectUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_test_subject_update, item); }
     testSubjectList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_test_subject_list, criteria); }
     // Facility
-    facilityCreate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_create, item); }
-    facilityUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_update, item); }
+    facilityCreate(item: Facility): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_create, item); }
+    facilityUpdate(item: Facility): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_update, item); }
     facilityList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_list, criteria); } 
     // Schedule Pattern
-    schedulePatternCreate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_create, item); }
-    schedulePatternUpdate(item: TestSubject): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_update, item); }
-    schedulePatternList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_facility_list, criteria); } 
+    schedulePatternCreate(item: SchedulePattern): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_create, item); }
+    schedulePatternUpdate(item: SchedulePattern): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_update, item); }
+    schedulePatternList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_list, criteria); } 
 
    
     // Holiday

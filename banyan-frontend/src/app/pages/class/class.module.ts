@@ -13,11 +13,14 @@ import { ClassListComponent } from './class/class-list.component';
 import { ClassAddComponent } from './class/class-add.component';
 import { RegistrationListComponent } from './registration/registration-list.component';
 import { RegistrationAddComponent } from './registration/registration-add.component';
+import { AppCommonModule } from '../common/app-common.module';
+import { CourseViewComponent } from './course/course-view.component';
+import { StudySubjectAssignComponent } from './study-subject-assign/study-subject-assign.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        // AppCommonModule,
+        AppCommonModule,
         GridModule,
         ReactiveFormsModule,
         ClassRoutingModule
@@ -25,11 +28,13 @@ import { RegistrationAddComponent } from './registration/registration-add.compon
     declarations: [
         ClassHomeComponent,
         CourseListComponent,
+        CourseViewComponent,
         CourseAddComponent,
         ClassListComponent,
         ClassAddComponent,
         RegistrationListComponent,
-        RegistrationAddComponent
+        RegistrationAddComponent,
+        StudySubjectAssignComponent
 
     ],
     providers: [

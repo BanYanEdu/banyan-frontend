@@ -3,8 +3,8 @@
 .menu-panel {
     background-color: $default-theme-color;
     height: 52px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -27,7 +27,6 @@
 }
 .menu-icon:hover,focus {    // convert to white #ffffff
     filter: invert(95%) sepia(99%) saturate(3%) hue-rotate(179deg) brightness(105%) contrast(100%);
-
 }
 
 .menu-button-panel {

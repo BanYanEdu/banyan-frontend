@@ -1,0 +1,9 @@
+<form [formGroup]="mainForm">
+    <div>
+        <select class="form-control" (change)="onChanged()" formControlName="uuid" class="form-control form-control-block form-required">
+            <option value="{{item.uuid }}" *ngFor="let item of items">
+                {{ item.name }}
+            </option>
+        </select>
+    </div>
+</form>

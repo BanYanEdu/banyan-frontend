@@ -1,0 +1,122 @@
+<div class="app-content-white">
+    <div class="row mt-2">
+        <div class="col-sm-10">
+            <span class="form-title">{{ item?.name }}</span>
+            <button type="button" class="btn btn-add ml-2" (click)="onEdit(editDialog)">
+                <i class="fa fa-edit"></i> {{ 'COMMON.ACTION.EDIT' | translate }}
+            </button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.code }}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.sortIndex }}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.programName }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.curriculum }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired" disabled>
+                        <label class="lbl">
+                            <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
+                        <label class="lbl">
+                            <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.createdByCode }}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.createdAt | moment}}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="card mt-2 ml-2">
+                <div class="card-header card-header-white">{{ 'MENU.STUDY_SUBJECTS' | translate }}
+                    <a (click)="onAssign(assignStudySubjectDialog)"><span class="ml-2 btn-add"><i class="fa fa-edit"></i> </span> </a>
+                    <!-- <button type="button" class="btn btn-add ml-2" (click)="onAssign(assignStudySubjectDialog)">
+                        <i class="fa fa-edit"></i>
+                    </button> -->
+                </div>
+                <div class="card-body">
+                    <p class="card-text">....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.COURSE' | translate }}<span> -
+                        {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-course-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-course-add>
+                <!-- <app-deal-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                    </app-deal-add> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #assignStudySubjectDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.STUDY_SUBJECTS' | translate }}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-study-subject-assign (valueChange)='onChanged($event)'>
+                </app-study-subject-assign>
+                <!-- <app-deal-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                    </app-deal-add> -->
+            </div>
+        </div>
+    </div>
+</ng-template>

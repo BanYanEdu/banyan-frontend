@@ -1,0 +1,10 @@
+<form [formGroup]="mainForm">
+    <div>
+        <select (change)="onChanged()" formControlName="value" class="form-control">
+            <option value="{{item.value }}" *ngFor="let item of items">
+                {{ item.value }}
+                <!-- {{'MODULE.COMMON.GENDER.' + gender.code | translate}} -->
+            </option>
+        </select>
+    </div>
+</form>

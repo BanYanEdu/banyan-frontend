@@ -10,23 +10,21 @@ import { Outlet } from 'app/model/settings/Outlet';
 })
 export class ClassService {
     private url = {
-        // Outlet
-        banyan_ems_settings_outlet_add: iNet.getPUrl('banyan-ems/settings/outlet/add'),
-        banyan_ems_settings_outlet_update: iNet.getPUrl('banyan-ems/settings/outlet/update'),
-        banyan_ems_settings_outlet_delete: iNet.getPUrl('banyan-ems/settings/outlet/delete'),
-        banyan_ems_settings_outlet_list: iNet.getPUrl('banyan-ems/settings/outlet/list'),
+        // Course
+        banyan_ems_class_course_create: iNet.getPUrl('crm/ems/course/create'),
+        banyan_ems_class_course_update: iNet.getPUrl('crm/ems/course/update'),
+        banyan_ems_class_course_list: iNet.getPUrl('crm/ems/course/list'),
     };
 
     constructor(private http: HttpClientService, ) { }
 
     // Class
-    outletAdd(item: Outlet): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_outlet_add, item); }
-    outletUpdate(item: Outlet): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_outlet_update, item); }
-    outletDelete(id: string): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_outlet_delete, { uuid: id }); }
-    classList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+    classList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_list, criteria); }
    // Course
-    courseList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+   courseCreate(item: Outlet): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_create, item); }
+   courseUpdate(item: Outlet): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_update, item); }
+   courseList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_list, criteria); }
     // Registration
-    registrationList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+    registrationList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_list, criteria); }
     
   }

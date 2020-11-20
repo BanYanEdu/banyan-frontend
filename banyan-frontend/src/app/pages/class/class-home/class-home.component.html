@@ -2,7 +2,7 @@
     <br>
     <div class="row">
         <div class="col-sm-12">
-            <span class="form-title">LỚP HỌC</span>
+            <span class="form-title">{{ 'MENU.CLASSES' | translate }}</span>
         </div>   
     </div>
     <br>
@@ -10,18 +10,13 @@
         <div class="col-sm-6">
             <ul>
                 <li routerLinkActive="active">
-                    <a routerLink="../class" routerLinkActive="active" class="link-text">
-                        <h5>Lớp học</h5>
+                    <a routerLink="../class" routerLinkActive="active" class="link-text disabled-link">
+                        <h5>{{ 'MENU.CLASSES' | translate }}</h5>
                     </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="../course" routerLinkActive="active" class="link-text">
-                        <h5>Khóa học</h5>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../registeration" routerLinkActive="active" class="link-text">
-                        <h5>Đăng ký</h5>
+                        <h5>{{ 'MENU.COURSES' | translate }}</h5>
                     </a>
                 </li>
             </ul>

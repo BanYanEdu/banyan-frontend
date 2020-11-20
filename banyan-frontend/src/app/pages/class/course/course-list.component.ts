@@ -36,20 +36,9 @@ export class CourseListComponent extends BaseListComponent<Course> implements On
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {code: "R01-101", name:"Room 101 (CN01)", sortIndex: 10, inactive: false},
-                {code: "R01-102", name:"Room 102 (CN01)", sortIndex: 20, inactive: false},
-                {code: "R02-111", name:"Room 111 (CN2)", sortIndex:30, inactive: false},
-                {code: "R04-201", name:"Room 201 (CN04)", sortIndex:40, inactive: false},
-                {code: "R04-301", name:"Room 301 (CN04)", sortIndex:50, inactive: true},
-            ], 
-            total: 5
-            }
+        var criteria: any = this.params;
         
-        // this.dataResource = new DataTableResource([]);
-        this.classService.courseList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.classService.courseList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

@@ -1,7 +1,7 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="code">Mã</label>
+        <div class="col-sm-1 form-label">
+            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-2">
             <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
@@ -9,60 +9,147 @@
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Bắt buộc nhập
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
             </span>
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
                 class="help-block error-message">
-                Mã đã tồn tại
+                {{ 'MESSAGE.CODE_EXISTS' | translate }}
             </span>
         </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="name">Tên</label>
+        <div class="col-sm-1 form-label">
+            <label for="inactive" class="lbl">{{ 'COMMON.GENERAL.INACTIVE_SHORT' | translate }}</label>
         </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
-                formControlName="name">
-            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                Bắt buộc nhập
-            </span>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="sortIndex">Thứ tự hiển thị</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
-                numericInputOnly maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </div>
-
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="inactive" class="lbl">NTD</label>
-        </div>
-        <div class="col-sm-4">
+        <div class="col-sm-1">
             <div class="custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
                 <label for="inactive" class="lbl"></label>
             </div>
         </div>
     </div>
-
-    <hr>
     <div class="row mt-2">
-        <div class="col-sm-3"> </div>
+        <div class="col-sm-1 form-label">
+            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
+                formControlName="name">
+            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+            </span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-1 form-label">
+            <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX_SHORT' | translate }}</label>
+        </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
-                Lưu
-            </button>
+            <input type="text" class="form-control form-control-block form-required" id="sortIndex" numericInputOnly
+                maxlength="10" formControlName="sortIndex">
+            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
+                class="help-block error-message">
+                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+            </div>
+
         </div>
     </div>
 </form>
+<div class="row mt-2">
+    <!-- <div class="col-sm-1">
+        </div> -->
+    <div class="col-sm-12">
+        <div class="row mt-2 datagrid-header">
+            <div class="col-sm-7">
+                {{ 'COMMON.TIME.WEEK_DAYS' | translate }}
+            </div>
+            <div class="col-sm-2" align="center">
+                {{ 'COMMON.TIME.START_TIME' | translate }}
+            </div>
+            <div class="col-sm-2" align="center">
+                {{ 'COMMON.TIME.END_TIME' | translate }}
+            </div>
+        </div>
+        <div class="row mt-2 datagrid-row" *ngFor="let detail of details; index as i; last as isLast">
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onMon">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.MONDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onTue">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.TUESDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onWed">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.WEDNESDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onThu">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.THURSDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onFri">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.FRIDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onSat">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.SATURDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onSun">
+                    <label for="" class="lbl"> {{ 'COMMON.TIME.SUNDAY_SHORT' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-sm-1" align="right">
+                <app-hour-selector [value]="detail.hourFrom" (valueChange)="onChangeHour('E_FROM',i,$event)">
+                </app-hour-selector>
+            </div>
+            <div class="col-sm-1">
+                <app-minute-selector [value]="detail.minuteFrom" (valueChange)="onChangeMinute('E_FROM',i,$event)">
+                </app-minute-selector>
+            </div>
+            <div class="col-sm-1" align="right">
+                <app-hour-selector [value]="detail.hourTo" (valueChange)="onChangeHour('E_TO',i,$event)">
+                </app-hour-selector>
+            </div>
+            <div class="col-sm-1">
+                <app-minute-selector [value]="detail.minuteTo" (valueChange)="onChangeMinute('E_TO',i,$event)">
+                </app-minute-selector>
+            </div>
+            <div class="col-sm-1" align="right">
+                <button type="button" class="btn btn-default" (click)="onDeleteRow(i)" style="margin-left: 5px;"
+                    [hidden]="" tabindex="-1">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" (click)="onAddRow()" style="margin-left: 5px;">
+                    <i class="fa fa-plus"></i><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row mt-2">
+    <div class="col-sm-1"> </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+            <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+        </button>
+    </div>
+</div>
