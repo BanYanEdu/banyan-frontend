@@ -236,6 +236,7 @@ export let enLocale = {
             },
             FACILITY_NO: 'Facility No',
             LECTURE_UNIT_COUNT: 'Unit Count',
+            LECTURE_UNIT_COUNT_SHORT: 'Units',
             MAX_SCORES: 'Max Scores',
             SEATCOUNT: 'Seat Count',
             CURRENCY: {

@@ -14,6 +14,10 @@ export class ClassService {
         banyan_ems_class_course_create: iNet.getPUrl('crm/ems/course/create'),
         banyan_ems_class_course_update: iNet.getPUrl('crm/ems/course/update'),
         banyan_ems_class_course_list: iNet.getPUrl('crm/ems/course/list'),
+        // Class
+        banyan_ems_class_class_create: iNet.getPUrl('crm/ems/class/create'),
+        banyan_ems_class_class_update: iNet.getPUrl('crm/ems/class/update'),
+        banyan_ems_class_class_list: iNet.getPUrl('crm/ems/class/list'),
     };
 
     constructor(private http: HttpClientService, ) { }

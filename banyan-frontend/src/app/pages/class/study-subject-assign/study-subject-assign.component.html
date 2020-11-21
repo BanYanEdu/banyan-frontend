@@ -1,9 +1,9 @@
 <div class="row mt-2 datagrid-header">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         {{ 'MENU.STUDY_SUBJECT' | translate }}
     </div>
-    <div class="col-sm-2">
-        {{ 'MODULE.SETTINGS.LECTURE_UNIT_COUNT' | translate }}
+    <div class="col-sm-1">
+        {{ 'MODULE.SETTINGS.LECTURE_UNIT_COUNT_SHORT' | translate }}
     </div>
     <div class="col-sm-4">
         {{ 'COMMON.GENERAL.REMARK' | translate }}
@@ -11,15 +11,15 @@
 
 </div>
 <div class="row mt-2 datagrid-row" *ngFor="let item of finalItems; index as i; last as isLast">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <app-study-subject-selector [uuid]="item.studySubjectId" (valueChange)="onChangeStudySubject(i,$event)">
         </app-study-subject-selector>
     </div>
-    <div class="col-sm-3">
-        <input type="text" class="form-control" maxlength="20" class="form-control form-required" numericInputOnly>
+    <div class="col-sm-1">
+        <input type="text" class="form-control" maxlength="20" class="form-control form-required" numericInputOnly [(ngModel)]="item.unitCount">
     </div>
     <div class="col-sm-4">
-        <input type="text" class="form-control" maxlength="250" class="form-control">
+        <input type="text" class="form-control" maxlength="250" class="form-control"  [(ngModel)]="item.remark">
     </div>
     <div class="col-sm-2">
         <button type="button" class="btn btn-default" (click)="onUp(i)" style="margin-left: 5px;" [hidden]="i ==0"
@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="row mt-2">
-    <div class="col-sm-1">
+    <div class="col-sm-1 ml-3">
         <button type="button" class="btn btn-default" (click)="onAddRow()" style="margin-left: 5px;">
             <i class="fa fa-plus"></i><span></span>
         </button>
@@ -47,7 +47,7 @@
 </div>
 <hr>
 <div class="row mt-2">
-    <div class="col-sm-1"> </div>
+    <!-- <div class="col-sm-1"> </div> -->
     <div class="col-sm-2">
         <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
             <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}

@@ -201,6 +201,7 @@ export let viLocale = {
             },
             FACILITY_NO: 'Số hiệu',
             LECTURE_UNIT_COUNT: 'Số tiết',
+            LECTURE_UNIT_COUNT_SHORT: 'Số tiết',
             MAX_SCORES: 'Điểm tối đa',
             SEATCOUNT: 'Tổng chỗ ngồi',
             CURRENCY: {

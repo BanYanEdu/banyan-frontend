@@ -67,17 +67,19 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="card mt-2 ml-2">
-                <div class="card-header card-header-white">{{ 'MENU.STUDY_SUBJECTS' | translate }}
-                    <a (click)="onAssign(assignStudySubjectDialog)"><span class="ml-2 btn-add"><i class="fa fa-edit"></i> </span> </a>
-                    <!-- <button type="button" class="btn btn-add ml-2" (click)="onAssign(assignStudySubjectDialog)">
-                        <i class="fa fa-edit"></i>
-                    </button> -->
-                </div>
-                <div class="card-body">
-                    <p class="card-text">....</p>
-                </div>
-            </div>
+            <tabset class="col-sm-12" style="min-height:400px">
+                <tab heading= "Môn học" id="tabStudySubjects">
+                    <div class="row mt-2 ml-2">
+                        <button type="button" class="btn btn-add ml-2" (click)="onAssign(assignStudySubjectDialog)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </div>
+                </tab>
+                <tab heading="Thi/Kiểm tra" id="tabExams">
+                </tab>
+                <tab heading="Học liệu" id="tabStudyMaterials">
+                </tab>
+            </tabset>
         </div>
     </div>
 </div>

@@ -9,7 +9,8 @@ import { RegistrationListComponent } from './registration/registration-list.comp
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: ClassHomeComponent },
-    { path: 'class', component: ClassListComponent },
+    { path: 'class', redirectTo: 'class/list', pathMatch: 'full' },
+    { path: 'class/list', component: ClassListComponent },
     { path: 'course', redirectTo: 'course/list', pathMatch: 'full' },
     { path: 'course/list', component: CourseListComponent },
     { path: 'course/view/:id', component: CourseViewComponent },
