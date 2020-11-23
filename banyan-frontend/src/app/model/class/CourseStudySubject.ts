@@ -2,6 +2,6 @@ export class CourseStudySubject {
     studySubjectId?: string;
     studySubjectCode?: string;
     studySubjectName?: string;
-    unitCount?: number;
+    unitCount?: number=0;
     remark?: string;
 }

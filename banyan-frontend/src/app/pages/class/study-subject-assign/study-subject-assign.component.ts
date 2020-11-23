@@ -7,15 +7,15 @@ import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { ClassService } from '../class.service';
 import { StudySubject } from 'app/model/settings/StudySubject';
 import { NotificationType } from 'app/shared/models/NotificationType';
+import { Course } from 'app/model/class/Course';
 
 @Component({
     selector: 'app-study-subject-assign',
     templateUrl: './study-subject-assign.component.html'
 })
 export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySubject>{
-    @Input() uuid: string;
-    @Input() items: any[];
-    @Input() parentObject: string;
+    @Input() item: Course;
+    // @Input() parentObject: string;
 
     finalItems: any[] = [];
 
@@ -34,7 +34,7 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     }
 
     protected patchInitializedMainForm() {
-
+        this.finalItems = this.item.studySubjects;
     }
 
     protected callSearch(input: { code: string }, callbackFn: Function): void {
@@ -47,7 +47,7 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
         });
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        this.classService.courseUpdate(requestItem).subscribe(data => callbackFn(data));
+        // this.classService.courseUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 
     onAddRow() {
@@ -95,6 +95,15 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
             }
         }
 
-        this.onSave();
+        this.customizedSave();
+    }
+
+    customizedSave() {
+        this.classService.courseStudySubjectUpdate(this.item.uuid, JSON.stringify(this.finalItems)).subscribe(
+            data => {
+                this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
+                this.valueChange.emit(data);
+            }
+        );
     }
 }

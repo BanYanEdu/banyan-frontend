@@ -15,10 +15,11 @@ import { ClassService } from '../class.service';
 })
 export class CourseViewComponent extends BaseComponent {
     id: string;
-    refreshedTime: number = 0;
+    // refreshedTime: number = 0;
     item: Course;
     mode: FormMode = FormMode.E_EDIT;
-    activities: any[] = [];
+    unitCount: number = 0;
+    // activities: any[] = [];
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -45,7 +46,7 @@ export class CourseViewComponent extends BaseComponent {
             this.classService.courseList({uuid: this.id}).subscribe(data =>
                 {
                     this.item = data.items[0];
-                    // console.log(this.item);
+                    this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;
                 }
             );
         });
@@ -67,7 +68,7 @@ export class CourseViewComponent extends BaseComponent {
     onChanged($event) {
         this.modalRef.hide();
         this.load();
-        this.refreshedTime = this.refreshedTime + 1;
+        // this.refreshedTime = this.refreshedTime + 1;
     }
 
     onAssign(template: TemplateRef<any>) {

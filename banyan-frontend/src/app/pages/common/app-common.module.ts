@@ -31,6 +31,7 @@ import { HourSelectorComponent } from './time-selector/hour-selector.component';
 import { MinuteSelectorComponent } from './time-selector/minute-selector.component';
 import { ProgramSelectorComponent } from './program-selector/program-selector.component';
 import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
+import { CourseSelectorComponent } from './course-selector/course-selector.component';
 
 
 
@@ -64,6 +65,7 @@ import { StudySubjectSelectorComponent } from './study-subject-selector/study-su
         NumericOnlyDirective,
         OutletSelectorComponent,
         ProgramSelectorComponent,
+        CourseSelectorComponent,
         StudySubjectSelectorComponent,
         HourSelectorComponent,
         MinuteSelectorComponent
@@ -91,6 +93,7 @@ import { StudySubjectSelectorComponent } from './study-subject-selector/study-su
         DialogModule,
         OutletSelectorComponent,
         ProgramSelectorComponent,
+        CourseSelectorComponent,
         StudySubjectSelectorComponent,
         HourSelectorComponent,
         MinuteSelectorComponent

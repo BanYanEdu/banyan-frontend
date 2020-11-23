@@ -1,9 +1,9 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
+        <div class="col-sm-1 form-label">
             <label for="code">Mã</label>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-4">
             <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
                 maxlength="20" formControlName="code">
             <span
@@ -17,9 +17,7 @@
                 Mã đã tồn tại
             </span>
         </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
+        <div class="col-sm-1 form-label">
             <label for="name">Tên</label>
         </div>
         <div class="col-sm-6">
@@ -31,34 +29,46 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="sortIndex">Thứ tự hiển thị</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
-                numericInputOnly maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </div>
-
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="inactive" class="lbl">NTD</label>
+        <div class="col-sm-1 form-label">
+            <label for="outlet">{{ 'MENU.OUTLET' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
-                <label for="inactive" class="lbl"></label>
-            </div>
+            <app-outlet-selector [uuid]="item?.outletId" [mode]="mode" (valueChange)="onChangeOutlet($event)">
+            </app-outlet-selector>
+        </div>
+
+        <div class="col-sm-1 form-label">
+            <label for="status">Trạng thái</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control form-control-block form-required" id="status" maxlength="250"
+                formControlName="status">
+            <span *ngIf="!mainForm.get('status').valid && mainForm.get('status').touched"
+                class="help-block error-message">
+                Bắt buộc nhập
+            </span>
         </div>
     </div>
+    <div class="row mt-2">
+        <div class="col-sm-1 form-label">
+            <label for="programId">{{ 'MENU.PROGRAM' | translate }}</label>
+        </div>
+        <div class="col-sm-4">
+            <app-program-selector [uuid]="programId" [mode]="mode" (valueChange)="onChangeProgram($event)">
+            </app-program-selector>
+        </div>
+        <div class="col-sm-1 form-label">
+            <label for="courseId">{{ 'MENU.COURSE' | translate }}</label>
+        </div>
+        <div class="col-sm-4">
+            <app-course-selector [uuid]="courseId" [mode]="mode" (valueChange)="onChangeCourse($event)">
+            </app-course-selector>
+        </div>
 
+    </div>
     <hr>
     <div class="row mt-2">
-        <div class="col-sm-3"> </div>
+        <div class="col-sm-1"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 Lưu

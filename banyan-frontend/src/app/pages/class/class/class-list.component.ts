@@ -4,14 +4,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BaseListComponent } from 'app/shared/components/BaseListComponent';
 import { CommonService } from 'app/shared/services/common.service';
 import { DataTableResource } from 'inet-ui';
-import { Class } from 'app/model/class/Class';
+import { SchoolClass } from 'app/model/class/SchoolClass';
 import { ClassService } from '../class.service';
 
 @Component({
     selector: 'app-class-list',
     templateUrl: './class-list.component.html'
 })
-export class ClassListComponent extends BaseListComponent<Class> implements OnInit, OnDestroy {
+export class ClassListComponent extends BaseListComponent<SchoolClass> implements OnInit, OnDestroy {
     
     constructor(
         commonService: CommonService,
