@@ -1,6 +1,6 @@
 export let enLocale = {
     MENU: {
-         CLASS: 'Class',
+        CLASS: 'Class',
         CLASSES: 'Classes',
         COURSE: 'Course',
         COURSES: 'Courses',
@@ -164,6 +164,13 @@ export let enLocale = {
         CLASS: {
             CHECKING_REQUIRED: 'Checking required',
             CURRICULUM: 'Curriculum',
+            STATUS_VALUES: {
+                E_PLANNING: 'Planning',
+                E_RECRUITING: 'Recruiting',
+                E_STARTED: 'Started',
+                E_COMPLETED: 'Completed',
+                E_CANCELED: 'Canceled'
+            }
         },
         GENERIC: {
             ADDRESS: 'Address',

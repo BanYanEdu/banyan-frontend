@@ -6,6 +6,7 @@ import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogCompo
 import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { Facility } from 'app/model/settings/Facility';
+import { NotificationType } from 'app/shared/models/NotificationType';
 
 @Component({
     selector: 'app-facility-add',
@@ -47,5 +48,14 @@ export class FacilityAddComponent extends BaseAddDialogComponent<Facility>{
         this.mainForm.controls['outletId'].setValue(event[0]);
         this.mainForm.controls['outletCode'].setValue(event[1]);
         this.mainForm.controls['outletName'].setValue(event[2]);
+    }
+
+    startSave() {
+        if (this.mainForm.controls['outletId'].value == "SELECTOR") {
+            this.showMessage('Chưa chọn chi nhánh.', 'Cảnh báo', NotificationType.ERROR);
+            return;
+        }
+
+        this.onSave();
     }
 }

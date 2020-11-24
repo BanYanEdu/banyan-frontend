@@ -4,7 +4,7 @@
             <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-2">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
+            <input type="text" appInputCharacterMask class="form-control form-control-block form-required no-border" id="code"
                 maxlength="20" formControlName="code">
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
@@ -32,7 +32,7 @@
             <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
+            <input type="text" class="form-control form-control-block form-required no-border" id="name" maxlength="250"
                 formControlName="name">
             <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
                 {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
@@ -44,7 +44,7 @@
             <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</label>
         </div>
         <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
+            <input type="text" class="form-control form-control-block form-required no-border" id="sortIndex"
                 numericInputOnly maxlength="10" formControlName="sortIndex">
             <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
                 class="help-block error-message">
@@ -78,7 +78,7 @@
             <label for="curriculum">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</label>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block" id="curriculum" maxlength="250"
+            <input type="text" class="form-control form-control-block no-border" id="curriculum" maxlength="250"
                 formControlName="curriculum">
         </div>
     </div>
@@ -86,12 +86,12 @@
     <div class="row mt-2">
         <div class="col-sm-3"> </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE')" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
         </div>
         <div class="col-sm-2" *ngIf="view">
-            <button type="button" class="btn btn-save btn-block" (click)="onSaveAndView()" [disabled]="!isFormValid">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE_AND_VIEW')" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> Save & View
             </button>
         </div>

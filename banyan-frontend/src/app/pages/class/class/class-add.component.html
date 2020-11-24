@@ -1,10 +1,10 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
         <div class="col-sm-1 form-label">
-            <label for="code">Mã</label>
+            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
+            <input type="text" appInputCharacterMask class="form-control form-control-block form-required no-border" id="code"
                 maxlength="20" formControlName="code">
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
@@ -18,10 +18,10 @@
             </span>
         </div>
         <div class="col-sm-1 form-label">
-            <label for="name">Tên</label>
+            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
+            <input type="text" class="form-control form-control-block form-required no-border" id="name" maxlength="250"
                 formControlName="name">
             <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
                 Bắt buộc nhập
@@ -33,20 +33,19 @@
             <label for="outlet">{{ 'MENU.OUTLET' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <app-outlet-selector [uuid]="item?.outletId" [mode]="mode" (valueChange)="onChangeOutlet($event)">
+            <app-outlet-selector [uuid]="outletId" [mode]="mode" (valueChange)="onChangeOutlet($event)">
             </app-outlet-selector>
         </div>
 
         <div class="col-sm-1 form-label">
-            <label for="status">Trạng thái</label>
+            <label for="status">{{ 'COMMON.GENERAL.STATUS' | translate }}</label>
         </div>
-        <div class="col-sm-3">
-            <input type="text" class="form-control form-control-block form-required" id="status" maxlength="250"
-                formControlName="status">
-            <span *ngIf="!mainForm.get('status').valid && mainForm.get('status').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </span>
+        <div class="col-sm-4">
+            <select class="form-control form-required no-border" formControlName="status">
+                <option value="{{ status.value }}" *ngFor="let status of statusValues">
+                    {{ 'MODULE.CLASS.STATUS_VALUES.' + status.value | translate }}
+                </option>
+            </select>
         </div>
     </div>
     <div class="row mt-2">
@@ -61,7 +60,7 @@
             <label for="courseId">{{ 'MENU.COURSE' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <app-course-selector [uuid]="courseId" [mode]="mode" (valueChange)="onChangeCourse($event)">
+            <app-course-selector [courseId]="courseId" [programId]="programId" [mode]="mode" (valueChange)="onChangeCourse($event)">
             </app-course-selector>
         </div>
 
@@ -70,8 +69,8 @@
     <div class="row mt-2">
         <div class="col-sm-1"> </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
-                Lưu
+            <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
         </div>
     </div>

@@ -8,6 +8,7 @@ import { Course } from 'app/model/class/Course';
 import { ClassService } from '../class.service';
 import { FormMode } from 'app/model/common/FormMode';
 import { Router } from '@angular/router';
+import { NotificationType } from 'app/shared/models/NotificationType';
 
 @Component({
     selector: 'app-course-add',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 export class CourseAddComponent extends BaseAddDialogComponent<Course>{
     view: boolean = false;
     moveToView: boolean = false;
+    programId: string;
 
     constructor(
         element: ElementRef,
@@ -30,6 +32,7 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
             this.view = false;
         } else {
             this.view = true;
+
         }
         return new FormGroup({
             'code': new FormControl(null, [Validators.required]),
@@ -52,6 +55,7 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
         this.classService.courseCreate(requestItem).subscribe(data => {
             this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
             if (this.moveToView) {
+                this.valueChange.emit(data);
                 this.router.navigate(['/class/course/view/' + data]);
             } else {
                 this.valueChange.emit(data);
@@ -68,8 +72,17 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
         this.mainForm.controls['programName'].setValue(event[2]);
     }
 
-    onSaveAndView() {
-        this.moveToView = true;
-        this.onSave();
+    startSave(mode: string) {
+        if ( this.mainForm.controls['programId'].value == "SELECTOR") {
+            this.showMessage('Chưa chọn chương trình.', 'Cảnh báo', NotificationType.ERROR);
+            return;
+        }
+
+        if (mode == "E_SAVE") {
+            this.onSave();
+        } else {
+            this.moveToView = true;
+            this.onSave();
+        }
     }
 }

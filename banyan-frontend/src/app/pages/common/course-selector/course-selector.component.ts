@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SettingsService } from 'app/pages/settings/settings.service';
 import { FormMode } from 'app/model/common/FormMode';
 import { ClassService } from 'app/pages/class/class.service';
 
@@ -9,57 +8,63 @@ import { ClassService } from 'app/pages/class/class.service';
     templateUrl: './course-selector.component.html'
 })
 export class CourseSelectorComponent implements OnInit, OnChanges {
-    @Input() uuid: string;
+    @Input() courseId: string;
+    @Input() programId: string;
     @Input() mode: FormMode;
     @Output('valueChange') change = new EventEmitter<any>();
 
     mainForm: FormGroup;
     items: any[];
+    id: string;
 
     constructor(private classService: ClassService) { }
 
     ngOnInit() {
-        if (this.uuid == null) {
-            this.uuid = "";
-        }
-
         this.mainForm = new FormGroup({
             'uuid': new FormControl(null),
         });
-
-        if (this.uuid != "") {
-            this.mainForm.controls['uuid'].setValue(this.uuid);            
-        } else {
-        }
-
-        this.classService.courseList({}).subscribe(data => {
-            this.items = data['items'];
-            
-            if (this.mode == FormMode.E_ADD) {
-                this.uuid = "";
-                this.mainForm.controls['uuid'].setValue("");
-            } else {
-                if (this.uuid != "") {
-                    this.mainForm.controls['uuid'].setValue(this.uuid);
-                    this.onChanged();
-                }
-            }
-        });
     }
 
-    public ngOnChanges(changes) {
-        console.log("changed ...");
-        console.log(this.uuid);
+    public ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+        // console.log("Course Selector: Program changed ...");
+
+        for (let propName in changes) {
+            // let changedProp = changes[propName];
+            if (propName == "programId") {
+                // console.log(this.courseId);
+                this.onChangeProgram();
+            }
+          }
     }  
 
     onChanged() {
-        this.uuid = this.mainForm.controls['uuid'].value;
+        this.courseId = this.mainForm.controls['uuid'].value;
         if (this.items) {
             this.change.emit([
-                this.uuid,
-                this.items.filter(c => c.uuid === this.uuid)[0].code,
-                this.items.filter(c => c.uuid === this.uuid)[0].name
+                this.courseId,
+                this.items.filter(c => c.uuid === this.courseId)[0].code,
+                this.items.filter(c => c.uuid === this.courseId)[0].name
             ]);
         }
+    }
+
+    onChangeProgram() {
+        let params: any;
+
+        if (this.programId == "") {
+            params = {programId: "zzz"};
+        } else {
+            params = {programId: this.programId};
+        }
+
+        this.classService.courseList(params).subscribe(data => {
+            this.items = data['items'];
+            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn khóa học -->"});
+            if (this.mode == FormMode.E_ADD) {
+                this.mainForm.controls['uuid'].setValue("SELECTOR");
+            } else {
+                this.mainForm.controls['uuid'].setValue(this.courseId);
+            }
+        });
     }
 }

@@ -36,10 +36,11 @@ export class OutletSelectorComponent implements OnInit {
 
         this.settingsService.outletList({}).subscribe(data => {
             this.items = data['items'];
+            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn chi nhánh -->"});
             
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";
-                this.mainForm.controls['uuid'].setValue("");
+                this.mainForm.controls['uuid'].setValue("SELECTOR");
             } else {
                 if (this.uuid != "") {
                     this.mainForm.controls['uuid'].setValue(this.uuid);

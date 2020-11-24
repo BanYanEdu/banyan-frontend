@@ -3,7 +3,6 @@ import { BsModalService } from 'ngx-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseListComponent } from 'app/shared/components/BaseListComponent';
 import { CommonService } from 'app/shared/services/common.service';
-import { DataTableResource } from 'inet-ui';
 import { Course } from 'app/model/class/Course';
 import { ClassService } from '../class.service';
 

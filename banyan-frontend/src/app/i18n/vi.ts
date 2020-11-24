@@ -136,6 +136,13 @@ export let viLocale = {
         CLASS: {
             CHECKING_REQUIRED: 'Kiểm tra đầu vào',
             CURRICULUM: 'Giáo trình',
+            STATUS_VALUES: {
+                E_PLANNING: 'Kế hoạch',
+                E_RECRUITING: 'Tuyển sinh',
+                E_STARTED: 'Khai giảng',
+                E_COMPLETED: 'Hoàn tất',
+                E_CANCELED: 'Hủy'
+            }
         },
         COMMON: {
             GENERIC: {

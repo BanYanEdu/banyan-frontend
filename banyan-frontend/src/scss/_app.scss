@@ -104,21 +104,21 @@ select.ng-invalid.ng-touched {
   color: $error-message-color;
 }
 .form-required {
-  border-left-color: $default-theme-opposite-color;
-  border-left-width: 2px;
+  // border-bottom-color: $default-theme-color;
+  border-bottom-width: 1px;
 }
+
+// Input
+.no-border {
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  border-radius: 0px;
+}
+
 .selected {
   background-color: whitesmoke;
 }
-
-
-
-/*
-.navbar .logo-area {
-  display: none !important;
-}
-
- */
 
 label, select, input, textarea, button {
   font-size: 99%;
