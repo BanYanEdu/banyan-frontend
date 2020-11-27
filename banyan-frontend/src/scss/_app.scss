@@ -109,7 +109,7 @@ select.ng-invalid.ng-touched {
 }
 
 // Input
-.no-border {
+.no-border, .form-control {
   border-right: none;
   border-top: none;
   border-left: none;

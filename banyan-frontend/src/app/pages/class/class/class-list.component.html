@@ -12,11 +12,22 @@
             (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
             [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
             [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
-            <data-table-column [property]="'code'" [header]="'COMMON.GENERAL.CODE' | translate" [width]="200">
+            <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate" [width]="200">
+                <ng-template #dataTableCell let-item="item">
+                    <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.code}}</a>
+                </ng-template>
             </data-table-column>
-            <data-table-column [property]="'name'" [header]="'COMMON.GENERAL.NAME' | translate">
+            <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                <ng-template #dataTableCell let-item="item">
+                    <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.name}}</a>
+                </ng-template>
             </data-table-column>
             <data-table-column [property]="'outletName'" [header]="'Chi nhánh'">
+            </data-table-column>
+            <data-table-column [property]="" [header]="'Khai giảng'" [styleClass]="'text-center'" [width]="100">
+                <ng-template #dataTableCell let-item="item">
+                    {{ item.actualStartDate | moment }}
+                </ng-template>
             </data-table-column>
             <data-table-column [property]="" [header]="'COMMON.GENERAL.STATUS' | translate" [styleClass]="'text-center'" [width]="150">
                 <ng-template #dataTableCell let-item="item">

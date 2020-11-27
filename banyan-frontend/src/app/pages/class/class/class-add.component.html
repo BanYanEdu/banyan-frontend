@@ -4,8 +4,8 @@
             <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required no-border" id="code"
-                maxlength="20" formControlName="code">
+            <input type="text" appInputCharacterMask class="form-control form-control-block form-required no-border"
+                id="code" maxlength="20" formControlName="code">
             <span
                 *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
                 class="help-block error-message">
@@ -60,13 +60,62 @@
             <label for="courseId">{{ 'MENU.COURSE' | translate }}</label>
         </div>
         <div class="col-sm-4">
-            <app-course-selector [courseId]="courseId" [programId]="programId" [mode]="mode" (valueChange)="onChangeCourse($event)">
+            <app-course-selector [courseId]="courseId" [programId]="programId" [mode]="mode"
+                (valueChange)="onChangeCourse($event)">
             </app-course-selector>
         </div>
-
     </div>
-    <hr>
     <div class="row mt-2">
+        <div class="col-sm-1 form-label">
+            <label for="actualStartDate">{{ 'COMMON.TIME.TIME' | translate }}</label>
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block no-border" id="actualStartDate" #dp="bsDatepicker"
+                bsDatepicker formControlName="actualStartDate" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block no-border" id="actualEndDate" #dp="bsDatepicker"
+                bsDatepicker formControlName="actualEndDate" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+        </div>
+        <div class="col-sm-1 form-label">
+            <label for="schedulePattern">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</label>
+        </div>
+        <div class="col-sm-4">
+            <app-schedule-pattern-selector [uuid]="schedulePatternId" [mode]="mode" (valueChange)="onChangeSchedulePattern($event)">
+            </app-schedule-pattern-selector>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-1 form-label">
+            <label for="minHeadCount">{{ 'MODULE.CLASS.HEADCOUNT' | translate }} (min/max)</label>
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block no-border" id="minHeadCount"
+            numericInputOnly formControlName="minHeadCount">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block no-border" id="maxHeadCount"
+            numericInputOnly formControlName="maxHeadCount">
+        </div>
+        <div class="col-sm-1 form-label">
+            <label for="facilityId">{{ 'MENU.FACILITY' | translate }}</label>
+        </div>
+        <div class="col-sm-4">
+            <app-facility-selector [facilityId]="facilityId" [outletId]="outletId" [mode]="mode"
+                (valueChange)="onChangeFacility($event)">
+            </app-facility-selector>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-1 form-label">
+            <label for="remark">{{ 'COMMON.GENERAL.REMARK' | translate }}</label>
+        </div>
+        <div class="col-sm-11">
+            <input type="text" class="form-control form-control-block no-border" id="remark"
+            formControlName="remark">
+        </div>
+    </div>
+    <div class="row mt-4">
         <div class="col-sm-1"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">

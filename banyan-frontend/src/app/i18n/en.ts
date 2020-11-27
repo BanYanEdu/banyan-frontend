@@ -157,13 +157,19 @@ export let enLocale = {
             SUNDAY_SHORT: 'Sun',
             WEEK_DAYS: 'Week Days',
             START_TIME: 'Start Time',
-            END_TIME: 'End Time'
+            END_TIME: 'End Time',
+            START_DATE: 'Start Date',
+            END_DATE: 'End Date',
+            TIME: 'Time'
         }
     },
     MODULE: {
         CLASS: {
             CHECKING_REQUIRED: 'Checking required',
             CURRICULUM: 'Curriculum',
+            HEADCOUNT: 'Headcount',
+            HEADCOUNT_MIN: 'Min Headcount',
+            HEADCOUNT_MAX: 'Max Headcount',
             STATUS_VALUES: {
                 E_PLANNING: 'Planning',
                 E_RECRUITING: 'Recruiting',

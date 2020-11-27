@@ -14,7 +14,10 @@ import { Course } from 'app/model/class/Course';
     templateUrl: './study-subject-assign.component.html'
 })
 export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySubject>{
-    @Input() item: Course;
+    @Input() items: any[];
+    @Input() id: string;
+    @Input() dataType: string;
+    
     // @Input() parentObject: string;
 
     finalItems: any[] = [];
@@ -34,7 +37,7 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     }
 
     protected patchInitializedMainForm() {
-        this.finalItems = this.item.studySubjects;
+        this.finalItems = this.items;
     }
 
     protected callSearch(input: { code: string }, callbackFn: Function): void {
@@ -42,9 +45,6 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // this.classService.courseCreate(requestItem).subscribe(data => callbackFn(data));
-        this.classService.courseCreate(requestItem).subscribe(data => {
-            this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
-        });
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // this.classService.courseUpdate(requestItem).subscribe(data => callbackFn(data));
@@ -99,11 +99,22 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     }
 
     customizedSave() {
-        this.classService.courseStudySubjectUpdate(this.item.uuid, JSON.stringify(this.finalItems)).subscribe(
-            data => {
-                this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
-                this.valueChange.emit(data);
-            }
-        );
+       if (this.dataType == "E_COURSE") {
+            this.classService.courseStudySubjectUpdate(this.id, JSON.stringify(this.finalItems)).subscribe(
+                data => {
+                    this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
+                    this.valueChange.emit(data);
+                }
+            );
+        }
+
+        if (this.dataType == "E_CLASS") {     
+            this.classService.classStudySubjectUpdate(this.id, JSON.stringify(this.finalItems)).subscribe(
+                data => {
+                    this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
+                    this.valueChange.emit(data);
+                }
+            );
+        }
     }
 }

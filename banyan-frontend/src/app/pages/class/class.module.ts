@@ -16,6 +16,9 @@ import { RegistrationAddComponent } from './registration/registration-add.compon
 import { AppCommonModule } from '../common/app-common.module';
 import { CourseViewComponent } from './course/course-view.component';
 import { StudySubjectAssignComponent } from './study-subject-assign/study-subject-assign.component';
+import { SchedulePatternSelectorComponent } from '../settings/schedule-pattern/schedule-pattern-selector.component';
+import { FacilitySelectorComponent } from '../settings/facility/facility-selector.component';
+import { ClassViewComponent } from './class/class-view.component';
 
 @NgModule({
     imports: [
@@ -32,9 +35,12 @@ import { StudySubjectAssignComponent } from './study-subject-assign/study-subjec
         CourseAddComponent,
         ClassListComponent,
         ClassAddComponent,
+        ClassViewComponent,
         RegistrationListComponent,
         RegistrationAddComponent,
-        StudySubjectAssignComponent
+        StudySubjectAssignComponent,
+        SchedulePatternSelectorComponent,
+        FacilitySelectorComponent
 
     ],
     providers: [

@@ -6,20 +6,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { BaseComponent } from 'app/shared/components/BaseComponent';
 import { FormMode } from 'app/model/common/FormMode';
-import { Course } from 'app/model/class/Course';
 import { ClassService } from '../class.service';
+import { SchoolClass } from 'app/model/class/SchoolClass';
 
 @Component({
-    selector: 'app-course-view',
-    templateUrl: './course-view.component.html'
+    selector: 'app-class-view',
+    templateUrl: './class-view.component.html'
 })
-export class CourseViewComponent extends BaseComponent {
+export class ClassViewComponent extends BaseComponent {
     id: string;
-    // refreshedTime: number = 0;
-    item: Course;
+    item: SchoolClass;
     mode: FormMode = FormMode.E_EDIT;
     unitCount: number = 0;
-    // activities: any[] = [];
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -43,9 +41,10 @@ export class CourseViewComponent extends BaseComponent {
     load() {
         this.route.params.subscribe(params => {
             this.id = params['id'];
-            this.classService.courseList({uuid: this.id}).subscribe(data =>
+            this.classService.classList({uuid: this.id}).subscribe(data =>
                 {
                     this.item = data.items[0];
+                    console.log(this.item);
                     this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;
                 }
             );
@@ -54,10 +53,9 @@ export class CourseViewComponent extends BaseComponent {
 
     protected createMainFormGroup(): FormGroup {
         return new FormGroup({
-            'remark': new FormControl(null)
+            // 'remark': new FormControl(null);
         });
     }
-    
 
     onEdit(template: TemplateRef<any>) {
         // this.selectedItem = <TModel>item;

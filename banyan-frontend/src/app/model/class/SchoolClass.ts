@@ -2,6 +2,7 @@ import { BaseEditableMdModel } from "app/shared/models/BaseEditableMdModel";
 import { CourseStudySubject } from "./CourseStudySubject";
 
 export class SchoolClass extends BaseEditableMdModel {
+    status?: string;
     outletId?: string;
     outletCode?: string;
     outletName?: string;
@@ -24,6 +25,10 @@ export class SchoolClass extends BaseEditableMdModel {
     schedulePatternName?: string;
     minHeadCount?: number;
     maxHeadCount?: number;
+    facilityId?: string;
+    facilityCode?: string;
+    facilityName?: string;
+    facilityNo?: string;
     defaultFee?: number;
     remark?: string;
     studySubjects?: CourseStudySubject[];

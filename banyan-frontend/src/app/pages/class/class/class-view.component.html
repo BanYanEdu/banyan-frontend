@@ -17,17 +17,58 @@
             </div>
             <div class="row mt-2">
                 <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.sortIndex }}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
                     <span class="form-bold-text">{{ item?.programName }}</span>
                     <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate }}</span>
                 </div>
             </div>
             <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.courseName }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MENU.COURSE' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.outletName }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MENU.OUTLET' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.facilityNo }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MENU.FACILITY' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.actualStartDate | moment}}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.actualEndDate | moment}}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.TIME.END_DATE' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.schedulePatternName }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.minHeadCount }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MIN' | translate }}</span>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <span class="form-bold-text">{{ item?.maxHeadCount }}</span>
+                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate }}</span>
+                </div>
+            </div><div class="row mt-2">
                 <div class="col-sm-12">
                     <span class="form-bold-text">{{ item?.curriculum }}</span>
                     <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
@@ -45,12 +86,8 @@
             </div>
             <div class="row mt-2">
                 <div class="col-sm-12">
-                    <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
-                        <label class="lbl">
-                            <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
-                        </label>
-                    </div>
+                    <span class="form-bold-text">{{ 'MODULE.CLASS.STATUS_VALUES.' + item?.status | translate}}</span>
+                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
                 </div>
             </div>
             <div class="row mt-2">
@@ -70,7 +107,7 @@
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
                     <div class="row mt-2 ml-2">
-                        
+
                         <div class="col-sm-12">
                             <div class="row mt-2 datagrid-header">
                                 <div class="col-sm-1" align="center">
@@ -86,8 +123,9 @@
                                     {{ 'COMMON.GENERAL.REMARK' | translate }}
                                 </div>
                                 <div class="col-sm-1" align="right">
-                                    <a class="btn-add" (click)="onAssign(assignStudySubjectDialog)"><i class="fa fa-edit"></i></a>
-                                </div>                  
+                                    <a class="btn-add" (click)="onAssign(assignStudySubjectDialog)"><i
+                                            class="fa fa-edit"></i></a>
+                                </div>
                             </div>
                             <div class="row mt-2 datagrid-row"
                                 *ngFor="let item of item?.studySubjects; index as i; last as isLast">
@@ -113,7 +151,7 @@
                                 <div class="col-sm-5">
                                 </div>
                                 <div class="col-sm-1" align="right">
-                                </div>                  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,17 +173,15 @@
     <div class="modal-form">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">{{ 'MENU.COURSE' | translate }}<span> -
+                <h4 class="modal-title pull-left">{{ 'MENU.CLASS' | translate }}<span> -
                         {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <app-course-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
-                </app-course-add>
-                <!-- <app-deal-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
-                    </app-deal-add> -->
+                <app-class-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-class-add>
             </div>
         </div>
     </div>
@@ -161,7 +197,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <app-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" [dataType]="'E_COURSE'" (valueChange)='onChanged($event)'>
+                <app-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" [dataType]="'E_CLASS'" (valueChange)='onChanged($event)'>
                 </app-study-subject-assign>
             </div>
         </div>

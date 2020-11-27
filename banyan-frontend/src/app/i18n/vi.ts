@@ -100,6 +100,7 @@ export let viLocale = {
             INACTIVE_SHORT: 'NTD',
             NAME: 'Tên',
             OWNER: 'Phụ trách',
+            REMARK: 'Ghi chú',
             SCORES: 'Điểm số',
             SORT_INDEX: 'Thứ tự hiển thị',
             SORT_INDEX_SHORT: 'TTHT',
@@ -128,7 +129,10 @@ export let viLocale = {
             SUNDAY_SHORT: 'CN',
             WEEK_DAYS: 'Ngày trong tuần',
             START_TIME: 'Thời gian bắt đầu',
-            END_TIME: 'Thời gian kết thúc'
+            END_TIME: 'Thời gian kết thúc',
+            START_DATE: 'Ngày bắt đầu',
+            END_DATE: 'Ngày kết thúc',
+            TIME: 'Thời gian'
         }
 
     },
@@ -136,6 +140,9 @@ export let viLocale = {
         CLASS: {
             CHECKING_REQUIRED: 'Kiểm tra đầu vào',
             CURRICULUM: 'Giáo trình',
+            HEADCOUNT: 'Sỹ số',
+            HEADCOUNT_MIN: 'Sỹ số tối thiểu',
+            HEADCOUNT_MAX: 'Sỹ số tối đa',
             STATUS_VALUES: {
                 E_PLANNING: 'Kế hoạch',
                 E_RECRUITING: 'Tuyển sinh',
