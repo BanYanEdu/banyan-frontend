@@ -4,18 +4,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BaseListComponent } from 'app/shared/components/BaseListComponent';
 import { CommonService } from 'app/shared/services/common.service';
 import { Outlet } from 'app/model/settings/Outlet';
-import { DataTableResource } from 'inet-ui';
-import { LecturerService } from '../lecturer.service';
+import { EmployeeService } from '../employee.service';
 
 @Component({
-    selector: 'app-lecturer-list',
-    templateUrl: './lecturer-list.component.html'
+    selector: 'app-employee-list',
+    templateUrl: './employee-list.component.html'
 })
-export class LecturerListComponent extends BaseListComponent<Outlet> implements OnInit, OnDestroy {
+export class EmployeeListComponent extends BaseListComponent<Outlet> implements OnInit, OnDestroy {
     
     constructor(
         commonService: CommonService,
-        protected lecturerService: LecturerService,
+        protected employeeService: EmployeeService,
         protected modalService: BsModalService,
         protected router: Router,
         protected route: ActivatedRoute
@@ -36,10 +35,9 @@ export class LecturerListComponent extends BaseListComponent<Outlet> implements 
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
+        var criteria: any = this.params;
         
-        // this.dataResource = new DataTableResource([]);
-        this.lecturerService.lecturerList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
+        this.employeeService.employeeList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

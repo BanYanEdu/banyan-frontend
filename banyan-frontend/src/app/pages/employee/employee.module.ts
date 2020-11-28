@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GridModule } from "inet-ui";
 import { CommonService } from 'app/shared/services/common.service';
 import { FocusService } from 'app/shared/services/focus.service';
-import { LecturerHomeComponent } from './lecturer-home/lecturer-home.component';
-import { LecturerRoutingModule } from './lecturer-routing.module';
-import { LecturerListComponent } from './lecturer/lecturer-list.component';
-import { LecturerAddComponent } from './lecturer/lecturer-add.component';
+import { EmployeeHomeComponent } from './employee-home/employee-home.component';
+import { EmployeeRoutingModule} from './employee-routing.module';
+import { EmployeeListComponent } from './employee/employee-list.component';
+import { EmployeeAddComponent } from './employee/employee-add.component';
 
 @NgModule({
     imports: [
@@ -16,19 +16,18 @@ import { LecturerAddComponent } from './lecturer/lecturer-add.component';
         // AppCommonModule,
         GridModule,
         ReactiveFormsModule,
+        EmployeeRoutingModule
         // ColorPickerModule,
-        LecturerRoutingModule
     ],
     declarations: [
-        LecturerHomeComponent,
-        LecturerListComponent,
-        LecturerAddComponent
-
+        EmployeeHomeComponent,
+        EmployeeListComponent,
+        EmployeeAddComponent
     ],
     providers: [
         CommonService,
         FocusService
     ]
 })
-export class LecturerModule {
+export class EmployeeModule {
 }

@@ -21,6 +21,7 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     // @Input() parentObject: string;
 
     finalItems: any[] = [];
+    totalUnitCount: number = 0;
 
     constructor(
         element: ElementRef,
@@ -38,6 +39,8 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
 
     protected patchInitializedMainForm() {
         this.finalItems = this.items;
+        // console.log(this.finalItems);
+        this.updateTotalUnitCount();
     }
 
     protected callSearch(input: { code: string }, callbackFn: Function): void {
@@ -62,6 +65,7 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
     }
     onDeleteRow(i: number) {
         this.finalItems.splice(i, 1);
+        this.updateTotalUnitCount();
     }
     onUp(i: number) {
         let current = this.finalItems[i];
@@ -117,4 +121,12 @@ export class StudySubjectAssignComponent extends BaseAddDialogComponent<StudySub
             );
         }
     }
+
+    updateTotalUnitCount() {
+        this.totalUnitCount = this.finalItems.reduce((sum, curr) => sum + Number(curr.unitCount), 0);
+    }
+    onChangeUnitCount() {
+        this.updateTotalUnitCount();
+    }
+
 }

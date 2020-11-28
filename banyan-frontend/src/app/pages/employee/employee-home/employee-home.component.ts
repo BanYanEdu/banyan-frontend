@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 // import { HomeService } from '../home.service';
 
 @Component({
-  selector: 'app-lecturer-home',
-  templateUrl: './lecturer-home.component.html'
+  selector: 'app-employee-home',
+  templateUrl: './employee-home.component.html'
 })
-export class LecturerHomeComponent implements OnInit {
+export class EmployeeHomeComponent implements OnInit {
   
   constructor(
     // private service: HomeService,

@@ -9,7 +9,7 @@ const routes: Routes = [
     {path: 'coming', component: ComingMessageComponent},
     {path: 'student', loadChildren: './pages/student/student.module#StudentModule'},
     {path: 'class', loadChildren: './pages/class/class.module#ClassModule'},
-    {path: 'lecturer', loadChildren: './pages/lecturer/lecturer.module#LecturerModule'},
+    {path: 'employee', loadChildren: './pages/employee/employee.module#EmployeeModule'},
     {path: 'settings', loadChildren: './pages/settings/settings.module#SettingsModule'},
 ];
 

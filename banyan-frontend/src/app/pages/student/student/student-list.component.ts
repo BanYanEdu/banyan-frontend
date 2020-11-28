@@ -43,17 +43,9 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
-        var criteria: any;
-        var mockedData = {
-            items: [
-                {uuid: "001", code: "001", name:"Nguyễn Duy Tân"},
-                {uuid: "002", code: "002", name:"Nguyễn Lê Duy"},
-            ], 
-            total:1}
+        var criteria: any = this.params;
         
-        // this.dataResource = new DataTableResource([]);
-        // this.studentService.studentList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
-        this.studentService.studentList(criteria).subscribe(data => callbackFn(mockedData), error => errorFn(error));
+        this.studentService.studentList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
     ngOnDestroy() {

@@ -4,18 +4,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogComponent"
 import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
-import { Outlet } from 'app/model/settings/Outlet';
-import { Employee } from 'app/model/lecturer/Employee';
-import { LecturerService } from '../lecturer.service';
+import { Employee } from 'app/model/employee/Employee';
+import { EmployeeService} from '../employee.service';
 
 @Component({
-    selector: 'app-lecturer-add',
-    templateUrl: './lecturer-add.component.html'
+    selector: 'app-employee-add',
+    templateUrl: './employee-add.component.html'
 })
-export class LecturerAddComponent extends BaseAddDialogComponent<Employee>{
+export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
     constructor(
         element: ElementRef,
-        private lecturerService: LecturerService,
+        private employeeService: EmployeeService,
         protected commonService: CommonService
     ) {
         super(element, commonService);
@@ -29,17 +28,12 @@ export class LecturerAddComponent extends BaseAddDialogComponent<Employee>{
         });
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+        this.employeeService.employeeList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
-        
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.employeeService.employeeCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+        this.employeeService.employeeUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 }

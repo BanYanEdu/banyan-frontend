@@ -10,11 +10,11 @@ import { Outlet } from 'app/model/settings/Outlet';
 })
 export class StudentService {
     private url = {
-        // Lead
-        banyan_ems_settings_outlet_add: iNet.getPUrl('banyan-ems/settings/outlet/add'),
-        banyan_ems_settings_outlet_update: iNet.getPUrl('banyan-ems/settings/outlet/update'),
-        banyan_ems_settings_outlet_delete: iNet.getPUrl('banyan-ems/settings/outlet/delete'),
-        banyan_ems_settings_outlet_list: iNet.getPUrl('banyan-ems/settings/outlet/list'),
+        // Student
+        banyan_ems_student_create: iNet.getPUrl('crm/ems/student/create'),
+        banyan_ems_student_update: iNet.getPUrl('crm/ems/student/update'),
+        // banyan_ems_student_delete: iNet.getPUrl('crm/ems/student/delete'),
+        banyan_ems_student_list: iNet.getPUrl('crm/ems/class/list'),
     };
 
     constructor(private http: HttpClientService, ) { }
@@ -22,7 +22,7 @@ export class StudentService {
     // Lead
     leadList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
     // Student
-    studentList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
+    studentList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_student_list, criteria); }
     // Company
     companyList(criteria: any): Observable<any> { return this.http.postJSON('https://calista-dev.inetcloud.vn/collaboration/vinaco/system/userrole/list.cpx', criteria); }
     
