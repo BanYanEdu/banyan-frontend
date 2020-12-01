@@ -11,6 +11,8 @@ import { CloudTranslateService } from 'inet-ui';
 })
 export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy {
     username: string;
+    userDisplayName: string;
+    orgName: string;
     currentLang: string;
 
     constructor(
@@ -25,6 +27,8 @@ export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy
     ngOnInit() {
 
         this.username = iNet.username;
+        this.userDisplayName = iNet.displayName;
+        this.orgName = iNet.orgName;
         // console.log('Load menu ...');
         // console.log(iNet.username);
         console.log(iNet);

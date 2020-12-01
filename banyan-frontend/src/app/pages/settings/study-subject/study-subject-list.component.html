@@ -18,6 +18,11 @@
             </data-table-column>
             <data-table-column [property]="'sortIndex'" [header]="'COMMON.GENERAL.SORT_INDEX_SHORT' | translate" [styleClass]="'text-center'" [width]="120">
             </data-table-column>
+            <data-table-column [property]="" [header]="'Ngày tạo'" [styleClass]="'text-center'" [width]="100">
+                <ng-template #dataTableCell let-item="item">
+                    {{ item.createdAt | moment}}
+                </ng-template>
+            </data-table-column>
             <data-table-column [property]="" [header]="'COMMON.GENERAL.INACTIVE_SHORT' | translate" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
                     <div class="">

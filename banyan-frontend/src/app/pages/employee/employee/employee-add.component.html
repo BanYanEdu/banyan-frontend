@@ -32,20 +32,6 @@
     </div>
     <div class="row mt-2">
         <div class="col-sm-3 form-label">
-            <label for="sortIndex">Thứ tự hiển thị</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
-                numericInputOnly maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </div>
-
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
             <label for="inactive" class="lbl">NTD</label>
         </div>
         <div class="col-sm-4">
@@ -55,9 +41,7 @@
             </div>
         </div>
     </div>
-
-    <hr>
-    <div class="row mt-2">
+    <div class="row mt-4">
         <div class="col-sm-3"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">

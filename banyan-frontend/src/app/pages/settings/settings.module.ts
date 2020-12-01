@@ -24,6 +24,9 @@ import { HolidayAddComponent } from './holiday/holiday-add.component';
 import { AppCommonModule } from '../common/app-common.module';
 import { FacilityListComponent } from './facility/facility-list.component';
 import { FacilityAddComponent } from './facility/facility-add.component';
+import { SystemConfigViewComponent } from './system-config/system-config-view.component';
+import { EmployeeProfileConfigComponent } from './system-config/employee-profile-config.component';
+import { ContactProfileConfigComponent } from './system-config/contact-profile-config.component';
 
 @NgModule({
     imports: [
@@ -51,8 +54,10 @@ import { FacilityAddComponent } from './facility/facility-add.component';
         FacilityListComponent,
         FacilityAddComponent,
         HolidayListComponent,
-        HolidayAddComponent
-
+        HolidayAddComponent,
+        SystemConfigViewComponent,
+        EmployeeProfileConfigComponent,
+        ContactProfileConfigComponent
     ],
     providers: [
         CommonService,

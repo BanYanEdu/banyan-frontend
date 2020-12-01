@@ -60,6 +60,7 @@ export let enLocale = {
             ADD: 'Add',
             EDIT: 'Edit',
             CANCEL: 'Cancel',
+            CHANGE: 'Change',
             CONVERT: 'Convert',
             DELETE: 'Delete',
             LOG_OUT: 'Log out',

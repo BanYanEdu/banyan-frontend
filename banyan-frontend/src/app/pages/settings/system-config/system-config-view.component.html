@@ -1,0 +1,184 @@
+<div class="app-content">
+    <div class="row form-header">
+        <div class="col-sm-12">
+            <span class="form-title">Thiết Lập Hệ Thống</span>
+        </div>
+    </div>
+    <div class="row form-body" style="margin: 5px">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#generalConfig" role="tab" aria-controls="home">
+                        Thiết lập chung</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#employeeProfileConfig" role="tab"
+                        aria-controls="employeeProfileConfig">
+                        Hồ sơ nhân sự
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#contactProfileConfig" role="tab"
+                        aria-controls="contactProfileConfig">
+                        Hồ sơ học viên
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <!-- <div class="tab-pane active" id="generalConfig" role="tabpanel">
+                    <div class="row mt-4 ml-4">
+                        <h6>Under Construction ...</h6>
+                    </div>
+                </div> -->
+                <!--  Tab Employee Profile Setting -->
+                <div class="tab-pane active" id="employeeProfileConfig" role="tabpanel">
+                    <div class="row mt-4">
+                        <div class="col-sm-3 form-label">
+                            Tạo mã nhân viên tự động
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fa fa-square"
+                                *ngIf="!systemConfig?.employeeProfileConfig?.codeAutoGenerating"></i>
+                            <i class="fa fa-check-square"
+                                *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating"></i>
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Tiền tố
+                        </div>
+                        <div class="col-sm-2">
+                            {{ systemConfig?.employeeProfileConfig?.codePrefix }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Độ dài số tự động
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                            {{ systemConfig?.employeeProfileConfig?.codeNumberLength }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Số tiếp theo
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                            {{ systemConfig?.employeeProfileConfig?.codeNextNumber }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Ví dụ
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                            {{ epcCodeSample }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-add"
+                                (click)="showModal(refEmployeeProfile)">
+                                <i class="fa fa-edit"></i> {{ 'COMMON.ACTION.CHANGE' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="contactProfileConfig" role="tabpanel">
+                    <div class="row mt-4">
+                        <div class="col-sm-3 form-label">
+                            Tạo mã học viên tự động
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fa fa-square"
+                                *ngIf="!systemConfig?.contactProfileConfig?.codeAutoGenerating"></i>
+                            <i class="fa fa-check-square"
+                                *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating"></i>
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Tiền tố
+                        </div>
+                        <div class="col-sm-2">
+                            {{ systemConfig?.contactProfileConfig?.codePrefix }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Độ dài số tự động
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
+                            {{ systemConfig?.contactProfileConfig?.codeNumberLength }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Số tiếp theo
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                            {{ systemConfig?.contactProfileConfig?.codeNextNumber }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                        <div class="col-sm-3 form-label">
+                            Ví dụ
+                        </div>
+                        <div class="col-sm-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
+                            {{ cpcCodeSample }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-add"
+                                (click)="showModal(refContactProfile)">
+                                <i class="fa fa-edit"></i> Cập nhật
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #refEmployeeProfile>
+                <div class="modal-form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Thiết lập hồ sơ nhân sự</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <app-employee-profile-config [item]="systemConfig?.employeeProfileConfig"
+                                (valueChange)='onChanged($event)'>
+                            </app-employee-profile-config>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template #refContactProfile>
+                <div class="modal-form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Thiết lập hồ sơ học viên</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <app-contact-profile-config [item]="systemConfig?.contactProfileConfig"
+                                (valueChange)='onChanged($event)'>
+                            </app-contact-profile-config>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+</div>

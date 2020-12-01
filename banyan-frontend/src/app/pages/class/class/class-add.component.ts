@@ -73,6 +73,8 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
             this.outletId = "SELECTOR";
             this.schedulePatternId = "SELECTOR";
             this.mainForm.controls['status'].setValue(this.statusValues[0].value);
+            this.mainForm.controls['minHeadCount'].setValue(10);
+            this.mainForm.controls['maxHeadCount'].setValue(20);
         } else {
             this.programId = this.item.programId;
             this.courseId = this.item.courseId;

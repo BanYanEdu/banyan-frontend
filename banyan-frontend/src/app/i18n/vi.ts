@@ -67,6 +67,7 @@ export let viLocale = {
         ACTION: {
             ADD: 'Thêm mới',
             CANCEL: 'Hủy',
+            CHANGE: 'Thay đổi',
             CONVERT: 'Chuyển đổi',
             DELETE: 'Xóa',
             EDIT: 'Chỉnh sửa',

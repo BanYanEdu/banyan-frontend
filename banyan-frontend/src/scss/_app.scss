@@ -10,7 +10,6 @@ body {
   -webkit-font-smoothing: antialiased !important;
   line-height: 18px;
   color: $default-font-color;
-  // background-color: #fff;
   background-color: $default-background-color;
   margin:0px;
   padding: 0px;
@@ -25,7 +24,7 @@ body {
   background-color: white;
   height: 50px;
   padding: 10px;
-  border-bottom: 1px solid $default-line-color;
+  // border-bottom: 1px solid $default-line-color;
 }
 .form-body{
   min-height: 400px;
@@ -423,7 +422,6 @@ img.avatar-error {
   }
 }
 
-
 .full-screen-modal {
   height: 200vh !important;
   width: 200vw !important;
@@ -449,3 +447,49 @@ img.avatar-error {
   // border-width: 1px;
   // border-radius: 10px;
 }
+
+
+/*
+
+.nav.nav-tabs {
+  float: left;
+  display: block;
+  margin-right: 20px;
+  border-bottom:0;
+  border-right: 1px solid #ddd;
+  padding-right: 15px;
+}
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  // background: #ccc;
+  background: white;
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  // color: white;
+  background-color:whitesmoke !important;
+  border-color: transparent !important;
+}
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0rem!important;
+  border-top-right-radius: 0rem!important;
+}
+.tab-content>.active {
+  display: block;
+  background:whitesmoke;
+  min-height: 165px;
+}
+.nav.nav-tabs {
+  float: left;
+  display: block;
+  margin-right: 20px;
+  border-bottom: 0;
+  border-right: 1px solid transparent;
+  padding-right: 15px;
+}
+
+*/

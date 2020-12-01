@@ -10,6 +10,7 @@ import { StudySubject } from 'app/model/settings/StudySubject';
 import { TestSubject } from 'app/model/settings/TestSubject';
 import { Facility } from 'app/model/settings/Facility';
 import { SchedulePattern } from 'app/model/settings/SchedulePattern';
+import { SystemConfig } from 'app/model/settings/SystemConfig';
 
 @Injectable({
     providedIn: 'root'
@@ -44,7 +45,13 @@ export class SettingsService {
         banyan_ems_settings_schedule_pattern_create: iNet.getPUrl('crm/ems/schedule-pattern/create'),
         banyan_ems_settings_schedule_pattern_update: iNet.getPUrl('crm/ems/schedule-pattern/update'),
         banyan_ems_settings_schedule_pattern_list: iNet.getPUrl('crm/ems/schedule-pattern/list'),
-        
+        // System Config
+        banyan_ems_settings_system_config_create: iNet.getPUrl('crm/ems/system-config/create'),
+        banyan_ems_settings_system_config_update: iNet.getPUrl('crm/ems/system-config/update'),
+        banyan_ems_settings_system_config_list: iNet.getPUrl('crm/ems/system-config/list'),
+        banyan_ems_settings_employee_profile_config_update: iNet.getPUrl('crm/ems/system-config/employee-profile-config/update'),
+        banyan_ems_settings_contact_profile_config_update: iNet.getPUrl('crm/ems/system-config/contact-profile-config/update'),
+                
     };
 
     constructor(private http: HttpClientService, ) { }
@@ -77,9 +84,16 @@ export class SettingsService {
     schedulePatternCreate(item: SchedulePattern): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_create, item); }
     schedulePatternUpdate(item: SchedulePattern): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_update, item); }
     schedulePatternList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_schedule_pattern_list, criteria); } 
-
    
     // Holiday
     holidayList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_program_list, criteria); }
     
+    // System Config
+    systemConfigCreate(item: SystemConfig): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_system_config_create, item); }
+    systemConfigUpdate(item: SystemConfig): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_system_config_update, item); }
+    employeeProfileConfigUpdate(item: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_employee_profile_config_update, item); }
+    contactProfileConfigUpdate(item: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_contact_profile_config_update, item); }
+    systemConfigList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_settings_system_config_list, criteria); } 
+
+
   }
