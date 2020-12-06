@@ -1,57 +1,41 @@
 <form [formGroup]="mainForm">
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="codeAutoGenerating" class="lbl">Tạo mã học viên tự động</label>
-        </div>
+    <div class="row mt">
         <div class="col-sm-4">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="codeAutoGenerating"
-                    (change)="onChangeAuto()">
-                <label for="codeAutoGenerating" class="lbl"></label>
-            </div>
+            <mat-checkbox formControlName="codeAutoGenerating" (change)="onChangeAuto()">Tạo mã học viên tự động</mat-checkbox>
         </div>
     </div>
     <div class="row mt-2" *ngIf="auto">
-        <div class="col-sm-3 form-label">
-            <label for="codePrefix">Tiền tố</label>
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>Tiền tố</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="codePrefix" maxlength="5"
+                    (change)="refreshCodeSample()">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Độ dài số tự động</mat-label>
+                <select matNativeControl formControlName="codeNumberLength" (change)="refreshCodeSample()">
+                    <option value="{{ lengthValue.value }}" *ngFor="let lengthValue of lengthValues">
+                        {{lengthValue.value}}
+                    </option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Số kế tiếp</mat-label>
+                <input type="text" matInput formControlName="codeNextNumber" maxlength="10" numericInputOnly required  (change)="refreshCodeSample()">
+                <mat-error *ngIf="mainForm.get('codeNextNumber').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
         <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="codePrefix" maxlength="5"
-                appInputCharacterMask formControlName="codePrefix" (change)="refreshCodeSample()">
-        </div>
-    </div>
-    <div class="row mt-2" *ngIf="auto">
-        <div class="col-sm-3 form-label">
-            <label for="codeNumberLength">Độ dài số tự động</label>
-        </div>
-        <div class="col-sm-2">
-            <select class="form-control form-required" formControlName="codeNumberLength"
-                (change)="refreshCodeSample()">
-                <option value="{{ lengthValue.value }}" *ngFor="let lengthValue of lengthValues">
-                    {{lengthValue.value}}
-                </option>
-            </select>
-        </div>
-    </div>
-    <div class="row mt-2" *ngIf="auto">
-        <div class="col-sm-3 form-label">
-            <label for="code">Số kế tiếp</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" numericInputOnly class="form-control form-control-block form-required"
-                id="codeNextNumber" maxlength="10" formControlName="codeNextNumber" (change)="refreshCodeSample()">
-        </div>
-    </div>
-    <div class="row mt-2" *ngIf="auto">
-        <div class="col-sm-3 form-label">
-            <label for="code">Ví dụ</label>
-        </div>
-        <div class="col-sm-2">
-            {{ codeSample }}
+            <h5>{{ codeSample }}</h5>
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-sm-3"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}

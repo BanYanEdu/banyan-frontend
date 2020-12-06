@@ -58,8 +58,8 @@ export class ClassViewComponent extends BaseComponent {
     }
 
     onEdit(template: TemplateRef<any>) {
-        // this.selectedItem = <TModel>item;
         this.mode = FormMode.E_EDIT;
+        this.config.class = "modal-medium";
         this.modalRef = this.modalService.show(template, this.config);
     }
 
@@ -71,6 +71,7 @@ export class ClassViewComponent extends BaseComponent {
 
     onAssign(template: TemplateRef<any>) {
         this.mode = FormMode.E_EDIT;
+        this.config.class = "modal-xl";
         this.modalRef = this.modalService.show(template, this.config);
     }
 }

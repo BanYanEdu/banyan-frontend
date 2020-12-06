@@ -28,19 +28,17 @@ export class OutletSelectorComponent implements OnInit {
         });
 
         if (this.uuid != "") {
-            this.mainForm.controls['uuid'].setValue(this.uuid);
-            // this.colorCode = this.items.filter(c => c.id === this.id)[0].colorCode;                
+            this.mainForm.controls['uuid'].setValue(this.uuid);             
         } else {
-            // this.mainForm.controls['id'].setValue(this.items[0].id);
         }
 
         this.settingsService.outletList({}).subscribe(data => {
             this.items = data['items'];
-            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn chi nhánh -->"});
+            // this.items.splice(0, 0, {uuid: "", name: "<-- Chọn chi nhánh -->"});
             
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";
-                this.mainForm.controls['uuid'].setValue("SELECTOR");
+                this.mainForm.controls['uuid'].setValue("");
             } else {
                 if (this.uuid != "") {
                     this.mainForm.controls['uuid'].setValue(this.uuid);
@@ -53,12 +51,19 @@ export class OutletSelectorComponent implements OnInit {
     onChanged() {
         this.uuid = this.mainForm.controls['uuid'].value;
         if (this.items) {
-            // console.log(this.items);
-            this.change.emit([
-                this.uuid,
-                this.items.filter(c => c.uuid === this.uuid)[0].code,
-                this.items.filter(c => c.uuid === this.uuid)[0].name
-            ]);
+            if (this.uuid != "") {
+                this.change.emit([
+                    this.uuid,
+                    this.items.filter(c => c.uuid === this.uuid)[0].code,
+                    this.items.filter(c => c.uuid === this.uuid)[0].name
+                ]);
+            } else {
+                this.change.emit([
+                    this.uuid,
+                    "",
+                    ""
+                ]);
+            }
         }
     }
 }

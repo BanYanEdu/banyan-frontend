@@ -1,109 +1,95 @@
 <form [formGroup]="mainForm">
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="col-sm-3">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
-                maxlength="20" formControlName="code">
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </span>
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.CODE_EXISTS' | translate }}
-            </span>
-        </div>
-        <div class="col-sm-1 form-label">
-            <label for="inactive" class="lbl">{{ 'COMMON.GENERAL.INACTIVE_SHORT' | translate }}</label>
-        </div>
-        <div class="col-sm-1">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
-                <label for="inactive" class="lbl"></label>
-            </div>
+        <div class="col-sm-8">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="col-sm-9">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
-                formControlName="name">
-            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </span>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex" numericInputOnly
-                maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </div>
+        <div class="col-sm-4">
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="workingTimes">{{ 'COMMON.BIZ.WORKING_TIMES' | translate }}</label>
-        </div>
-        <div class="col-sm-9">
-            <input type="text" class="form-control form-control-block" id="workingTimes" maxlength="250"
-                formControlName="workingTimes">
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="phoneNo">{{ 'COMMON.CONTACT_INFO.PHONE_NO' | translate }}</label>
-        </div>
-        <div class="col-sm-3">
-            <input type="text" class="form-control form-control-block" id="phoneNo" maxlength="50"
-                formControlName="phoneNo">
-        </div>
-        <div class="col-sm-1 form-label">
-            <label for="email">{{ 'COMMON.CONTACT_INFO.EMAIL' | translate }}</label>
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control form-control-block" id="email" maxlength="250"
-                formControlName="email">
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.BIZ.WORKING_TIMES' | translate }}</mat-label>
+                <input type="text" matInput formControlName="workingTimes" maxlength="250">
+            </mat-form-field>
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="fullAddress">{{ 'COMMON.CONTACT_INFO.ADDRESS' | translate }}</label>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.PHONE_NO' | translate }}</mat-label>
+                <input type="text" matInput formControlName="phoneNo" maxlength="20">
+            </mat-form-field>
         </div>
-        <div class="col-sm-9">
-            <input type="text" class="form-control form-control-block" id="fullAddress" maxlength="250"
-                formControlName="fullAddress">
+        <div class="col-sm-8">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.EMAIL' | translate }}</mat-label>
+                <input type="text" matInput formControlName="email" maxlength="250">
+                <mat-error *ngIf="mainForm.get('email').invalid">
+                    {{ 'MESSAGE.EMAIL_INVALID' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="latitude">{{ 'COMMON.CONTACT_INFO.LATITUDE' | translate }}</label>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.ADDRESS' | translate }}</mat-label>
+                <input type="text" matInput formControlName="fullAddress" maxlength="250">
+            </mat-form-field>
         </div>
-        <div class="col-sm-3">
-            <input type="text" class="form-control form-control-block" id="latitude" maxlength="20"
-                formControlName="latitude">
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.LATITUDE' | translate }}</mat-label>
+                <input type="text" matInput formControlName="latitude" maxlength="12">
+                <mat-error *ngIf="mainForm.get('latitude').invalid">
+                    {{ 'MESSAGE.DATA_INVALID' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="col-sm-1 form-label">
-            <label for="longitude">{{ 'COMMON.CONTACT_INFO.LONGITUDE' | translate }}</label>
-        </div>
-        <div class="col-sm-3">
-            <input type="text" class="form-control form-control-block" id="longitude" maxlength="20"
-                formControlName="longitude">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.LONGITUDE' | translate }}</mat-label>
+                <input type="text" matInput formControlName="longitude" maxlength="12">
+                <mat-error *ngIf="mainForm.get('longitude').invalid">
+                    {{ 'MESSAGE.DATA_INVALID' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-sm-3"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}

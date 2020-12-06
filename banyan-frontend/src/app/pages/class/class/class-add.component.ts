@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogComponent"
@@ -8,7 +8,6 @@ import { ClassService } from '../class.service';
 import { SchoolClass } from 'app/model/class/SchoolClass';
 import { FormMode } from 'app/model/common/FormMode';
 import { NotificationType } from 'app/shared/models/NotificationType';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-class-add',
@@ -21,13 +20,16 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
     schedulePatternId: string = "";
     facilityId: string = "";
     statusValues: any[] = [
-        {value: 'E_PLANNING'},
-        {value: 'E_RECRUITING'},
-        {value: 'E_STARTED'},
-        {value: 'E_COMPLETED'},
-        {value: 'E_CANCELED'}
+        { value: 'E_PLANNING' },
+        { value: 'E_RECRUITING' },
+        { value: 'E_STARTED' },
+        { value: 'E_COMPLETED' },
+        { value: 'E_CANCELED' }
     ];
-    // public datePickerConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
+    nextChangedProgram: boolean = false;
+    nextChangedOutlet: boolean = false;
 
     constructor(
         element: ElementRef,
@@ -41,24 +43,24 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
         return new FormGroup({
             'code': new FormControl(null, [Validators.required]),
             'name': new FormControl(null, [Validators.required]),
-            'outletId': new FormControl(null),
+            'outletId': new FormControl(null, [Validators.required]),
             'outletCode': new FormControl(null),
             'outletName': new FormControl(null),
             'status': new FormControl(null, [Validators.required]),
-            'programId': new FormControl(null),
+            'programId': new FormControl(null, [Validators.required]),
             'programCode': new FormControl(null),
             'programName': new FormControl(null),
             'courseId': new FormControl(null),
             'courseCode': new FormControl(null),
             'courseName': new FormControl(null),
-            'schedulePatternId': new FormControl(null),
+            'schedulePatternId': new FormControl(null, [Validators.required]),
             'schedulePatternCode': new FormControl(null),
             'schedulePatternName': new FormControl(null),
             'actualStartDate': new FormControl(null, [Validators.required]),
             'actualEndDate': new FormControl(null, [Validators.required]),
-            'minHeadCount': new FormControl(null, [Validators.required]),
-            'maxHeadCount': new FormControl(null, [Validators.required]),
-            'facilityId': new FormControl(null),
+            'minHeadCount': new FormControl(null),
+            'maxHeadCount': new FormControl(null),
+            'facilityId': new FormControl(null, [Validators.required]),
             'facilityCode': new FormControl(null),
             'facilityName': new FormControl(null),
             'facilityNo': new FormControl(null),
@@ -68,13 +70,15 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
 
     protected patchInitializedMainForm() {
         if (this.mode == FormMode.E_ADD) {
-            this.programId = "SELECTOR";
-            this.courseId = "SELECTOR";
-            this.outletId = "SELECTOR";
-            this.schedulePatternId = "SELECTOR";
+            this.programId = "";
+            this.courseId = "";
+            this.outletId = "";
+            this.schedulePatternId = "";
             this.mainForm.controls['status'].setValue(this.statusValues[0].value);
             this.mainForm.controls['minHeadCount'].setValue(10);
             this.mainForm.controls['maxHeadCount'].setValue(20);
+
+            this.codeField.nativeElement.focus();
         } else {
             this.programId = this.item.programId;
             this.courseId = this.item.courseId;
@@ -83,6 +87,8 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
             this.facilityId = this.item.facilityId;
             this.mainForm.controls['actualStartDate'].setValue(new Date(this.item.actualStartDate));
             this.mainForm.controls['actualEndDate'].setValue(new Date(this.item.actualEndDate));
+
+            this.nameField.nativeElement.focus();
         }
     }
 
@@ -91,13 +97,13 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
         this.requestItem.actualEndDate = this.mainForm.controls['actualEndDate'].value.getTime() || null;
     }
 
-    protected callSearch(input: {code:string}, callbackFn: Function): void{
+    protected callSearch(input: { code: string }, callbackFn: Function): void {
         this.classService.classList(input).subscribe(data => callbackFn(data));
     }
-    protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
+    protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         this.classService.classCreate(requestItem).subscribe(data => callbackFn(data));
     }
-    protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
+    protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // console.log(this.requestItem);
         this.classService.classUpdate(requestItem).subscribe(data => callbackFn(data));
     }
@@ -106,25 +112,36 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
         this.mainForm.controls['outletId'].setValue(event[0]);
         this.mainForm.controls['outletCode'].setValue(event[1]);
         this.mainForm.controls['outletName'].setValue(event[2]);
-        this.mainForm.controls['facilityId'].setValue("");
-        this.mainForm.controls['facilityCode'].setValue("");
-        this.mainForm.controls['facilityName'].setValue("");
-        this.mainForm.controls['facilityNo'].setValue("");
+        if (this.nextChangedOutlet) {
+            this.mainForm.controls['facilityId'].setValue("");
+            this.mainForm.controls['facilityCode'].setValue("");
+            this.mainForm.controls['facilityName'].setValue("");
+            this.mainForm.controls['facilityNo'].setValue("");
+        } else {
+            this.nextChangedOutlet = true;
+        }
+
         this.outletId = event[0];
     }
 
     onChangeProgram(event) {
-        console.log("Class - Program changed");
+        // console.log("Class - Program changed");
         this.mainForm.controls['programId'].setValue(event[0]);
         this.mainForm.controls['programCode'].setValue(event[1]);
         this.mainForm.controls['programName'].setValue(event[2]);
-        this.mainForm.controls['courseId'].setValue("");
-        this.mainForm.controls['courseCode'].setValue("");
-        this.mainForm.controls['courseName'].setValue("");
+        if (!this.nextChangedProgram) {
+            this.nextChangedProgram = true;
+
+        } else {
+            this.mainForm.controls['courseId'].setValue("");
+            this.mainForm.controls['courseCode'].setValue("");
+            this.mainForm.controls['courseName'].setValue("");
+        }
 
         this.programId = event[0];
     }
     onChangeCourse(event) {
+        // console.log("Class - Course changed");
         this.mainForm.controls['courseId'].setValue(event[0]);
         this.mainForm.controls['courseCode'].setValue(event[1]);
         this.mainForm.controls['courseName'].setValue(event[2]);
@@ -149,25 +166,23 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
     }
 
     startSave() {
-        if (this.outletId == "SELECTOR") {
-            this.showMessage('Chưa chọn chi nhánh.', 'Cảnh báo', NotificationType.ERROR);
-            return;
-        }
-        if (this.programId == "SELECTOR") {
-            this.showMessage('Chưa chọn chương trình.', 'Cảnh báo', NotificationType.ERROR);
-            return;
-        }
-        if (this.courseId == "SELECTOR") {
-            this.showMessage('Chưa chọn khóa học.', 'Cảnh báo', NotificationType.ERROR);
-            return;
-        }
-        if (this.schedulePatternId == "SELECTOR") {
-            this.showMessage('Chưa chọn lịch học.', 'Cảnh báo', NotificationType.ERROR);
-            return;
-        }
+        // if (this.outletId == "") {
+        //     this.showMessage('Chưa chọn chi nhánh.', 'Cảnh báo', NotificationType.ERROR);
+        //     return;
+        // }
+        // if (this.programId == "") {
+        //     this.showMessage('Chưa chọn chương trình.', 'Cảnh báo', NotificationType.ERROR);
+        //     return;
+        // }
+        // if (this.mainForm.controls['courseId'].value == "") {
+        //     this.showMessage('Chưa chọn khóa học.', 'Cảnh báo', NotificationType.ERROR);
+        //     return;
+        // }
+        // if (this.schedulePatternId == "") {
+        //     this.showMessage('Chưa chọn lịch học.', 'Cảnh báo', NotificationType.ERROR);
+        //     return;
+        // }
 
         this.onSave();
-
-
     }
 }

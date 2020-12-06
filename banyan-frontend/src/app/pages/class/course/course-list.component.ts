@@ -23,7 +23,7 @@ export class CourseListComponent extends BaseListComponent<Course> implements On
     }
 
     ngOnInit() {
-        
+        this.config.class="modal-medium";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

@@ -19,6 +19,7 @@ import { StudySubjectAssignComponent } from './study-subject-assign/study-subjec
 import { SchedulePatternSelectorComponent } from '../settings/schedule-pattern/schedule-pattern-selector.component';
 import { FacilitySelectorComponent } from '../settings/facility/facility-selector.component';
 import { ClassViewComponent } from './class/class-view.component';
+import { MatSliderModule } from '@angular/material' 
 
 @NgModule({
     imports: [
@@ -26,7 +27,9 @@ import { ClassViewComponent } from './class/class-view.component';
         AppCommonModule,
         GridModule,
         ReactiveFormsModule,
-        ClassRoutingModule
+        ClassRoutingModule,
+        MatSliderModule,
+        
     ],
     declarations: [
         ClassHomeComponent,

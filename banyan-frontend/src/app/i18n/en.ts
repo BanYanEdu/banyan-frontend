@@ -161,7 +161,9 @@ export let enLocale = {
             END_TIME: 'End Time',
             START_DATE: 'Start Date',
             END_DATE: 'End Date',
-            TIME: 'Time'
+            TIME: 'Time',
+            TIME_FROM: 'Time from',
+            TIME_TO: 'Time to'
         }
     },
     MODULE: {

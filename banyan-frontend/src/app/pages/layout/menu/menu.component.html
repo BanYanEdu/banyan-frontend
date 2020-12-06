@@ -28,14 +28,26 @@
     <div class="col-sm-2 menu-item-panel" align="center">
         <div class="menu-item">{{ userDisplayName }}</div>
     </div>
+    <!-- <div class="col-sm-2" align="center">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="vi" class="btn menu-button" (click)="changeLanguage('vi')">Tiếng Việt</mat-button-toggle>
+            <mat-button-toggle value="en" class="btn menu-button" (click)="changeLanguage('en')">English</mat-button-toggle>
+            <mat-button-toggle value="ko" class="btn menu-button" (click)="changeLanguage('ko')">v한국어</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div> -->
+
+
     <div class="col-sm-5 menu-button-panel" align="right">
-        <button type="button" class="btn btn-default menu-button" (click)="changeLanguage('vi')" [disabled]="currentLang=='vi'">
+        <button type="button" class="btn btn-default menu-button" (click)="changeLanguage('vi')"
+            [disabled]="currentLang=='vi'">
             Tiếng Việt
         </button>
-        <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('en')" [disabled]="currentLang=='en'">
+        <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('en')"
+            [disabled]="currentLang=='en'">
             English
         </button>
-        <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('ko')" [disabled]="currentLang=='ko'">
+        <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('ko')"
+            [disabled]="currentLang=='ko'">
             한국어
         </button>
         <button type="button" class="btn btn-default menu-button ml-5" (click)="onLogout()">

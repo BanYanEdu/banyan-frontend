@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogComponent"
@@ -18,6 +18,8 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
     view: boolean = false;
     moveToView: boolean = false;
     programId: string;
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
 
     constructor(
         element: ElementRef,
@@ -41,11 +43,18 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
             'inactive': new FormControl(null),
             'checkingRequired': new FormControl(null),
             'curriculum': new FormControl(null),
-            'programId': new FormControl(null),
+            'programId': new FormControl(null, [Validators.required]),
             'programCode': new FormControl(null),
             'programName': new FormControl(null),
  
         });
+    }
+    patchInitializedMainForm() {
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
+        } else {
+            this.nameField.nativeElement.focus();
+        }
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
         this.classService.courseList(input).subscribe(data => callbackFn(data));
@@ -73,7 +82,7 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
     }
 
     startSave(mode: string) {
-        if ( this.mainForm.controls['programId'].value == "SELECTOR") {
+        if ( this.mainForm.controls['programId'].value == "") {
             this.showMessage('Chưa chọn chương trình.', 'Cảnh báo', NotificationType.ERROR);
             return;
         }

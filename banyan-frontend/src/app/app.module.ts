@@ -29,14 +29,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { ComingMessageComponent } from './pages/system/coming.message';
 import { CommonService } from './shared/services/common.service';
 import { FocusService } from './shared/services/focus.service';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatDialogModule, MatInputModule, MatToolbarModule } from '@angular/material';
+
 @NgModule({
     declarations: [
         AppComponent,
         TopMenuComponent,
         NavbarComponent,
         HomeComponent,
-        ComingMessageComponent
-
+        ComingMessageComponent,
     ],
     imports: [
         BrowserModule,
@@ -55,7 +58,10 @@ import { FocusService } from './shared/services/focus.service';
         SocialAppModule,
         ChatMessageModule,
         DialogModule,
-
+        // MatInputModule,
+        // MatDialogModule,
+        // MatButtonModule,
+        // MatToolbarModule
     ],
     providers: [{
         provide: RouteReuseStrategy,

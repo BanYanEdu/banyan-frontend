@@ -24,7 +24,7 @@ export class StudySubjectListComponent extends BaseListComponent<StudySubject> i
     }
 
     ngOnInit() {
-        
+        this.config.class="modal-medium";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

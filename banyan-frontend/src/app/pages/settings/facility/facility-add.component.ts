@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { SettingsService } from '../settings.service';
@@ -7,12 +7,16 @@ import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { Facility } from 'app/model/settings/Facility';
 import { NotificationType } from 'app/shared/models/NotificationType';
+import { FormMode } from 'app/model/common/FormMode';
 
 @Component({
     selector: 'app-facility-add',
     templateUrl: './facility-add.component.html'
 })
 export class FacilityAddComponent extends BaseAddDialogComponent<Facility>{
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
+
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
@@ -34,6 +38,13 @@ export class FacilityAddComponent extends BaseAddDialogComponent<Facility>{
             
         });
     }
+    patchInitializedMainForm() {
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
+        } else {
+            this.nameField.nativeElement.focus();
+        }
+    }
     protected callSearch(input: {code:string}, callbackFn: Function): void{
         this.settingsService.facilityList(input).subscribe(data => callbackFn(data));
     }
@@ -51,7 +62,7 @@ export class FacilityAddComponent extends BaseAddDialogComponent<Facility>{
     }
 
     startSave() {
-        if (this.mainForm.controls['outletId'].value == "SELECTOR") {
+        if (this.mainForm.controls['outletId'].value == "") {
             this.showMessage('Chưa chọn chi nhánh.', 'Cảnh báo', NotificationType.ERROR);
             return;
         }

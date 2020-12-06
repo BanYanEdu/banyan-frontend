@@ -133,7 +133,9 @@ export let viLocale = {
             END_TIME: 'Thời gian kết thúc',
             START_DATE: 'Ngày bắt đầu',
             END_DATE: 'Ngày kết thúc',
-            TIME: 'Thời gian'
+            TIME: 'Thời gian',
+            TIME_FROM: 'TG từ',
+            TIME_TO: 'TG đến'
         }
 
     },

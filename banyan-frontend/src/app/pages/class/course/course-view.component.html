@@ -2,7 +2,7 @@
     <div class="row mt-2">
         <div class="col-sm-10">
             <span class="form-title">{{ item?.name }}</span>
-            <button type="button" class="btn btn-add ml-2" (click)="onEdit(editDialog)">
+            <button type="button" class="btn btn-add ml-2" (click)="onEditCourse(editDialog)">
                 <i class="fa fa-edit"></i> {{ 'COMMON.ACTION.EDIT' | translate }}
             </button>
         </div>
@@ -70,7 +70,6 @@
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
                     <div class="row mt-2 ml-2">
-                        
                         <div class="col-sm-12">
                             <div class="row mt-2 datagrid-header">
                                 <div class="col-sm-1" align="center">

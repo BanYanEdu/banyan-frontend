@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { SettingsService } from '../settings.service';
@@ -6,12 +6,16 @@ import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogCompo
 import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { Source } from 'app/model/settings/Source';
+import { FormMode } from 'app/model/common/FormMode';
 
 @Component({
     selector: 'app-source-add',
     templateUrl: './source-add.component.html'
 })
 export class SourceAddComponent extends BaseAddDialogComponent<Source>{
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
+    
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
@@ -27,6 +31,15 @@ export class SourceAddComponent extends BaseAddDialogComponent<Source>{
             'inactive': new FormControl(null)
         });
     }
+
+    patchInitializedMainForm() {
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
+        } else {
+            this.nameField.nativeElement.focus();
+        }
+    }
+
     protected callSearch(input: {code:string}, callbackFn: Function): void{
         this.settingsService.sourceList(input).subscribe(data => callbackFn(data));
     }

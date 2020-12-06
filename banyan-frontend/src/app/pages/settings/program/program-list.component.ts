@@ -24,7 +24,7 @@ export class ProgramListComponent extends BaseListComponent<Program> implements 
     }
 
     ngOnInit() {
-        
+        this.config.class="modal-medium";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

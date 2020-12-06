@@ -86,6 +86,7 @@ export class SystemConfigViewComponent extends BaseComponent implements OnInit {
         this.modalRef = this.modalService.show(template, this.config);
     }
     showModal(template: TemplateRef<any>) {
+        this.config.class="modal-medium";
         this.modalRef = this.modalService.show(template, this.config);
     }
     onChanged() {

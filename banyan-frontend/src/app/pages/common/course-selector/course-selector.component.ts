@@ -26,7 +26,7 @@ export class CourseSelectorComponent implements OnInit, OnChanges {
     }
 
     public ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-        // console.log("Course Selector: Program changed ...");
+        // console.log("Course Selector: Something changed ...");
 
         for (let propName in changes) {
             // let changedProp = changes[propName];
@@ -40,11 +40,19 @@ export class CourseSelectorComponent implements OnInit, OnChanges {
     onChanged() {
         this.courseId = this.mainForm.controls['uuid'].value;
         if (this.items) {
-            this.change.emit([
-                this.courseId,
-                this.items.filter(c => c.uuid === this.courseId)[0].code,
-                this.items.filter(c => c.uuid === this.courseId)[0].name
-            ]);
+            if (this.courseId != "") {
+                this.change.emit([
+                    this.courseId,
+                    this.items.filter(c => c.uuid === this.courseId)[0].code,
+                    this.items.filter(c => c.uuid === this.courseId)[0].name
+                ]);
+            } else {
+                this.change.emit([
+                    this.courseId,
+                    "",
+                    ""
+                ]);
+            }
         }
     }
 
@@ -59,9 +67,9 @@ export class CourseSelectorComponent implements OnInit, OnChanges {
 
         this.classService.courseList(params).subscribe(data => {
             this.items = data['items'];
-            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn khóa học -->"});
+            // this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn khóa học -->"});
             if (this.mode == FormMode.E_ADD) {
-                this.mainForm.controls['uuid'].setValue("SELECTOR");
+                this.mainForm.controls['uuid'].setValue("");
             } else {
                 this.mainForm.controls['uuid'].setValue(this.courseId);
             }

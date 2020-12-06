@@ -88,24 +88,34 @@ body {
   color: #7f7f7f;
 }
 
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
-}  
-select.ng-invalid.ng-touched {
-  border: 1px solid red;
+.input-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
-.ng-select-invalid {
-  border-color: #dc3545;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #dc3545;
-  border-radius: 4px ;
+
+.input-full-width {
+  width: 100%;
 }
+
+// input.ng-invalid.ng-touched {
+//   border: 1px solid red;
+// }  
+// select.ng-invalid.ng-touched {
+//   border: 1px solid red;
+// }
+// .ng-select-invalid {
+//   border-color: #dc3545;
+//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #dc3545;
+//   border-radius: 4px ;
+// }
 .error-message {
   color: $error-message-color;
 }
-.form-required {
-  // border-bottom-color: $default-theme-color;
-  border-bottom-width: 1px;
-}
+// .form-required {
+//   // border-bottom-color: $default-theme-color;
+//   border-bottom-width: 1px;
+// }
 
 // Input
 .no-border, .form-control {
@@ -435,8 +445,12 @@ img.avatar-error {
 // Modal
 @media (min-width: 768px) {
   .modal-xl {
-    width: 90%;
+   width: 90%;
    max-width:1200px;
+  }
+  .modal-medium {
+   width: 50%;
+   max-width:800px;
   }
 }
 .modal-form {

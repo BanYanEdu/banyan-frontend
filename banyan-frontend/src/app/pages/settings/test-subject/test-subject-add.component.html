@@ -1,97 +1,79 @@
 <form [formGroup]="mainForm">
-    <div class="row mt-2">
-        <div class="col-sm-2 form-label">
-            <label for="code">{{ 'COMMON.GENERAL.CODE' | translate }}</label>
-        </div>
+    <div class="row">
         <div class="col-sm-2">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
-                maxlength="20" formControlName="code">
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </span>
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.CODE_EXISTS' | translate }}
-            </span>
-        </div>
-        <div class="col-sm-2 form-label">
-            <label for="sortIndex">{{ 'COMMON.GENERAL.SORT_INDEX_SHORT' | translate }}</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex" numericInputOnly
-                maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </div>
-        </div>
-        <div class="col-sm-2 form-label">
-            <label for="inactive" class="lbl">{{ 'COMMON.GENERAL.INACTIVE_SHORT' | translate }}</label>
-        </div>
-        <div class="col-sm-1">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
-                <label for="inactive" class="lbl"></label>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-2 form-label">
-            <label for="name">{{ 'COMMON.GENERAL.NAME' | translate }}</label>
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
-                formControlName="name">
-            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-            </span>
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-sm-2 form-label">
-            <label for="name">{{ 'MODULE.SETTINGS.EVALUATION_TYPE' | translate }}</label>
-        </div>
         <div class="col-sm-2">
-            <select class="form-control form-required" formControlName="evaluationType" (click)="changeEvaType()">
-                <option value="{{ evaType.value }}" *ngFor="let evaType of evaTypes">
-                    {{ 'MODULE.SETTINGS.EVALUATION_TYPE_VALUES.' + evaType.value | translate }}
-                </option>
-            </select>
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.EVALUATION_TYPE' | translate }}</mat-label>
+                <select matNativeControl formControlName="evaluationType" (click)="changeEvaType()">
+                    <option value="{{ evaType.value }}" *ngFor="let evaType of evaTypes">
+                        {{ 'MODULE.SETTINGS.EVALUATION_TYPE_VALUES.' + evaType.value | translate }}
+                    </option>
+                </select>
+            </mat-form-field>
         </div>
-    </div>
-    <div class="row mt-2" *ngIf="evaType =='E_SCORES'">
-        <div class="col-sm-2 form-label">
-            <label for="maxScores">{{ 'MODULE.SETTINGS.MAX_SCORES' | translate }}</label>
+        <div class="col-sm-2" *ngIf="evaType =='E_SCORES'">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.MAX_SCORES' | translate }}</mat-label>
+                <input type="text" matInput formControlName="maxScores" maxlength="4" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('maxScores').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="maxScores" numericInputOnly
-                maxlength="10" formControlName="maxScores">
-        </div>
-        <div class="col-sm-2 form-label">
-            <label for="decimals">{{ 'MODULE.SETTINGS.DECIMALS' | translate }}</label>
-        </div>
-        <div class="col-sm-1">
-            <select class="form-control form-required" formControlName="decimals">
-                <option value="{{ decimalsValue.value }}" *ngFor="let decimalsValue of decimalsValues">
-                    {{decimalsValue.value}}
-                </option>
-            </select>
+        <div class="col-sm-2" *ngIf="evaType =='E_SCORES'">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.DECIMALS' | translate }}</mat-label>
+                <select matNativeControl formControlName="decimals">
+                    <option value="{{ decimalsValue.value }}" *ngFor="let decimalsValue of decimalsValues">
+                        {{decimalsValue.value}}
+                    </option>
+                </select>
+            </mat-form-field>
         </div>
     </div>
 </form>
 
 <div *ngIf="evaType == 'E_LEVEL'" class="row mt-2">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-9">
+    <div class="col-sm-12">
         <div class="row mt-2 datagrid-header">
             <div class="col-sm-2">
                 {{ 'COMMON.GENERAL.CODE' | translate }}
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 {{ 'COMMON.GENERAL.DESCRIPTION' | translate }}
             </div>
             <div class="col-sm-2">
@@ -104,7 +86,7 @@
                 <input type="text" class="form-control" maxlength="20" [(ngModel)]="level.code"
                     class="form-control form-required">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <input type="text" class="form-control" maxlength="150" [(ngModel)]="level.description"
                     class="form-control form-required">
             </div>
@@ -139,9 +121,8 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-sm-2"> </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+        <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
             <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
         </button>
     </div>

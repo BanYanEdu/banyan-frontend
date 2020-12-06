@@ -9,14 +9,17 @@ import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 import { EmployeeRoutingModule} from './employee-routing.module';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeAddComponent } from './employee/employee-add.component';
+import { AppCommonModule } from '../common/app-common.module';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        // AppCommonModule,
+        AppCommonModule,
         GridModule,
         ReactiveFormsModule,
-        EmployeeRoutingModule
+        EmployeeRoutingModule,
+        // MatInputModule
         // ColorPickerModule,
     ],
     declarations: [

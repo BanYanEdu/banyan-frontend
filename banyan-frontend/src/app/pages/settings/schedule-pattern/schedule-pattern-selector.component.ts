@@ -33,7 +33,7 @@ export class SchedulePatternSelectorComponent implements OnInit {
 
         this.settingsService.schedulePatternList({}).subscribe(data => {
             this.items = data['items'];
-            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn lịch học -->"});
+            // this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn lịch học -->"});
             
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";
@@ -50,12 +50,19 @@ export class SchedulePatternSelectorComponent implements OnInit {
     onChanged() {
         this.uuid = this.mainForm.controls['uuid'].value;
         if (this.items) {
-            // console.log(this.items);
-            this.change.emit([
-                this.uuid,
-                this.items.filter(c => c.uuid === this.uuid)[0].code,
-                this.items.filter(c => c.uuid === this.uuid)[0].name
-            ]);
+            if (this.uuid != "") {
+                this.change.emit([
+                    this.uuid,
+                    this.items.filter(c => c.uuid === this.uuid)[0].code,
+                    this.items.filter(c => c.uuid === this.uuid)[0].name
+                ]);
+            } else {
+                this.change.emit([
+                    this.uuid,
+                    "",
+                    ""
+                ]);
+            }
         }
     }
 }

@@ -32,6 +32,7 @@ import { MinuteSelectorComponent } from './time-selector/minute-selector.compone
 import { ProgramSelectorComponent } from './program-selector/program-selector.component';
 import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
 import { CourseSelectorComponent } from './course-selector/course-selector.component';
+import { MatCheckboxModule, MatInputModule } from '@angular/material';
 
 
 
@@ -55,7 +56,9 @@ import { CourseSelectorComponent } from './course-selector/course-selector.compo
         // TreeviewModule.forRoot(),
         // DropdownTreeviewSelectModule,
         DialogModule,
-        RouterModule
+        RouterModule,
+        MatInputModule,
+        MatCheckboxModule
     ],
     declarations: [ 
         MomentPipe,
@@ -85,6 +88,8 @@ import { CourseSelectorComponent } from './course-selector/course-selector.compo
         PopoverModule,
         TabsModule,
         BsDatepickerModule,
+        MatInputModule,
+        MatCheckboxModule,
         MomentPipe,
         // ReversePipe,
         InputCharacterMaskDirective,

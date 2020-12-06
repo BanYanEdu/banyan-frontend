@@ -1,6 +1,6 @@
 <form [formGroup]="mainForm">
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
+        <div class="col-sm-1 form-label">
             <label for="code">Mã</label>
         </div>
         <div class="col-sm-2">
@@ -17,12 +17,21 @@
                 Mã đã tồn tại
             </span>
         </div>
+        <div class="col-sm-1 form-label">
+            <label for="inactive" class="lbl">NTD</label>
+        </div>
+        <div class="col-sm-2">
+            <div class="custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
+                <label for="inactive" class="lbl"></label>
+            </div>
+        </div>
     </div>
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
+        <div class="col-sm-1 form-label">
             <label for="name">Tên</label>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
                 formControlName="name">
             <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
@@ -31,18 +40,48 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="inactive" class="lbl">NTD</label>
+        <div class="col-sm-1 form-label">
+            <label for="phoneNo">Số điện thoại</label>
         </div>
-        <div class="col-sm-4">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
-                <label for="inactive" class="lbl"></label>
-            </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-block form-required" id="phoneNo" maxlength="20"
+                formControlName="phoneNo">
+            <span *ngIf="!mainForm.get('phoneNo').valid && mainForm.get('phoneNo').touched" class="help-block error-message">
+                Bắt buộc nhập
+            </span>
         </div>
+        <div class="col-sm-3">
+            <mat-form-field >
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email"
+                       placeholder="Ex. pat@example.com">
+                
+                       <!-- <input type="email" matInput [formControl]="email"
+                       placeholder="Ex. pat@example.com">
+                 -->
+                       <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    
+    
+                <!-- <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            <!-- <input type="text" class="form-control form-control-block form-required" id="email" maxlength="250"
+                formControlName="email">
+            <span *ngIf="!mainForm.get('email').valid && mainForm.get('email').touched" class="help-block error-message">
+                Bắt buộc nhập
+            </span> -->
+        </div>
+        
     </div>
     <div class="row mt-4">
-        <div class="col-sm-3"> </div>
+
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-1"> </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 Lưu

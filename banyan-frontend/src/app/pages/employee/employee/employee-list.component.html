@@ -1,9 +1,9 @@
 <div class="app-content">
     <div class="row form-header">
         <div class="col-sm-12">
-            <span class="form-title">Giảng viên</span>
-            <button type="button" class="btn btn-default ml-2" (click)="onAdd(editDialog)">
-                Thêm
+            <span class="form-title">{{ 'MENU.LECTURERS' | translate }}</span>
+            <button type="button" class="btn btn-add ml-4" (click)="onAdd(editDialog)">
+                <i class="fa fa-plus"></i> {{ 'COMMON.ACTION.ADD' | translate }}
             </button>
         </div>
     </div>
@@ -16,8 +16,6 @@
             </data-table-column>
             <data-table-column [property]="'name'" [header]="'Tên'">
             </data-table-column>
-            <data-table-column [property]="'sortIndex'" [header]="'TTHT'" [styleClass]="'text-center'" [width]="120">
-            </data-table-column>
             <data-table-column [property]="" [header]="'NTD'" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
                     <div class="">
@@ -27,7 +25,7 @@
             </data-table-column>
             <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
-                    <button type="button" class="btn btn-default btn-sm space-right-small"
+                    <button type="button" class="btn btn-add btn-sm space-right-small"
                         (click)="onEdit(editDialog, item)">
                         <i class="fa fa-edit"></i>
                     </button>

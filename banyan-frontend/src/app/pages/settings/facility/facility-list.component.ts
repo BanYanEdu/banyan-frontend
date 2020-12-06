@@ -24,7 +24,7 @@ export class FacilityListComponent extends BaseListComponent<Facility> implement
     }
 
     ngOnInit() {
-        
+        this.config.class="modal-medium";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

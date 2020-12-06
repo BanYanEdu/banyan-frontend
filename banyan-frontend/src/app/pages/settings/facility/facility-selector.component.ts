@@ -26,8 +26,6 @@ export class FacilitySelectorComponent implements OnInit, OnChanges {
     }
 
     public ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-        // console.log("Course Selector: Program changed ...");
-
         for (let propName in changes) {
             // let changedProp = changes[propName];
             if (propName == "outletId") {
@@ -40,12 +38,19 @@ export class FacilitySelectorComponent implements OnInit, OnChanges {
     onChanged() {
         this.facilityId = this.mainForm.controls['uuid'].value;
         if (this.items) {
-            this.change.emit([
-                this.facilityId,
-                this.items.filter(c => c.uuid === this.facilityId)[0].code,
-                this.items.filter(c => c.uuid === this.facilityId)[0].name,
-                this.items.filter(c => c.uuid === this.facilityId)[0].facilityNo,
-            ]);
+            if (this.facilityId != "") {
+                this.change.emit([
+                    this.facilityId,
+                    this.items.filter(c => c.uuid === this.facilityId)[0].code,
+                    this.items.filter(c => c.uuid === this.facilityId)[0].name
+                ]);
+            } else {
+                this.change.emit([
+                    this.facilityId,
+                    "",
+                    ""
+                ]);
+            }
         }
     }
 
@@ -60,9 +65,8 @@ export class FacilitySelectorComponent implements OnInit, OnChanges {
 
         this.settingsService.facilityList(params).subscribe(data => {
             this.items = data['items'];
-            this.items.splice(0, 0, {uuid: "SELECTOR", facilityNo: "<-- Chọn phòng học -->"});
             if (this.mode == FormMode.E_ADD) {
-                this.mainForm.controls['uuid'].setValue("SELECTOR");
+                this.mainForm.controls['uuid'].setValue("");
             } else {
                 this.mainForm.controls['uuid'].setValue(this.facilityId);
             }

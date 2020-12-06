@@ -72,7 +72,7 @@
                             Ví dụ
                         </div>
                         <div class="col-sm-2" *ngIf="systemConfig?.employeeProfileConfig?.codeAutoGenerating">
-                            {{ epcCodeSample }}
+                            <h5>{{ epcCodeSample }}</h5>               
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -127,7 +127,7 @@
                             Ví dụ
                         </div>
                         <div class="col-sm-2" *ngIf="systemConfig?.contactProfileConfig?.codeAutoGenerating">
-                            {{ cpcCodeSample }}
+                            <h5>{{ cpcCodeSample }}</h5>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -136,7 +136,7 @@
                         <div class="col-sm-2">
                             <button type="button" class="btn btn-add"
                                 (click)="showModal(refContactProfile)">
-                                <i class="fa fa-edit"></i> Cập nhật
+                                <i class="fa fa-edit"></i> {{ 'COMMON.ACTION.CHANGE' | translate }}
                             </button>
                         </div>
                     </div>

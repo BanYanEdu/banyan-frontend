@@ -24,7 +24,7 @@ export class TestSubjectListComponent extends BaseListComponent<TestSubject> imp
     }
 
     ngOnInit() {
-        
+        // this.config.class="modal-medium";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

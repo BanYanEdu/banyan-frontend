@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { SettingsService } from '../settings.service';
@@ -26,6 +26,8 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
     ];
     evaType: string = 'E_SCORES';
     levels: TestSubjectLevel[] = [];
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
 
     constructor(
         element: ElementRef,
@@ -59,6 +61,12 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
         if (this.requestItem.evaluationType == "E_LEVEL") {
             this.levels = this.requestItem.levels;
         }
+
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
+        } else {
+            this.nameField.nativeElement.focus();
+        }
     };
 
     populateAdditionalFormValue() {
@@ -68,6 +76,11 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
     }
 
     startSave() {
+        if (this.evaType == "E_SCORES") {
+            this.onSave();
+            return;
+        }
+
         let ok = true;
         for (let i = 0; i < this.levels.length; i++) {
            this.levels[i].sortIndex = i;
@@ -81,6 +94,7 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
             return;
         }
         this.onSave();
+        
     }
 
     protected callSearch(input: {code:string}, callbackFn: Function): void{
@@ -91,7 +105,7 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
         this.settingsService.testSubjectCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        console.log(requestItem);
+        // console.log(requestItem);
 
         this.settingsService.testSubjectUpdate(requestItem).subscribe(data => callbackFn(data));
     }
@@ -107,7 +121,11 @@ export class TestSubjectAddComponent extends BaseAddDialogComponent<TestSubject>
 
     onAddRow() {
         // console.log(i);
-        this.levels.push({});
+        this.levels.push({
+            code: '',
+            description: '',
+            scores: 0
+        });
     }
     onDeleteRow(i: number) {
         this.levels.splice(i, 1);

@@ -33,15 +33,15 @@ export class ProgramSelectorComponent implements OnInit {
 
         this.settingsService.programList({}).subscribe(data => {
             this.items = data['items'];
-            this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn chương trình -->"});
+            // this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn chương trình -->"});
             
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";
-                this.mainForm.controls['uuid'].setValue("SELECTOR");
+                this.mainForm.controls['uuid'].setValue("");
             } else {
                 if (this.uuid != "") {
                     this.mainForm.controls['uuid'].setValue(this.uuid);
-                    // this.onChanged();
+                    this.onChanged();
                 }
             }
         });
@@ -50,11 +50,19 @@ export class ProgramSelectorComponent implements OnInit {
     onChanged() {
         this.uuid = this.mainForm.controls['uuid'].value;
         if (this.items) {
-            this.change.emit([
-                this.uuid,
-                this.items.filter(c => c.uuid === this.uuid)[0].code,
-                this.items.filter(c => c.uuid === this.uuid)[0].name
-            ]);
+            if (this.uuid != "") {
+                this.change.emit([
+                    this.uuid,
+                    this.items.filter(c => c.uuid === this.uuid)[0].code,
+                    this.items.filter(c => c.uuid === this.uuid)[0].name
+                ]);
+            } else {
+                this.change.emit([
+                    this.uuid,
+                    "",
+                    ""
+                ]);
+            }
         }
     }
 }

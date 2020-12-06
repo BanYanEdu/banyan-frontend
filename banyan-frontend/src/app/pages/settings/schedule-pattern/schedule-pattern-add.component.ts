@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { SettingsService } from '../settings.service';
@@ -16,7 +16,9 @@ import { NotificationType } from 'app/shared/models/NotificationType';
 })
 export class SchedulePaternAddComponent extends BaseAddDialogComponent<SchedulePattern>{
     details: SchedulePatternDetail[] = [];
-    
+    @ViewChild("code") codeField: ElementRef;
+    @ViewChild("name") nameField: ElementRef;
+
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
@@ -43,9 +45,11 @@ export class SchedulePaternAddComponent extends BaseAddDialogComponent<ScheduleP
     }
 
     protected patchInitializedMainForm() {
-        if (this.mode === FormMode.E_ADD) {
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
         } else {
             this.details = this.requestItem.details;
+            this.nameField.nativeElement.focus();
         }
     };
 
