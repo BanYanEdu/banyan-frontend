@@ -107,6 +107,15 @@ export let viLocale = {
             SORT_INDEX_SHORT: 'TTHT',
             STATUS: 'Trạng thái',
         },
+        PERSONAL: {
+            DOB: 'Ngày sinh',
+            GENDER: 'Giới tính',
+            GENDER_VALUES: {
+                E_MALE: 'Nam',
+                E_FEMALE: 'Nữ',
+                E_OTHER: 'Khác'
+            }
+        },
         SYSTEM: {
             CREATED_AT: 'Ngày tạo',
             CREATED_BY: 'Người tạo',
@@ -173,6 +182,26 @@ export let viLocale = {
             },
             DOC_STATUS: {
                 E_COMPLETED: 'Completed',
+            }
+        },
+        EMPLOYEE: {
+            EDU_LEVEL: 'Tr.độ văn hóa',
+            EDU_LEVEL_VALUES: {
+                E_HIGH_SCHOOL: 'THPT',
+                E_COLLEGE: 'Cao đẳng',
+                E_UNIVERSITY: 'Đại học',
+                E_MASTER: 'Thạc sỹ',
+                E_PHD: 'Tiến sỹ'
+            },
+            EMPLOYMENT_STATUS: 'Trạng thái làm việc',
+            EMPLOYMENT_STATUS_VALUES: {
+                E_HIRED: 'Đang làm việc',
+                E_TERMINATED: 'Đã thôi việc'
+            },
+            WORKING_TYPE: 'Hình thức làm việc',
+            WORKING_TYPE_VALUES: {
+                E_FULL_TIME: 'Toàn thời gian',
+                E_PART_TIME: 'Bán thời gian'
             }
         },
         LEAD: {

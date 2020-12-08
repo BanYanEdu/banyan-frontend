@@ -11,6 +11,7 @@ import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeAddComponent } from './employee/employee-add.component';
 import { AppCommonModule } from '../common/app-common.module';
 import { MatInputModule } from '@angular/material';
+import { EmployeeViewComponent } from './employee/employee-view.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { MatInputModule } from '@angular/material';
     declarations: [
         EmployeeHomeComponent,
         EmployeeListComponent,
-        EmployeeAddComponent
+        EmployeeAddComponent,
+        EmployeeViewComponent
     ],
     providers: [
         CommonService,

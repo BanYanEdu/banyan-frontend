@@ -23,7 +23,7 @@ export class EmployeeListComponent extends BaseListComponent<Outlet> implements 
     }
 
     ngOnInit() {
-        
+        this.config.class = "modal-xl";
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

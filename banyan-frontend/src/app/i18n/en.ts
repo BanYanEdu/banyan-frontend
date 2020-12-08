@@ -135,6 +135,16 @@ export let enLocale = {
             SORT_INDEX_SHORT: 'Sort Index',
             STATUS: 'Status',
         },
+        PERSONAL: {
+            DOB: 'DOB',
+            GENDER: 'Gender',
+            GENDER_VALUES: {
+                E_MALE: 'Male',
+                E_FEMALE: 'Female',
+                E_OTHER: 'Other'
+            },
+
+        },
         SYSTEM: {
             CREATED_AT: 'Created at',
             CREATED_BY: 'Created by',
@@ -179,6 +189,26 @@ export let enLocale = {
                 E_STARTED: 'Started',
                 E_COMPLETED: 'Completed',
                 E_CANCELED: 'Canceled'
+            }
+        },
+        EMPLOYEE: {
+            EDU_LEVEL: 'Educational Level',
+            EDU_LEVEL_VALUES: {
+                E_HIGH_SCHOOL: 'High School',
+                E_COLLEGE: 'College',
+                E_UNIVERSITY: 'University',
+                E_MASTER: 'Master',
+                E_PHD: 'PhD'
+            },
+            EMPLOYMENT_STATUS: 'Employment Status',
+            EMPLOYMENT_STATUS_VALUES: {
+                E_HIRED: 'Hired',
+                E_TERMINATED: 'Terminated'
+            },
+            WORKING_TYPE: 'Working Type',
+            WORKING_TYPE_VALUES: {
+                E_FULL_TIME: 'Full-time',
+                E_PART_TIME: 'Part-time'
             }
         },
         GENERIC: {

@@ -12,40 +12,20 @@ export class Employee extends BaseEditableMdModel {
     outletCode?: string;
     outletName?: string;
     asForeigner?: boolean;
+    dob?: number;
     gender?: string;
     otherName?: string;
     asLecturer?: string;
     codeAutoGenerating?: boolean;
+    idCardNo?: string;
+    idCardIssueDate?: number;
+    idCardIssuePlace?: string;
+    startedDate?: number;
+    terminatedDate?: number;
+    employmentStatus?: string;
+    workingType?: string;
+    eduLevel?: string;
+    hasService?: boolean;
+    serviceQualificationRemark?: string;
+    yearsOfServiceExperiences?: number;
 }
-
-/*
-private String otherName;
-    private String gender;
-    private Long dob;
-    private Boolean asForeigner = false;
-    private String jobTitle;
-    private String orgUnitName;
-    private String outletId;
-    private String outletCode;
-    private String outletName;
-    private Long startedDate;
-    private Long terminatedDate;
-    private String phoneNo;
-    private String email;
-    private String contactAddressFull;
-    private String idCardNo;
-    private Long idCardIssueDate;
-    private Long idCardIssuePlace;
-    private String employmentStatus;
-    private String workingType;
-    private String eduLevel;
-    private Boolean hasService = false;
-    private String serviceQualificationRemark;
-    private Double yearsOfServiceExperiences;
-
-
-
-
-
-
-*/

@@ -12,9 +12,26 @@
             (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
             [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
             [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
-            <data-table-column [property]="'code'" [header]="'Mã'" [width]="100">
+            <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate" [width]="100">
+                <ng-template #dataTableCell let-item="item">
+                    <a routerLink="../../employee/view/{{item.uuid}}" class="link-text">{{ item.code}}</a>
+                </ng-template>
             </data-table-column>
-            <data-table-column [property]="'name'" [header]="'Tên'">
+            <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                <ng-template #dataTableCell let-item="item">
+                    <a routerLink="../../employee/view/{{item.uuid}}" class="link-text">{{ item.name}}</a>
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'jobTitle'" [header]="'Chức danh'">
+            </data-table-column>
+            <data-table-column [property]="'outletName'" [header]="'Chi nhánh'">
+            </data-table-column>
+            <data-table-column [property]="" [header]="'Giảng viên'" [styleClass]="'text-center'" [width]="100">
+                <ng-template #dataTableCell let-item="item">
+                    <div class="">
+                        <span *ngIf="item.hasService"><i class="fa fa-check"></i></span>
+                    </div>
+                </ng-template>
             </data-table-column>
             <data-table-column [property]="" [header]="'NTD'" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
