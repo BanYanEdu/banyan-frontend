@@ -30,12 +30,6 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
         super(element, commonService);
     }
     protected createMainFormGroup(): FormGroup {
-        if (this.mode == FormMode.E_EDIT) {
-            this.view = false;
-        } else {
-            this.view = true;
-
-        }
         return new FormGroup({
             'code': new FormControl(null, [Validators.required]),
             'name': new FormControl(null, [Validators.required]),
@@ -52,8 +46,10 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
     patchInitializedMainForm() {
         if (this.mode == FormMode.E_ADD) {
             this.codeField.nativeElement.focus();
+            this.view = true;
         } else {
             this.nameField.nativeElement.focus();
+            this.view = false;
         }
     }
     protected callSearch(input: {code:string}, callbackFn: Function): void{

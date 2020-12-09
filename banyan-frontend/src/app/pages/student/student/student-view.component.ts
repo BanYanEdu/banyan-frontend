@@ -15,12 +15,8 @@ import { StudentService } from '../student.service';
 })
 export class StudentViewComponent extends BaseComponent {
     id: string;
-    type: string = "E_DEAL";
-    refreshedTime: number = 0;
     item: Contact;
-    converted: boolean = false;
     mode: FormMode;
-    activities: any[] = [];
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -46,10 +42,7 @@ export class StudentViewComponent extends BaseComponent {
             this.id = params['id'];
             this.studentService.studentList({uuid: this.id}).subscribe(data =>
                 {
-                    // this.item = data.items[0];
-                    this.item = {code: "001", name: "Nguyễn Duy Tân"};
-
-                    // console.log(this.item);
+                    this.item = data.items[0];
                 }
             );
         });
@@ -61,9 +54,7 @@ export class StudentViewComponent extends BaseComponent {
         });
     }
     
-
     onEdit(template: TemplateRef<any>) {
-        // this.selectedItem = <TModel>item;
         this.mode = FormMode.E_EDIT;
         this.modalRef = this.modalService.show(template, this.config);
     }
@@ -71,8 +62,5 @@ export class StudentViewComponent extends BaseComponent {
     onChanged($event) {
         this.modalRef.hide();
         this.load();
-        this.refreshedTime = this.refreshedTime + 1;
-        
     }
-
 }

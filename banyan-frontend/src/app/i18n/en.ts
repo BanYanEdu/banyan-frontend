@@ -4,7 +4,10 @@ export let enLocale = {
         CLASSES: 'Classes',
         COURSE: 'Course',
         COURSES: 'Courses',
+        EMPLOYEE: 'Employee',
+        EMPLOYEE_LECTURER: 'Employee / Lecturer',
         EMPLOYEES: 'Employees',
+        EMPLOYEES_LECTURERS: 'Employees / Lecturers',
         EXAM_TEST: 'Exam / Test',
         EXAMS_TESTS: 'Exams / Tests',
         FACILITY: 'Facility',
@@ -143,6 +146,12 @@ export let enLocale = {
                 E_FEMALE: 'Female',
                 E_OTHER: 'Other'
             },
+            ID_CARD_PASSPORT_NO: 'ID Card/Passport No',
+            ISSUE_DATE: 'Issue Date',
+            ISSUE_PLACE: 'Issue Place',
+            OCCUPATION: 'Occupation',
+            OTHER_NAME: 'Other Name',
+            PERMANENT_ADDRESS: 'Permanent Address'
 
         },
         SYSTEM: {
@@ -192,6 +201,7 @@ export let enLocale = {
             }
         },
         EMPLOYEE: {
+            DEPARTMENT: 'Department',
             EDU_LEVEL: 'Educational Level',
             EDU_LEVEL_VALUES: {
                 E_HIGH_SCHOOL: 'High School',
@@ -205,11 +215,14 @@ export let enLocale = {
                 E_HIRED: 'Hired',
                 E_TERMINATED: 'Terminated'
             },
+            FOREIGNER: 'Foreigner',
+            JOB_TITLE: 'Job Title',
             WORKING_TYPE: 'Working Type',
             WORKING_TYPE_VALUES: {
                 E_FULL_TIME: 'Full-time',
                 E_PART_TIME: 'Part-time'
-            }
+            },
+            YEARS_OF_EXPERIENCES: 'Years of Experiences'
         },
         GENERIC: {
             ADDRESS: 'Address',

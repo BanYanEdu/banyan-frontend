@@ -20,6 +20,7 @@ import { SchedulePatternSelectorComponent } from '../settings/schedule-pattern/s
 import { FacilitySelectorComponent } from '../settings/facility/facility-selector.component';
 import { ClassViewComponent } from './class/class-view.component';
 import { MatSliderModule } from '@angular/material' 
+import { ClassEnrollComponent } from './class/class-enroll.component';
 
 @NgModule({
     imports: [
@@ -39,6 +40,7 @@ import { MatSliderModule } from '@angular/material'
         ClassListComponent,
         ClassAddComponent,
         ClassViewComponent,
+        ClassEnrollComponent,
         RegistrationListComponent,
         RegistrationAddComponent,
         StudySubjectAssignComponent,

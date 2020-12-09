@@ -68,7 +68,8 @@
                     <span class="form-bold-text">{{ item?.maxHeadCount }}</span>
                     <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate }}</span>
                 </div>
-            </div><div class="row mt-2">
+            </div>
+            <div class="row mt-2">
                 <div class="col-sm-12">
                     <span class="form-bold-text">{{ item?.curriculum }}</span>
                     <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
@@ -105,9 +106,34 @@
         </div>
         <div class="col-sm-9">
             <tabset class="col-sm-12" style="min-height:400px">
+                <tab [heading]="'MENU.STUDENTS' | translate" id="tabStudents">
+                    <div class="row mt-2 ml-2">
+                        <div class="col-sm-12">
+                            <div class="row mt-2 datagrid-header">
+                                <div class="col-sm-1" align="center">
+                                    #
+                                </div>
+                                <div class="col-sm-1">
+                                    {{ 'COMMON.GENERAL.CODE' | translate }}
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ 'COMMON.GENERAL.NAME' | translate }}
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ 'COMMON.GENERAL.REMARK' | translate }}
+                                </div>
+                                <div class="col-sm-1" align="right">
+                                    <button type="button" class="btn-add"
+                                        (click)="onEnroll(enrollDialog)">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
                 <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
                     <div class="row mt-2 ml-2">
-
                         <div class="col-sm-12">
                             <div class="row mt-2 datagrid-header">
                                 <div class="col-sm-1" align="center">
@@ -123,8 +149,10 @@
                                     {{ 'COMMON.GENERAL.REMARK' | translate }}
                                 </div>
                                 <div class="col-sm-1" align="right">
-                                    <a class="btn-add" (click)="onAssign(assignStudySubjectDialog)"><i
-                                            class="fa fa-edit"></i></a>
+                                    <button type="button" class="btn-add"
+                                        (click)="onAssign(assignStudySubjectDialog)">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="row mt-2 datagrid-row"
@@ -156,13 +184,12 @@
                         </div>
                     </div>
                 </tab>
-                <tab [heading]="'MENU.EXAMS_TESTS' | translate" id="tabExams">
+                <tab [heading]="'Quản lý'" id="tabManagement">
                     <br><br>
-                    <h5>Under Construction ...</h5>
-                </tab>
-                <tab [heading]="'MENU.MATERIALS' | translate" id="tabStudyMaterials">
+                    <h5>Quản lý lớp học ...</h5>
+                </tab><tab [heading]="'MENU.MATERIALS' | translate" id="tabStudyMaterials">
                     <br><br>
-                    <h5>Under Construction ...</h5>
+                    <h5>Học liệu ...</h5>
                 </tab>
             </tabset>
         </div>
@@ -197,8 +224,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <app-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" [dataType]="'E_CLASS'" (valueChange)='onChanged($event)'>
+                <app-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" [dataType]="'E_CLASS'"
+                    (valueChange)='onChanged($event)'>
                 </app-study-subject-assign>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #enrollDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Nhập học</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-enroll 
+                    (valueChange)='onChanged($event)'>
+                </app-class-enroll>
             </div>
         </div>
     </div>

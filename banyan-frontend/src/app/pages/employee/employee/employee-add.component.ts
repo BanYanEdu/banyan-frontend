@@ -8,12 +8,15 @@ import { Employee } from 'app/model/employee/Employee';
 import { EmployeeService } from '../employee.service';
 import { SettingsService } from 'app/pages/settings/settings.service';
 import { FormMode } from 'app/model/common/FormMode';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-employee-add',
     templateUrl: './employee-add.component.html'
 })
 export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
+    view: boolean = false;
+    moveToView: boolean = false;
     codeAutoGenerating: boolean = false;
     @ViewChild("code") codeField: ElementRef;
     @ViewChild("name") nameField: ElementRef;
@@ -26,7 +29,8 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
         element: ElementRef,
         private employeeService: EmployeeService,
         private settingsService: SettingsService,
-        protected commonService: CommonService
+        protected commonService: CommonService,
+        protected router: Router
     ) {
         super(element, commonService);
     }
@@ -84,6 +88,7 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
         if (this.mode == FormMode.E_ADD) {
             this.mainForm.controls['employmentStatus'].setValue(this.employmentStatuses[0]);
             this.mainForm.controls['workingType'].setValue(this.workingTypes[0]);
+            this.view = true;
         } else {
             this.mainForm.controls['dob'].setValue(new Date(this.item.dob));
             this.mainForm.controls['startedDate'].setValue(new Date(this.item.startedDate));
@@ -95,6 +100,7 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
             }
 
             this.nameField.nativeElement.focus();
+            this.view = false;
         }
     }
 
@@ -119,7 +125,16 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // console.log(requestItem);
-        this.employeeService.employeeCreate(requestItem).subscribe(data => callbackFn(data));
+        
+        this.employeeService.employeeCreate(requestItem).subscribe(data => {
+            this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
+            if (this.moveToView) {
+                this.valueChange.emit(data);
+                this.router.navigate(['/employee/employee/view/' + data]);
+            } else {
+                this.valueChange.emit(data);
+            }
+        });
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // console.log(requestItem);
@@ -130,5 +145,14 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
         this.mainForm.controls['outletId'].setValue(event[0]);
         this.mainForm.controls['outletCode'].setValue(event[1]);
         this.mainForm.controls['outletName'].setValue(event[2]);
+    }
+
+    startSave(mode: string) {
+        if (mode == "E_SAVE") {
+            this.onSave();
+        } else {
+            this.moveToView = true;
+            this.onSave();
+        }
     }
 }

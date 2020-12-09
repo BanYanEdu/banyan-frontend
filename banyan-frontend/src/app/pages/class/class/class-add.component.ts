@@ -8,12 +8,15 @@ import { ClassService } from '../class.service';
 import { SchoolClass } from 'app/model/class/SchoolClass';
 import { FormMode } from 'app/model/common/FormMode';
 import { NotificationType } from 'app/shared/models/NotificationType';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-class-add',
     templateUrl: './class-add.component.html'
 })
 export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
+    view: boolean = false;
+    moveToView: boolean = false;
     programId: string = "";
     courseId: string = "";
     outletId: string = "";
@@ -34,7 +37,8 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
     constructor(
         element: ElementRef,
         private classService: ClassService,
-        protected commonService: CommonService
+        protected commonService: CommonService,
+        protected router: Router
     ) {
         super(element, commonService);
     }
@@ -77,8 +81,6 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
             this.mainForm.controls['status'].setValue(this.statusValues[0].value);
             this.mainForm.controls['minHeadCount'].setValue(10);
             this.mainForm.controls['maxHeadCount'].setValue(20);
-
-            this.codeField.nativeElement.focus();
         } else {
             this.programId = this.item.programId;
             this.courseId = this.item.courseId;
@@ -87,8 +89,14 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
             this.facilityId = this.item.facilityId;
             this.mainForm.controls['actualStartDate'].setValue(new Date(this.item.actualStartDate));
             this.mainForm.controls['actualEndDate'].setValue(new Date(this.item.actualEndDate));
+        }
 
+        if (this.mode == FormMode.E_ADD) {
+            this.codeField.nativeElement.focus();
+            this.view = true;
+        } else {
             this.nameField.nativeElement.focus();
+            this.view = false;
         }
     }
 
@@ -101,7 +109,17 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
         this.classService.classList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        this.classService.classCreate(requestItem).subscribe(data => callbackFn(data));
+        // this.classService.classCreate(requestItem).subscribe(data => callbackFn(data));
+        this.classService.classCreate(requestItem).subscribe(data => {
+            this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
+            if (this.moveToView) {
+                this.valueChange.emit(data);
+                this.router.navigate(['/class/class/view/' + data]);
+            } else {
+                this.valueChange.emit(data);
+            }
+        });
+        
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
         // console.log(this.requestItem);
@@ -165,24 +183,12 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
         this.facilityId = event[0];
     }
 
-    startSave() {
-        // if (this.outletId == "") {
-        //     this.showMessage('Chưa chọn chi nhánh.', 'Cảnh báo', NotificationType.ERROR);
-        //     return;
-        // }
-        // if (this.programId == "") {
-        //     this.showMessage('Chưa chọn chương trình.', 'Cảnh báo', NotificationType.ERROR);
-        //     return;
-        // }
-        // if (this.mainForm.controls['courseId'].value == "") {
-        //     this.showMessage('Chưa chọn khóa học.', 'Cảnh báo', NotificationType.ERROR);
-        //     return;
-        // }
-        // if (this.schedulePatternId == "") {
-        //     this.showMessage('Chưa chọn lịch học.', 'Cảnh báo', NotificationType.ERROR);
-        //     return;
-        // }
-
-        this.onSave();
+    startSave(mode: string) {
+        if (mode == "E_SAVE") {
+            this.onSave();
+        } else {
+            this.moveToView = true;
+            this.onSave();
+        }
     }
 }

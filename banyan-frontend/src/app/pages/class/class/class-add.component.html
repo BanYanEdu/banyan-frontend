@@ -110,9 +110,16 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE')"
+                [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+        <div class="col-sm-3" *ngIf="view">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE_AND_VIEW')"
+                [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> Save & View
             </button>
         </div>
     </div>

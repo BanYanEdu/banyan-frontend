@@ -45,7 +45,8 @@
                     <h4 class="modal-title pull-left">
                         {{ 'MENU.OUTLET' | translate }}
                         <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
-                        <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span></h4>
+                        <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                    </h4>
                     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                         <span aria-hidden="true">&times;</span>
                     </button>

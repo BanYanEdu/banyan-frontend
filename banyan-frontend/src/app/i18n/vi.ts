@@ -13,7 +13,10 @@ export let viLocale = {
         COURSES: 'Khóa học',
         CURRENCY: 'Loại tiền',
         CURRENCIES: 'Loại tiền',
+        EMPLOYEE: 'Nhân viên',
+        EMPLOYEE_LECTURER: 'Nhân viên / Giảng viên',
         EMPLOYEES: 'Nhân viên',
+        EMPLOYEES_LECTURERS: 'Nhân viên / Giảng viên',
         EXAM_TEST: 'Thi / Kiểm tra',
         EXAMS_TESTS: 'Thi / Kiểm tra',
         FACILITY: 'Phòng ốc',
@@ -114,7 +117,13 @@ export let viLocale = {
                 E_MALE: 'Nam',
                 E_FEMALE: 'Nữ',
                 E_OTHER: 'Khác'
-            }
+            },
+            ID_CARD_PASSPORT_NO: 'Số CMND/TCC/HC',
+            ISSUE_DATE: 'Ngày cấp',
+            ISSUE_PLACE: 'Nơi cấp',
+            OCCUPATION: 'Nghề nghiệp',
+            OTHER_NAME: 'Tên khác',
+            PERMANENT_ADDRESS: 'Hộ khẩu'
         },
         SYSTEM: {
             CREATED_AT: 'Ngày tạo',
@@ -146,7 +155,6 @@ export let viLocale = {
             TIME_FROM: 'TG từ',
             TIME_TO: 'TG đến'
         }
-
     },
     MODULE: {
         CLASS: {
@@ -185,6 +193,7 @@ export let viLocale = {
             }
         },
         EMPLOYEE: {
+            DEPARTMENT: 'Phòng ban',
             EDU_LEVEL: 'Tr.độ văn hóa',
             EDU_LEVEL_VALUES: {
                 E_HIGH_SCHOOL: 'THPT',
@@ -198,11 +207,14 @@ export let viLocale = {
                 E_HIRED: 'Đang làm việc',
                 E_TERMINATED: 'Đã thôi việc'
             },
+            FOREIGNER: 'Người nước ngoài',
+            JOB_TITLE: 'Chức danh',
             WORKING_TYPE: 'Hình thức làm việc',
             WORKING_TYPE_VALUES: {
                 E_FULL_TIME: 'Toàn thời gian',
                 E_PART_TIME: 'Bán thời gian'
-            }
+            },
+            YEARS_OF_EXPERIENCES: 'Số năm kinh nghiệm'
         },
         LEAD: {
             PERSON_NAME: 'Tên cá nhân',

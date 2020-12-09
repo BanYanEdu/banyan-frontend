@@ -14,11 +14,12 @@ import { StudentListComponent } from './student/student-list.component';
 import { CompanyListComponent } from './company/company-list.component';
 import { CompanyAddComponent } from './company/company-add.component';
 import { StudentViewComponent } from './student/student-view.component';
+import { AppCommonModule } from '../common/app-common.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        // AppCommonModule,
+        AppCommonModule,
         GridModule,
         ReactiveFormsModule,
         // ColorPickerModule,

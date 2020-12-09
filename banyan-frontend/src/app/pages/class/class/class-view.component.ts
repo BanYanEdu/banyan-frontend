@@ -74,4 +74,9 @@ export class ClassViewComponent extends BaseComponent {
         this.config.class = "modal-xl";
         this.modalRef = this.modalService.show(template, this.config);
     }
+    onEnroll(template: TemplateRef<any>) {
+        this.mode = FormMode.E_EDIT;
+        this.config.class = "modal-medium";
+        this.modalRef = this.modalService.show(template, this.config);
+    }
 }

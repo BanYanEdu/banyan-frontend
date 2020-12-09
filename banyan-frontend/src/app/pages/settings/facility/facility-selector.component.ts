@@ -42,11 +42,13 @@ export class FacilitySelectorComponent implements OnInit, OnChanges {
                 this.change.emit([
                     this.facilityId,
                     this.items.filter(c => c.uuid === this.facilityId)[0].code,
-                    this.items.filter(c => c.uuid === this.facilityId)[0].name
+                    this.items.filter(c => c.uuid === this.facilityId)[0].name,
+                    this.items.filter(c => c.uuid === this.facilityId)[0].facilityNo,
                 ]);
             } else {
                 this.change.emit([
                     this.facilityId,
+                    "",
                     "",
                     ""
                 ]);

@@ -33,6 +33,7 @@ import { ProgramSelectorComponent } from './program-selector/program-selector.co
 import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
 import { CourseSelectorComponent } from './course-selector/course-selector.component';
 import { MatCheckboxModule, MatInputModule } from '@angular/material';
+import { SourceSelectorComponent } from './source-selector/source-selector.component';
 
 
 
@@ -71,7 +72,8 @@ import { MatCheckboxModule, MatInputModule } from '@angular/material';
         CourseSelectorComponent,
         StudySubjectSelectorComponent,
         HourSelectorComponent,
-        MinuteSelectorComponent
+        MinuteSelectorComponent,
+        SourceSelectorComponent
         // ProspectStatusSelectorComponent
     ],
     exports: [
@@ -101,7 +103,8 @@ import { MatCheckboxModule, MatInputModule } from '@angular/material';
         CourseSelectorComponent,
         StudySubjectSelectorComponent,
         HourSelectorComponent,
-        MinuteSelectorComponent
+        MinuteSelectorComponent,
+        SourceSelectorComponent
     ],
     providers: [
         ComponentLoaderFactory,

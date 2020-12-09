@@ -9,10 +9,11 @@ import { StudentViewComponent } from './student/student-view.component';
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: StudentHomeComponent },
-    { path: 'lead', component: LeadListComponent },
-    { path: 'student', component: StudentListComponent },
-    { path: 'company', component: CompanyListComponent },
-    { path: 'student-view/:id', component: StudentViewComponent }
+    { path: 'lead/list', component: LeadListComponent },
+    { path: 'student', redirectTo: 'student/list', pathMatch: 'full' },
+    { path: 'student/list', component: StudentListComponent },
+    { path: 'company/list', component: CompanyListComponent },
+    { path: 'student/view/:id', component: StudentViewComponent }
 ]
 @NgModule({
     imports: [RouterModule.forChild(routes)],
