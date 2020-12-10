@@ -116,17 +116,44 @@
                                 <div class="col-sm-1">
                                     {{ 'COMMON.GENERAL.CODE' | translate }}
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     {{ 'COMMON.GENERAL.NAME' | translate }}
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm-2" align="center">
+                                    Ngày nhập học
+                                </div>
+                                <div class="col-sm-2" align="center">
+                                    Trạng thái
+                                </div>
+                                <div class="col-sm-3">
                                     {{ 'COMMON.GENERAL.REMARK' | translate }}
                                 </div>
                                 <div class="col-sm-1" align="right">
                                     <button type="button" class="btn-add"
                                         (click)="onEnroll(enrollDialog)">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-plus"></i>
                                     </button>
+                                </div>
+                            </div>
+                            <div class="row mt-2 datagrid-row"
+                                *ngFor="let item of classEnrollments; index as i; last as isLast">
+                                <div class="col-sm-1" align="center">
+                                    {{ i+1 }}
+                                </div>
+                                <div class="col-sm-1">
+                                    {{ item?.contactCode }}
+                                </div>
+                                <div class="col-sm-2">
+                                    {{ item?.contactName }}
+                                </div>
+                                <div class="col-sm-2" align="center">
+                                    {{ item?.enrollmentDate | moment }}
+                                </div>
+                                <div class="col-sm-2" align="center">
+                                    {{ 'MODULE.CLASS.ENROLLMENT_STATUS_VALUES.' + item?.status | translate }}
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ item?.remark }}
                                 </div>
                             </div>
                         </div>
@@ -242,8 +269,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <app-class-enroll 
-                    (valueChange)='onChanged($event)'>
+                <app-class-enroll [inputClass]="item" [mode]="mode" (valueChange)='onChanged($event)'>
                 </app-class-enroll>
             </div>
         </div>

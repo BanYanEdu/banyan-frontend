@@ -1,42 +1,127 @@
 <form [formGroup]="mainForm">
     <div class="row">
-        <div class="col-sm-2">
-            <mat-form-field class="input-full-width">
-                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
-                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
-                <mat-error *ngIf="mainForm.get('code').hasError('required')">
-                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-                </mat-error>
-                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
-                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-3">
-            <mat-form-field class="input-full-width">
-                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
-                <input type="text" matInput formControlName="name" maxlength="250" required #name>
-                <mat-error *ngIf="mainForm.get('name').hasError('required')">
-                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
-                </mat-error>
-            </mat-form-field>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h5>Học viên</h5>
+                </div>
+                <div class="col-sm-2">
+                    <button class="ml-2" type="button" (click)="searchStudent(searchStudentDialog)">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <strong>{{ contact?.name}}</strong>
+                </div>
+                <div class="col-sm-3">
+                    <strong>{{ contact?.code}}</strong>
+                </div>
+            </div>
+            <div class="row mt-1" *ngIf="contact">
+                <div class="col-sm-4">
+                    <i class="fa fa-mobile mr-1"></i>{{ contact?.phoneNo}}
+                </div>
+                <div class="col-sm-4">
+                    <i class="fa fa-at mr-1"></i>{{ contact?.email}}
+                </div>
+            </div>
+            <div class="row mt-1" *ngIf="contact">
+                <div class="col-sm-12">
+                    <i class="fa fa-map-pin mr-1"></i>{{ contact?.contactAddressFull}}
+                </div>
+            </div>
         </div>
     </div>
-    
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h5>Lớp học</h5>
+                </div>
+                <div class="col-sm-2">
+                    <button class="ml-2" type="button" (click)="searchClass(searchClassDialog)" disabled>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12"><strong>{{ class?.name }}</strong></div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12"><strong>{{ class?.outletName }}</strong></div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5>Thông tin nhập học</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Ngày nhập học</mat-label>
+                        <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="enrollmentDate"
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required>
+                        <mat-error *ngIf="mainForm.get('enrollmentDate').hasError('required')">
+                            {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Trạng thái</mat-label>
+                        <select matNativeControl formControlName="status">
+                            <option value="{{ status }}" *ngFor="let status of statuses">
+                                {{ 'MODULE.CLASS.ENROLLMENT_STATUS_VALUES.' + status | translate }}
+                            </option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Ghi chú</mat-label>
+                        <input type="text" matInput formControlName="remark">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row mt-2">
         <div class="col-sm-2">
-            <button type="button" class="btn btn-save btn-block" (click)="startSave()"
-                [disabled]="!isFormValid">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
         </div>
     </div>
 </form>
 
-<!--
-Ngày nhập học
-Trạng thái
-Ghi chú
-
--->
-
+<ng-template #searchStudentDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="row" x>
+                <div class="col-sm-12">
+                    <h6 class="modal-title pull-left">Search Student</h6>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="modal-header">
+                <h5 class="modal-title pull-left">Search Student</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> -->
+            <div class="modal-body">
+                <app-student-search (valueChange)='onStudentSelected($event)'></app-student-search>
+            </div>
+        </div>
+    </div>
+</ng-template>

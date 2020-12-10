@@ -189,6 +189,10 @@ export let enLocale = {
         CLASS: {
             CHECKING_REQUIRED: 'Checking required',
             CURRICULUM: 'Curriculum',
+            ENROLLMENT_STATUS_VALUES: {
+                E_ENROLLED: 'Entrolled',
+                E_RESIGNED: 'Resigned'
+            },
             HEADCOUNT: 'Headcount',
             HEADCOUNT_MIN: 'Min Headcount',
             HEADCOUNT_MAX: 'Max Headcount',
@@ -198,7 +202,7 @@ export let enLocale = {
                 E_STARTED: 'Started',
                 E_COMPLETED: 'Completed',
                 E_CANCELED: 'Canceled'
-            }
+            },
         },
         EMPLOYEE: {
             DEPARTMENT: 'Department',

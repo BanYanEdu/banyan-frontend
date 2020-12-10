@@ -160,6 +160,10 @@ export let viLocale = {
         CLASS: {
             CHECKING_REQUIRED: 'Kiểm tra đầu vào',
             CURRICULUM: 'Giáo trình',
+            ENROLLMENT_STATUS_VALUES: {
+                E_ENROLLED: 'Entrolled',
+                E_RESIGNED: 'Resigned'
+            },
             HEADCOUNT: 'Sỹ số',
             HEADCOUNT_MIN: 'Sỹ số tối thiểu',
             HEADCOUNT_MAX: 'Sỹ số tối đa',

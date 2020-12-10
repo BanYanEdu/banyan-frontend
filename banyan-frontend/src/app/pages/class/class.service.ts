@@ -21,6 +21,10 @@ export class ClassService {
         banyan_ems_class_class_update: iNet.getPUrl('crm/ems/class/update'),
         banyan_ems_class_class_study_subject_update: iNet.getPUrl('crm/ems/class-study-subject/update'),
         banyan_ems_class_class_list: iNet.getPUrl('crm/ems/class/list'),
+        // Class Enrollment
+        banyan_ems_class_class_enrollment_create: iNet.getPUrl('crm/ems/class-enrollment/create'),
+        banyan_ems_class_class_enrollment_update: iNet.getPUrl('crm/ems/class-enrollment/update'),
+        banyan_ems_class_class_enrollment_list: iNet.getPUrl('crm/ems/class-enrollment/list'),
     };
 
     constructor(private http: HttpClientService, ) { }
@@ -35,6 +39,10 @@ export class ClassService {
    classUpdate(item: SchoolClass): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_update, item); }
    classList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_list, criteria); }
    classStudySubjectUpdate(uuid: string, str: string): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_study_subject_update, {uuid: uuid, studySubjectsStr: str}); }
+   // Class Enrollment
+   enrollmentCreate(item: SchoolClass): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_create, item); }
+   enrollmentUpdate(item: SchoolClass): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_update, item); }
+   enrollmentList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_list, criteria); }
    // Registration
    registrationList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_list, criteria); }
     

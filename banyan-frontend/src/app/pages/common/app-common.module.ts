@@ -34,6 +34,7 @@ import { StudySubjectSelectorComponent } from './study-subject-selector/study-su
 import { CourseSelectorComponent } from './course-selector/course-selector.component';
 import { MatCheckboxModule, MatInputModule } from '@angular/material';
 import { SourceSelectorComponent } from './source-selector/source-selector.component';
+import { StudentSearchComponent } from './student-search/student-search.component';
 
 
 
@@ -73,8 +74,8 @@ import { SourceSelectorComponent } from './source-selector/source-selector.compo
         StudySubjectSelectorComponent,
         HourSelectorComponent,
         MinuteSelectorComponent,
-        SourceSelectorComponent
-        // ProspectStatusSelectorComponent
+        SourceSelectorComponent,
+        StudentSearchComponent
     ],
     exports: [
         // NgxMaskModule,
@@ -104,7 +105,9 @@ import { SourceSelectorComponent } from './source-selector/source-selector.compo
         StudySubjectSelectorComponent,
         HourSelectorComponent,
         MinuteSelectorComponent,
-        SourceSelectorComponent
+        SourceSelectorComponent,
+        StudentSearchComponent
+
     ],
     providers: [
         ComponentLoaderFactory,

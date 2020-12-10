@@ -8,6 +8,7 @@ import { BaseComponent } from 'app/shared/components/BaseComponent';
 import { FormMode } from 'app/model/common/FormMode';
 import { ClassService } from '../class.service';
 import { SchoolClass } from 'app/model/class/SchoolClass';
+import { ClassEnrollment } from 'app/model/class/ClassEnrollment';
 
 @Component({
     selector: 'app-class-view',
@@ -24,6 +25,7 @@ export class ClassViewComponent extends BaseComponent {
         ignoreBackdropClick: true,
         class: 'modal-xl'
     };
+    classEnrollments: ClassEnrollment[];
 
     constructor(
         element: ElementRef,
@@ -44,10 +46,15 @@ export class ClassViewComponent extends BaseComponent {
             this.classService.classList({uuid: this.id}).subscribe(data =>
                 {
                     this.item = data.items[0];
-                    console.log(this.item);
+                    // console.log(this.item);
                     this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;
                 }
             );
+            this.classService.enrollmentList({classId: this.id}).subscribe( data =>
+                {
+                    this.classEnrollments = data.items;
+                }
+            )
         });
     }
 
@@ -75,7 +82,7 @@ export class ClassViewComponent extends BaseComponent {
         this.modalRef = this.modalService.show(template, this.config);
     }
     onEnroll(template: TemplateRef<any>) {
-        this.mode = FormMode.E_EDIT;
+        this.mode = FormMode.E_ADD;
         this.config.class = "modal-medium";
         this.modalRef = this.modalService.show(template, this.config);
     }

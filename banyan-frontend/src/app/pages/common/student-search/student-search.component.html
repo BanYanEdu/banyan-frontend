@@ -1,0 +1,25 @@
+<form [formGroup]="mainForm">
+    <div>
+        <div class="row form-body" style="margin: 5px">
+            <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
+                [expandableRows]="false" [showReloading]="false" [sortBy]="'code'" [sortAsc]="true">
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate" [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                        <a (click)="onSelected(item)" class="link-text">{{ item.code }}</a>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <a (click)="onSelected(item)" class="link-text">{{ item.name }}</a>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="'phoneNo'" [header]="'COMMON.CONTACT_INFO.PHONE_NO' | translate">
+                </data-table-column>
+                <data-table-column [property]="'contactAddressFull'" [header]="'COMMON.CONTACT_INFO.ADDRESS' | translate">
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</form>
