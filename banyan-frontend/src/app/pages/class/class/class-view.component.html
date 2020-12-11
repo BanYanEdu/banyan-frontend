@@ -2,164 +2,41 @@
     <div class="row mt-2">
         <div class="col-sm-10">
             <span class="form-title">{{ item?.name }}</span>
-            <button type="button" class="btn btn-add ml-2" (click)="onEdit(editDialog)">
-                <i class="fa fa-edit"></i> {{ 'COMMON.ACTION.EDIT' | translate }}
+            <button type="button" class="btn-add ml-2" (click)="onEdit(editDialog)">
+                <i class="fa fa-edit"></i>
+                <!-- {{ 'COMMON.ACTION.EDIT' | translate }} -->
             </button>
         </div>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-1">
         <div class="col-sm-3">
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.code }}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.programName }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.courseName }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MENU.COURSE' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.outletName }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MENU.OUTLET' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.facilityNo }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MENU.FACILITY' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.actualStartDate | moment}}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.actualEndDate | moment}}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.TIME.END_DATE' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.schedulePatternName }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.minHeadCount }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MIN' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.maxHeadCount }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.curriculum }}</span>
-                    <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired" disabled>
-                        <label class="lbl">
-                            <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ 'MODULE.CLASS.STATUS_VALUES.' + item?.status | translate}}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.createdByCode }}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <span class="form-bold-text">{{ item?.createdAt | moment}}</span>
-                    <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
-                </div>
-            </div>
+            <span class="form-sub-label" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
+            <span style="display:block">{{ item?.outletName }}</span>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-3">
+            <span class="form-sub-label" style="display:block">{{ 'MENU.COURSE' | translate }}</span>
+            <span style="display:block">{{ item?.courseName }}</span>        
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
+            <span style="display:block">{{ item?.actualStartDate | moment}}</span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.TIME.END_DATE' | translate }}</span>
+            <span style="display:block">{{ item?.actualEndDate | moment}}</span>
+        </div>
+        <div class="col-sm-2">
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
+            <span style="display:block">{{ 'MODULE.CLASS.STATUS_VALUES.' + item?.status | translate}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.STUDENTS' | translate" id="tabStudents">
-                    <div class="row mt-2 ml-2">
-                        <div class="col-sm-12">
-                            <div class="row mt-2 datagrid-header">
-                                <div class="col-sm-1" align="center">
-                                    #
-                                </div>
-                                <div class="col-sm-1">
-                                    {{ 'COMMON.GENERAL.CODE' | translate }}
-                                </div>
-                                <div class="col-sm-2">
-                                    {{ 'COMMON.GENERAL.NAME' | translate }}
-                                </div>
-                                <div class="col-sm-2" align="center">
-                                    Ngày nhập học
-                                </div>
-                                <div class="col-sm-2" align="center">
-                                    Trạng thái
-                                </div>
-                                <div class="col-sm-3">
-                                    {{ 'COMMON.GENERAL.REMARK' | translate }}
-                                </div>
-                                <div class="col-sm-1" align="right">
-                                    <button type="button" class="btn-add"
-                                        (click)="onEnroll(enrollDialog)">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="row mt-2 datagrid-row"
-                                *ngFor="let item of classEnrollments; index as i; last as isLast">
-                                <div class="col-sm-1" align="center">
-                                    {{ i+1 }}
-                                </div>
-                                <div class="col-sm-1">
-                                    {{ item?.contactCode }}
-                                </div>
-                                <div class="col-sm-2">
-                                    {{ item?.contactName }}
-                                </div>
-                                <div class="col-sm-2" align="center">
-                                    {{ item?.enrollmentDate | moment }}
-                                </div>
-                                <div class="col-sm-2" align="center">
-                                    {{ 'MODULE.CLASS.ENROLLMENT_STATUS_VALUES.' + item?.status | translate }}
-                                </div>
-                                <div class="col-sm-3">
-                                    {{ item?.remark }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <app-class-enrollment [class]="item" [id]="id"></app-class-enrollment>
                 </tab>
-                <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
+                <!-- <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
                     <div class="row mt-2 ml-2">
                         <div class="col-sm-12">
                             <div class="row mt-2 datagrid-header">
@@ -217,6 +94,77 @@
                 </tab><tab [heading]="'MENU.MATERIALS' | translate" id="tabStudyMaterials">
                     <br><br>
                     <h5>Học liệu ...</h5>
+                </tab> -->
+                <tab [heading]="'Thông tin'" id="tabInfo">
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.code }}</span>
+                            <span class="form-sub-label ml-2">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.programName }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.facilityNo }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MENU.FACILITY' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.schedulePatternName }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.minHeadCount }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MIN' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.maxHeadCount }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.curriculum }}</span>
+                            <span class="form-sub-label ml-2">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <div class="custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired"
+                                    disabled>
+                                <label class="lbl">
+                                    <span
+                                        class="form-sub-label ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.createdByCode }}</span>
+                            <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <span class="form-bold-text">{{ item?.createdAt | moment}}</span>
+                            <span class="form-sub-label ml-2">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
+                        </div>
+                    </div>
                 </tab>
             </tabset>
         </div>
@@ -254,23 +202,6 @@
                 <app-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" [dataType]="'E_CLASS'"
                     (valueChange)='onChanged($event)'>
                 </app-study-subject-assign>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #enrollDialog>
-    <div class="modal-form">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title pull-left">Nhập học</h4>
-                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <app-class-enroll [inputClass]="item" [mode]="mode" (valueChange)='onChanged($event)'>
-                </app-class-enroll>
             </div>
         </div>
     </div>

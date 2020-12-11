@@ -24,14 +24,6 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
     }
 
     ngOnInit() {
-
-        // this.items = [
-        //     {
-        //         code: "HV001",
-        //         name: "Nguyễn Văn A"
-        //     }
-        // ];
-        
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {
@@ -44,6 +36,7 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
         var criteria: any = this.params;
+        // console.log(criteria);
         
         this.studentService.studentList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }

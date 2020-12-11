@@ -3,33 +3,20 @@
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-sm-10">
-                    <h5>Học viên</h5>
-                </div>
-                <div class="col-sm-2">
-                    <button class="ml-2" type="button" (click)="searchStudent(searchStudentDialog)">
-                        <i class="fa fa-search"></i>
-                    </button>
+                    <h5>
+                        Học viên 
+                        <button class="btn-add" type="button" (click)="searchStudent(searchStudentDialog)" *ngIf="isAdd">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <strong>{{ contact?.name}}</strong>
+                    <strong>{{ item?.contactName}}</strong>
                 </div>
                 <div class="col-sm-3">
-                    <strong>{{ contact?.code}}</strong>
-                </div>
-            </div>
-            <div class="row mt-1" *ngIf="contact">
-                <div class="col-sm-4">
-                    <i class="fa fa-mobile mr-1"></i>{{ contact?.phoneNo}}
-                </div>
-                <div class="col-sm-4">
-                    <i class="fa fa-at mr-1"></i>{{ contact?.email}}
-                </div>
-            </div>
-            <div class="row mt-1" *ngIf="contact">
-                <div class="col-sm-12">
-                    <i class="fa fa-map-pin mr-1"></i>{{ contact?.contactAddressFull}}
+                    <strong>{{ item?.contactCode}}</strong>
                 </div>
             </div>
         </div>
@@ -41,16 +28,19 @@
                     <h5>Lớp học</h5>
                 </div>
                 <div class="col-sm-2">
-                    <button class="ml-2" type="button" (click)="searchClass(searchClassDialog)" disabled>
+                    <!-- <button class="btn-add" type="button" (click)="searchClass(searchClassDialog)" disabled>
                         <i class="fa fa-search"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12"><strong>{{ class?.name }}</strong></div>
+                <div class="col-sm-12"><strong>{{ item?.className }}</strong></div>
             </div>
-            <div class="row mt-2">
-                <div class="col-sm-12"><strong>{{ class?.outletName }}</strong></div>
+            <div class="row">
+                <div class="col-sm-12"><strong>{{ item?.outletName }}</strong></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12"><strong>{{ item?.courseName }}</strong></div>
             </div>
         </div>
     </div>
@@ -105,20 +95,20 @@
 <ng-template #searchStudentDialog>
     <div class="modal-form">
         <div class="modal-content">
-            <div class="row" x>
-                <div class="col-sm-12">
-                    <h6 class="modal-title pull-left">Search Student</h6>
+            <!-- <div class="row">
+                <div class="col-sm-12 ml-2">
+                    <h6 class="modal-title pull-left mr-2">Search Student</h6>
                     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
-            <!-- <div class="modal-header">
-                <h5 class="modal-title pull-left">Search Student</h5>
+            </div> -->
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">Tìm kiếm học viên</h5>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div> -->
+            </div>
             <div class="modal-body">
                 <app-student-search (valueChange)='onStudentSelected($event)'></app-student-search>
             </div>

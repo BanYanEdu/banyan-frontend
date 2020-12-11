@@ -92,7 +92,7 @@ export class StudentAddComponent extends BaseAddDialogComponent<Contact>{
         }
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        console.log(requestItem);
+        // console.log(requestItem);
         
         this.studentService.studentCreate(requestItem).subscribe(data => {
             this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
@@ -100,13 +100,11 @@ export class StudentAddComponent extends BaseAddDialogComponent<Contact>{
                 this.valueChange.emit(data);
                 this.router.navigate(['/student/student/view/' + data]);
             } else {
-                this.valueChange.emit(data);
+                this.valueChange.emit([data, this.requestItem.name]);
             }
         });
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        console.log(requestItem);
-        
         this.studentService.studentUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 

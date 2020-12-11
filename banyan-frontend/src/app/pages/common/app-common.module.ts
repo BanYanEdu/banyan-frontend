@@ -35,6 +35,7 @@ import { CourseSelectorComponent } from './course-selector/course-selector.compo
 import { MatCheckboxModule, MatInputModule } from '@angular/material';
 import { SourceSelectorComponent } from './source-selector/source-selector.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
+import { StudentAddComponent } from '../student/student/student-add.component';
 
 
 
@@ -75,7 +76,8 @@ import { StudentSearchComponent } from './student-search/student-search.componen
         HourSelectorComponent,
         MinuteSelectorComponent,
         SourceSelectorComponent,
-        StudentSearchComponent
+        StudentSearchComponent,
+        StudentAddComponent
     ],
     exports: [
         // NgxMaskModule,
@@ -106,7 +108,8 @@ import { StudentSearchComponent } from './student-search/student-search.componen
         HourSelectorComponent,
         MinuteSelectorComponent,
         SourceSelectorComponent,
-        StudentSearchComponent
+        StudentSearchComponent,
+        StudentAddComponent
 
     ],
     providers: [

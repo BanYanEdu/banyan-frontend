@@ -191,7 +191,8 @@ export let enLocale = {
             CURRICULUM: 'Curriculum',
             ENROLLMENT_STATUS_VALUES: {
                 E_ENROLLED: 'Entrolled',
-                E_RESIGNED: 'Resigned'
+                E_RESIGNED: 'Resigned',
+                E_CANCELLED: 'Cancelled'
             },
             HEADCOUNT: 'Headcount',
             HEADCOUNT_MIN: 'Min Headcount',

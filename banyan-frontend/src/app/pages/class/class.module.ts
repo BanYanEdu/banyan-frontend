@@ -21,6 +21,7 @@ import { FacilitySelectorComponent } from '../settings/facility/facility-selecto
 import { ClassViewComponent } from './class/class-view.component';
 import { MatSliderModule } from '@angular/material' 
 import { ClassEnrollComponent } from './class/class-enroll.component';
+import { ClassEnrollmentComponent } from './class/class-enrollment.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { ClassEnrollComponent } from './class/class-enroll.component';
         ClassAddComponent,
         ClassViewComponent,
         ClassEnrollComponent,
+        ClassEnrollmentComponent,
         RegistrationListComponent,
         RegistrationAddComponent,
         StudySubjectAssignComponent,

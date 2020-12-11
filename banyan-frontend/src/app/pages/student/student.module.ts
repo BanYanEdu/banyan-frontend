@@ -15,6 +15,7 @@ import { CompanyListComponent } from './company/company-list.component';
 import { CompanyAddComponent } from './company/company-add.component';
 import { StudentViewComponent } from './student/student-view.component';
 import { AppCommonModule } from '../common/app-common.module';
+import { StudentEnrollmentComponent } from './student/student-enrollment.component';
 
 @NgModule({
     imports: [
@@ -30,10 +31,11 @@ import { AppCommonModule } from '../common/app-common.module';
         LeadListComponent,
         LeadAddComponent,
         StudentListComponent,
-        StudentAddComponent,
+        // StudentAddComponent,
         StudentViewComponent,
         CompanyListComponent,
-        CompanyAddComponent
+        CompanyAddComponent,
+        StudentEnrollmentComponent
 
     ],
     providers: [
