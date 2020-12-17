@@ -7,11 +7,10 @@ import { CommonService } from 'app/shared/services/common.service';
 import { FocusService } from 'app/shared/services/focus.service';
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 import { EmployeeRoutingModule} from './employee-routing.module';
-import { EmployeeListComponent } from './employee/employee-list.component';
-import { EmployeeAddComponent } from './employee/employee-add.component';
 import { AppCommonModule } from '../common/app-common.module';
-import { MatInputModule } from '@angular/material';
-import { EmployeeViewComponent } from './employee/employee-view.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { EmployeeViewComponent } from './employee/employee-view/employee-view.component';
+import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
 
 @NgModule({
     imports: [
@@ -26,8 +25,8 @@ import { EmployeeViewComponent } from './employee/employee-view.component';
     declarations: [
         EmployeeHomeComponent,
         EmployeeListComponent,
-        EmployeeAddComponent,
-        EmployeeViewComponent
+        EmployeeViewComponent,
+        EmployeeAddComponent
     ],
     providers: [
         CommonService,

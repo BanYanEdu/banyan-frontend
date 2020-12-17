@@ -16,15 +16,16 @@ export class StudentSearchComponent implements OnInit {
     @Input() uuid: string;
     // @Input() mode: FormMode;
     @Output('valueChange') change = new EventEmitter<any>();
-    @ViewChild("searchField") searchField: ElementRef;
+    @ViewChild("searchValue") searchValue: ElementRef;
 
     mainForm: FormGroup;
     dataResource = new DataTableResource([]);
     items = [];
     itemCount = 0;
     pageNumber = 1;
+    limit = 10;
     mode: FormMode;
-    protected params: any; // to reload data
+    protected params: any = {}; // to reload data
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -40,14 +41,17 @@ export class StudentSearchComponent implements OnInit {
 
     ngOnInit() {
         this.mainForm = new FormGroup({
-            'searchField': new FormControl(null),
+            'searchValue': new FormControl(null),
         });
-        this.searchField.nativeElement.focus();
+        this.searchValue.nativeElement.focus();
+
+        this.params.limit = 10;
+        this.params.activeStatus = "E_ACTIVE";
     }
 
     load(params){
-        var criteria: any = params;
-        this.studentService.studentList(criteria).subscribe(data => {
+        // var criteria: any = params;
+        this.studentService.studentList(this.params).subscribe(data => {
             
             this.items = data['items'];
             const items = data['items'];
@@ -64,17 +68,23 @@ export class StudentSearchComponent implements OnInit {
     }
 
     onSearch() {
-        let searchField = this.mainForm.get('searchField').value;
-        this.load({searchField: searchField, limit: 10});
+        // let searchValue = this.mainForm.get('searchValue').value;
+        this.params.searchValue = this.mainForm.get('searchValue').value;
+        this.load(this.params);
     }
     onAdd(template: TemplateRef<any>){
         this.mode = FormMode.E_ADD;
         this.modalRef = this.modalService.show(template, this.config);
     }
     onAdded($event) {
-        console.log($event);
+        // console.log($event);
         this.modalRef.hide();
-        this.mainForm.get('searchField').setValue($event[1]);
+        this.mainForm.get('searchValue').setValue($event[1]);
         this.onSearch();
+    }
+    onRowClick(params){
+        this.change.emit([
+            params.row.item
+        ]);
     }
 }

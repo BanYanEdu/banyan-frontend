@@ -79,6 +79,7 @@ export let viLocale = {
             SAVE: 'Lưu',
             SAVE_BACK: 'Lưu & Quay lại',
             SAVE_ADD: 'Lưu & Thêm',
+            SEARCH: 'Search'        
         },
         BIZ: {
             WORKING_TIMES: 'Thời gian làm việc',
@@ -97,6 +98,11 @@ export let viLocale = {
         },
         GENERAL: {
             ACTIVE: 'Sử dụng',
+            ACTIVE_STATUS_VALUES: {
+                E_ALL: '<<-- Tất cả -->>',
+                E_ACTIVE: 'Đang theo dõi',
+                E_INACTIVE: 'Ngưng theo dõi'
+            },
             CODE: 'Mã',
             COLOR: 'Màu',
             DESCRIPTION: 'Diễn giải',
@@ -163,6 +169,8 @@ export let viLocale = {
             ENROLLMENT_STATUS_VALUES: {
                 E_ENROLLED: 'Nhập học',
                 E_RESIGNED: 'Thôi học',
+                E_RESERVED: 'Bảo lưu',
+                E_TRANSFERRED: 'Chuyển lớp',
                 E_CANCELLED: 'Hủy'
             },
             HEADCOUNT: 'Sỹ số',
@@ -214,6 +222,11 @@ export let viLocale = {
             },
             FOREIGNER: 'Người nước ngoài',
             JOB_TITLE: 'Chức danh',
+            SERVICE_STATUS_VALUES: {
+                E_ALL: '<<-- Tất cả -->>',
+                E_HAS_SERVICE: 'Giảng viên',
+                E_NO_SERVICE: 'Nhân viên'
+            },
             WORKING_TYPE: 'Hình thức làm việc',
             WORKING_TYPE_VALUES: {
                 E_FULL_TIME: 'Toàn thời gian',
@@ -269,7 +282,7 @@ export let viLocale = {
             LECTURE_UNIT_COUNT: 'Số tiết',
             LECTURE_UNIT_COUNT_SHORT: 'Số tiết',
             MAX_SCORES: 'Điểm tối đa',
-            SEATCOUNT: 'Tổng chỗ ngồi',
+            SEATCOUNT: 'Số chỗ',
             CURRENCY: {
                 CONVERSION_RATE: 'Tỷ giá',
                 DECIMALS: 'Số thập phân',

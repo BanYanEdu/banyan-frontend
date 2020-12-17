@@ -14,6 +14,7 @@ export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy
     userDisplayName: string;
     orgName: string;
     currentLang: string;
+    companyPrefix: string;
 
     constructor(
         public coreService: CoreService,
@@ -28,10 +29,12 @@ export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy
 
         this.username = iNet.username;
         this.userDisplayName = iNet.displayName;
+        this.companyPrefix = iNet.prefix;
+        this.companyPrefix = this.companyPrefix.toUpperCase();
         this.orgName = iNet.orgName;
         // console.log('Load menu ...');
         // console.log(iNet.username);
-        console.log(iNet);
+        // console.log(iNet);
         this.currentLang = this.cloudTranslateService.getCurrentLang();
     }
 
@@ -48,7 +51,6 @@ export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy
                 this.currentLanguage = langCode;
                 this.currentLang = langCode;
                 this.cloudTranslateService.setCurrentLang(langCode);
-                // window.location.reload();
 
                 if (this.coreService.getEnvironment()['production']) {
                     this.coreService.updateLanguage(langCode, function () {

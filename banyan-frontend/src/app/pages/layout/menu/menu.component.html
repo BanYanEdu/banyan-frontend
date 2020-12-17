@@ -26,7 +26,10 @@
         </span>
     </div>
     <div class="col-sm-2 menu-item-panel" align="center">
-        <div class="menu-item">{{ userDisplayName }}</div>
+        <span class="menu-item">{{ companyPrefix }}</span>
+    </div>
+    <div class="col-sm-2 menu-item-panel" align="center">
+        <i class="fa fa-user"></i><span class="menu-item">{{ userDisplayName }}</span>
     </div>
     <!-- <div class="col-sm-2" align="center">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
@@ -37,14 +40,14 @@
     </div> -->
 
 
-    <div class="col-sm-5 menu-button-panel" align="right">
+    <div class="col-sm-3 menu-button-panel" align="right">
         <button type="button" class="btn btn-default menu-button" (click)="changeLanguage('vi')"
-            [disabled]="currentLang=='vi'">
-            Tiếng Việt
+            [disabled]="currentLang=='vi'" *ngIf="currentLang != 'vi'">
+            vi
         </button>
         <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('en')"
-            [disabled]="currentLang=='en'">
-            English
+            [disabled]="currentLang=='en'" *ngIf="currentLang != 'en'">
+            en
         </button>
         <!-- <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('ko')"
             [disabled]="currentLang=='ko'">

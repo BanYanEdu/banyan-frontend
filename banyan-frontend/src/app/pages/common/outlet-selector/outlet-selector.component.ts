@@ -9,12 +9,12 @@ import { FormMode } from 'app/model/common/FormMode';
 })
 export class OutletSelectorComponent implements OnInit {
     @Input() uuid: string;
+    @Input() firstValue: string;
     @Input() mode: FormMode;
     @Output('valueChange') change = new EventEmitter<any>();
 
     mainForm: FormGroup;
     items: any[];
-    // colorCode: string;
 
     constructor(private settingsService: SettingsService) { }
 
@@ -27,28 +27,29 @@ export class OutletSelectorComponent implements OnInit {
             'uuid': new FormControl(null),
         });
 
-        if (this.uuid != "") {
-            this.mainForm.controls['uuid'].setValue(this.uuid);             
-        } else {
-        }
-
         this.settingsService.outletList({}).subscribe(data => {
             this.items = data['items'];
-            // this.items.splice(0, 0, {uuid: "", name: "<-- Chọn chi nhánh -->"});
-            
-            if (this.mode == FormMode.E_ADD) {
-                this.uuid = "";
-                this.mainForm.controls['uuid'].setValue("");
-            } else {
-                if (this.uuid != "") {
-                    this.mainForm.controls['uuid'].setValue(this.uuid);
-                    this.onChanged();
-                }
+            if (this.firstValue == "E_ALL") {
+                this.items.splice(0, 0, { uuid: "E_ALL", name: "<<-- Tất cả -->>", code: "" });
             }
+            if (this.firstValue == "E_BLANK") {
+                this.items.splice(0, 0, { uuid: "", name: "<<-- Chọn -->>", code: "" });
+            }
+            
+            if (this.uuid != "") {
+                this.mainForm.controls['uuid'].setValue(this.uuid);
+            }
+            if (this.mode == FormMode.E_ADD) {
+                this.mainForm.controls['uuid'].setValue("");
+            } 
+
+            this.onChanged();
+
         });
     }
 
     onChanged() {
+
         this.uuid = this.mainForm.controls['uuid'].value;
         if (this.items) {
             if (this.uuid != "") {

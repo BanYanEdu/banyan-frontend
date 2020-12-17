@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { HttpClientService } from 'inet-core';
 import { Outlet } from 'app/model/settings/Outlet';
 import { SchoolClass } from 'app/model/class/SchoolClass';
+import { ClassTransfer } from 'app/model/class/ClassTransfer';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +26,7 @@ export class ClassService {
         banyan_ems_class_class_enrollment_create: iNet.getPUrl('crm/ems/class-enrollment/create'),
         banyan_ems_class_class_enrollment_update: iNet.getPUrl('crm/ems/class-enrollment/update'),
         banyan_ems_class_class_enrollment_list: iNet.getPUrl('crm/ems/class-enrollment/list'),
+        banyan_ems_class_class_enrollment_transfer: iNet.getPUrl('crm/ems/class-enrollment/transfer'),
     };
 
     constructor(private http: HttpClientService, ) { }
@@ -43,6 +45,7 @@ export class ClassService {
    enrollmentCreate(item: SchoolClass): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_create, item); }
    enrollmentUpdate(item: SchoolClass): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_update, item); }
    enrollmentList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_list, criteria); }
+   enrollmentTransfer(item: ClassTransfer): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_class_enrollment_transfer, item); }
    // Registration
    registrationList(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_course_list, criteria); }
     

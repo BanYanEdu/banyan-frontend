@@ -133,6 +133,7 @@ export abstract class BaseListComponent<TModel extends BaseEditableModel> extend
             event.stopPropagation();
         }
         const rows = this.findRowsById(item.uuid);
+        
         // this.confirmDialog.setData(rows);
         // this.confirmDialog.show();
     }

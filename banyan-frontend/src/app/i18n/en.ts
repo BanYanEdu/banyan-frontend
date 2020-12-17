@@ -71,7 +71,8 @@ export let enLocale = {
             SAVE: 'Save',
             SAVE_BACK: 'Save & Back',
             SAVE_ADD: 'Save & Add',
-            SAVE_CHECK: 'Save & Check'
+            SAVE_CHECK: 'Save & Check',
+            SEARCH: 'Search'
         },
         BIZ: {
             WORKING_TIMES: 'Working Time',
@@ -123,6 +124,11 @@ export let enLocale = {
         },
         GENERAL: {
             ACTIVE: 'Active',
+            ACTIVE_STATUS_VALUES: {
+                E_ALL: '<<-- ALL -->>',
+                E_ACTIVE: 'Active',
+                E_INACTIVE: 'Inactive'
+            },
             CODE: 'Code',
             COLOR: 'Color',
             DESCRIPTION: 'Description',
@@ -190,8 +196,10 @@ export let enLocale = {
             CHECKING_REQUIRED: 'Checking required',
             CURRICULUM: 'Curriculum',
             ENROLLMENT_STATUS_VALUES: {
-                E_ENROLLED: 'Entrolled',
+                E_ENROLLED: 'Enrolled',
                 E_RESIGNED: 'Resigned',
+                E_RESERVED: 'Reserved',
+                E_TRANSFERRED: 'Transferred',
                 E_CANCELLED: 'Cancelled'
             },
             HEADCOUNT: 'Headcount',
@@ -222,6 +230,11 @@ export let enLocale = {
             },
             FOREIGNER: 'Foreigner',
             JOB_TITLE: 'Job Title',
+            SERVICE_STATUS_VALUES: {
+                E_ALL: '<<-- All -->>',
+                E_HAS_SERVICE: 'Lecturer',
+                E_NO_SERVICE: 'Employee'
+            },
             WORKING_TYPE: 'Working Type',
             WORKING_TYPE_VALUES: {
                 E_FULL_TIME: 'Full-time',

@@ -1,0 +1,120 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <br>
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.PERSONAL.GENDER' | translate }}</mat-label>
+                <mat-select formControlName="gender" required>
+                    <mat-option value="{{ gender }}" *ngFor="let gender of genders">
+                        {{ 'COMMON.PERSONAL.GENDER_VALUES.' + gender | translate }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="mainForm.get('gender').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.PERSONAL.DOB' | translate }}</mat-label>
+                <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="dob"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required>
+                <mat-error *ngIf="mainForm.get('dob').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.PERSONAL.OCCUPATION' | translate }}</mat-label>
+                <input type="text" matInput formControlName="occupationDesc">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.PERSONAL.PERMANENT_ADDRESS' | translate }}</mat-label>
+                <input type="text" matInput formControlName="permanentAddressFull">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.PHONE_NO' | translate }}</mat-label>
+                <input type="text" matInput formControlName="phoneNo" maxlength="250" required>
+                <mat-error *ngIf="mainForm.get('phoneNo').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" required>
+                <mat-error *ngIf="mainForm.get('email').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('email').hasError('email')">
+                    Invalid Email
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-7">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.CONTACT_INFO.ADDRESS' | translate }}</mat-label>
+                <input type="text" matInput formControlName="contactAddressFull">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-sm-5">
+            <app-outlet-selector matInput [uuid]="item?.outletId" [mode]="mode" [firstValue]="" (valueChange)="onChangeOutlet($event)">
+            </app-outlet-selector>
+        </div>
+        <div class="col-sm-3">
+            <app-source-selector matInput [uuid]="item?.sourceId" [mode]="mode" (valueChange)="onChangeSource($event)">
+            </app-source-selector>
+        </div>
+    </div>
+    
+    <div class="row mt-2">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE')"
+                [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+        <div class="col-sm-2" *ngIf="view">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave('E_SAVE_AND_VIEW')"
+                [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> Save & View
+            </button>
+        </div>
+    </div>
+</form>

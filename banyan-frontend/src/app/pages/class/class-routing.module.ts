@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClassHomeComponent } from './class-home/class-home.component';
-import { ClassListComponent } from './class/class-list.component';
-import { ClassViewComponent } from './class/class-view.component';
-import { CourseListComponent } from './course/course-list.component';
-import { CourseViewComponent } from './course/course-view.component';
+import { ClassListComponent } from './class/class-list/class-list.component';
+import { ClassViewComponent } from './class/class-view/class-view.component';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseViewComponent } from './course/course-view/course-view.component';
 import { RegistrationListComponent } from './registration/registration-list.component';
 
 const routes: Routes = [

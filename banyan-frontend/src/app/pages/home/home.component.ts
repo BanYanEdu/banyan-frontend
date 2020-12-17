@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    // console.log(iNet);
+    console.log(iNet);
     // console.log(this.translateService.getCurrentLang());
   }
 }

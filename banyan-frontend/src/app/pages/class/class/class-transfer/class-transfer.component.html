@@ -1,0 +1,132 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="form-bold-text">{{ inputEnrollment?.contactName }}</span>
+            <span class="ml-2">({{ inputEnrollment?.contactCode }})</span>
+            <span class="form-sub-label ml-2">{{ 'MENU.STUDENT' | translate}}</span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <span class="form-bold-text">{{ inputEnrollment?.className }}</span>
+            <span class="ml-2">({{ inputEnrollment?.classCode }})</span>
+            <span class="form-sub-label ml-2">{{ 'MENU.CLASS' | translate}}</span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <span>{{ inputEnrollment?.courseName }}</span>
+            <span class="form-sub-label ml-2">{{ 'MENU.COURSE' | translate}}</span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <span>{{ inputEnrollment?.programName }}</span>
+            <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate}}</span>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <span>{{ inputEnrollment?.outletName }}</span>
+            <span class="form-sub-label ml-2">{{ 'MENU.OUTLET' | translate}}</span>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-sm-9">
+            <strong>Chuyển tới</strong>
+
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-add btn-block" type="button" (click)="searchClass(searchClassDialog)">
+                <i class="fa fa-search"></i> Chọn lớp học
+            </button>
+        </div>
+    </div>
+    <div *ngIf="toClass">
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <span class="form-bold-text">{{ toClass?.name }}</span>
+                <span class="ml-1">({{ toClass?.code }})</span>
+                <span class="form-sub-label ml-2">{{ 'MENU.CLASS' | translate}}</span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <span>{{ toClass?.courseName }}</span>
+                <span class="form-sub-label ml-2">{{ 'MENU.COURSE' | translate}}</span>
+            </div>
+            <div class="col-sm-6">
+                <span>{{ toClass?.actualStartDate | moment }}</span>
+                <span class="form-sub-label ml-2">Khai Giảng</span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <span>{{ toClass?.programName }}</span>
+                <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate}}</span>
+            </div>
+            <div class="col-sm-6">
+                <span>{{ toClass?.schedulePatternName }}</span>
+                <span class="form-sub-label ml-2">Lịch học</span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <span>{{ toClass?.outletName }}</span>
+                <span class="form-sub-label ml-2">{{ 'MENU.OUTLET' | translate}}</span>
+            </div>
+            <div class="col-sm-6">
+                <span>{{ toClass?.facilityNo }}</span>
+                <span class="form-sub-label ml-2">Phòng học</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-3">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Ngày chuyển</mat-label>
+                        <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="transferDate"
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required>
+                        <mat-error *ngIf="mainForm.get('transferDate').hasError('required')">
+                            {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-9">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Ghi chú</mat-label>
+                        <input type="text" matInput formControlName="transferRemark">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>
+
+<ng-template #searchClassDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">Tìm lớp học</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-search [classId]="inputEnrollment.classId" (valueChange)='onClassSelected($event)'>
+                </app-class-search>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
-import { EmployeeListComponent } from './employee/employee-list.component';
-import { EmployeeViewComponent } from './employee/employee-view.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { EmployeeViewComponent } from './employee/employee-view/employee-view.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },

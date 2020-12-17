@@ -32,10 +32,14 @@ import { MinuteSelectorComponent } from './time-selector/minute-selector.compone
 import { ProgramSelectorComponent } from './program-selector/program-selector.component';
 import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
 import { CourseSelectorComponent } from './course-selector/course-selector.component';
-import { MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MatCheckboxModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { SourceSelectorComponent } from './source-selector/source-selector.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
-import { StudentAddComponent } from '../student/student/student-add.component';
+import { StudentAddComponent } from '../student/student/student-add/student-add.component';
+import { ClassSearchComponent } from '../class/class/class-search/class-search.component';
+import { ClassTransferComponent } from '../class/class/class-transfer/class-transfer.component';
+import { ClassEnrollmentComponent } from '../class/class/class-enrollment/class-enrollment.component';
+import { ClassEnrollComponent } from '../class/class/class-enroll/class-enroll.component';
 
 
 
@@ -61,7 +65,8 @@ import { StudentAddComponent } from '../student/student/student-add.component';
         DialogModule,
         RouterModule,
         MatInputModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSelectModule
     ],
     declarations: [ 
         MomentPipe,
@@ -77,7 +82,11 @@ import { StudentAddComponent } from '../student/student/student-add.component';
         MinuteSelectorComponent,
         SourceSelectorComponent,
         StudentSearchComponent,
-        StudentAddComponent
+        StudentAddComponent,
+        ClassSearchComponent,
+        ClassTransferComponent,
+        ClassEnrollmentComponent,
+        ClassEnrollComponent
     ],
     exports: [
         // NgxMaskModule,
@@ -95,6 +104,7 @@ import { StudentAddComponent } from '../student/student/student-add.component';
         BsDatepickerModule,
         MatInputModule,
         MatCheckboxModule,
+        MatSelectModule,
         MomentPipe,
         // ReversePipe,
         InputCharacterMaskDirective,
@@ -109,7 +119,11 @@ import { StudentAddComponent } from '../student/student/student-add.component';
         MinuteSelectorComponent,
         SourceSelectorComponent,
         StudentSearchComponent,
-        StudentAddComponent
+        StudentAddComponent,
+        ClassSearchComponent,
+        ClassTransferComponent,
+        ClassEnrollmentComponent,
+        ClassEnrollComponent
 
     ],
     providers: [

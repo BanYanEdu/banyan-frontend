@@ -1,0 +1,63 @@
+<form [formGroup]="mainForm">
+    <div>
+        <div class="row">
+            <div class="col-sm-5">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Tìm kiếm theo tên và mã</mat-label>
+                    <input type="text" matInput formControlName="searchValue" (keyup.enter)="onSearch()" #searchValue>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                    (reload)="load($event)" [limit]="limit" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                    [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="true" [expandableRows]="false" [showReloading]="false" [sortBy]="'code'"
+                    [sortAsc]="true" (rowClick)="onRowClick($event)">
+                    <data-table-column [property]="" [header]="'MENU.CLASS' | translate">
+                        <ng-template #dataTableCell let-item="item">
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <strong>{{ item.name }}</strong>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ item.code }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        {{ item.courseName }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ item.outletName }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        {{ item.schedulePatternName }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ item.actualStartDate | moment }}
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <!-- <data-table-column [property]="" [header]="" [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <button class="btn btn-add" (click)="onSelected(item)"> Chọn </button>
+                    </ng-template>
+                </data-table-column> -->
+                </data-table>
+            </div>
+        </div>
+    </div>
+</form>

@@ -10,6 +10,7 @@ import { FormMode } from 'app/model/common/FormMode';
 export class ProgramSelectorComponent implements OnInit {
     @Input() uuid: string;
     @Input() mode: FormMode;
+    @Input() firstValue: string;
     @Output('valueChange') change = new EventEmitter<any>();
 
     mainForm: FormGroup;
@@ -33,7 +34,14 @@ export class ProgramSelectorComponent implements OnInit {
 
         this.settingsService.programList({}).subscribe(data => {
             this.items = data['items'];
-            // this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn chương trình -->"});
+            if (this.firstValue == "E_ALL") {
+                this.items.splice(0, 0, { uuid: "E_ALL", name: "<<-- Tất cả -->>", code: "" });
+            }
+            if (this.firstValue == "E_BLANK") {
+                this.items.splice(0, 0, { uuid: "", name: "<<-- Chọn -->>", code: "" });
+            }
+
+            // console.log(this.items);
             
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";

@@ -466,6 +466,7 @@ img.avatar-error {
   // border-radius: 10px;
 }
 
+.cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; } 
 
 /*
 

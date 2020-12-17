@@ -1,0 +1,130 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <br>
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.EVALUATION_TYPE' | translate }}</mat-label>
+                <select matNativeControl formControlName="evaluationType" (click)="changeEvaType()">
+                    <option value="{{ evaType }}" *ngFor="let evaType of evaTypes">
+                        {{ 'MODULE.SETTINGS.EVALUATION_TYPE_VALUES.' + evaType | translate }}
+                    </option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2" *ngIf="evaType =='E_SCORES'">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.MAX_SCORES' | translate }}</mat-label>
+                <input type="text" matInput formControlName="maxScores" maxlength="4" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('maxScores').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2" *ngIf="evaType =='E_SCORES'">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MODULE.SETTINGS.DECIMALS' | translate }}</mat-label>
+                <select matNativeControl formControlName="decimals">
+                    <option value="{{ decimalsValue.value }}" *ngFor="let decimalsValue of decimalsValues">
+                        {{decimalsValue.value}}
+                    </option>
+                </select>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="evaType == 'E_LEVEL'" class="row mt-2">
+    <div class="col-sm-12">
+        <div class="row mt-2 datagrid-header">
+            <div class="col-sm-2">
+                {{ 'COMMON.GENERAL.CODE' | translate }}
+            </div>
+            <div class="col-sm-5">
+                {{ 'COMMON.GENERAL.DESCRIPTION' | translate }}
+            </div>
+            <div class="col-sm-2">
+                {{ 'COMMON.GENERAL.SCORES' | translate }}
+            </div>
+        </div>
+
+        <div class="row mt-2 datagrid-row" *ngFor="let level of levels; index as i; last as isLast">
+            <div class="col-sm-2">
+                <input type="text" class="form-control" maxlength="20" [(ngModel)]="level.code"
+                    class="form-control form-required">
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" maxlength="150" [(ngModel)]="level.description"
+                    class="form-control form-required">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" maxlength="4" [(ngModel)]="level.scores"
+                    class="form-control form-required" numericInputOnly>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-default" (click)="onUp(i)" style="margin-left: 5px;"
+                    [hidden]="i ==0" tabindex="-1">
+                    <i class="fa fa-arrow-up"></i>
+                </button>
+                <button type="button" class="btn btn-default" (click)="onDown(i)" style="margin-left: 5px;"
+                    [hidden]="isLast" tabindex="-1">
+                    <i class="fa fa-arrow-down"></i>
+                </button>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" (click)="onDeleteRow(i)" style="margin-left: 5px;"
+                    [hidden]="" tabindex="-1">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" (click)="onAddRow()" style="margin-left: 5px;">
+                    <i class="fa fa-plus"></i><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+            <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+        </button>
+    </div>
+</div>

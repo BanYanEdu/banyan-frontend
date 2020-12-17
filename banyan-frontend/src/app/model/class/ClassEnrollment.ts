@@ -1,4 +1,3 @@
-import { BaseEditableMdModel } from "app/shared/models/BaseEditableMdModel";
 import { BaseEditableModel } from "app/shared/models/BaseEditableModel";
 
 export class ClassEnrollment extends BaseEditableModel {
@@ -20,6 +19,10 @@ export class ClassEnrollment extends BaseEditableModel {
     enrollmentDate?: number;
     status?: string;
     remark?: string;
+    hasDebt?: boolean;
+    debtAmount?: number;
+    fromClassId?: string;
+    toClassId?: string;
 }
 
 /*

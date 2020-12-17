@@ -9,13 +9,11 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentRoutingModule } from './student-routing.module';
 import { LeadListComponent } from './lead/lead-list.component';
 import { LeadAddComponent } from './lead/lead-add.component';
-import { StudentAddComponent } from './student/student-add.component';
-import { StudentListComponent } from './student/student-list.component';
+import { StudentListComponent } from './student/student-list/student-list.component';
 import { CompanyListComponent } from './company/company-list.component';
 import { CompanyAddComponent } from './company/company-add.component';
-import { StudentViewComponent } from './student/student-view.component';
+import { StudentViewComponent } from './student/student-view/student-view.component';
 import { AppCommonModule } from '../common/app-common.module';
-import { StudentEnrollmentComponent } from './student/student-enrollment.component';
 
 @NgModule({
     imports: [
@@ -31,11 +29,9 @@ import { StudentEnrollmentComponent } from './student/student-enrollment.compone
         LeadListComponent,
         LeadAddComponent,
         StudentListComponent,
-        // StudentAddComponent,
         StudentViewComponent,
         CompanyListComponent,
         CompanyAddComponent,
-        StudentEnrollmentComponent
 
     ],
     providers: [
