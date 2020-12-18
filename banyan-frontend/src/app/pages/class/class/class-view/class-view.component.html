@@ -1,5 +1,10 @@
 <div class="app-content-white">
-    <div class="row mt-2">
+    <div class="row mt-1">
+        <div class="col-sm-6">
+            <span class="form-sub-label">{{ 'MENU.CLASS' | translate | uppercase }}</span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-10">
             <span class="form-title">{{ item?.name }}</span>
             <button type="button" class="btn-add ml-2" (click)="onEdit(editDialog)">
@@ -126,67 +131,8 @@
                 <tab [heading]="'MENU.STUDENTS' | translate" id="tabStudents">
                     <app-class-enrollment [class]="item" [owner]="'E_CLASS'"></app-class-enrollment>
                 </tab>
-                <!-- <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
-                    <div class="row mt-2 ml-2">
-                        <div class="col-sm-12">
-                            <div class="row mt-2 datagrid-header">
-                                <div class="col-sm-1" align="center">
-                                    #
-                                </div>
-                                <div class="col-sm-4">
-                                    {{ 'MENU.STUDY_SUBJECT' | translate }}
-                                </div>
-                                <div class="col-sm-1" align="center">
-                                    {{ 'MODULE.SETTINGS.LECTURE_UNIT_COUNT_SHORT' | translate }}
-                                </div>
-                                <div class="col-sm-5">
-                                    {{ 'COMMON.GENERAL.REMARK' | translate }}
-                                </div>
-                                <div class="col-sm-1" align="right">
-                                    <button type="button" class="btn-add"
-                                        (click)="onAssign(assignStudySubjectDialog)">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="row mt-2 datagrid-row"
-                                *ngFor="let item of item?.studySubjects; index as i; last as isLast">
-                                <div class="col-sm-1" align="center">
-                                    {{ i+1 }}
-                                </div>
-                                <div class="col-sm-4">
-                                    {{ item?.studySubjectName }}
-                                </div>
-                                <div class="col-sm-1" align="center">
-                                    {{ item?.unitCount }}
-                                </div>
-                                <div class="col-sm-4">
-                                    {{ item?.remark }}
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-sm-5">
-                                </div>
-                                <div class="col-sm-1" align="center">
-                                    <strong>{{ unitCount }}</strong>
-                                </div>
-                                <div class="col-sm-5">
-                                </div>
-                                <div class="col-sm-1" align="right">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </tab>
-                <tab [heading]="'Quản lý'" id="tabManagement">
-                    <br><br>
-                    <h5>Quản lý lớp học ...</h5>
-                </tab><tab [heading]="'MENU.MATERIALS' | translate" id="tabStudyMaterials">
-                    <br><br>
-                    <h5>Học liệu ...</h5>
-                </tab> -->
-                <tab [heading]="'Reserved'" id="tabInfo">
-                    <h5>Under Construction ....</h5>
+                <tab [heading]="'Quản lý'">
+                    <app-class-assignment [class]="item" [owner]="'E_CLASS'"></app-class-assignment>
                 </tab>
             </tabset>
         </div>

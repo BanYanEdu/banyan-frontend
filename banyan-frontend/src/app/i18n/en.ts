@@ -193,6 +193,10 @@ export let enLocale = {
     },
     MODULE: {
         CLASS: {
+            ASSIGNMENT_STATUS_VALUES: {
+                E_ASSIGNED: 'Assigned',
+                E_UNASSIGNED: 'Unassigned'
+            },
             CHECKING_REQUIRED: 'Checking required',
             CURRICULUM: 'Curriculum',
             ENROLLMENT_STATUS_VALUES: {
@@ -205,6 +209,11 @@ export let enLocale = {
             HEADCOUNT: 'Headcount',
             HEADCOUNT_MIN: 'Min Headcount',
             HEADCOUNT_MAX: 'Max Headcount',
+            ROLE_VALUES: {
+                E_MANAGER: 'Manager',
+                E_MEMBER: 'Member',
+                E_ASSISTANT: 'Assistant'
+            },
             STATUS_VALUES: {
                 E_PLANNING: 'Planning',
                 E_RECRUITING: 'Recruiting',

@@ -1,10 +1,10 @@
 <div class="app-content-white">
-    <div class="row mt-2">
+    <div class="row">
         <div class="col-sm-6">
             <span class="form-sub-label">{{ 'MENU.EMPLOYEE' | translate | uppercase }}</span>
         </div>
     </div>
-    <div class="row mt-2">
+    <div class="row">
         <div class="col-sm-4">
             <span class="form-title">{{ item?.name }}</span>
             <button type="button" class="btn-add ml-2" (click)="onEdit(editDialog)">
@@ -115,14 +115,9 @@
         </div>
         <div class="col-sm-10">
             <tabset class="col-sm-12" style="min-height:400px">
-                <tab [heading]="'Tab #1'" id="tabClass">
-                    <br><br>
-                    <h5>Under Construction ...</h5>
+                <tab [heading]="'MENU.CLASSES' | translate" id="tabClass">
+                    <app-class-assignment [employee]="item" [owner]="'E_EMPLOYEE'"></app-class-assignment>
                 </tab>
-                <!-- <tab [heading]="'Tab #2'" id="tabInfo">
-                    <br><br>
-                    <h5>Under Construction ...</h5>
-                </tab> -->
             </tabset>
         </div>
     </div>

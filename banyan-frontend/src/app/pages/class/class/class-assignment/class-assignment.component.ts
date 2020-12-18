@@ -7,20 +7,18 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { BaseComponent } from 'app/shared/components/BaseComponent';
 import { FormMode } from 'app/model/common/FormMode';
 import { SchoolClass } from 'app/model/class/SchoolClass';
-import { ClassEnrollment } from 'app/model/class/ClassEnrollment';
 import { BaseEditableModel } from 'app/shared/models/BaseEditableModel';
-import { DataTableResource, DataTable } from 'inet-ui';
 import { ClassService } from '../../class.service';
-import { Contact } from 'app/model/student/Contact';
+import { Employee } from 'app/model/employee/Employee';
+import { ClassAssignment } from 'app/model/class/ClassAssignment';
 
 @Component({
-    selector: 'app-class-enrollment',
-    templateUrl: './class-enrollment.component.html'
+    selector: 'app-class-assignment',
+    templateUrl: './class-assignment.component.html'
 })
-export class ClassEnrollmentComponent extends BaseComponent implements OnInit, OnChanges {
+export class ClassAssignmentComponent extends BaseComponent implements OnInit, OnChanges {
     @Input() class: SchoolClass;
-    // @Input() id: string;
-    @Input() contact: Contact;
+    @Input() employee: Employee;
     @Input() owner: string;
     itemCount = 0;
     pageNumber = 1;
@@ -32,8 +30,8 @@ export class ClassEnrollmentComponent extends BaseComponent implements OnInit, O
         ignoreBackdropClick: true,
         class: 'modal-xl'
     };
-    classEnrollments: ClassEnrollment[];
-    selectedItem: ClassEnrollment;
+    items: ClassAssignment[];
+    selectedItem: ClassAssignment;
 
     constructor(
         element: ElementRef,
@@ -45,7 +43,7 @@ export class ClassEnrollmentComponent extends BaseComponent implements OnInit, O
     ) { super(commonService) }
 
     ngOnInit() {
-        this.load();
+        // this.load();
     }
 
     ngOnChanges() {
@@ -54,17 +52,15 @@ export class ClassEnrollmentComponent extends BaseComponent implements OnInit, O
 
     load() {
         if (this.owner == "E_CLASS" && this.class) {
-            this.classService.enrollmentList({ classId: this.class.uuid }).subscribe(data => {
-                this.classEnrollments = data.items;
+            this.classService.assignmentList({ classId: this.class.uuid }).subscribe(data => {
+                this.items = data.items;
                 this.itemCount = data['total'];
-                // this.dataResource = new DataTableResource(this.classEnrollments);
             })
         }
-        if (this.owner == "E_STUDENT" && this.contact) {
-            this.classService.enrollmentList({ contactId: this.contact.uuid }).subscribe(data => {
-                this.classEnrollments = data.items;
+        if (this.owner == "E_EMPLOYEE" && this.employee) {
+            this.classService.assignmentList({ employeeId: this.employee.uuid }).subscribe(data => {
+                this.items = data.items;
                 this.itemCount = data['total'];
-                // this.dataResource = new DataTableResource(this.classEnrollments);
             })
         }
     }
@@ -72,7 +68,6 @@ export class ClassEnrollmentComponent extends BaseComponent implements OnInit, O
     onChanged($event) {
         this.modalRef.hide();
         this.load();
-        // this.refreshedTime = this.refreshedTime + 1;
     }
 
     onAdd(template: TemplateRef<any>) {
@@ -82,12 +77,6 @@ export class ClassEnrollmentComponent extends BaseComponent implements OnInit, O
     }
     onEdit(template: TemplateRef<any>, item: BaseEditableModel) {
         this.mode = FormMode.E_EDIT;
-        this.config.class = "modal-medium";
-        this.selectedItem = item;
-        this.modalRef = this.modalService.show(template, this.config);
-    }
-    onTransfer(template: TemplateRef<any>, item: BaseEditableModel) {
-        this.mode = FormMode.E_ADD;
         this.config.class = "modal-medium";
         this.selectedItem = item;
         this.modalRef = this.modalService.show(template, this.config);

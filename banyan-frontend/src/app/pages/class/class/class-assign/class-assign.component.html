@@ -2,19 +2,19 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-sm-9">
-                    <h5>{{ item?.contactName}}</h5>
+                <div class="col-sm-8">
+                    <h5>{{ item?.employeeName}}</h5>
                 </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-add" type="button" (click)="searchStudent(searchStudentDialog)"
-                        *ngIf="isAdd && owner!='E_STUDENT'">
-                        <i class="fa fa-search"></i> Chọn học viên
+                <div class="col-sm-4" align="right">
+                    <button class="btn btn-add" type="button" (click)="searchEmployee(searchEmployeeDialog)"
+                        *ngIf="isAdd && owner!='E_EMPLOYEE'">
+                        <i class="fa fa-search"></i> Chọn giảng viên
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <strong>{{ item?.contactCode}}</strong>
+                    <strong>{{ item?.employeeCode}}</strong>
                 </div>
             </div>
         </div>
@@ -44,12 +44,22 @@
             <div class="row">
                 <div class="col-sm-3">
                     <mat-form-field class="input-full-width">
-                        <mat-label>Ngày nhập học</mat-label>
-                        <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="enrollmentDate"
-                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required #enrollmentDate>
-                        <mat-error *ngIf="mainForm.get('enrollmentDate').hasError('required')">
+                        <mat-label>Ngày bổ nhiệm</mat-label>
+                        <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="assignDate"
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required #assignDate>
+                        <mat-error *ngIf="mainForm.get('assignDate').hasError('required')">
                             {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
                         </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Vai trò</mat-label>
+                        <mat-select formControlName="role">
+                            <mat-option value="{{ role }}" *ngFor="let role of roles">
+                                {{ 'MODULE.CLASS.ROLE_VALUES.' + role | translate }}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-4">
@@ -57,7 +67,7 @@
                         <mat-label>Trạng thái</mat-label>
                         <mat-select formControlName="status">
                             <mat-option value="{{ status }}" *ngFor="let status of statuses">
-                                {{ 'MODULE.CLASS.ENROLLMENT_STATUS_VALUES.' + status | translate }}
+                                {{ 'MODULE.CLASS.ASSIGNMENT_STATUS_VALUES.' + status | translate }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -71,22 +81,10 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <br>
-                    <mat-checkbox formControlName="hasDebt" (change)="onChangeHasDebt()">Còn nợ học phí</mat-checkbox>
-                </div>
-                <div class="col-sm-4" *ngIf="hasDebt">
-                    <mat-form-field class="input-full-width">
-                        <mat-label>Số tiền nợ</mat-label>
-                        <input type="text" matInput numericInputOnly formControlName="debtAmount">
-                    </mat-form-field>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
                 <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
@@ -94,25 +92,17 @@
     </div>
 </form>
 
-<ng-template #searchStudentDialog>
+<ng-template #searchEmployeeDialog>
     <div class="modal-form">
         <div class="modal-content">
-            <!-- <div class="row">
-                <div class="col-sm-12 ml-2">
-                    <h6 class="modal-title pull-left mr-2">Search Student</h6>
-                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div> -->
             <div class="modal-header">
-                <h5 class="modal-title pull-left">Tìm học viên</h5>
+                <h5 class="modal-title pull-left">Tìm giảng viên</h5>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <app-student-search (valueChange)='onStudentSelected($event)'></app-student-search>
+                <app-employee-search (valueChange)="onEmployeeSelected($event)"></app-employee-search>
             </div>
         </div>
     </div>

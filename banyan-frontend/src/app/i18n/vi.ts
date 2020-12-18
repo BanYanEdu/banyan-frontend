@@ -164,6 +164,10 @@ export let viLocale = {
     },
     MODULE: {
         CLASS: {
+            ASSIGNMENT_STATUS_VALUES: {
+                E_ASSIGNED: 'Bổ nhiệm',
+                E_UNASSIGNED: 'Thôi nhiệm'
+            },
             CHECKING_REQUIRED: 'Kiểm tra đầu vào',
             CURRICULUM: 'Giáo trình',
             ENROLLMENT_STATUS_VALUES: {
@@ -176,6 +180,11 @@ export let viLocale = {
             HEADCOUNT: 'Sỹ số',
             HEADCOUNT_MIN: 'Sỹ số tối thiểu',
             HEADCOUNT_MAX: 'Sỹ số tối đa',
+            ROLE_VALUES: {
+                E_MANAGER: 'Chủ nhiệm',
+                E_MEMBER: 'Thành viên',
+                E_ASSISTANT: 'Trợ lý'
+            },
             STATUS_VALUES: {
                 E_PLANNING: 'Kế hoạch',
                 E_RECRUITING: 'Tuyển sinh',

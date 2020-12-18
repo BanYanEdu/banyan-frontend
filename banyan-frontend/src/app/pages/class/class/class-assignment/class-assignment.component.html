@@ -1,0 +1,89 @@
+<div class="app-content-white">
+    <div class="" style="margin: 5px">
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items"
+                    [itemCount]="itemCount" (reload)="load()" [limit]="1000" [selectColumn]="false"
+                    [multiSelect]="false" [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="false" [sortBy]="'code'"
+                    [sortAsc]="true">
+                    <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate" [width]="100"
+                        *ngIf="owner=='E_CLASS'">
+                        <ng-template #dataTableCell let-item="item">
+                            <a routerLink="/employee/employee/view/{{item.employeeId}}" class="link-text">{{
+                                item?.employeeCode }}</a>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate"
+                        *ngIf="owner=='E_CLASS'">
+                        <ng-template #dataTableCell let-item="item">
+                            <a routerLink="/employee/employee/view/{{item.employeeId}}" class="link-text">{{
+                                item?.employeeName }}</a>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'MENU.CLASS' | translate" *ngIf="owner=='E_EMPLOYEE'">
+                        <ng-template #dataTableCell let-item="item">
+                            <a routerLink="/class/class/view/{{item.classId}}" class="link-text">{{ item?.className
+                                }}</a>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="'outletName'" [header]="'MENU.OUTLET' | translate" *ngIf="owner=='E_EMPLOYEE'">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Vai trò'" [styleClass]="'text-center'">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ 'MODULE.CLASS.ROLE_VALUES.' + item?.role | translate }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Ngày bổ nhiệm'" [styleClass]="'text-center'" [width]="120">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ item?.assignDate | moment }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Trạng thái'" [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ 'MODULE.CLASS.ASSIGNMENT_STATUS_VALUES.' + item?.status | translate }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="'remark'" [header]="'Ghi chú'">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <button type="button" class="btn-add" (click)="onEdit(assignDialog, item)"
+                                *ngIf="item.status!='E_TRANSFERRED'">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </ng-template>
+                    </data-table-column>
+
+                    <ng-template #basicSearch>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-add" (click)="onAdd(assignDialog)">
+                                    <i class="fa fa-plus"></i> Thêm mới
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </data-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #assignDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Bổ nhiệm</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-assign [inputClass]="class" [inputEmployee]="employee" [owner]="owner" [mode]="mode" [item]="selectedItem"
+                    [inputItems]="items" (valueChange)='onChanged($event)'>
+                </app-class-assign>
+            </div>
+        </div>
+    </div>
+</ng-template>

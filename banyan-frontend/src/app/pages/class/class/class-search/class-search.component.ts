@@ -20,13 +20,15 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
     @ViewChild("searchValue") searchValue: ElementRef;
 
     mainForm: FormGroup;
-    dataResource = new DataTableResource([]);
+    // dataResource = new DataTableResource([]);
     items = [];
     itemCount = 0;
     pageNumber = 1;
     limit = 5;
-    mode: FormMode;
-    protected params: any; // to reload data
+    mode: FormMode = FormMode.E_EDIT;
+    outletId: string = "E_ALL";
+    programId: string = "E_ALL";
+    protected params: any = {}; // to reload data
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -46,15 +48,17 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
             'searchValue': new FormControl(null),
         });
         this.searchValue.nativeElement.focus();
+        this.params.limit = 5;
     }
 
-    load(params){
+    load(){
         // var criteria: any = params;
-        this.classService.classList(params).subscribe(data => {
+        // console.log(this.params);
+        this.classService.classList(this.params).subscribe(data => {
             this.items = data['items'];
             const items = data['items'];
             this.itemCount = data['total'];
-            this.dataResource = new DataTableResource(items);
+            // this.dataResource = new DataTableResource(items);
         });
     }
 
@@ -65,13 +69,16 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
     // }
 
     onSearch() {
-        let searchValue = this.mainForm.get('searchValue').value;
-        this.params.searchValue = searchValue;
-        this.params.limit = 10;
+        // let searchValue = this.mainForm.get('searchValue').value;
+        this.params.searchValue = this.mainForm.get('searchValue').value;
+        if (this.outletId != "E_ALL") { this.params.outletId = this.outletId;} 
+        else { this.params.outletId = ""; }
+        if (this.programId != "E_ALL") { this.params.programId = this.programId;} 
+        else { this.params.programId = ""; }
+        
         this.params.excludeId = this.classId;
-        this.load(this.params);
+        this.load();
     }
-
     onRowClick(params){
         if (params.row.item.uuid == this.classId) {
             this.showMessage("Trùng lớp", "Thông báo", NotificationType.ERROR);
@@ -80,5 +87,13 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
         this.change.emit([
             params.row.item
         ]);
+    }
+    onChangeOutlet(event) {
+        this.outletId = event[0];
+        this.onSearch();
+    }
+    onChangeProgram(event) {
+        this.programId = event[0];
+        this.onSearch();
     }
 }

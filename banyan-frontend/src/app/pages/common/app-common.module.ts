@@ -40,8 +40,9 @@ import { ClassSearchComponent } from '../class/class/class-search/class-search.c
 import { ClassTransferComponent } from '../class/class/class-transfer/class-transfer.component';
 import { ClassEnrollmentComponent } from '../class/class/class-enrollment/class-enrollment.component';
 import { ClassEnrollComponent } from '../class/class/class-enroll/class-enroll.component';
-
-
+import { ClassAssignmentComponent } from '../class/class/class-assignment/class-assignment.component';
+import { ClassAssignComponent } from '../class/class/class-assign/class-assign.component';
+import { EmployeeSearchComponent } from '../employee/employee/employee-search/employee-search.component';
 
 @NgModule({
     imports: [
@@ -86,10 +87,12 @@ import { ClassEnrollComponent } from '../class/class/class-enroll/class-enroll.c
         ClassSearchComponent,
         ClassTransferComponent,
         ClassEnrollmentComponent,
-        ClassEnrollComponent
+        ClassEnrollComponent,
+        ClassAssignmentComponent,
+        ClassAssignComponent,
+        EmployeeSearchComponent
     ],
     exports: [
-        // NgxMaskModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -123,7 +126,10 @@ import { ClassEnrollComponent } from '../class/class/class-enroll/class-enroll.c
         ClassSearchComponent,
         ClassTransferComponent,
         ClassEnrollmentComponent,
-        ClassEnrollComponent
+        ClassEnrollComponent,
+        ClassAssignmentComponent,
+        ClassAssignComponent,
+        EmployeeSearchComponent
 
     ],
     providers: [

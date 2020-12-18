@@ -8,28 +8,30 @@ import { SchoolClass } from 'app/model/class/SchoolClass';
 import { FormMode } from 'app/model/common/FormMode';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Contact } from 'app/model/student/Contact';
 import { ClassEnrollment } from 'app/model/class/ClassEnrollment';
 import { EnrollmentStatuses } from 'app/data/global/EnrollmentStatuses';
 import { ClassService } from '../../class.service';
 import { NotificationType } from 'app/shared/models/NotificationType';
+import { Employee } from 'app/model/employee/Employee';
+import { ClassAssignment } from 'app/model/class/ClassAssignment';
+import { AssignmentStatuses } from 'app/data/global/AssignmentStatuses';
+import { AssignmentRoles } from 'app/data/global/AssignmentRoles';
 
 @Component({
-    selector: 'app-class-enroll',
-    templateUrl: './class-enroll.component.html'
+    selector: 'app-class-assign',
+    templateUrl: './class-assign.component.html'
 })
-export class ClassEnrollComponent extends BaseAddDialogComponent<ClassEnrollment> {
-    contact: Contact;
+export class ClassAssignComponent extends BaseAddDialogComponent<ClassAssignment> {
+    employee: Employee;
     class: SchoolClass;
-    @Input() inputContact: Contact;
+    @Input() inputEmployee: Employee;
     @Input() inputClass: SchoolClass;
     @Input() owner: string;
-    @Input() inputItems: ClassEnrollment[];
-    @ViewChild("enrollmentDate") enrollmentDate: ElementRef;
-    // @ViewChild('searchClassDialog') searchClassDialog: TemplateRef<any>;
-    statuses: any[] = EnrollmentStatuses;
+    @Input() inputItems: ClassAssignment[];
+    @ViewChild("assignDate") efAssignDate: ElementRef;
+    statuses: any[] = AssignmentStatuses;
+    roles: any[] = AssignmentRoles;
     isAdd: boolean = false;
-    hasDebt: boolean = false;
     modalRef: BsModalRef;
     config = {
         backdrop: false,
@@ -48,13 +50,12 @@ export class ClassEnrollComponent extends BaseAddDialogComponent<ClassEnrollment
     }
     protected createMainFormGroup(): FormGroup {
         return new FormGroup({
-            'enrollmentDate': new FormControl(null),
+            'assignDate': new FormControl(null, [Validators.required]),
             'remark': new FormControl(null),
             'status': new FormControl(null, [Validators.required]),
-            'contactId': new FormControl(null, [Validators.required]),
+            'role': new FormControl(null, [Validators.required]),
+            'employeeId': new FormControl(null, [Validators.required]),
             'classId': new FormControl(null, [Validators.required]),
-            'hasDebt': new FormControl(null),
-            'debtAmount': new FormControl(null),
         });
     }
 
@@ -66,66 +67,59 @@ export class ClassEnrollComponent extends BaseAddDialogComponent<ClassEnrollment
             this.item = new ClassEnrollment;
 
             this.mainForm.get('status').setValue(this.statuses[0]);
+            this.mainForm.get('role').setValue(this.roles[0]);
 
             if (this.owner == "E_CLASS") {
                 this.class = this.inputClass;
                 this.fillClassInfo();
             }
-            if (this.owner == "E_STUDENT") {
-                this.contact = this.inputContact;
-                this.fillStudentInfo();
+            if (this.owner == "E_EMPLOYEE") {
+                this.employee = this.inputEmployee;
+                this.fillEmployeeInfo();
             }
         } else {
-            this.mainForm.controls['enrollmentDate'].setValue(new Date(this.item.enrollmentDate));
-            this.hasDebt = this.item.hasDebt;
+            this.mainForm.controls['assignDate'].setValue(new Date(this.item.assignDate));    
         }
     }
     protected populateAdditionalFormValue() {
-        this.requestItem.enrollmentDate = this.mainForm.controls['enrollmentDate'].value.getTime() || null;
-        if (!this.hasDebt) {
-            this.requestItem.debtAmount = 0;
-        }
+        this.requestItem.assignDate = this.mainForm.controls['assignDate'].value.getTime() || null;
     }
     protected callSearch(input: { code: string }, callbackFn: Function): void {
-        this.classService.enrollmentList(input).subscribe(data => callbackFn(data));
+        this.classService.assignmentList(input).subscribe(data => callbackFn(data));
     }
     protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        this.classService.enrollmentCreate(requestItem).subscribe(data => callbackFn(data));
+        this.classService.assignmentCreate(requestItem).subscribe(data => callbackFn(data));
     }
     protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        console.log(this.requestItem);
-        this.classService.enrollmentUpdate(requestItem).subscribe(data => callbackFn(data));
+        // console.log(this.requestItem);
+        this.classService.assignmentUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 
-    onChangeHasDebt() {
-        this.hasDebt = !this.hasDebt;
-    }
-
-    searchStudent(template: TemplateRef<any>) {
+    searchEmployee(template: TemplateRef<any>) {
         this.config.class = "modal-search";
         this.modalRef = this.modalService.show(template, this.config);
     }
-    onStudentSelected(event) {
-        this.contact = event[0];
+    onEmployeeSelected(event) {
+        this.employee = event[0];
         // Check repeating
-        if (this.inputItems.some(e => e.contactId === this.contact.uuid)) {
-            this.showMessage("Học viên này đã có trong lớp", "Thông báo", NotificationType.WARNING);
+        if (this.inputItems.some(e => e.employeeId === this.employee.uuid)) {
+            this.showMessage("Giảng viên này đã có trong lớp", "Thông báo", NotificationType.WARNING);
             return;
         }
 
         this.modalRef.hide();
-        this.fillStudentInfo();
-        this.enrollmentDate.nativeElement.focus();
+        this.fillEmployeeInfo();
+        this.efAssignDate.nativeElement.focus();
     }
-    fillStudentInfo() {
-        this.item.contactName = this.contact.name;
-        this.item.contactCode = this.contact.code;
+    fillEmployeeInfo() {
+        this.item.employeeName = this.employee.name;
+        this.item.employeeCode = this.employee.code;
 
-        this.mainForm.get('contactId').setValue(this.contact.uuid);
+        this.mainForm.get('employeeId').setValue(this.employee.uuid);
 
-        this.requestItem.contactId = this.contact.uuid;
-        this.requestItem.contactCode = this.contact.code;
-        this.requestItem.contactName = this.contact.name;
+        this.requestItem.employeeId = this.employee.uuid;
+        this.requestItem.employeeCode = this.employee.code;
+        this.requestItem.employeeName = this.employee.name;
     }
 
     searchClass(template: TemplateRef<any>) {
@@ -142,7 +136,7 @@ export class ClassEnrollComponent extends BaseAddDialogComponent<ClassEnrollment
 
         this.fillClassInfo();
         this.modalRef.hide();
-        this.enrollmentDate.nativeElement.focus();
+        this.efAssignDate.nativeElement.focus();
     }
     fillClassInfo() {
         this.item.className = this.class.name;

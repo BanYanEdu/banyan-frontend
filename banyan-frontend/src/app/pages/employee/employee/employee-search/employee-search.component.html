@@ -1,0 +1,83 @@
+<form [formGroup]="mainForm">
+    <div>
+        <div class="row">
+            <div class="col-sm-5">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Tìm kiếm theo tên và mã</mat-label>
+                    <input type="text" matInput formControlName="searchValue" (keyup.enter)="onSearch()" #searchValue>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <div class="col-sm-3">
+                 </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-add btn-block" (click)="onAdd(addDialog)">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="limit" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="true"
+                [expandableRows]="false" [showReloading]="false" [sortBy]="'code'" [sortAsc]="true"
+                (rowClick)="onRowClick($event)">
+                <data-table-column [property]="" [header]="'MENU.EMPLOYEE' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <strong>{{ item.name }}</strong>
+                                    <span class="ml-2">{{ item.code }}</span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <i class="fa fa-phone mr-2"></i>{{ item.phoneNo }}
+                                </div>
+                                <!-- <div class="col-sm-5">
+                                    <i class="fa fa-map-pin mr-2"></i>{{ item.contactAddressFull }}
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="fa fa-envelope mr-2"></i>{{ item.email }}
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ item.dob | moment }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <i class="fa fa-building mr-2"></i>{{ item.outletName }}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<ng-template #addDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    {{ 'MENU.STUDENT' | translate }}
+                    <span> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-student-add  [mode]="mode" (valueChange)='onAdded($event)'>
+                </app-student-add>
+            </div>
+        </div>
+    </div>
+</ng-template>

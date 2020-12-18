@@ -1,24 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, TemplateRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SettingsService } from 'app/pages/settings/settings.service';
 import { FormMode } from 'app/model/common/FormMode';
-import { StudentService } from 'app/pages/student/student.service';
-import { DataTableResource } from 'inet-ui';
-import { BaseListComponent } from 'app/shared/components/BaseListComponent';
-import { Contact } from 'app/model/student/Contact';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { EmployeeService } from '../../employee.service';
 
 @Component({
-    selector: 'app-student-search',
-    templateUrl: './student-search.component.html'
+    selector: 'app-employee-search',
+    templateUrl: './employee-search.component.html'
 })
-export class StudentSearchComponent implements OnInit {
+export class EmployeeSearchComponent implements OnInit {
     @Input() uuid: string;
     @Output('valueChange') change = new EventEmitter<any>();
     @ViewChild("searchValue") searchValue: ElementRef;
 
     mainForm: FormGroup;
-    dataResource = new DataTableResource([]);
     items = [];
     itemCount = 0;
     pageNumber = 1;
@@ -33,8 +28,7 @@ export class StudentSearchComponent implements OnInit {
     };
 
     constructor(
-        private settingsService: SettingsService,
-        private studentService: StudentService,
+        private employeeService: EmployeeService,
         protected modalService: BsModalService,
         ) { }
 
@@ -50,12 +44,11 @@ export class StudentSearchComponent implements OnInit {
 
     load(params){
         // var criteria: any = params;
-        this.studentService.studentList(this.params).subscribe(data => {
-            
+        this.employeeService.employeeList(this.params).subscribe(data => {       
             this.items = data['items'];
             const items = data['items'];
             this.itemCount = data['total'];
-            this.dataResource = new DataTableResource(items);
+            // this.dataResource = new DataTableResource(items);
         });
     }
 
