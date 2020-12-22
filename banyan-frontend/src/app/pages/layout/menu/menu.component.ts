@@ -29,7 +29,7 @@ export class TopMenuComponent extends BaseComponent implements OnInit, OnDestroy
 
         this.username = iNet.username;
         this.userDisplayName = iNet.displayName;
-        this.companyPrefix = iNet.prefix;
+        this.companyPrefix = iNet.firmPrefix;
         this.companyPrefix = this.companyPrefix.toUpperCase();
         this.orgName = iNet.orgName;
         // console.log('Load menu ...');

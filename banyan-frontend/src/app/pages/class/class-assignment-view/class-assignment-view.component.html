@@ -1,0 +1,7 @@
+<div class="row" *ngFor="let item of items">
+    <div class="col-sm-12">
+        <a routerLink="/employee/employee/view/{{item.employeeId}}" class="link-text">{{
+            item?.employeeName }}
+        </a>
+    </div>
+</div>

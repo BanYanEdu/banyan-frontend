@@ -1,0 +1,128 @@
+<div class="app-content-white">
+    <div class="row">
+        <div class="col-sm-6">
+            <span class="form-sub-label">{{ 'MENU.COURSE' | translate | uppercase }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            <span class="form-title">{{ item?.name }}</span>
+            <button type="button" class="btn-add ml-2" (click)="onEditCourse(editDialog)">
+                <i class="fa fa-edit"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-sm-1">
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+            <span style="display:block">{{ item?.code }}</span>
+        </div> 
+        <div class="col-sm-2">
+            <span class="form-sub-label" style="display:block">{{ 'MENU.PROGRAM' | translate }}</span>
+            <span>{{ item?.programName }}</span>
+        </div> 
+        <div class="col-sm-3">
+            <span class="form-sub-label" style="display:block">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
+            <span>{{ item?.curriculum }}</span>
+        </div>
+        <div class="col-sm-2">
+            <div class="custom-checkbox">
+                <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired" disabled>
+                <label class="lbl">
+                    <span class="ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-2">
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
+                    <span style="display:block">{{ item?.sortIndex }}</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <div class="custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
+                        <label class="lbl">
+                            <span class="ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
+                    <span style="display:block">{{ item?.createdByCode }}</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
+                    <span style="display:block">{{ item?.createdAt | moment }}</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate }}</span>
+                    <span style="display:block">{{ item?.modifiedByCode }}</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm-12">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate }}</span>
+                    <span style="display:block">{{ item?.modifiedAt | moment }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <tabset class="col-sm-12" style="min-height:400px">
+                <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
+                    <app-course-study-subject-list [courseId]="item?.uuid" [items] = "item?.studySubjects"></app-course-study-subject-list>
+                </tab>
+                <tab [heading]="'MENU.EXAMS_TESTS' | translate" id="tabExams">
+                    <app-course-test-list [courseId]="id"></app-course-test-list>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.COURSE' | translate }}<span> -
+                        {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-course-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-course-add>
+                <!-- <app-deal-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                    </app-deal-add> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #assignStudySubjectDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.STUDY_SUBJECTS' | translate }}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-course-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" (valueChange)='onChanged($event)'>
+                </app-course-study-subject-assign>
+            </div>
+        </div>
+    </div>
+</ng-template>

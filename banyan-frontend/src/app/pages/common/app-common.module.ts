@@ -36,13 +36,14 @@ import { MatCheckboxModule, MatInputModule, MatSelectModule } from '@angular/mat
 import { SourceSelectorComponent } from './source-selector/source-selector.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
 import { StudentAddComponent } from '../student/student/student-add/student-add.component';
-import { ClassSearchComponent } from '../class/class/class-search/class-search.component';
-import { ClassTransferComponent } from '../class/class/class-transfer/class-transfer.component';
-import { ClassEnrollmentComponent } from '../class/class/class-enrollment/class-enrollment.component';
-import { ClassEnrollComponent } from '../class/class/class-enroll/class-enroll.component';
-import { ClassAssignmentComponent } from '../class/class/class-assignment/class-assignment.component';
-import { ClassAssignComponent } from '../class/class/class-assign/class-assign.component';
+import { ClassSearchComponent } from '../class/class-search/class-search.component';
+import { ClassTransferComponent } from '../class/class-transfer/class-transfer.component';
+import { ClassEnrollmentComponent } from '../class/class-enrollment/class-enrollment.component';
+import { ClassEnrollComponent } from '../class/class-enroll/class-enroll.component';
+import { ClassAssignmentComponent } from '../class/class-assignment/class-assignment.component';
+import { ClassAssignComponent } from '../class/class-assign/class-assign.component';
 import { EmployeeSearchComponent } from '../employee/employee/employee-search/employee-search.component';
+import { TestSubjectSelectorComponent } from '../settings/test-subject/test-subject-selector/test-subject-selector.component';
 
 @NgModule({
     imports: [
@@ -90,7 +91,8 @@ import { EmployeeSearchComponent } from '../employee/employee/employee-search/em
         ClassEnrollComponent,
         ClassAssignmentComponent,
         ClassAssignComponent,
-        EmployeeSearchComponent
+        EmployeeSearchComponent,
+        TestSubjectSelectorComponent
     ],
     exports: [
         CommonModule,
@@ -129,8 +131,8 @@ import { EmployeeSearchComponent } from '../employee/employee/employee-search/em
         ClassEnrollComponent,
         ClassAssignmentComponent,
         ClassAssignComponent,
-        EmployeeSearchComponent
-
+        EmployeeSearchComponent,
+        TestSubjectSelectorComponent
     ],
     providers: [
         ComponentLoaderFactory,

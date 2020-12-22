@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseViewComponent } from './course/course-view/course-view.component';
 import { FacilityListComponent } from './facility/facility-list/facility-list.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
 import { OutletListComponent } from './outlet/outlet-list/outlet-list.component';
@@ -14,14 +16,16 @@ import { TestSubjectListComponent } from './test-subject/test-subject-list/test-
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: SettingsHomeComponent },
-    { path: 'outlet', component: OutletListComponent },
-    { path: 'source', component: SourceListComponent },
-    { path: 'program', component: ProgramListComponent },
-    { path: 'study-subject', component: StudySubjectListComponent },
-    { path: 'test-subject', component: TestSubjectListComponent },
-    { path: 'schedule-pattern', component: SchedulePatternListComponent },
+    { path: 'outlet/list', component: OutletListComponent },
+    { path: 'source/list', component: SourceListComponent },
+    { path: 'program/list', component: ProgramListComponent },
+    { path: 'course/list', component: CourseListComponent },
+    { path: 'course/view/:id', component: CourseViewComponent },
+    { path: 'study-subject/list', component: StudySubjectListComponent },
+    { path: 'test-subject/list', component: TestSubjectListComponent },
+    { path: 'schedule-pattern/list', component: SchedulePatternListComponent },
     { path: 'holiday', component: HolidayListComponent },
-    { path: 'facility', component: FacilityListComponent },
+    { path: 'facility/list', component: FacilityListComponent },
     { path: 'system-config', component: SystemConfigViewComponent },
 ]
 @NgModule({

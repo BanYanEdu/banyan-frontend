@@ -1,5 +1,5 @@
 import { BaseEditableMdModel } from "app/shared/models/BaseEditableMdModel";
-import { CourseStudySubject } from "./CourseStudySubject";
+import { CourseStudySubject } from "../settings/CourseStudySubject";
 
 export class SchoolClass extends BaseEditableMdModel {
     status?: string;

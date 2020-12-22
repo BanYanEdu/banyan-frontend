@@ -1,0 +1,59 @@
+<div class="app-content-white">
+    <div class="" style="margin: 5px">
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                    (reload)="load()" [limit]="1000" [selectColumn]="false" [multiSelect]="false"
+                    [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="false" [sortBy]="'code'"
+                    [sortAsc]="true">
+                    <data-table-column [property]="'studySubjectName'" [header]="'Tên'">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Số tiết'" [width]="100" [styleClass]="'text-center'">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ item?.unitCount | number }}
+                        </ng-template>
+                    </data-table-column>
+                    <!-- <data-table-column [property]="" [header]="'TTHT'" [width]="100" [styleClass]="'text-center'">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ item?.sortIndex + 1 }}
+                        </ng-template>
+                    </data-table-column> -->
+                    <data-table-column [property]="'remark'" [header]="'Ghi chú'">
+                    </data-table-column>
+
+                    <ng-template #basicSearch>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-add" (click)="onEdit(editDialog)">
+                                    <i class="fa fa-edit"></i> Cập nhật
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </data-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Môn học - Cập nhật</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-course-study-subject-assign [id]="courseId" [items]="items" (valueChange)='onChanged($event)'>
+                </app-course-study-subject-assign>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- <app-confirm-dialog iconCls="fa fa-trash" [title]="'MESSAGE.CONFIRM_DELETE_TITLE' | translate"
+    [content]="'MESSAGE.CONFIRM_DELETE_MSG' | translate">
+</app-confirm-dialog> -->

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormMode } from 'app/model/common/FormMode';
-import { ClassService } from 'app/pages/class/class.service';
+import { SettingsService } from 'app/pages/settings/settings.service';
 
 @Component({
     selector: 'app-course-selector',
@@ -17,7 +17,7 @@ export class CourseSelectorComponent implements OnInit, OnChanges {
     items: any[];
     id: string;
 
-    constructor(private classService: ClassService) { }
+    constructor(private settingsService: SettingsService) { }
 
     ngOnInit() {
         this.mainForm = new FormGroup({
@@ -65,7 +65,7 @@ export class CourseSelectorComponent implements OnInit, OnChanges {
             params = {programId: this.programId};
         }
 
-        this.classService.courseList(params).subscribe(data => {
+        this.settingsService.courseList(params).subscribe(data => {
             this.items = data['items'];
             // this.items.splice(0, 0, {uuid: "SELECTOR", name: "<-- Chọn khóa học -->"});
             if (this.mode == FormMode.E_ADD) {

@@ -27,6 +27,13 @@ import { ProgramListComponent } from './program/program-list/program-list.compon
 import { ProgramAddComponent } from './program/program-add/program-add.component';
 import { SchedulePatternListComponent } from './schedule-pattern/schedule-pattern-list/schedule-pattern-list.component';
 import { SchedulePaternAddComponent } from './schedule-pattern/schedule-pattern-add/schedule-pattern-add.component';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseAddComponent } from './course/course-add/course-add.component';
+import { CourseViewComponent } from './course/course-view/course-view.component';
+import { CourseTestListComponent } from './course/course-test/course-test-list.component';
+import { CourseStudySubjectListComponent } from './course/course-study-subject/course-study-subject-list.component';
+import { CourseStudySubjectAssignComponent } from './course/course-study-subject/cssa.component';
+import { CourseTestAddComponent } from './course/course-test/course-test-add.component';
 
 @NgModule({
     imports: [
@@ -45,6 +52,9 @@ import { SchedulePaternAddComponent } from './schedule-pattern/schedule-pattern-
         SourceAddComponent,
         ProgramListComponent,
         ProgramAddComponent,
+        CourseListComponent,
+        CourseAddComponent,
+        CourseViewComponent,
         StudySubjectListComponent,
         StudySubjectAddComponent,
         TestSubjectListComponent,
@@ -57,7 +67,12 @@ import { SchedulePaternAddComponent } from './schedule-pattern/schedule-pattern-
         HolidayAddComponent,
         SystemConfigViewComponent,
         EmployeeProfileConfigComponent,
-        ContactProfileConfigComponent
+        ContactProfileConfigComponent,
+        CourseStudySubjectAssignComponent,
+        CourseTestListComponent,
+        CourseTestAddComponent,
+        // CourseTestAddComponent,
+        CourseStudySubjectListComponent
     ],
     providers: [
         CommonService,

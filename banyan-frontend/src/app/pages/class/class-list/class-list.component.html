@@ -1,0 +1,130 @@
+<form [formGroup]="mainForm">
+    <div class="app-content">
+        <div class="row form-header">
+            <div class="col-sm-3">
+                <span class="form-title">{{ 'MENU.CLASSES' | translate }}</span>
+                <button type="button" class="btn btn-add ml-4" (click)="onAdd(editDialog)">
+                    <i class="fa fa-plus"></i>
+                    <!-- {{ 'COMMON.ACTION.ADD' | translate }} -->
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Giá trị tìm kiếm</mat-label>
+                    <input type="text" matInput formControlName="searchValue" maxlength="250" (keyup.enter)="onSearch()"
+                        #searchValue placeholder="Mã, tên">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <app-program-selector matInput [uuid]="programId" [mode]="mode" [firstValue]="'E_ALL'"
+                    (valueChange)="onChangeProgram($event)">
+                </app-program-selector>
+            </div>
+            <div class="col-sm-2">
+                <app-outlet-selector matInput [uuid]="outletId" [mode]="mode" [firstValue]="'E_ALL'"
+                    (valueChange)="onChangeOutlet($event)">
+                </app-outlet-selector>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field class="input-full-width">
+                    <mat-label>{{ 'COMMON.GENERAL.STATUS' | translate }}</mat-label>
+                    <mat-select  formControlName="statuses" multiple (selectionChange)="onChangeStatus()" >
+                            <mat-option value="{{ status }}" *ngFor="let status of classStatuses">
+                                {{ 'MODULE.CLASS.STATUS_VALUES.' + status | translate }}
+                            </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                    <!-- {{ 'COMMON.ACTION.SEARCH' | translate }} -->
+                </button>
+            </div>
+        </div>
+        <div class="row form-body" style="margin: 5px">
+            <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
+                [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
+                <!-- <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.code}}</a>
+                    </ng-template>
+                </data-table-column> -->
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <a routerLink="../../class/view/{{item.uuid}}" class="link-text"><strong>{{ item.name }}</strong></a>
+                            </div>
+                            <div class="col-sm-4" align="right">
+                                {{ item.code }}
+                                <!-- <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.code }}</a> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                {{ item.courseName}}
+                            </div>
+                            <div class="col-sm-4" align="right">
+                                {{ item.programName}}
+                            </div>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="'outletName'" [header]="'Chi nhánh'" [width]="250">
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Phụ trách'" [width]="150">
+                    <ng-template #dataTableCell let-item="item">
+                        <app-class-assignment-view [classId]="item.uuid"></app-class-assignment-view>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Khai giảng'" [styleClass]="'text-center'" [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ item.actualStartDate | moment }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.STATUS' | translate"
+                    [styleClass]="'text-center'" [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ 'MODULE.CLASS.STATUS_VALUES.' + item.status | translate }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="50">
+                    <ng-template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-add btn-sm space-right-small"
+                            (click)="onEdit(editDialog, item)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+
+        <ng-template #editDialog>
+            <div class="modal-form">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">
+                            {{ 'MENU.CLASS' | translate }}
+                            <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                            <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                        </h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <app-class-add [item]="selectedItem" [mode]="mode" (valueChange)='onChanged($event)'>
+                        </app-class-add>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- <app-confirm-dialog iconCls="fa fa-trash" >
+    </app-confirm-dialog> -->
+
+    </div>
+</form>

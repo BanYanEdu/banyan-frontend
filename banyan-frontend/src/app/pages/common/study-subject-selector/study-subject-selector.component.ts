@@ -9,6 +9,7 @@ import { FormMode } from 'app/model/common/FormMode';
 })
 export class StudySubjectSelectorComponent implements OnInit {
     @Input() uuid: string;
+    @Input() readonly: boolean;
     @Input() mode: FormMode;
     @Output('valueChange') change = new EventEmitter<any>();
 
@@ -18,22 +19,24 @@ export class StudySubjectSelectorComponent implements OnInit {
     constructor(private settingsService: SettingsService) { }
 
     ngOnInit() {
+        this.mainForm = new FormGroup({
+            'uuid': new FormControl(null, [Validators.required]),
+        });
+
         if (this.uuid == null) {
             this.uuid = "";
         }
-
-        this.mainForm = new FormGroup({
-            'uuid': new FormControl(null),
-        });
-
         if (this.uuid != "") {
-            this.mainForm.controls['uuid'].setValue(this.uuid);            
+            this.mainForm.controls['uuid'].setValue(this.uuid);
         } else {
         }
-
-        this.settingsService.studySubjectList({inactive: false}).subscribe(data => {
+        
+        if (this.readonly) {
+            this.mainForm.controls['uuid'].disable();
+        }
+        this.settingsService.studySubjectList({ inactive: false }).subscribe(data => {
             this.items = data['items'];
-            
+
             if (this.mode == FormMode.E_ADD) {
                 this.uuid = "";
                 this.mainForm.controls['uuid'].setValue("");

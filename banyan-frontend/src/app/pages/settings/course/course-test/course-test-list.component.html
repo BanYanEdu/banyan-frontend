@@ -1,0 +1,77 @@
+<div class="app-content-white">
+    <div class="" style="margin: 5px">
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                    (reload)="load($event)" [limit]="1000" [selectColumn]="false" [multiSelect]="false"
+                    [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="false" [expandableRows]="true" [showReloading]="false" [sortBy]="'code'"
+                    [sortAsc]="true">
+                    <data-table-column [property]="'name'" [header]="'Tên'">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'TTHT'" [width]="100" [styleClass]="'text-center'">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ item?.sortIndex }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="'remark'" [header]="'Ghi chú'">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <button type="button" class="btn btn-add btn-sm space-right-small"
+                                (click)="onEdit(editDialog, item)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-add btn-sm space-right-small ml-2"
+                                (click)="onDelete(item.uuid)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </ng-template>
+                    </data-table-column>
+
+                    <ng-template #basicSearch>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-add" (click)="onAdd(editDialog)">
+                                    <i class="fa fa-plus"></i> Thêm mới
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #dataTableExpand let-item="item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- <span class="badge badge-light">Light</span> -->
+                                <span *ngFor="let it of item.testSubjects" class="badge badge-light mr-3">{{ it.testSubjectName }}</span>       
+                            </div>
+                        </div>
+                    </ng-template>
+                    
+                </data-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Thi/Kiểm tra - Thêm mới</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-course-test-add [item]="selectedItem" [mode]="mode" [courseId]="courseId" 
+                    (valueChange)='onChanged($event)'>
+                </app-course-test-add>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<app-confirm-dialog iconCls="fa fa-trash" [title]="'MESSAGE.CONFIRM_DELETE_TITLE' | translate"
+    [content]="'MESSAGE.CONFIRM_DELETE_MSG' | translate">
+</app-confirm-dialog>

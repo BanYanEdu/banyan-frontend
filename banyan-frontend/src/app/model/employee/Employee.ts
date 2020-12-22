@@ -28,4 +28,5 @@ export class Employee extends BaseEditableMdModel {
     hasService?: boolean;
     serviceQualificationRemark?: string;
     yearsOfServiceExperiences?: number;
+    username?: string;
 }
