@@ -37,7 +37,7 @@ export class StudentSearchComponent implements OnInit {
         private studentService: StudentService,
         protected modalService: BsModalService,
         ) { }
-
+        
     ngOnInit() {
         this.mainForm = new FormGroup({
             'searchValue': new FormControl(null),
@@ -47,18 +47,15 @@ export class StudentSearchComponent implements OnInit {
         this.params.limit = 10;
         this.params.activeStatus = "E_ACTIVE";
     }
-
     load(params){
-        // var criteria: any = params;
+        this.params = params;
         this.studentService.studentList(this.params).subscribe(data => {
-            
             this.items = data['items'];
             const items = data['items'];
             this.itemCount = data['total'];
             this.dataResource = new DataTableResource(items);
         });
     }
-
     onSelected(item: any) {
         this.change.emit([
             item,

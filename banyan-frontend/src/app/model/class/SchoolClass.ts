@@ -13,7 +13,7 @@ export class SchoolClass extends BaseEditableMdModel {
     courseCode?: string;
     courseName?: string;
     checkingRequired?: boolean;
-    unitCount?: number;
+    sessionCount?: number;
     weekCount?: number;
     curriculum?: string;
     plannedStartDate?: number;
@@ -31,7 +31,6 @@ export class SchoolClass extends BaseEditableMdModel {
     facilityNo?: string;
     defaultFee?: number;
     remark?: string;
-    studySubjects?: CourseStudySubject[];
 }
 
   

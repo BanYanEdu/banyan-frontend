@@ -21,6 +21,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
+        <div class="col-sm-1"></div>
         <div class="col-sm-2">
             <br>
             <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
@@ -83,7 +84,8 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6">
             <mat-form-field class="input-full-width">
                 <mat-label>{{ 'COMMON.CONTACT_INFO.ADDRESS' | translate }}</mat-label>
                 <input type="text" matInput formControlName="contactAddressFull">
@@ -171,12 +173,6 @@
                 <mat-label>{{ 'COMMON.TIME.END_DATE' | translate }}</mat-label>
                 <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="terminatedDate"
                     [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
-            </mat-form-field>
-        </div>
-        <div class="col-sm-3">
-            <mat-form-field class="input-full-width">
-                <mat-label>Tên đăng nhập</mat-label>
-                <input type="text" matInput formControlName="username">
             </mat-form-field>
         </div>
     </div>

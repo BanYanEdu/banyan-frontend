@@ -1,0 +1,84 @@
+<div class="app-content-white">
+    <div class="row mat-elevation-z1" style="padding-bottom: 5px;">
+        <!-- <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
+            <span class="form-title"><a routerLink="/class/class/view/{{schoolClass?.uuid}}" class="link-text">{{
+                    schoolClass?.name }}</a></span>
+        </div> -->
+
+        <div class="col-sm-4">
+            <div class="mt-2">
+                <span>
+                    <button type="button" class="btn-add btn-lite mr-1" (click)="onPrevious()">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    {{ days[0].dateLong | moment }} - {{ days[days.length-1].dateLong | moment }}
+                    <button type="button" class="btn-add btn-lite ml-1" (click)="onNext()">
+                        <i class="fa fa-arrow-right"></i>
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col" align="center" *ngFor="let day of days"><strong>{{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.'
+                        + day.date.getDay() | translate }}, {{ day.dateLong | moment }}</strong>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #C9FCD3;">
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && unit.hourFrom=='08'">
+                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
+                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #CCF5FF;" >
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='09' || unit.hourFrom=='10')">
+                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
+                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #FFF4CC;" >
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='13' || unit.hourFrom=='14' || unit.hourFrom=='15' || unit.hourFrom=='16')">
+                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
+                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #E9EAF0;" >
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='18')">
+                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
+                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #E8F3FF;" >
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='19' || unit.hourFrom=='20')">
+                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
+                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

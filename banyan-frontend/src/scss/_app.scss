@@ -43,6 +43,7 @@ body {
 /* LINKS */
 .link-text:link {
   color:$default-font-color;
+  border-bottom: 1px dotted;
   // text-decoration: dotted underline $default-font-color;
   // border-bottom: 1px dotted;
 }
@@ -98,24 +99,9 @@ body {
   width: 100%;
 }
 
-// input.ng-invalid.ng-touched {
-//   border: 1px solid red;
-// }  
-// select.ng-invalid.ng-touched {
-//   border: 1px solid red;
-// }
-// .ng-select-invalid {
-//   border-color: #dc3545;
-//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #dc3545;
-//   border-radius: 4px ;
-// }
 .error-message {
   color: $error-message-color;
 }
-// .form-required {
-//   // border-bottom-color: $default-theme-color;
-//   border-bottom-width: 1px;
-// }
 
 // Input
 .no-border, .form-control {
@@ -457,58 +443,9 @@ img.avatar-error {
    max-width:1000px;
   }
 }
+
 .modal-form {
   border: none;
-  // border-style: solid;
-  // border-color: #b96a43;
-  // border-color: blue;
-  // border-width: 1px;
-  // border-radius: 10px;
 }
 
 .cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; } 
-
-/*
-
-.nav.nav-tabs {
-  float: left;
-  display: block;
-  margin-right: 20px;
-  border-bottom:0;
-  border-right: 1px solid #ddd;
-  padding-right: 15px;
-}
-.nav-tabs .nav-link {
-  border: 1px solid transparent;
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
-  // background: #ccc;
-  background: white;
-}
-
-.nav-tabs .nav-link.active {
-  color: #495057;
-  // color: white;
-  background-color:whitesmoke !important;
-  border-color: transparent !important;
-}
-.nav-tabs .nav-link {
-  border: 1px solid transparent;
-  border-top-left-radius: 0rem!important;
-  border-top-right-radius: 0rem!important;
-}
-.tab-content>.active {
-  display: block;
-  background:whitesmoke;
-  min-height: 165px;
-}
-.nav.nav-tabs {
-  float: left;
-  display: block;
-  margin-right: 20px;
-  border-bottom: 0;
-  border-right: 1px solid transparent;
-  padding-right: 15px;
-}
-
-*/

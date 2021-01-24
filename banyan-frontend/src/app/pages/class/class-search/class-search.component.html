@@ -1,21 +1,31 @@
 <form [formGroup]="mainForm">
     <div>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <mat-form-field class="input-full-width">
                     <mat-label>Tìm kiếm theo tên và mã</mat-label>
                     <input type="text" matInput formControlName="searchValue" (keyup.enter)="onSearch()" #searchValue>
                 </mat-form-field>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <app-outlet-selector matInput [uuid]="outletId" [mode]="mode" [firstValue]="'E_ALL'"
                     (valueChange)="onChangeOutlet($event)">
                 </app-outlet-selector>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <app-program-selector matInput [uuid]="programId" [mode]="mode" [firstValue]="'E_ALL'"
                     (valueChange)="onChangeProgram($event)">
                 </app-program-selector>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="input-full-width">
+                    <mat-label>{{ 'COMMON.GENERAL.STATUS' | translate }}</mat-label>
+                    <mat-select  formControlName="statuses" multiple (selectionChange)="onChangeStatus()" >
+                            <mat-option value="{{ status }}" *ngFor="let status of classStatuses">
+                                {{ 'MODULE.CLASS.STATUS_VALUES.' + status | translate }}
+                            </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div class="col-sm-1">
                 <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
@@ -37,8 +47,11 @@
                                     <div class="col-sm-6">
                                         <strong>{{ item.name }}</strong>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-3">
                                         {{ item.code }}
+                                    </div>
+                                    <div class="col-sm-3" align="right">
+                                        {{ 'MODULE.CLASS.STATUS_VALUES.'+item.status | translate }}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -56,9 +69,7 @@
                                     <div class="col-sm-2">
                                         {{ item.actualStartDate | moment }}
                                     </div>
-                                    <div class="col-sm-4" align="right">
-                                        {{ 'MODULE.CLASS.STATUS_VALUES.'+item.status | translate }}
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </ng-template>

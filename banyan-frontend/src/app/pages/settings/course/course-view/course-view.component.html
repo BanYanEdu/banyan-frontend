@@ -1,91 +1,69 @@
 <div class="app-content-white">
-    <div class="row">
-        <div class="col-sm-6">
-            <span class="form-sub-label">{{ 'MENU.COURSE' | translate | uppercase }}</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10">
+    <div class="row mat-elevation-z1">
+        <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.COURSE' | translate | uppercase }}</span>
             <span class="form-title">{{ item?.name }}</span>
-            <button type="button" class="btn-add ml-2" (click)="onEditCourse(editDialog)">
+            <button type="button" class="btn btn-add btn-lite ml-1" (click)="onEdit(editDialog)">
                 <i class="fa fa-edit"></i>
             </button>
         </div>
-    </div>
-    <div class="row mt-1">
-        <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
-            <span style="display:block">{{ item?.code }}</span>
-        </div> 
-        <div class="col-sm-2">
+        <div class="col-sm-3 mt-2">
             <span class="form-sub-label" style="display:block">{{ 'MENU.PROGRAM' | translate }}</span>
             <span>{{ item?.programName }}</span>
-        </div> 
-        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-4 mt-2">
             <span class="form-sub-label" style="display:block">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
             <span>{{ item?.curriculum }}</span>
-        </div>
-        <div class="col-sm-2">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired" disabled>
-                <label class="lbl">
-                    <span class="ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
-                </label>
-            </div>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-2">
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
-                    <span style="display:block">{{ item?.sortIndex }}</span>
-                </div>
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+            <span style="display:block"><strong>{{ item?.code }}</strong></span>
+            <div class="custom-checkbox mt-1">
+                <input type="checkbox" class="custom-control-input mt-1" [checked]="item?.checkingRequired" disabled>
+                <label class="lbl">
+                    <span class="ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
+                </label>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
-                        <label class="lbl">
-                            <span class="ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
-                        </label>
-                    </div>
-                </div>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
+            <span style="display:block">{{ item?.sortIndex }}</span>
+            <div class="custom-checkbox mt-1">
+                <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
+                <label class="lbl">
+                    <span class="ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
+                </label>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.createdByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.createdAt | moment }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedAt | moment }}</span>
-                </div>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate
+                }}</span>
+            <span style="display:block">{{ item?.createdByCode }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate
+                }}</span>
+            <span style="display:block">{{ item?.createdAt | moment }}</span>
+            <div *ngIf="item?.modifiedByCode">
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedByCode }}</span>
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedAt | moment }}</span>
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.STUDY_SUBJECTS' | translate" id="tabStudySubjects">
-                    <app-course-study-subject-list [courseId]="item?.uuid" [items] = "item?.studySubjects"></app-course-study-subject-list>
+                    <app-course-study-subject-list [courseId]="item?.uuid" [inputItems]="item?.studySubjects"
+                        (valueChange)="this.load();">
+                    </app-course-study-subject-list>
                 </tab>
                 <tab [heading]="'MENU.EXAMS_TESTS' | translate" id="tabExams">
-                    <app-course-test-list [courseId]="id"></app-course-test-list>
+                    <app-course-examination-list [courseId]="id"></app-course-examination-list>
                 </tab>
             </tabset>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <app-comment-list [ownerType]="'E_COURSE'" [ownerId]="id"></app-comment-list>
         </div>
     </div>
 </div>
@@ -110,7 +88,7 @@
     </div>
 </ng-template>
 
-<ng-template #assignStudySubjectDialog>
+<!-- <ng-template #assignStudySubjectDialog>
     <div class="modal-form">
         <div class="modal-content">
             <div class="modal-header">
@@ -120,9 +98,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <app-course-study-subject-assign [id]="item.uuid" [items]="item.studySubjects" (valueChange)='onChanged($event)'>
+                <app-course-study-subject-assign [id]="item.uuid" [inputItems]="item.studySubjects"
+                    (valueChange)='onChanged($event)'>
                 </app-course-study-subject-assign>
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->

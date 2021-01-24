@@ -11,8 +11,8 @@ import { SourceListComponent } from './source/source-list/source-list.component'
 import { SourceAddComponent } from './source/source-add/source-add.component';
 import { StudySubjectListComponent } from './study-subject/study-subject-list/study-subject-list.component';
 import { StudySubjectAddComponent } from './study-subject/study-subject-add/study-subject-add.component';
-import { TestSubjectListComponent } from './test-subject/test-subject-list/test-subject-list.component';
-import { TestSubjectAddComponent } from './test-subject/test-subject-add/test-subject-add.component';
+import { ExamSubjectListComponent } from './exam-subject/exam-subject-list/exam-subject-list.component';
+import { ExamSubjectAddComponent } from './exam-subject/exam-subject-add/exam-subject-add.component';
 import { HolidayListComponent } from './holiday/holiday-list.component';
 import { HolidayAddComponent } from './holiday/holiday-add.component';
 import { AppCommonModule } from '../common/app-common.module';
@@ -30,10 +30,12 @@ import { SchedulePaternAddComponent } from './schedule-pattern/schedule-pattern-
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { CourseAddComponent } from './course/course-add/course-add.component';
 import { CourseViewComponent } from './course/course-view/course-view.component';
-import { CourseTestListComponent } from './course/course-test/course-test-list.component';
+import { CourseExaminationListComponent } from './course/course-examination/course-examination-list.component';
 import { CourseStudySubjectListComponent } from './course/course-study-subject/course-study-subject-list.component';
 import { CourseStudySubjectAssignComponent } from './course/course-study-subject/cssa.component';
-import { CourseTestAddComponent } from './course/course-test/course-test-add.component';
+import { CourseExaminationAddComponent } from './course/course-examination/course-examination-add.component';
+import { AATypeListComponent } from './aa-type/aa-type-list/aa-type-list.component';
+import { AATypeAddComponent } from './aa-type/aa-type-add/aa-type-add.component';
 
 @NgModule({
     imports: [
@@ -45,20 +47,22 @@ import { CourseTestAddComponent } from './course/course-test/course-test-add.com
         SettingsRoutingModule
     ],
     declarations: [
-        SettingsHomeComponent,
-        OutletAddComponent,
-        OutletListComponent,
-        SourceListComponent,
-        SourceAddComponent,
-        ProgramListComponent,
-        ProgramAddComponent,
+        AATypeListComponent,
+        AATypeAddComponent,
         CourseListComponent,
         CourseAddComponent,
         CourseViewComponent,
+        OutletAddComponent,
+        OutletListComponent,
+        ProgramListComponent,
+        ProgramAddComponent,
+        SettingsHomeComponent,
+        SourceListComponent,
+        SourceAddComponent,
         StudySubjectListComponent,
         StudySubjectAddComponent,
-        TestSubjectListComponent,
-        TestSubjectAddComponent,
+        ExamSubjectListComponent,
+        ExamSubjectAddComponent,
         SchedulePatternListComponent,
         SchedulePaternAddComponent,
         FacilityListComponent,
@@ -69,10 +73,9 @@ import { CourseTestAddComponent } from './course/course-test/course-test-add.com
         EmployeeProfileConfigComponent,
         ContactProfileConfigComponent,
         CourseStudySubjectAssignComponent,
-        CourseTestListComponent,
-        CourseTestAddComponent,
-        // CourseTestAddComponent,
-        CourseStudySubjectListComponent
+        CourseExaminationListComponent,
+        CourseExaminationAddComponent,
+        CourseStudySubjectListComponent,
     ],
     providers: [
         CommonService,

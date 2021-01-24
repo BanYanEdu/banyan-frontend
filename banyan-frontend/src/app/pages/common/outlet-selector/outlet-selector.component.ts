@@ -13,6 +13,8 @@ export class OutletSelectorComponent implements OnInit {
     @Input() mode: FormMode;
     @Output('valueChange') change = new EventEmitter<any>();
 
+    // defaultOutletId: string;
+
     mainForm: FormGroup;
     items: any[];
 
@@ -27,6 +29,9 @@ export class OutletSelectorComponent implements OnInit {
             'uuid': new FormControl(null),
         });
 
+        // this.defaultOutletId = localStorage.getItem("currentOutletId");
+        // console.log(this.defaultOutletId);
+
         this.settingsService.outletList({}).subscribe(data => {
             this.items = data['items'];
             if (this.firstValue == "E_ALL") {
@@ -35,22 +40,24 @@ export class OutletSelectorComponent implements OnInit {
             if (this.firstValue == "E_BLANK") {
                 this.items.splice(0, 0, { uuid: "", name: "<<-- Chọn -->>", code: "" });
             }
-            
             if (this.uuid != "") {
                 this.mainForm.controls['uuid'].setValue(this.uuid);
+                this.onChanged();
+            } else {
             }
             if (this.mode == FormMode.E_ADD) {
                 this.mainForm.controls['uuid'].setValue("");
             } 
 
-            this.onChanged();
+            // this.onChanged();
 
         });
     }
 
     onChanged() {
-
         this.uuid = this.mainForm.controls['uuid'].value;
+        // console.log("outletId: " + this.uuid);
+        
         if (this.items) {
             if (this.uuid != "") {
                 this.change.emit([

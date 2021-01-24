@@ -1,67 +1,41 @@
 <form [formGroup]="mainForm">
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="code">Mã</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" appInputCharacterMask class="form-control form-control-block form-required" id="code"
-                maxlength="20" formControlName="code">
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('required') && mainForm.get('code').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </span>
-            <span
-                *ngIf="!mainForm.get('code').valid && mainForm.get('code').hasError('existed') && mainForm.get('code').touched"
-                class="help-block error-message">
-                Mã đã tồn tại
-            </span>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="name">Tên</label>
-        </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control form-control-block form-required" id="name" maxlength="250"
-                formControlName="name">
-            <span *ngIf="!mainForm.get('name').valid && mainForm.get('name').touched" class="help-block error-message">
-                Bắt buộc nhập
-            </span>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="sortIndex">Thứ tự hiển thị</label>
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control form-control-block form-required" id="sortIndex"
-                numericInputOnly maxlength="10" formControlName="sortIndex">
-            <div *ngIf="!mainForm.get('sortIndex').valid && mainForm.get('sortIndex').touched"
-                class="help-block error-message">
-                Bắt buộc nhập
-            </div>
-
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-sm-3 form-label">
-            <label for="inactive" class="lbl">NTD</label>
+    <div class="row">
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Ngày nghỉ</mat-label>
+                <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="date"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" [minDate]="minDate" [maxDate]="maxDate" required #date>
+                <mat-error *ngIf="mainForm.get('date').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
         </div>
         <div class="col-sm-4">
-            <div class="custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="inactive" formControlName="inactive" checked>
-                <label for="inactive" class="lbl"></label>
-            </div>
+            <mat-form-field class="input-full-width">
+                <mat-label>Loại ngày nghỉ</mat-label>
+                <select matNativeControl formControlName="type">
+                    <option value="{{ type }}" *ngFor="let type of types">
+                        {{ 'MODULE.SETTINGS.HOLIDAY_TYPE_VALUES.' + type | translate }}
+                    </option>
+                </select>
+            </mat-form-field>
         </div>
     </div>
-
-    <hr>
-    <div class="row mt-2">
-        <div class="col-sm-3"> </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-primary btn-block" (click)="onSave()" [disabled]="!isFormValid">
-                Lưu
+    <div class="row mt-1">
+        <div class="col-sm-8">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.REMARK' | translate }}</mat-label>
+                <input type="text" matInput formControlName="remark" maxlength="250" required>
+                <mat-error *ngIf="mainForm.get('remark').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
             </button>
         </div>
     </div>

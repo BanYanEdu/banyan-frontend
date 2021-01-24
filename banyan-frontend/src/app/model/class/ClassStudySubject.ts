@@ -1,7 +1,9 @@
 import { BaseEditableModel } from "app/shared/models/BaseEditableModel";
+import { ClassInfo } from "./ClassInfo";
 
 export class ClassStudySubject extends BaseEditableModel {
-    classId?: string;
+    classInfo?: ClassInfo;
+    classInfoStr?: string;
     studySubjectId?: string;
     studySubjectCode?: string;
     studySubjectName?: string;

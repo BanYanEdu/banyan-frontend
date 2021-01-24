@@ -62,7 +62,7 @@ export class CourseAddComponent extends BaseAddDialogComponent<Course>{
             this.showMessage('MESSAGE.DATA_SAVED', 'MESSAGE.NOTIFICATION');
             if (this.moveToView) {
                 this.valueChange.emit(data);
-                this.router.navigate(['/class/course/view/' + data]);
+                this.router.navigate(['/settings/course/view/' + data]);
             } else {
                 this.valueChange.emit(data);
             }

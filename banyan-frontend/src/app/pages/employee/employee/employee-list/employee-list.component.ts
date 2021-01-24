@@ -20,7 +20,7 @@ export class EmployeeListComponent extends BaseListComponent<Outlet> implements 
     activeStatuses: any[] = ActiveStatuses;
     serviceStatuses: any[] = ServiceStatuses;
     mode: FormMode = FormMode.E_EDIT;
-    outletId = "E_ALL";
+    outletId: string;
     
     constructor(
         commonService: CommonService,
@@ -44,6 +44,8 @@ export class EmployeeListComponent extends BaseListComponent<Outlet> implements 
         this.mainForm.get('activeStatus').setValue(this.activeStatuses[1]);
         this.mainForm.get('serviceStatus').setValue(this.serviceStatuses[0]);
         this.mainForm.get('searchValue').setValue("");
+
+        this.outletId = localStorage.getItem("currentOutletId");
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {

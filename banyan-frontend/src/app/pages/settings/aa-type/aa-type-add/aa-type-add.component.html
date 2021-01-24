@@ -1,0 +1,83 @@
+<form [formGroup]="mainForm">
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code>
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-9">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Symbol</mat-label>
+                <input type="text" matInput formControlName="symbol" maxlength="5" required>
+                <mat-error *ngIf="mainForm.get('symbol').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Giá trị mặc định</mat-label>
+                <input type="number" matInput formControlName="defaultValue" maxlength="5" required>
+                <mat-error *ngIf="mainForm.get('defaultValue').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <mat-checkbox formControlName="forContact">Áp dụng cho học viên</mat-checkbox>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <mat-checkbox formControlName="forEmployee">Áp dụng cho giảng viên</mat-checkbox>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <mat-form-field class="input-full-width">
+                <mat-label>Ghi chú</mat-label>
+                <input type="text" matInput formControlName="remark" maxlength="250" >
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>

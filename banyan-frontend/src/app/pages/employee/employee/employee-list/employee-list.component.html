@@ -2,7 +2,7 @@
     <div class="app-content">
         <div class="row form-header">
             <div class="col-sm-3">
-                <span class="form-title">{{ 'MENU.EMPLOYEES_LECTURERS' | translate }}</span>
+                <span class="form-title">{{ 'MENU.LECTURERS' | translate }}</span>
                 <button type="button" class="btn btn-add ml-2" (click)="onAdd(editDialog)">
                     <i class="fa fa-plus"></i>
                 </button>
@@ -93,7 +93,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title pull-left">
-                            {{ 'MENU.EMPLOYEE_LECTURER' | translate }}
+                            {{ 'MENU.LECTURER' | translate }}
                             <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
                             <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
                         </h4>

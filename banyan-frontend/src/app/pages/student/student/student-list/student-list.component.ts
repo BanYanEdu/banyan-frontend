@@ -8,6 +8,7 @@ import { Contact } from 'app/model/student/Contact';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormMode } from 'app/model/common/FormMode';
 import { ActiveStatuses } from 'app/data/global/ActiveStatuses';
+import { DataTable } from 'inet-ui';
 
 @Component({
     selector: 'app-student-list',
@@ -18,7 +19,8 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
     @ViewChild("searchValue") erSearchValue: ElementRef;
     activeStatuses: any[] = ActiveStatuses;
     mode: FormMode = FormMode.E_EDIT;
-    outletId = "E_ALL";
+    outletId: string = localStorage.getItem("currentOutletId");
+    x: DataTable;
 
     constructor(
         commonService: CommonService,
@@ -39,7 +41,6 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
         this.erSearchValue.nativeElement.focus();
         this.mainForm.get('activeStatus').setValue(this.activeStatuses[1]);
         this.mainForm.get('searchValue').setValue("");
-
     }
 
     protected callDeleteItem(id: string, callbackFn: Function): void {
@@ -55,12 +56,12 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
         criteria.activeStatus = this.mainForm.get('activeStatus').value;
         let searchValue = this.mainForm.get('searchValue').value;
         searchValue = searchValue.replace(/[*\\]/g, '');
-        criteria.searchValue = searchValue; 
+        criteria.searchValue = searchValue;
         this.mainForm.get('searchValue').setValue(searchValue);
-        if (this.outletId != "E_ALL" ) {
+        if (this.outletId != "E_ALL") {
             criteria.outletId = this.outletId;
         }
-        
+
         this.studentService.studentList(criteria).subscribe(data => callbackFn(data), error => errorFn(error));
     }
 
@@ -69,12 +70,11 @@ export class StudentListComponent extends BaseListComponent<Contact> implements 
     }
 
     onChangeOutlet(event) {
-        this.outletId = event[0];
-        this.onSearch();
+        if (this.outletId != event[0]) {
+            this.outletId = event[0];
+            this.onSearch();
+        }
     }
 
-    ngOnDestroy() {
-
-    }
-
+    ngOnDestroy() { }
 }

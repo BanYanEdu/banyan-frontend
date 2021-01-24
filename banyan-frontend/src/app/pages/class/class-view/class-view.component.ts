@@ -45,10 +45,10 @@ export class ClassViewComponent extends BaseComponent {
             this.classService.classList({uuid: this.id}).subscribe(data =>
                 {
                     this.item = data.items[0];
-                    if (this.item.studySubjects) {
-                        this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;
+                    // if (this.item.studySubjects) {
+                    //     this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;
                         
-                    }
+                    // }
                 }
             );
         });

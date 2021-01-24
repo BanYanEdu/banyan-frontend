@@ -6,6 +6,7 @@ export class SchedulePatternDetail {
     onFri?: boolean;
     onSat?: boolean;
     onSun?: boolean;
+    unitCount?: number;
     timeFrom?: string;
     timeTo?: string;
     hourFrom?: string;

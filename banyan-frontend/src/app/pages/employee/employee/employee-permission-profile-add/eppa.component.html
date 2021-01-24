@@ -1,0 +1,73 @@
+<form [formGroup]="mainForm">
+    <div class="row mt-2">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>'Tên đăng nhập'</mat-label>
+                <input type="text" matInput formControlName="username" maxlength="250" required #username>
+                <mat-error *ngIf="mainForm.get('username').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <mat-form-field class="input-full-width">
+                <mat-label>Vai trò</mat-label>
+                <mat-select (selectionChange)="onChangeRole()" multiple formControlName="selectedRoles" required>
+                    <mat-option value="{{ role }}" *ngFor="let role of roleTypes">{{ 'MODULE.SYSTEM.ROLE_VALUES.' +  role | translate }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="mainForm.get('selectedRoles').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-chip-list aria-label="Roles">
+                <mat-chip color="primary" *ngFor="let role of selectedRoles">{{ 'MODULE.SYSTEM.ROLE_VALUES.' + role | translate }}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'MENU.OUTLETS' | translate }}</mat-label>
+                <mat-select (selectionChange)="onChangeOutletAssignmentType()" formControlName="outletAssignmentType" required>
+                    <mat-option value="{{ value }}" *ngFor="let value of outletAssignmentTypeValues">
+                        {{ 'COMMON.GENERAL.INCLUDING_TYPE_VALUES.' + value | translate }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="mainForm.get('outletAssignmentType').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row" *ngIf="outletSelection">
+        <div class="col-sm-6">
+            <mat-form-field class="input-full-width">
+                <mat-label>Chọn chi nhánh</mat-label>
+                <mat-select (selectionChange)="onChangeOutlet()" multiple formControlName="selectedOutlets">
+                    <mat-option value="{{outlet.uuid }}" *ngFor="let outlet of outlets">{{ outlet.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row" *ngIf="outletSelection">
+        <div class="col-sm-12">
+            <mat-chip-list aria-label="Outlets">
+                <mat-chip color="primary" *ngFor="let outlet of finalSelectedOutlets">{{ outlet.outletName }}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>

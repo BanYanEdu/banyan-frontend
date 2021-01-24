@@ -10,6 +10,8 @@ export let enLocale = {
         EMPLOYEES_LECTURERS: 'Employees / Lecturers',
         EXAM_TEST: 'Exam / Test',
         EXAMS_TESTS: 'Exams / Tests',
+        EXAMINATION: 'Examination',
+        EXAMINATIONS: 'Examinations',
         FACILITY: 'Facility',
         FACILITIES: 'Facilities',
         HOME: 'Home',
@@ -131,6 +133,8 @@ export let enLocale = {
             },
             CODE: 'Code',
             COLOR: 'Color',
+            COMMENT: 'Comment',
+            COMMENTS: 'Comments',
             DESCRIPTION: 'Description',
             INACTIVE: 'Inactive',
             INACTIVE_SHORT: 'Inactive',
@@ -250,6 +254,14 @@ export let enLocale = {
                 E_PART_TIME: 'Part-time'
             },
             YEARS_OF_EXPERIENCES: 'Years of Experiences'
+        },
+        EXAM: {
+            EXAM_STATUS_VALUES: {
+                E_PLANNING: 'Planning',
+                E_IN_PROCESS: 'In Process',
+                E_COMPLETED: 'Completed',
+                E_CANCELLED: 'Cancelled'
+            }
         },
         GENERIC: {
             ADDRESS: 'Address',

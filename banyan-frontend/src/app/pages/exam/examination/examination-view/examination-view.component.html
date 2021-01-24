@@ -1,0 +1,79 @@
+<div class="app-content-white">
+    <div class="row mat-elevation-z1 mb-2">
+        <div class="col-sm-3">
+            <span class="form-sub-label" style="display:block">{{ 'MENU.EXAMINATION' | translate | uppercase }}</span>
+            <span class="form-title">{{ item?.name }}</span>
+            <button type="button" class="btn btn-add btn-lite ml-1" (click)="onEdit(editDialog)">
+                <i class="fa fa-edit"></i>
+            </button>
+        </div>
+        <div class="col-sm-3">
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MENU.CLASS' | translate }}</span>           
+            <span><a routerLink="../../../../class/class/view/{{item?.classInfo.classId }}" class="link-text">{{ item?.classInfo.className}}</a></span>
+        </div>
+        <div class="col-sm-3">
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
+            <span>{{ item?.classInfo.outletName }}</span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label mt-2" style="display:block">Băt đầu</span>
+            <span *ngIf="item?.startDate">{{ item?.startDate | moment }}</span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label mt-2" style="display:block">Kết thúc</span>
+            <span *ngIf="item?.endDate">{{ item?.endDate | moment }}</span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label mt-2" style="display:block">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
+            <span style="display:block">{{ 'MODULE.EXAM.EXAM_STATUS_VALUES.' + item?.status | translate }}</span>
+        </div> 
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-2">
+                    <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</span>
+                    <span style="display:block">{{ item?.sortIndex }}</span>
+                    <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
+                    <span style="display:block">{{ item?.createdByCode }}</span>
+                    <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
+                    <span style="display:block">{{ item?.createdAt | moment }}</span>
+                    <div *ngIf="item?.modifiedByCode">
+                        <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate }}</span>
+                        <span style="display:block">{{ item?.modifiedByCode }}</span>
+                        <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate }}</span>
+                        <span style="display:block">{{ item?.modifiedAt | moment }}</span>
+                    </div>
+        </div>
+        <div class="col-sm-7">
+            <tabset class="col-sm-12" style="min-height:400px">
+                <tab [heading]="'Môn thi / Kiểm tra'" id="tabExams">
+                    <app-examination-exam-list [examinationId]="id" [examination] = "item"></app-examination-exam-list>
+                </tab>
+                <tab [heading]="'Kết quả'" id="tabExamResult">
+                    <!-- <app-course-examination-list [courseId]="id"></app-course-examination-list> -->
+                </tab>
+            </tabset>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <app-comment-list [ownerType]="'E_EXAMINATION'" [ownerId]="id"></app-comment-list>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.COURSE' | translate }}<span> -
+                        {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-examination-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-examination-add>
+            </div>
+        </div>
+    </div>
+</ng-template>

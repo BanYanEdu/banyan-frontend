@@ -1,0 +1,96 @@
+<div *ngIf="classUnit">
+    <div class="mat-elevation-z1" style="padding: 5px;" [ngStyle]="{'background-color':getColor(classUnit.status), 'border-right': getBorderLine(classUnit.doubleUnit)}">
+        <span style="display: block;">
+            <i class="fa fa-clock-o mr-1"></i>
+            {{ classUnit?.hourFrom }}:{{classUnit?.minuteFrom }} - {{ classUnit?.hourTo
+            }}:{{classUnit?.minuteTo }}
+            <span class="pull-right">
+                <button type="button" class="btn-add btn-lite" (click)="onSplit(splitDialog, classUnit)" *ngIf="classUnit?.doubleUnit">
+                    <i class="fa fa-scissors"></i>
+                </button>
+                <button type="button" class="btn-add btn-lite" (click)="onEdit(editDialog, classUnit)">
+                    <i class="fa fa-edit"></i>
+                </button>
+            </span>
+        </span>
+        <span style="display: block;" *ngIf="!classUnit?.studySubjectId" class="form-sub-label">
+            <i class="fa fa-book mr-1"></i>Chưa có môn học
+        </span>
+        <span style="display: block;" *ngIf="classUnit?.studySubjectId">
+            <i class="fa fa-book fa-sm mr-1"></i>{{ classUnit?.studySubjectName }}
+        </span>
+        <span style="display: block;" *ngIf="!assignment" class="form-sub-label">
+            <i class="fa fa-user mr-2"></i>Chưa có giảng viên
+        </span>
+        <span style="display: block;" *ngIf="assignment">
+            <i class="fa fa-user fa-sm mr-2"></i>{{ assignment?.employeeName }}
+        </span>
+        <span style="display: block;">
+            <i class="fa fa-spinner fa-sm"></i>
+            {{ 'MODULE.CLASS.CLASS_UNIT_STATUS_VALUES.' + classUnit?.status | translate }}
+            <i class="fa fa-sticky-note-o pull-right mr-2" aria-hidden="true" title="{{ classUnit?.remark }}"
+                *ngIf="classUnit && classUnit?.remark!=''"></i>
+        </span>
+    </div>
+</div>
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    <span>
+                        <i class="fa fa-calendar mr-1"></i>
+                        {{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.' + date.getDay() | translate }},
+                        {{ classUnit?.date | moment }}
+                    </span>
+                    <span>
+                        <i class="fa fa-clock-o mr-1 ml-3"></i>
+                        {{ classUnit?.hourFrom }}:{{classUnit?.minuteFrom }} - {{ classUnit?.hourTo
+                        }}:{{classUnit?.minuteTo }}
+                    </span>
+                </h4>
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-unit-add [classId]="classUnit.classInfo.classId" [mode]="mode" [inputItem]="classUnit"
+                    [class]="class" [classStudySubjects]="classStudySubjects" [classLecturers]="classLecturers"
+                    (valueChange)='onChanged($event)'>
+                </app-class-unit-add>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #splitDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    <span>
+                        <i class="fa fa-calendar mr-1"></i>
+                        {{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.' + date.getDay() | translate }},
+                        {{ classUnit?.date | moment }}
+                    </span>
+                    <span>
+                        <i class="fa fa-clock-o mr-1 ml-3"></i>
+                        {{ classUnit?.hourFrom }}:{{classUnit?.minuteFrom }} - {{ classUnit?.hourTo
+                        }}:{{classUnit?.minuteTo }}
+                    </span>
+                </h4>
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn tách tiết đôi thành 2 tiết đơn
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<app-confirm-dialog iconCls="fa fa-scissors" [title]="'Tách tiết đôi'"
+    [content]="'Bạn có muốn tách tiết đôi thành tiết đơn.'">
+</app-confirm-dialog>

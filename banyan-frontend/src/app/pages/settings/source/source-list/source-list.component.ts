@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, QueryList } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseListComponent } from 'app/shared/components/BaseListComponent';
@@ -18,7 +18,7 @@ export class SourceListComponent extends BaseListComponent<Source> implements On
     @ViewChild("searchValue") erSearchValue: ElementRef;
     activeStatuses: any[] = ActiveStatuses;
     mode: FormMode = FormMode.E_EDIT;
-    
+
     constructor(
         commonService: CommonService,
         protected settingsService: SettingsService,
@@ -59,6 +59,7 @@ export class SourceListComponent extends BaseListComponent<Source> implements On
     }
     onSearch() {
         this.dataTableRef.firstPage();
+        
     }
 
 }

@@ -8,26 +8,26 @@
     </div>
     <div class="row mt-2">
         <div class="col-sm-12">
-            <span class="form-bold-text">{{ inputEnrollment?.className }}</span>
-            <span class="ml-2">({{ inputEnrollment?.classCode }})</span>
+            <span class="form-bold-text">{{ inputEnrollment?.classInfo.className }}</span>
+            <span class="ml-2">({{ inputEnrollment?.classInfo.classCode }})</span>
             <span class="form-sub-label ml-2">{{ 'MENU.CLASS' | translate}}</span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-12">
-            <span>{{ inputEnrollment?.courseName }}</span>
+            <span>{{ inputEnrollment?.classInfo.courseName }}</span>
             <span class="form-sub-label ml-2">{{ 'MENU.COURSE' | translate}}</span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-12">
-            <span>{{ inputEnrollment?.programName }}</span>
+            <span>{{ inputEnrollment?.classInfo.programName }}</span>
             <span class="form-sub-label ml-2">{{ 'MENU.PROGRAM' | translate}}</span>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-12">
-            <span>{{ inputEnrollment?.outletName }}</span>
+            <span>{{ inputEnrollment?.classInfo.outletName }}</span>
             <span class="form-sub-label ml-2">{{ 'MENU.OUTLET' | translate}}</span>
         </div>
     </div>

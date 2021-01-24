@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ClassStatuses } from 'app/data/global/ClassStatuses';
 import { FormMode } from 'app/model/common/FormMode';
 import { StudentService } from 'app/pages/student/student.service';
 import { BaseComponent } from 'app/shared/components/BaseComponent';
@@ -28,6 +29,8 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
     mode: FormMode = FormMode.E_EDIT;
     outletId: string = "E_ALL";
     programId: string = "E_ALL";
+    classStatuses: any[] = ClassStatuses;
+    statuses: any[] =['E_RECRUITING', 'E_STARTED'];
     protected params: any = {}; // to reload data
     modalRef: BsModalRef;
     config = {
@@ -46,9 +49,11 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
     ngOnInit() {
         this.mainForm = new FormGroup({
             'searchValue': new FormControl(null),
+            'statuses': new FormControl(null),
         });
         this.searchValue.nativeElement.focus();
-        this.params.limit = 5;
+        this.params.limit = 10;
+        this.mainForm.get('statuses').setValue(this.statuses);
     }
 
     load(event){
@@ -75,6 +80,8 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
         else { this.params.outletId = ""; }
         if (this.programId != "E_ALL") { this.params.programId = this.programId;} 
         else { this.params.programId = ""; }
+        this.statuses = this.mainForm.get('statuses').value;
+        this.params.statuses = this.statuses;
         
         this.params.excludeId = this.classId;
         this.load("");
@@ -94,6 +101,10 @@ export class ClassSearchComponent extends BaseComponent implements OnInit {
     }
     onChangeProgram(event) {
         this.programId = event[0];
+        this.onSearch();
+    }
+    onChangeStatus() {
+        // console.log("Statuses changed");
         this.onSearch();
     }
 }

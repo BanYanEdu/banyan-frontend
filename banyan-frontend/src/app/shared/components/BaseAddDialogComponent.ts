@@ -30,7 +30,9 @@ export class BaseAddDialogComponent<TModel extends BaseEditableModel> extends Ba
             if (this.mainForm.get(this.businessIdField)) {
                 this.mainForm.get(this.businessIdField).disable();
             }
-            this.mainForm.patchValue(this.item)
+            if (this.item) {
+                this.mainForm.patchValue(this.item)
+            }
 
             this.requestItem = this.item;
         } else {

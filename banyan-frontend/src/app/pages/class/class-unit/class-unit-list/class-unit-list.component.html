@@ -1,0 +1,112 @@
+<div class="app-content-white">
+    <div class="" style="margin: 5px">
+        <div class="row" *ngIf="class?.status=='E_STARTED'">
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-add" *ngIf="items.length == 0" (click)="onGenerate()">
+                    <i class="fa fa-plus"></i> Tạo hàng loạt
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="pageLimit" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="false" [pagination_limit]="true">
+                <data-table-column [property]="" [header]="'Ngày'" [styleClass]="'text-left'">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="pull-left">
+                                    <i class="fa fa-calendar mr-1"></i>{{ item?.date | moment }}
+                                    <i class="fa fa-clock-o mr-1 ml-3"></i>
+                                    {{ item?.hourFrom }}:{{ item?.minuteFrom }} - {{ item?.hourTo }}:{{ item?.minuteTo }}
+                                </span>
+                                <span class="pull-right" *ngIf="item?.assignments[0]">
+                                    <i class="fa fa-user mr-1"></i>{{ item?.assignments[0]?.employeeName }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="pull-left" *ngIf="item?.studySubjectId">
+                                    <i class="fa fa-book fa-sm mr-1"></i>{{ item?.studySubjectName }}
+                                </span>
+                                <span class="pull-right" *ngIf="item?.remark!=''">
+                                    <i class="fa fa-sticky-note-o mr-1" aria-hidden="true"></i>{{ item?.remark }}
+                                </span>
+                            </div>            
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-sm-12">
+                                <span style="display: block;" *ngIf="item?.remark!=''">
+                                    <i class="fa fa-sticky-note-o mr-1" aria-hidden="true"></i>{{ item?.remark }}
+                                </span>
+                            </div>
+                        </div> -->
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Trạng thái'" [styleClass]="'text-center'" [width]="150">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ 'MODULE.CLASS.CLASS_UNIT_STATUS_VALUES.' + item?.status | translate }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="" [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <button type="button" class="btn-add btn-lite" (click)="onEdit(editDialog, item)"
+                            *ngIf="item.status!='E_TRANSFERRED'">
+                            <i class="fa fa-edit fa-lg"></i>
+                        </button>
+                    </ng-template>
+                </data-table-column>
+
+                <ng-template #basicSearch>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- <button type="button" class="btn btn-add" (click)="onAdd(editDialog)">
+                                <i class="fa fa-plus"></i>                                
+                            </button> -->
+                            <a routerLink="../../../class/single-schedule/{{classId}}" class="link-text"><i
+                                    class="fa fa-calendar mt-2 mr-1"></i> <strong>Lịch học</strong></a>
+                        </div>
+                        <!-- <div class="col-sm-6">
+                        </div> -->
+                    </div>
+                </ng-template>
+            </data-table>
+        </div>
+    </div>
+</div>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    <span>
+                        <i class="fa fa-calendar mr-1"></i>
+                        {{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.' + selectedDate.getDay() | translate }},
+                        {{ selectedItem?.date | moment }}
+                    </span>
+                    <span>
+                        <i class="fa fa-clock-o mr-1 ml-3"></i>
+                        {{ selectedItem?.hourFrom }}:{{selectedItem?.minuteFrom }} - {{ selectedItem?.hourTo
+                        }}:{{selectedItem?.minuteTo }}
+                    </span>
+                </h4>
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-unit-add [inputItem]="selectedItem" [classId]="selectedItem.classInfo.classId" [mode]="mode"
+                    [class]="class" [classStudySubjects]="classStudySubjects" [classLecturers]="classLecturers"
+                    (valueChange)='onChanged($event)'>
+                </app-class-unit-add>
+            </div>
+        </div>
+    </div>
+</ng-template>

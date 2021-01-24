@@ -3,62 +3,81 @@
     <div class="row">
         <div class="col-sm-12">
             <span class="form-title">{{ 'MENU.SETTINGS' | translate }}</span>
-        </div>   
+        </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-sm-6">
-            <ul>
-                <li routerLinkActive="active">
-                    <a routerLink="../course/list" routerLinkActive="active" class="link-text">
+        <div class="col-sm-5">
+            <mat-list>
+                <mat-list-item>
+                    <a routerLink="../course/list" routerLinkActive="active">
                         <h5>{{ 'MENU.COURSES' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../program/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../program/list" routerLinkActive="active">
                         <h5>{{ 'MENU.PROGRAMS' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../study-subject/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../study-subject/list" routerLinkActive="active">
                         <h5>{{ 'MENU.STUDY_SUBJECTS' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../test-subject/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../exam-subject/list" routerLinkActive="active">
                         <h5>{{ 'MENU.TEST_SUBJECTS' | translate }}</h5>
                     </a>
-                </li>
-            </ul>
+                </mat-list-item>
+            </mat-list>
         </div>
-        <div class="col-sm-6">
-            <ul>
-                <li routerLinkActive="active">
-                    <a routerLink="../outlet/list" routerLinkActive="active" class="link-text">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <mat-list>
+                <mat-list-item>
+                    <a routerLink="../outlet/list" routerLinkActive="active" class="">
                         <h5>{{ 'MENU.OUTLETS' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../source/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../source/list" routerLinkActive="active">
                         <h5>{{ 'MENU.SOURCES' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../facility/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../facility/list" routerLinkActive="active">
                         <h5>{{ 'MENU.FACILITIES' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../schedule-pattern/list" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../schedule-pattern/list" routerLinkActive="active">
                         <h5>{{ 'MENU.SCHEDULE_PATTERNS' | translate }}</h5>
                     </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="../system-config" routerLinkActive="active" class="link-text">
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../holiday/list" routerLinkActive="active">
+                        <h5>{{ 'MENU.HOLIDAYS' | translate }}</h5>
+                    </a>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../aa-type/list" routerLinkActive="active">
+                        <h5>{{ 'MENU.ATTENDANCE_ABSENCE_TYPE' | translate }}</h5>
+                    </a>
+                </mat-list-item>
+                <mat-divider></mat-divider><mat-list-item>
+                    <a routerLink="../system-config" routerLinkActive="active">
                         <h5>System Configuration</h5>
                     </a>
-                </li>
-            </ul>
+                </mat-list-item>
+            </mat-list>
         </div>
     </div>
 </div>

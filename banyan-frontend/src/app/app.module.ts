@@ -19,7 +19,6 @@ import {TopMenuComponent} from './pages/layout/menu/menu.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {CustomTranslateLoader} from "./i18n/custom-translate-loader";
 import {NavbarComponent} from "./pages/layout/navbar/navbar.component";
-import {InboxModule} from "./pages/inbox/inbox.module";
 import {RouteReuseStrategy} from "@angular/router";
 import {CustomCacheRouteReuseStrategy} from "./pages/common/custom-route.strategy";
 import {CalendarModule} from "inet-calendar";
@@ -30,6 +29,7 @@ import { ComingMessageComponent } from './pages/system/coming.message';
 import { CommonService } from './shared/services/common.service';
 import { FocusService } from './shared/services/focus.service';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatDialogModule, MatInputModule, MatToolbarModule } from '@angular/material';
 
@@ -52,7 +52,6 @@ import { MatDialogModule, MatInputModule, MatToolbarModule } from '@angular/mate
         BootstrapLayoutModule,
         WebsocketModule,
         BsDatepickerModule.forRoot(),
-        InboxModule,
         CalendarModule,
         SocialModule,
         SocialAppModule,
@@ -60,7 +59,8 @@ import { MatDialogModule, MatInputModule, MatToolbarModule } from '@angular/mate
         DialogModule,
         // MatInputModule,
         // MatDialogModule,
-        // MatButtonModule,
+        MatButtonModule,
+        MatMenuModule
         // MatToolbarModule
     ],
     providers: [{

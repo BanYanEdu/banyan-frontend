@@ -1,0 +1,77 @@
+<div class="app-content-white">
+    <div class="row mat-elevation-z1 mb-2" style="padding-bottom: 5px;">
+        <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
+            <span class="form-title"><a routerLink="/class/class/view/{{schoolClass?.uuid}}" class="link-text">{{
+                    schoolClass?.name }}</a></span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
+            <span style="display:block">{{ schoolClass?.facilityNo }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label" style="display:block">Bắt đầu</span>
+            <span style="display:block">{{ schoolClass?.actualStartDate | moment }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label" style="display:block">Kết thúc</span>
+            <span style="display:block">{{ schoolClass?.actualEndDate | moment }}</span>
+        </div>
+    </div>
+    <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+        (reload)="load()" [limit]="1000" [selectColumn]="false" [multiSelect]="false" [pagination_input]="true"
+        [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false" [expandableRows]="false"
+        [showReloading]="false" [sortBy]="'code'" [sortAsc]="true" #datagrid>
+        <data-table-column [property]="" [header]="'Học viên'" [width]="150">
+            <ng-template #dataTableCell let-item="item">
+                {{ item?.contactName }}
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="" [header]="day.dateD+'/'+day.month" [styleClass]="'text-center'" *ngFor="let day of classDays" [width]="50">
+            <ng-template #dataTableCell let-item="item">
+                C
+            </ng-template>
+        </data-table-column>
+
+        <!-- <ng-template #basicSearch>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-add" (click)="onAdd(enrollDialog)">
+                                    <i class="fa fa-plus"></i> Thêm mới
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    -->
+    </data-table>
+
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <!-- <div class="col" *ngFor="let day of classDays">{{ day.dateD }}
+                </div> -->
+            </div>
+            <!-- <span style="display:block" *ngFor="let day of classDays">{{ day.dateL | moment }} -- {{ day.date }} -- {{ day.weekDay }} -- {{ day.month }}-- {{ day.dateD }}</span> -->
+        </div>
+    </div>
+</div>
+<!-- <ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.CLASS' | translate }}<span> -
+                        {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-class-add>
+            </div>
+        </div>
+    </div>
+</ng-template> -->

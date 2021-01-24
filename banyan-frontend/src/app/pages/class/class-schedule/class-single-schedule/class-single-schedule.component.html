@@ -1,0 +1,94 @@
+<div class="app-content-white">
+    <div class="row mat-elevation-z1" style="padding-bottom: 5px;">
+        <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
+            <span class="form-title"><a routerLink="/class/class/view/{{schoolClass?.uuid}}" class="link-text">{{
+                    schoolClass?.name }}</a></span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
+            <span style="display:block">{{ schoolClass?.facilityNo }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label" style="display:block">Bắt đầu</span>
+            <span style="display:block">{{ schoolClass?.actualStartDate | moment }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label" style="display:block">Kết thúc</span>
+            <span style="display:block">{{ schoolClass?.actualEndDate | moment }}</span>
+        </div>
+        <div class="col-sm-4" align="right">
+            <div class="mt-2">
+                <span>
+                    <button type="button" class="btn-add btn-lite mr-1" (click)="onFirst()">
+                        <i class="fa fa-angle-double-left"></i>
+                    </button>
+                    <button type="button" class="btn-add btn-lite mr-1" (click)="onPrevious()">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    {{ days[0].dateLong | moment }} - {{ days[days.length-1].dateLong | moment }}
+                    <button type="button" class="btn-add btn-lite ml-1" (click)="onNext()">
+                        <i class="fa fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn-add btn-lite ml-1" (click)="onLast()">
+                        <i class="fa fa-angle-double-right"></i>
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col" align="center" *ngFor="let day of days"><strong>{{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.'
+                        + day.date.getDay() | translate }}, {{ day.dateLong | moment }}</strong></div>
+            </div>
+            <div class="row" style="min-height: 250px;">
+                <div class="col ml-0 mr-0" *ngFor="let day of days" style="padding: 2px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <app-class-unit-embed-view *ngIf="unit.date == day.dateLong" [classUnitId]="unit.uuid"
+                            [class]="schoolClass" [classUnit]="unit" [classStudySubjects]="classStudySubjects"
+                            [classLecturers]="classLecturers" (valueChange)='onChanged($event)'></app-class-unit-embed-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <mat-chip-list aria-label="Study Subjects">
+                <mat-chip color="primary" *ngFor="let subject of classStudySubjects">{{ subject.studySubjectName }} ({{
+                    subject.unitCount }})</mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <mat-chip-list aria-label="Lecturers">
+                <mat-chip color="primary" *ngFor="let classLecturer of classLecturers">
+                    {{ classLecturer.employeeName }}
+                    <span class="form-sub-label ml-1">({{ classLecturer.employeeCode }} - {{ 'MODULE.CLASS.ROLE_VALUES.'
+                        + classLecturer.role | translate }} )</span>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+</div>
+<!-- <ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{ 'MENU.CLASS' | translate }}<span> -
+                        {{ 'COMMON.ACTION.EDIT' | translate }}</span></h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-add [item]="item" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-class-add>
+            </div>
+        </div>
+    </div>
+</ng-template> -->

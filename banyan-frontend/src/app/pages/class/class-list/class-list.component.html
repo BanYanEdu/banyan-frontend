@@ -5,7 +5,6 @@
                 <span class="form-title">{{ 'MENU.CLASSES' | translate }}</span>
                 <button type="button" class="btn btn-add ml-4" (click)="onAdd(editDialog)">
                     <i class="fa fa-plus"></i>
-                    <!-- {{ 'COMMON.ACTION.ADD' | translate }} -->
                 </button>
             </div>
             <div class="col-sm-2">
@@ -47,35 +46,29 @@
                 (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
                 [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
                 [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
-                <!-- <data-table-column [property]="" [header]="'COMMON.GENERAL.CODE' | translate">
-                    <ng-template #dataTableCell let-item="item">
-                        <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.code}}</a>
-                    </ng-template>
-                </data-table-column> -->
                 <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
                     <ng-template #dataTableCell let-item="item">
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-sm-7">
                                 <a routerLink="../../class/view/{{item.uuid}}" class="link-text"><strong>{{ item.name }}</strong></a>
                             </div>
-                            <div class="col-sm-4" align="right">
+                            <div class="col-sm-5" align="right">
                                 {{ item.code }}
-                                <!-- <a routerLink="../../class/view/{{item.uuid}}" class="link-text">{{ item.code }}</a> -->
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-sm-7">
                                 {{ item.courseName}}
                             </div>
-                            <div class="col-sm-4" align="right">
+                            <div class="col-sm-5" align="right">
                                 {{ item.programName}}
                             </div>
                         </div>
                     </ng-template>
                 </data-table-column>
-                <data-table-column [property]="'outletName'" [header]="'Chi nhánh'" [width]="250">
+                <data-table-column [property]="'outletName'" [header]="'Chi nhánh'" [width]="300">
                 </data-table-column>
-                <data-table-column [property]="" [header]="'Phụ trách'" [width]="150">
+                <data-table-column [property]="" [header]="'Phụ trách'" [width]="200">
                     <ng-template #dataTableCell let-item="item">
                         <app-class-assignment-view [classId]="item.uuid"></app-class-assignment-view>
                     </ng-template>
@@ -86,7 +79,7 @@
                     </ng-template>
                 </data-table-column>
                 <data-table-column [property]="" [header]="'COMMON.GENERAL.STATUS' | translate"
-                    [styleClass]="'text-center'" [width]="120">
+                    [styleClass]="'text-center'" [width]="100">
                     <ng-template #dataTableCell let-item="item">
                         {{ 'MODULE.CLASS.STATUS_VALUES.' + item.status | translate }}
                     </ng-template>

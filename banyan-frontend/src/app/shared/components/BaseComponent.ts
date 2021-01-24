@@ -4,6 +4,7 @@ import { NotificationType } from "app/shared/models/NotificationType";
 export abstract class BaseComponent {
     imgFolder: string = iNet.imgFolder;
     currentLanguage: string;
+    currentOutletId: string = localStorage.getItem("currentOutletId");
     
     constructor(protected commonService: CommonService) {
     }
@@ -14,4 +15,7 @@ export abstract class BaseComponent {
         });
     }
 
+    public getLocalStorageValue(key: string) {
+        return localStorage.getItem(key);
+    }
 }

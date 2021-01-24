@@ -1,143 +1,105 @@
 <div class="app-content-white">
-    <div class="row mt-1">
-        <div class="col-sm-6">
-            <span class="form-sub-label">{{ 'MENU.CLASS' | translate | uppercase }}</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10">
+    <div class="row mat-elevation-z1">
+        <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
             <span class="form-title">{{ item?.name }}</span>
-            <button type="button" class="btn-add ml-2" (click)="onEdit(editDialog)">
+            <button type="button" class="btn btn-add btn-lite ml-1" (click)="onEdit(editDialog)">
                 <i class="fa fa-edit"></i>
-                <!-- {{ 'COMMON.ACTION.EDIT' | translate }} -->
             </button>
         </div>
-    </div>
-    <div class="row mt-1">
-        <div class="col-sm-2">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
-            <span style="display:block">{{ item?.code }}</span>
-        </div>
-        <div class="col-sm-2">
-            <span class="form-sub-label" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
-            <span style="display:block">{{ item?.outletName }}</span>
-        </div>
         <div class="col-sm-3">
-            <span class="form-sub-label" style="display:block">{{ 'MENU.COURSE' | translate }}</span>
-            <span style="display:block">{{ item?.courseName }}</span>
+            <span style="display: block;" class="mt-3">
+                <a routerLink="../../../class/single-schedule/{{ id }}" class="link-text"><i
+                class="fa fa-calendar mt-2 mr-1"></i> <strong>Lịch học</strong></a>
+                <a routerLink="../../../class/attendance-summary/{{ id }}" class="link-text ml-2"> <strong>Điểm danh</strong></a>
+            </span>
         </div>
         <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
             <span style="display:block">{{ item?.actualStartDate | moment}}</span>
         </div>
         <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.TIME.END_DATE' | translate }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'COMMON.TIME.END_DATE' | translate }}</span>
             <span style="display:block">{{ item?.actualEndDate | moment}}</span>
         </div>
         <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'COMMON.GENERAL.STATUS' | translate }}</span>
             <span style="display:block">{{ 'MODULE.CLASS.STATUS_VALUES.' + item?.status | translate}}</span>
         </div>
         <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
             <span style="display:block">{{ item?.facilityNo }}</span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-2">
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</span>
+            <br>
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+            <span style="display:block"><strong>{{ item?.code }}</strong></span>
+            <span class="form-sub-label" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
+            <span style="display:block">{{ item?.outletName }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'MENU.SCHEDULE_PATTERN' | translate }}</span>
             <span style="display:block">{{ item?.schedulePatternName }}</span>
-                </div>
+            <span class="form-sub-label" style="display:block">{{ 'MENU.COURSE' | translate }}</span>
+            <a routerLink="../../../../settings/course/view/{{item?.courseId}}" class="link-text">{{
+                item?.courseName }}</a>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'MENU.PROGRAM' | translate }}</span>
+            <span style="display:block">{{ item?.programName }}</span>
+            <span class="form-sub-label mt-1" style="display:block">Số buổi</span>
+            <span style="display:block">{{ item?.sessionCount }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'MODULE.CLASS.HEADCOUNT_MIN' | translate
+                }}</span>
+            <span style="display:block">{{ item?.minHeadCount }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate
+                }}</span>
+            <span style="display:block">{{ item?.maxHeadCount }}</span>
+            <div class="custom-checkbox mt-1">
+                <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired" disabled>
+                <label class="lbl">
+                    <span class="ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
+                </label>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'MENU.PROGRAM' | translate }}</span>
-                    <span style="display:block">{{ item?.programName }}</span>
-                </div>
+            <div *ngIf="item?.remark != ''">
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.GENERAL.REMARK' | translate }}</span>
+                <span style="display:block">{{ item?.remark }}</span>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'MODULE.CLASS.HEADCOUNT_MIN' | translate }}</span>
-                    <span style="display:block">{{ item?.minHeadCount }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'MODULE.CLASS.HEADCOUNT_MAX' | translate }}</span>
-                    <span style="display:block">{{ item?.maxHeadCount }}</span>
-                </div>
-            </div>   
-            <div class="row mt-2">
-                <div class="col-sm-12">
-                    <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" [checked]="item?.checkingRequired"
-                            disabled>
-                        <label class="lbl">
-                            <span
-                                class="ml-2">{{ 'MODULE.CLASS.CHECKING_REQUIRED' | translate }}</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-1" *ngIf="item?.remark != ''">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'COMMON.GENERAL.REMARK' | translate }}</span>
-                    <span style="display:block">{{ item?.remark }}</span>
-                </div>
-            </div>
-            <!-- <div class="row mt-1" *ngIf="item?.curriculum !=''">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'MODULE.CLASS.CURRICULUM' | translate }}</span>
-                    <span style="display:block">{{ item?.curriculum }}</span>
-                </div>
-            </div> -->
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.createdByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.createdAt | moment }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label"
-                        style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedAt | moment }}</span>
-                </div>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate
+                }}</span>
+            <span style="display:block">{{ item?.createdByCode }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate
+                }}</span>
+            <span style="display:block">{{ item?.createdAt | moment }}</span>
+            <div *ngIf="item?.modifiedByCode">
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedByCode }}</span>
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedAt | moment}}</span>
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.STUDENTS' | translate" id="tabStudents">
-                    <app-class-enrollment [class]="item" [owner]="'E_CLASS'"></app-class-enrollment>
+                    <app-class-enrollment-list [class]="item" [owner]="'E_CLASS'"></app-class-enrollment-list>
                 </tab>
                 <tab [heading]="'Quản lý'">
-                    <app-class-assignment [class]="item" [owner]="'E_CLASS'"></app-class-assignment>
+                    <app-class-assignment-list [class]="item" [owner]="'E_CLASS'"></app-class-assignment-list>
                 </tab>
                 <tab [heading]="'Môn học'">
-                    <app-class-study-subject-list [classId]="id" ></app-class-study-subject-list>
+                    <app-class-study-subject-list [classId]="id" [class]="item"></app-class-study-subject-list>
+                </tab>
+                <tab [heading]="'Lịch học'">
+                    <app-class-unit-list [class]="item" [classId]="id" ></app-class-unit-list>
+                </tab>
+                <tab [heading]="'Thi/Kiểm tra'">
+                    <app-class-examination-list [class]="item" [classId]="id" ></app-class-examination-list>
                 </tab>
             </tabset>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <app-comment-list [ownerType]="'E_CLASS'" [ownerId]="id"></app-comment-list>
         </div>
     </div>
 </div>

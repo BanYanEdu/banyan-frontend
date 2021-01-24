@@ -1,5 +1,7 @@
 export let viLocale = {
     MENU: {
+        ATTENDANCE_ABSENCE_TYPE: 'Mã chấm công',
+        ATTENDANCE_ABSENCE_TYPES: 'Mã chấm công',
         APPOINTMENT: 'Sự kiện',
         APPOINTMENTS: 'Sự kiện',
         CLASS: 'Lớp học',
@@ -19,8 +21,12 @@ export let viLocale = {
         EMPLOYEES_LECTURERS: 'Nhân viên / Giảng viên',
         EXAM_TEST: 'Thi / Kiểm tra',
         EXAMS_TESTS: 'Thi / Kiểm tra',
+        EXAMINATION: 'Kỳ thi',
+        EXAMINATIONS: 'Kỳ thi',
         FACILITY: 'Phòng ốc',
         FACILITIES: 'Phòng ốc',
+        HOLIDAY: 'Ngày lễ',
+        HOLIDAYS: 'Ngày lễ',
         HOME: 'Trang chủ',
         LECTURER: 'Giảng viên',
         LECTURERS: 'Giảng viên',
@@ -105,9 +111,15 @@ export let viLocale = {
             },
             CODE: 'Mã',
             COLOR: 'Màu',
+            COMMENT: 'Ghi chú',
+            COMMENTS: 'Ghi chú',
             DESCRIPTION: 'Diễn giải',
             INACTIVE: 'Ngưng theo dõi',
             INACTIVE_SHORT: 'NTD',
+            INCLUDING_TYPE_VALUES: {
+                E_ALL: 'Tất cả',
+                E_INCLUDING: 'Bao gồm'
+            },
             NAME: 'Tên',
             OWNER: 'Phụ trách',
             REMARK: 'Ghi chú',
@@ -159,7 +171,16 @@ export let viLocale = {
             END_DATE: 'Ngày kết thúc',
             TIME: 'Thời gian',
             TIME_FROM: 'TG từ',
-            TIME_TO: 'TG đến'
+            TIME_TO: 'TG đến',
+            WEEK_DAY_SHORT_VALUES: {
+                0: 'CN',
+                1: 'T2',
+                2: 'T3',
+                3: 'T4',
+                4: 'T5',
+                5: 'T6',
+                6: 'T7' 
+            }
         }
     },
     MODULE: {
@@ -169,6 +190,12 @@ export let viLocale = {
                 E_UNASSIGNED: 'Thôi nhiệm'
             },
             CHECKING_REQUIRED: 'Kiểm tra đầu vào',
+            CLASS_UNIT_STATUS_VALUES: {
+                E_PLANNING: 'Kế hoạch',
+                E_PLANNED: 'Đã lên lịch',
+                E_CANCELLED: 'Hủy',
+                E_RELEASED: 'Ban hành'
+            },
             CURRICULUM: 'Giáo trình',
             ENROLLMENT_STATUS_VALUES: {
                 E_ENROLLED: 'Nhập học',
@@ -182,8 +209,9 @@ export let viLocale = {
             HEADCOUNT_MAX: 'Sỹ số tối đa',
             ROLE_VALUES: {
                 E_MANAGER: 'Chủ nhiệm',
-                E_MEMBER: 'Thành viên',
-                E_ASSISTANT: 'Trợ lý'
+                E_MEMBER: 'Giáo viên bộ môn',
+                E_ASSISTANT: 'Trợ lý',
+                E_TEMP: 'Tạm thời'
             },
             STATUS_VALUES: {
                 E_PLANNING: 'Kế hoạch',
@@ -191,6 +219,12 @@ export let viLocale = {
                 E_STARTED: 'Khai giảng',
                 E_COMPLETED: 'Hoàn tất',
                 E_CANCELED: 'Hủy'
+            },
+            STUDY_MATERIAL_STATUS_VALUES: {
+                E_NONE: 'Chưa mua',
+                E_FULL: 'Đã mua đầy đủ',
+                E_PARTIAL: 'Đã mua một phần',
+                E_OTHER: 'Khác'
             }
         },
         COMMON: {
@@ -243,6 +277,14 @@ export let viLocale = {
             },
             YEARS_OF_EXPERIENCES: 'Số năm kinh nghiệm'
         },
+        EXAM: {
+            EXAM_STATUS_VALUES: {
+                E_PLANNING: 'Kế hoạch',
+                E_IN_PROCESS: 'Đang thực hiện',
+                E_COMPLETED: 'Hoàn tất',
+                E_CANCELLED: 'Hủy'
+            }
+        },
         LEAD: {
             PERSON_NAME: 'Tên cá nhân',
             COMPANY_NAME: 'Tên công ty',
@@ -288,6 +330,10 @@ export let viLocale = {
                 E_LEVEL: 'Cấp độ',
             },
             FACILITY_NO: 'Số hiệu',
+            HOLIDAY_TYPE_VALUES: {
+                E_PUBLIC_HOLIDAY: 'Ngày lễ',
+                E_COMPANY_OFF_DATE:'Ngày nghỉ',
+            },
             LECTURE_UNIT_COUNT: 'Số tiết',
             LECTURE_UNIT_COUNT_SHORT: 'Số tiết',
             MAX_SCORES: 'Điểm tối đa',
@@ -304,6 +350,15 @@ export let viLocale = {
             USER_GROUP: {
                 E_ADMIN_ONLY: 'Chỉ cấp quản lý',
                 E_ALL_USERS: 'Tất cả người dùng'
+            }
+        },
+        SYSTEM: {
+            ROLE_VALUES: {
+                E_SUPERVISOR: 'Giáo vụ',
+                E_MANAGER: 'Quản lý giáo vụ',
+                E_LECTURER: 'Giảng viên',
+                E_SETTINGS_ADMIN: 'Quản trị thiết lập',
+                E_SYSTEM_ADMIN: 'Quản trị hệ thống'
             }
         }
     }

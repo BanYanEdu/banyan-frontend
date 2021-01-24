@@ -1,0 +1,74 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-8">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name>
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>Trạng thái</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="{{ status }}" *ngFor="let status of statuses">
+                        {{ 'MODULE.EXAM.EXAM_STATUS_VALUES.' + status | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>Ngày bắt đầu</mat-label>
+                <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="startDate"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+                <!-- <mat-error *ngIf="mainForm.get('startDate').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="input-full-width">
+                <mat-label>Ngày kết thúc</mat-label>
+                <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="endDate"
+                    [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}">
+                <!-- <mat-error *ngIf="mainForm.get('startDate').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="input-full-width">
+                <mat-label>Ghi chú</mat-label>
+                <input type="text" matInput formControlName="remark">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>

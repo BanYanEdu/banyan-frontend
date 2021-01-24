@@ -57,6 +57,7 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
             'schedulePatternName': new FormControl(null),
             'actualStartDate': new FormControl(null, [Validators.required]),
             'actualEndDate': new FormControl(null, [Validators.required]),
+            'sessionCount': new FormControl(null, [Validators.required]),
             'minHeadCount': new FormControl(null),
             'maxHeadCount': new FormControl(null),
             'facilityId': new FormControl(null, [Validators.required]),
@@ -96,8 +97,16 @@ export class ClassAddComponent extends BaseAddDialogComponent<SchoolClass>{
     }
 
     protected populateAdditionalFormValue() {
-        this.requestItem.actualStartDate = this.mainForm.controls['actualStartDate'].value.getTime() || null;
-        this.requestItem.actualEndDate = this.mainForm.controls['actualEndDate'].value.getTime() || null;
+        // let startDate = this.mainForm.controls['actualStartDate'].value;
+        let startDate = new Date(this.mainForm.controls['actualStartDate'].value.getTime());
+        let endDate = new Date(this.mainForm.controls['actualEndDate'].value.getTime());
+        startDate.setHours(0,0,0,0);
+        endDate.setHours(0,0,0,0);
+        this.requestItem.actualStartDate = startDate.getTime();
+        this.requestItem.actualEndDate = endDate.getTime();
+        
+        // this.requestItem.actualStartDate = this.mainForm.controls['actualStartDate'].value.getTime() || null;
+        // this.requestItem.actualEndDate = this.mainForm.controls['actualEndDate'].value.getTime() || null;
     }
 
     protected callSearch(input: { code: string }, callbackFn: Function): void {

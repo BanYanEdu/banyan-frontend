@@ -46,6 +46,7 @@ export class CourseViewComponent extends BaseComponent {
             this.settingsService.courseList({uuid: this.id}).subscribe(data =>
                 {
                     this.item = data.items[0];
+                    // console.log(this.item);
                     if (this.item.studySubjects && this.item.studySubjects.length > 0) {
                         this.unitCount = this.item.studySubjects.reduce((accum: number, item) => accum + item.unitCount, 0) ;                  
                     }
@@ -60,8 +61,7 @@ export class CourseViewComponent extends BaseComponent {
         });
     }
     
-
-    onEditCourse(template: TemplateRef<any>) {
+    onEdit(template: TemplateRef<any>) {
         // this.selectedItem = <TModel>item;
         this.mode = FormMode.E_EDIT;
         this.config.class="modal-medium";
@@ -78,5 +78,8 @@ export class CourseViewComponent extends BaseComponent {
         this.mode = FormMode.E_EDIT;
         this.config.class="modal-xl";
         this.modalRef = this.modalService.show(template, this.config);
+    }
+    onStudySubjectChanged() {
+        this.load();
     }
 }

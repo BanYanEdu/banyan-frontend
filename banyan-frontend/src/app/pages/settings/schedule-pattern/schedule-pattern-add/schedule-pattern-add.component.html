@@ -35,80 +35,68 @@
             <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
         </div>
     </div>
+    <div class="row mt-1">
+        <div class="col-sm-2">
+            <br>
+            <mat-checkbox formControlName="doubleUnit">Tiết đôi</mat-checkbox>          
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>Giải lao (phút)</mat-label>
+                <input type="number" matInput formControlName="breakDuration" maxlength="3" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('breakDuration').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
 </form>
 <div class="row mt-2">
-    <!-- <div class="col-sm-1">
-        </div> -->
     <div class="col-sm-12">
         <div class="row mt-2 datagrid-header">
-            <div class="col-sm-7">
+            <div class="col-sm-5">
                 {{ 'COMMON.TIME.WEEK_DAYS' | translate }}
             </div>
+            <div class="col-sm-1"></div>
             <div class="col-sm-2" align="center">
                 {{ 'COMMON.TIME.START_TIME' | translate }}
             </div>
-            <div class="col-sm-2" align="center">
-                {{ 'COMMON.TIME.END_TIME' | translate }}
-            </div>
         </div>
         <div class="row mt-2 datagrid-row" *ngFor="let detail of details; index as i; last as isLast">
+            <div class="col-sm-5">
+                <mat-checkbox [(ngModel)]="detail.onMon" class="mr-2">{{ 'COMMON.TIME.MONDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onTue" class="mr-2">{{ 'COMMON.TIME.TUESDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onWed" class="mr-2">{{ 'COMMON.TIME.WEDNESDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onThu" class="mr-2">{{ 'COMMON.TIME.THURSDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onFri" class="mr-2">{{ 'COMMON.TIME.FRIDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onSat" class="mr-2">{{ 'COMMON.TIME.SATURDAY_SHORT' | translate }}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="detail.onSun" class="mr-2">{{ 'COMMON.TIME.SUNDAY_SHORT' | translate }}</mat-checkbox>
+            </div>
             <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onMon">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.MONDAY_SHORT' | translate }}</label>
+                <mat-form-field class="input-full-width">
+                    <mat-label>Số tiết</mat-label>
+                    <input type="text" matInput [(ngModel)]="detail.unitCount" maxlength="2" numericInputOnly required>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-sm-6" align="right">
+                        <app-hour-selector [value]="detail.hourFrom" (valueChange)="onChangeHour('E_FROM',i,$event)">
+                        </app-hour-selector>
+                    </div>
+                    <div class="col-sm-6">
+                        <app-minute-selector [value]="detail.minuteFrom" (valueChange)="onChangeMinute('E_FROM',i,$event)">
+                        </app-minute-selector>
+                    </div>
+                    <!-- <div class="col-sm-3" align="right">
+                        <app-hour-selector [value]="detail.hourTo" (valueChange)="onChangeHour('E_TO',i,$event)" disabled>
+                        </app-hour-selector>
+                    </div>
+                    <div class="col-sm-3">
+                        <app-minute-selector [value]="detail.minuteTo" (valueChange)="onChangeMinute('E_TO',i,$event)" disabled>
+                        </app-minute-selector>
+                    </div> -->
                 </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onTue">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.TUESDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onWed">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.WEDNESDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onThu">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.THURSDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onFri">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.FRIDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onSat">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.SATURDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <div class="custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" [(ngModel)]="detail.onSun">
-                    <label for="" class="lbl"> {{ 'COMMON.TIME.SUNDAY_SHORT' | translate }}</label>
-                </div>
-            </div>
-            <div class="col-sm-1" align="right">
-                <app-hour-selector [value]="detail.hourFrom" (valueChange)="onChangeHour('E_FROM',i,$event)">
-                </app-hour-selector>
-            </div>
-            <div class="col-sm-1">
-                <app-minute-selector [value]="detail.minuteFrom" (valueChange)="onChangeMinute('E_FROM',i,$event)">
-                </app-minute-selector>
-            </div>
-            <div class="col-sm-1" align="right">
-                <app-hour-selector [value]="detail.hourTo" (valueChange)="onChangeHour('E_TO',i,$event)">
-                </app-hour-selector>
-            </div>
-            <div class="col-sm-1">
-                <app-minute-selector [value]="detail.minuteTo" (valueChange)="onChangeMinute('E_TO',i,$event)">
-                </app-minute-selector>
             </div>
             <div class="col-sm-1" align="right">
                 <button type="button" class="btn btn-default" (click)="onDeleteRow(i)" style="margin-left: 5px;"

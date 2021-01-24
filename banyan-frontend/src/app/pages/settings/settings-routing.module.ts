@@ -11,7 +11,8 @@ import { SettingsHomeComponent } from './settings-home/settings-home.component';
 import { SourceListComponent } from './source/source-list/source-list.component';
 import { StudySubjectListComponent } from './study-subject/study-subject-list/study-subject-list.component';
 import { SystemConfigViewComponent } from './system-config/system-config-view.component';
-import { TestSubjectListComponent } from './test-subject/test-subject-list/test-subject-list.component';
+import { ExamSubjectListComponent } from './exam-subject/exam-subject-list/exam-subject-list.component';
+import { AATypeListComponent } from './aa-type/aa-type-list/aa-type-list.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,10 +23,11 @@ const routes: Routes = [
     { path: 'course/list', component: CourseListComponent },
     { path: 'course/view/:id', component: CourseViewComponent },
     { path: 'study-subject/list', component: StudySubjectListComponent },
-    { path: 'test-subject/list', component: TestSubjectListComponent },
+    { path: 'exam-subject/list', component: ExamSubjectListComponent },
     { path: 'schedule-pattern/list', component: SchedulePatternListComponent },
-    { path: 'holiday', component: HolidayListComponent },
+    { path: 'holiday/list', component: HolidayListComponent },
     { path: 'facility/list', component: FacilityListComponent },
+    { path: 'aa-type/list', component: AATypeListComponent },
     { path: 'system-config', component: SystemConfigViewComponent },
 ]
 @NgModule({

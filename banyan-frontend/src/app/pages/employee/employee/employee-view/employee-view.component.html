@@ -1,124 +1,94 @@
 <div class="app-content-white">
-    <div class="row">
-        <div class="col-sm-6">
-            <span class="form-sub-label">{{ 'MENU.EMPLOYEE' | translate | uppercase }}</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
+    <div class="row mat-elevation-z1">
+        <div class="col-sm-3">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.EMPLOYEE' | translate | uppercase }}</span>
             <span class="form-title">{{ item?.name }}</span>
-            <button type="button" class="btn-add ml-2" (click)="onEdit(editDialog)">
+            <button type="button" class="btn btn-add btn-lite ml-1" (click)="onEdit(editDialog)">
                 <i class="fa fa-edit"></i>
             </button>
         </div>
-        <div class="col-sm-3">
-            <i class="fa fa-envelope"></i>
-            <span class="form-bold-text ml-2">{{ item?.email }}</span>
-        </div>
         <div class="col-sm-2">
-            <i class="fa fa-phone"></i>
-            <span class="form-bold-text ml-2">{{ item?.phoneNo }}</span>
-        </div>
-    </div>
-    <div class="row mt-1">
-        <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
-            <span style="display:block">{{ item?.code }}</span>
-        </div> 
-        <div class="col-sm-2">
-            <span class="form-sub-label" style="display:block">{{ 'MODULE.EMPLOYEE.JOB_TITLE' | translate }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MODULE.EMPLOYEE.JOB_TITLE' | translate }}</span>
             <span style="display:block">{{ item?.jobTitle }}</span>
         </div>
         <div class="col-sm-2">
-            <span class="form-sub-label" style="display:block">{{ 'MODULE.EMPLOYEE.DEPARTMENT' | translate }}</span>
-            <span style="display:block">{{ item?.orgUnitName }}</span>
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MODULE.EMPLOYEE.DEPARTMENT' | translate }}</span>
+            <span>{{ item?.orgUnitName }}</span>
         </div>
-        <div class="col-sm-2">
-            <span class="form-sub-label" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
-            <span style="display:block">{{ item?.outletName }}</span>
+        <div class="col-sm-3">
+            <span class="form-sub-label mt-2" style="display:block">{{ 'MENU.OUTLET' | translate }}</span>
+            <span class="">{{ item?.outletName }}</span>
         </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label mt-2" style="display:block">{{ 'Số điện thoại' }}</span>
+            <!-- <i class="fa fa-phone"></i> -->
+            <span class="">{{ item?.phoneNo }}</span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-2">
-            <div class="custom-checkbox">
+            <br>
+            <span class="form-sub-label" style="display:block">{{ 'COMMON.GENERAL.CODE' | translate }}</span>
+            <span style="display:block"><strong>{{ item?.code }}</strong></span>
+            <div class="custom-checkbox mt-1">
                 <input type="checkbox" class="custom-control-input" [checked]="item?.hasService" disabled>
                 <label class="lbl">
                     <span class="ml-2">{{ 'MENU.LECTURER' | translate }}</span>
                 </label>
             </div>
-        </div>
-        <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.TIME.START_DATE' | translate }}</span>
             <span style="display:block">{{ item?.startedDate | moment }}</span>
-        </div>
-        <div class="col-sm-2">
-            <div class="custom-checkbox">
+            <span class="mr-2 mt-1" style="display: block;"><i class="fa fa-envelope mr-1"></i>{{ item?.email }}</span>
+            <div class="custom-checkbox mt-1">
                 <input type="checkbox" class="custom-control-input" [checked]="item?.asForeigner" disabled>
                 <label class="lbl">
                     <span class="ml-2">{{ 'MODULE.EMPLOYEE.FOREIGNER' | translate }}</span>
                 </label>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
             <div class="row mt-1" *ngIf="item?.otherName != ''">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.PERSONAL.OTHER_NAME' | translate }}</span>
-                    <span style="display:block">{{ item?.otherName }}</span>
-                </div>
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.PERSONAL.OTHER_NAME' | translate }}</span>
+                <span style="display:block">{{ item?.otherName }}</span>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.PERSONAL.GENDER' | translate }}</span>
-                    <span style="display:block">{{ 'COMMON.PERSONAL.GENDER_VALUES.' + item?.gender | translate }}</span>
-                </div>
-            </div>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.PERSONAL.GENDER' | translate }}</span>
+            <span style="display:block">{{ 'COMMON.PERSONAL.GENDER_VALUES.' + item?.gender | translate }}</span>
             <div class="row mt-1">
                 <div class="col-sm-12">
                     <span class="form-sub-label" style="display:block">{{ 'COMMON.PERSONAL.DOB' | translate }}</span>
                     <span style="display:block">{{ item?.dob | moment}}</span>
                 </div>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <div class="custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
-                        <label class="lbl">
-                            <span class="ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
-                        </label>
-                    </div>
-                </div>
+            <div class="custom-checkbox mt-1">
+                <input type="checkbox" class="custom-control-input" [checked]="item?.inactive" disabled>
+                <label class="lbl">
+                    <span class="ml-2">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</span>
+                </label>
             </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.createdByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.createdAt | moment }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedByCode }}</span>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class="col-sm-12">
-                    <span class="form-sub-label" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate }}</span>
-                    <span style="display:block">{{ item?.modifiedAt | moment }}</span>
-                </div>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_BY' | translate }}</span>
+            <span style="display:block">{{ item?.createdByCode }}</span>
+            <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.CREATED_AT' | translate }}</span>
+            <span style="display:block">{{ item?.createdAt | moment }}</span>
+            <div *ngIf="item?.modifiedByCode">
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_BY' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedByCode }}</span>
+                <span class="form-sub-label mt-1" style="display:block">{{ 'COMMON.SYSTEM.MODIFIED_AT' | translate
+                    }}</span>
+                <span style="display:block">{{ item?.modifiedAt | moment}}</span>
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <tabset class="col-sm-12" style="min-height:400px">
                 <tab [heading]="'MENU.CLASSES' | translate" id="tabClass">
-                    <app-class-assignment [employee]="item" [owner]="'E_EMPLOYEE'"></app-class-assignment>
+                    <app-class-assignment-list [employee]="item" [owner]="'E_EMPLOYEE'"></app-class-assignment-list>
+                </tab>
+                <tab [heading]="'Phân quyền' " id="tabPermissionProfile">
+                    <app-employee-permission-profile-view [employee]="item"></app-employee-permission-profile-view>
                 </tab>
             </tabset>
+        </div>
+        <div class="col-sm-3">
+            <br>
+            <app-comment-list [ownerType]="'E_EMPLOYEE'" [ownerId]="id"></app-comment-list>
         </div>
     </div>
 </div>

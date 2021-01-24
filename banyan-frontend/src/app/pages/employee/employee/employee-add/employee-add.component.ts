@@ -67,7 +67,6 @@ export class EmployeeAddComponent extends BaseAddDialogComponent<Employee>{
             'hasService': new FormControl(null),
             'yearsOfServiceExperiences': new FormControl(null),
             'serviceQualificationRemark': new FormControl(null),
-            'username': new FormControl(null),
         });
     }
 

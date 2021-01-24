@@ -1,0 +1,71 @@
+<div class="row">
+    <span class="mt-1 ml-3"><strong>{{ 'COMMON.GENERAL.COMMENTS' | translate }}</strong></span>
+    <button type="button" class="btn btn-add btn-lite btn-sm ml-1" (click)="onAdd(editDialog)">
+        <i class="fa fa-plus"></i>
+    </button>
+</div>
+
+<mat-card class="mt-2" *ngFor="let item of items"  style="padding: 0px; margin: 0px;">
+    <mat-card-header style="background-color: whitesmoke;padding: 0px; margin: 0px;">
+        <!-- <mat-card-subtitle> -->
+            <!-- <div class="row">
+                <div class="col-sm-4">
+                    <span class="form-sub-label mt-1">
+                        {{ item?.createdAt | moment }}
+                    </span>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-add btn-lite btn-sm ml-1" (click)="onEdit(editDialog, item)">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </div>
+                <div class="col-sm-6" align="right">
+                    <span class="form-sub-label mt-1"> {{ item?.createdByCode }} </span>
+                </div>
+            </div> -->
+        <!-- </mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content style="padding: 5px;">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="form-sub-label mt-1">
+                    {{ item?.createdAt | moment }}
+                </span>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-add btn-lite btn-sm ml-1" (click)="onEdit(editDialog, item)">
+                    <i class="fa fa-edit"></i>
+                </button>
+            </div>
+            <div class="col-sm-6" align="right">
+                <span class="form-sub-label mt-1"> {{ item?.createdByCode }} </span>
+            </div>
+        </div>
+        <div class="row" style="border: thin;">
+            <div class="col-sm-12">
+                {{ item?.content }}
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    {{ 'COMMON.GENERAL.COMMENT' | translate }}
+                    <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                    <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-comment-add [mode]="mode" [ownerType]="ownerType" [ownerId]="ownerId" [item]="selectedItem"
+                    (valueChange)='onChanged($event)'>
+                </app-comment-add>
+            </div>
+        </div>
+    </div>
+</ng-template>

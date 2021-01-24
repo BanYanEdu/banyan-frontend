@@ -1,0 +1,70 @@
+<div class="app-content-white" style="min-height: 400px;">
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-add" (click)="onEdit(editDialog)" *ngIf="mode == 0">
+                <i class="fa fa-edit mr-1"></i>Cập nhật
+            </button>
+            <button type="button" class="btn btn-add" (click)="onAdd(editDialog)" *ngIf="mode == 1">
+                <i class="fa fa-plus mr-1"></i>Thêm mới
+            </button>
+        </div>
+    </div>
+    <div *ngIf="item">
+        <div class="row">
+            <div class="col-sm-3">
+                <span class="form-sub-label mt-2" style="display:block">Tên đăng nhập</span>
+                <span class="">{{ item?.username }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <span class="form-sub-label mt-2" style="display:block">Vai trò</span>
+            </div>
+        </div>
+        <div class="row mt-2" *ngIf="item?.roles.length > 0">
+            <div class="col-sm-12">
+                <mat-chip-list aria-label="Roles">
+                    <mat-chip color="primary" *ngFor="let role of item.roles">{{ 'MODULE.SYSTEM.ROLE_VALUES.' + role.roleCode | translate }}</mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <span class="form-sub-label mt-2" style="display:block">Chi nhánh</span>
+                <span class="">{{ 'COMMON.GENERAL.INCLUDING_TYPE_VALUES.' + item?.outletAssignmentType | translate }}</span>
+            </div>
+        </div>
+        <div class="row mt-2" *ngIf="item?.outlets.length > 0">
+            <div class="col-sm-12">
+                <mat-chip-list aria-label="Outlets">
+                    <mat-chip color="primary" *ngFor="let outlet of item.outlets">{{ outlet.outletName }}</mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Phân quyền
+                    <span *ngIf="mode == 1"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                    <span *ngIf="mode == 0"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-employee-permission-profile-add [item]="item" [mode]="mode" [employee]="employee"
+                    (valueChange)='onChanged($event)'>
+                </app-employee-permission-profile-add>
+            </div>
+        </div>
+    </div>
+</ng-template>

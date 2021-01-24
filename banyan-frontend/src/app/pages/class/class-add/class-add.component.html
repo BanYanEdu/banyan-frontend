@@ -65,11 +65,22 @@
                 <mat-label>{{ 'COMMON.TIME.TIME_TO' | translate }}</mat-label>
                 <input type="text" matInput #dp="bsDatepicker" bsDatepicker formControlName="actualEndDate"
                     [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}" required>
-                <mat-error *ngIf="mainForm.get('actualEndDate').hasError('required')">
+                    <mat-error *ngIf="mainForm.get('actualEndDate').hasError('required')">
+                        {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                    </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="input-full-width">
+                <mat-label>Số buổi</mat-label>
+                <input type="text" matInput formControlName="sessionCount" maxlength="3" numericInputOnly required>
+                <mat-error *ngIf="mainForm.get('sessionCount').hasError('required')">
                     {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
                 </mat-error>
             </mat-form-field>
         </div>
+    </div>
+    <div class="row mt-2">
         <div class="col-sm-6">
             <app-schedule-pattern-selector [uuid]="schedulePatternId" [mode]="mode"
                 (valueChange)="onChangeSchedulePattern($event)">

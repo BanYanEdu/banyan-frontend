@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { SettingsService } from '../settings.service';
@@ -6,12 +6,20 @@ import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogCompo
 import { CommonService } from 'app/shared/services/common.service';
 import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { Holiday } from 'app/model/settings/Holiday';
+import { FormMode } from 'app/model/common/FormMode';
+import { HolidayTypes } from 'app/data/global/HolidayTypes';
 
 @Component({
     selector: 'app-holiday-add',
     templateUrl: './holiday-add.component.html'
 })
 export class HolidayAddComponent extends BaseAddDialogComponent<Holiday>{
+    @Input() year: number;
+    @ViewChild("date") dateField: ElementRef;
+    types: any[] = HolidayTypes;
+    minDate: any;
+    maxDate: any;
+
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
@@ -21,24 +29,49 @@ export class HolidayAddComponent extends BaseAddDialogComponent<Holiday>{
     }
     protected createMainFormGroup(): FormGroup {
         return new FormGroup({
-            'code': new FormControl(null, [Validators.required]),
-            'name': new FormControl(null, [Validators.required]),
-            'sortIndex': new FormControl(null, [Validators.required]),
-            'inactive': new FormControl(null)
+            'date': new FormControl(null, [Validators.required]),
+            'type': new FormControl(null, [Validators.required]),
+            'remark': new FormControl(null, [Validators.required]),
+            'year': new FormControl(null, [Validators.required]),
+
         });
     }
-    protected callSearch(input: {code:string}, callbackFn: Function): void{
-        // this.settingsService.listCurrency(input).subscribe(data => callbackFn(data));
+    patchInitializedMainForm() {
+        this.mainForm.get('type').setValue(this.types[0]);
+        this.mainForm.get('year').setValue(this.year);
+        if (this.mode === FormMode.E_EDIT) {
+            this.mainForm.controls['date'].setValue(new Date(this.item.date));
+        }
+
+        this.dateField.nativeElement.focus();
+
+        this.minDate = new Date(this.year, 0, 1);;
+        this.maxDate = new Date(this.year, 11, 31);
     }
-    protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // var outlet: Outlet = new Outlet();
-        // lookupCode = requestItem;
-        // lookupCode.category = this.category;
-        console.log(requestItem);
-        
-        // this.settingsService.addCurrency(requestItem).subscribe(data => callbackFn(data));
+    populateAdditionalFormValue() {
+        let date = new Date(this.mainForm.controls['date'].value.getTime());
+        date.setHours(0,0,0,0);
+
+        this.requestItem.date = date.getTime();
+        this.requestItem.organId = iNet.organId;
     }
-    protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void{
-        // this.settingsService.updateCurrency(requestItem).subscribe(data => callbackFn(data));
+
+    protected callSearch(input: { code: string }, callbackFn: Function): void {
+        this.settingsService.holidayList(input).subscribe(data => callbackFn(data));
+    }
+    protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
+        // console.log(requestItem);
+
+        this.settingsService.holidayCreate(requestItem).subscribe(data => callbackFn(data));
+    }
+    protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
+        this.settingsService.holidayUpdate(requestItem).subscribe(data => callbackFn(data));
+    }
+
+    startSave() {
+        // Check validity of date (within this year)
+
+        // Save
+        this.onSave();
     }
 }

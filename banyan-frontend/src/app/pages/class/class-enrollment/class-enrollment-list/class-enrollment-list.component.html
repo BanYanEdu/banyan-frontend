@@ -1,0 +1,135 @@
+<div class="app-content-white">
+    <div class="" style="margin: 5px">
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                    (reload)="load()" [limit]="1000" [selectColumn]="false" [multiSelect]="false"
+                    [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="false" [sortBy]="'code'"
+                    [sortAsc]="true">
+                    <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate"
+                        *ngIf="owner=='E_CLASS'">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <span style="display:block">
+                                        <a routerLink="/student/student/view/{{item.contactId}}" class="link-text">
+                                            <strong>{{ item?.contactName }}</strong>
+                                        </a>
+                                    </span>
+                                    <span style="display:block" class="mt-1">
+                                        <i class="fa fa-book mr-1" aria-hidden="true"></i>{{ 'MODULE.CLASS.STUDY_MATERIAL_STATUS_VALUES.' + item?.studyMaterialStatus | translate}}
+                                    </span>
+                                    <span style="display:block" class="mt-1">
+                                        <span *ngIf="item?.debtAmount>0">
+                                            <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color: red;"></i>
+                                            <span class="ml-1">Nợ học phí: {{ item?.debtAmount | number }}</span>
+                                        </span>
+                                    </span>
+                                    <span style="display:block" *ngIf="item.remark!=''" class="mt-1">
+                                        <i class="fa fa-sticky-note-o mr-1" aria-hidden="true"></i>
+                                        {{ item?.remark }}
+                                    </span>
+                                </div>
+                                <div class="col-sm-3" align="right">
+                                    {{ item?.contactCode }}
+                                </div>
+                            </div>
+
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'MENU.CLASS' | translate" *ngIf="owner=='E_STUDENT'">
+                        <ng-template #dataTableCell let-item="item">
+                            <span style="display:block">
+                                <a routerLink="/class/class/view/{{item.classInfo.classId}}"
+                                    class="link-text"><strong>{{ item?.classInfo.className }}</strong></a>
+                            </span>
+                            <span style="display:block" class="mt-1">
+                                {{ item?.classInfo.outletName }}
+                            </span>
+                            <span style="display:block" class="mt-1">
+                                <i class="fa fa-book mr-1" aria-hidden="true"></i>{{ 'MODULE.CLASS.STUDY_MATERIAL_STATUS_VALUES.' + item?.studyMaterialStatus | translate }}
+                            </span>
+                            <span style="display:block" class="mt-1">
+                                <span *ngIf="item?.debtAmount>0">
+                                    <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true" style="color: red;"></i>
+                                    <span class="ml-1">Nợ học phí: {{ item?.debtAmount | number }}</span>
+                                </span>
+                            </span>
+                            <span style="display:block" *ngIf="item.remark!=''" class="mt-2">
+                                <i class="fa fa-sticky-note-o mr-1" aria-hidden="true"></i>
+                                {{ item?.remark }}
+                            </span>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Nhập học'" [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ item?.enrollmentDate | moment }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'Trạng thái'" [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            {{ 'MODULE.CLASS.ENROLLMENT_STATUS_VALUES.' + item?.status | translate }}
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <button type="button" class="btn-add btn-lite" (click)="onEdit(enrollDialog, item)"
+                                *ngIf="item.status!='E_TRANSFERRED'">
+                                <i class="fa fa-edit fa-lg"></i>
+                            </button>
+                            <button type="button" class="btn-add btn-lite ml-2" (click)="onTransfer(transferDialog, item)"
+                                *ngIf="item.status!='E_TRANSFERRED'">
+                                <i class="fa fa-arrow-right fa-lg"></i>
+                            </button>
+                        </ng-template>
+                    </data-table-column>
+
+                    <ng-template #basicSearch>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-add" (click)="onAdd(enrollDialog)">
+                                    <i class="fa fa-plus"></i> Thêm mới
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </data-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #enrollDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Nhập học</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-enrollment-add [inputClass]="class" [inputContact]="contact" [owner]="owner" [mode]="mode"
+                    [item]="selectedItem" [inputItems]="items" (valueChange)='onChanged($event)'>
+                </app-class-enrollment-add>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #transferDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Chuyển lớp</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-transfer [inputEnrollment]="selectedItem" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-class-transfer>
+            </div>
+        </div>
+    </div>
+</ng-template>

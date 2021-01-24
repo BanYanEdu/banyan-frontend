@@ -1,59 +1,68 @@
 <div class="row menu-panel">
-    <div class="col-sm-1 menu-item-panel">
-        <a routerLink="home" routerLinkActive="active" class="menu-item">
-            BANYAN
-            <!-- <img src="{{imgFolder}}/home.svg" alt="home" class="menu-icon" title="{{ 'MENU.HOME' | translate }}"> -->
-        </a>
-    </div>
-    <div class="col-sm-4 menu-item-panel" align="left">
-        <a routerLink="student/student/list" routerLinkActive="inactive" class="menu-item">
-            {{ 'MENU.STUDENTS' | translate }}
-        </a>
-        <span class="ml-3">
-            <a routerLink="class/class/list" routerLinkActive="active" class="menu-item">
-                {{ 'MENU.CLASSES' | translate }}
+    <div class="col-sm-7" align="left">
+        <span>
+            <a routerLink="home" routerLinkActive="active" class="menu-item">
+                <img src="{{ logoUrl }}" alt="{{ companyPrefix }}" height="40">
+            </a>
+        </span>
+        <span class="ml-5">
+            <a routerLink="student/student/list" routerLinkActive="inactive" class="menu-item">
+                {{ 'MENU.STUDENTS' | translate }}
             </a>
         </span>
         <span class="ml-3">
+            <a routerLink="class" routerLinkActive="active" class="menu-item">
+                {{ 'MENU.CLASSES' | translate }}
+            </a>
+        </span>
+        <span class="ml-3" *ngIf="getLocalStorageValue('ROLE.E_SETTINGS_ADMIN') == 'true'">
             <a routerLink="employee/employee/list" routerLinkActive="active" class="menu-item">
                 {{ 'MENU.LECTURERS' | translate }}
             </a>
         </span>
         <span class="ml-3">
+            <a routerLink="exam/examination/list" routerLinkActive="active" class="menu-item">
+                Thi/Kiểm tra
+            </a>
+        </span>
+        <span class="ml-3" *ngIf="getLocalStorageValue('ROLE.E_SETTINGS_ADMIN') == 'true'">
+            <!-- <span class="ml-3" *ngIf="getLocalStorageValue('ROLE.E_SETTINGS_ADMIN') == 'true'"> -->
             <a routerLink="settings" routerLinkActive="active" class="menu-item">
                 {{ 'MENU.SETTINGS' | translate }}
             </a>
         </span>
     </div>
-    <div class="col-sm-2 menu-item-panel" align="center">
-        <span class="menu-item">{{ companyPrefix }}</span>
-    </div>
-    <div class="col-sm-2 menu-item-panel" align="center">
-        <i class="fa fa-user"></i><span class="menu-item">{{ userDisplayName }}</span>
-    </div>
-    <!-- <div class="col-sm-2" align="center">
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="vi" class="btn menu-button" (click)="changeLanguage('vi')">Tiếng Việt</mat-button-toggle>
-            <mat-button-toggle value="en" class="btn menu-button" (click)="changeLanguage('en')">English</mat-button-toggle>
-            <mat-button-toggle value="ko" class="btn menu-button" (click)="changeLanguage('ko')">v한국어</mat-button-toggle>
-        </mat-button-toggle-group>
-    </div> -->
-
-
     <div class="col-sm-3 menu-button-panel" align="right">
-        <button type="button" class="btn btn-default menu-button" (click)="changeLanguage('vi')"
-            [disabled]="currentLang=='vi'" *ngIf="currentLang != 'vi'">
-            vi
+        <i class="fa fa-user mt-2 mr-1" style="color:white" title="{{userDisplayName}}"
+            *ngIf="userDisplayName!=''"></i>
+        <span style="color: white">{{userDisplayName}}</span>
+    </div>
+    <div class="col-sm-1 menu-button-panel" align="center">
+        <!-- <i class="fa fa-building mt-1" style="color:white;display: block;" title="{{ currentOutletName }}"
+            *ngIf="userDisplayName!=''"></i> -->
+        <!-- <span style="color: white">{{ currentOutletCode }}</span> -->
+
+        <button mat-button [matMenuTriggerFor]="selectOutlet" style="color:white;">
+            <i class="fa fa-building mr-1" style="color:white;" title="{{ currentOutletName }}"></i><span title="{{ currentOutletName }}">{{ currentOutletCode }}</span>
         </button>
-        <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('en')"
-            [disabled]="currentLang=='en'" *ngIf="currentLang != 'en'">
-            en
+        <mat-menu #selectOutlet="matMenu">
+            <button mat-menu-item *ngFor="let outlet of outlets" (click)="onOutletSelected(outlet)">{{ outlet.outletCode }} - {{ outlet.outletName }}</button>
+        </mat-menu>
+    </div>
+    <div class="col-sm-1 menu-button-panel" align="right">
+        <button mat-button [matMenuTriggerFor]="menu" style="color:white;">
+            <i class="fa fa-ellipsis-v" style="color:white;"></i>
         </button>
-        <!-- <button type="button" class="btn btn-default menu-button ml-2" (click)="changeLanguage('ko')"
-            [disabled]="currentLang=='ko'">
-            한국어
-        </button> -->
-        <button type="button" class="btn btn-default menu-button ml-5" (click)="onLogout()">
-            {{ 'COMMON.ACTION.LOG_OUT' | translate }}
-        </button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item href="{{ myProfileUrl }}" target="_blank">
+                Thông tin cá nhân
+            </a>
+            <a mat-menu-item href="{{ employeePortalUrl }}" target="_blank">
+                Cổng thông tin giảng viên
+            </a>
+            <button mat-menu-item (click)="changeLanguage('en')" *ngIf="currentLang != 'en'">English</button>
+            <button mat-menu-item (click)="changeLanguage('vi')" *ngIf="currentLang != 'vi'">Tiếng Việt</button>
+            <button mat-menu-item (click)="onLogout()">{{ 'COMMON.ACTION.LOG_OUT' | translate }}</button>
+        </mat-menu>
+        
     </div>

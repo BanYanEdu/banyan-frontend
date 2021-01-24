@@ -2,28 +2,26 @@
     <br>
     <div class="row">
         <div class="col-sm-12">
-            <span class="form-title">{{ 'MENU.CLASSES' | translate }}</span>
+            <span class="form-title">{{ 'MENU.CLASS' | translate }}</span>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-sm-6">
-            <ul>
-                <li routerLinkActive="active">
-                    <a routerLink="../class" routerLinkActive="active" class="link-text">
+        <div class="col-sm-5">
+            <mat-list>
+                <mat-list-item>
+                    <a routerLink="../class/list" routerLinkActive="active">
                         <h5>{{ 'MENU.CLASSES' | translate }}</h5>
                     </a>
-                </li>
-            </ul>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a routerLink="../class/multiple-schedule" routerLinkActive="active">
+                        <h5>Lịch dạy</h5>
+                    </a>
+                </mat-list-item>
+            </mat-list>
         </div>
-        <div class="col-sm-6">
-        </div>
+        <div class="col-sm-1"></div>
     </div>
-<!-- 
-    Slider
-
-    <div>
-        <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-    </div> -->
-
 </div>

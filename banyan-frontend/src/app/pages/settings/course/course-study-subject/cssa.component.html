@@ -14,8 +14,8 @@
         <app-study-subject-selector [uuid]="item.studySubjectId" (valueChange)="onChangeStudySubject(i,$event)">
         </app-study-subject-selector>
     </div>
-    <div class="col-sm-1" align="center">
-        <input type="text" class="form-control" maxlength="20" class="form-control form-required" numericInputOnly
+    <div class="col-sm-1">
+        <input type="text" class="form-control" maxlength="3" class="form-control form-required" numericInputOnly
             [(ngModel)]="item.unitCount" (change)="onChangeUnitCount()">
     </div>
     <div class="col-sm-3">
@@ -46,14 +46,14 @@
     </div>
     <div class="col-sm-2">
     </div>
-    <div class="col-sm-1" align="center">
-        <strong>{{ totalUnitCount }}</strong>
+    <div class="col-sm-1">
+        <strong>{{ totalUnitCount }}</strong> 
     </div>
 </div>
 <div class="row mt-4">
     <!-- <div class="col-sm-1"> </div> -->
     <div class="col-sm-2">
-        <button type="button" class="btn btn-save btn-block" (click)="startSave()" [disabled]="!isFormValid">
+        <button type="button" class="btn btn-save btn-block" (click)="startSave()">
             <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
         </button>
     </div>

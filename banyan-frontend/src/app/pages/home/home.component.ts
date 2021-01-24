@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  logoUrl: string;
 
   constructor(
     protected coreService: CoreService,
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     console.log(iNet);
+    this.logoUrl = iNet.getPUrl("plugin/firmlogo/view");
     // console.log(this.translateService.getCurrentLang());
   }
 }

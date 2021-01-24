@@ -44,6 +44,7 @@ export class EmployeeSearchComponent implements OnInit {
 
     load(params){
         // var criteria: any = params;
+        this.params = params;
         this.employeeService.employeeList(this.params).subscribe(data => {       
             this.items = data['items'];
             const items = data['items'];

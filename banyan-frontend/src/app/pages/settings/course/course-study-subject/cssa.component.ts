@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseAddDialogComponent } from "app/shared/components/BaseAddDialogComponent"
@@ -7,46 +7,43 @@ import { BaseEditableMdModel } from 'app/shared/models/BaseEditableMdModel';
 import { NotificationType } from 'app/shared/models/NotificationType';
 import { CourseStudySubject } from 'app/model/settings/CourseStudySubject';
 import { SettingsService } from '../../settings.service';
+import { BaseComponent } from 'app/shared/components/BaseComponent';
+// import { EventEmitter } from 'keyv';
 
 @Component({
     selector: 'app-course-study-subject-assign',
     templateUrl: './cssa.component.html'
 })
-export class CourseStudySubjectAssignComponent extends BaseAddDialogComponent<CourseStudySubject>{
-    @Input() items: any[];
+export class CourseStudySubjectAssignComponent extends BaseComponent implements OnInit {
+    @Input() inputItems: CourseStudySubject[];
     @Input() id: string;
+    @Output() valueChange = new EventEmitter();
 
-    finalItems: any[] = [];
+    mainForm: FormGroup;
+
+    finalItems: CourseStudySubject[] = [];
     totalUnitCount: number = 0;
 
     constructor(
         element: ElementRef,
         private settingsService: SettingsService,
         protected commonService: CommonService,
-    ) {
-        super(element, commonService);
-    }
-    protected createMainFormGroup(): FormGroup {
-        return new FormGroup({
+    ) {  super(commonService)  }
+
+    ngOnInit() {
+        this.mainForm = new FormGroup({
             'nothing': new FormControl(null),
-
         });
-    }
-
-    protected patchInitializedMainForm() {
-        this.finalItems = this.items;
-        // console.log(this.finalItems);
+        
+        for (var i=0;i<this.inputItems.length;i++ ) {
+            let x: CourseStudySubject = {};
+            x.studySubjectId = this.inputItems[i].studySubjectId;
+            x.unitCount = this.inputItems[i].unitCount;
+            x.sortIndex = this.inputItems[i].sortIndex;
+            // x = this.inputItems[i];
+            this.finalItems.push(x);
+        }
         this.updateTotalUnitCount();
-    }
-
-    protected callSearch(input: { code: string }, callbackFn: Function): void {
-        // this.classService.courseList(input).subscribe(data => callbackFn(data));
-    }
-    protected callAddItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        // this.classService.courseCreate(requestItem).subscribe(data => callbackFn(data));
-    }
-    protected callUpdateItem(requestItem: BaseEditableMdModel, callbackFn: Function): void {
-        // this.classService.courseUpdate(requestItem).subscribe(data => callbackFn(data));
     }
 
     onAddRow() {
@@ -57,7 +54,8 @@ export class CourseStudySubjectAssignComponent extends BaseAddDialogComponent<Co
                 studySubjectName: "",
                 unitCount: 0,
                 remark: ""
-            });
+            }); 
+
     }
     onDeleteRow(i: number) {
         this.finalItems.splice(i, 1);
@@ -89,10 +87,26 @@ export class CourseStudySubjectAssignComponent extends BaseAddDialogComponent<Co
 
         for (let i = 0; i < this.finalItems.length; i++) {
             this.finalItems[i].sortIndex = i;
-            if (this.finalItems[i].studySubjectId == "" || this.finalItems[i].unitCount == "" || this.finalItems[i].unitCount == 0) {
+            if (this.finalItems[i].studySubjectId == "" || this.finalItems[i].unitCount == 0) {
                 this.showMessage('Thông tin nhập chưa đầy đủ.', 'Cảnh báo', NotificationType.ERROR);
                 return;
             }
+        }
+
+        // Check duplication
+        let valuesAlreadySeen = []
+        let duplicated = false;
+        for (let i = 0; i < this.finalItems.length; i++) {
+            let value = this.finalItems[i].studySubjectId;
+            if (valuesAlreadySeen.indexOf(value) !== -1) {
+                duplicated = true;
+                break;
+            }
+            valuesAlreadySeen.push(value)
+        }
+        if (duplicated) {
+            this.showMessage('Dữ liệu bị trùng.', 'Cảnh báo', NotificationType.WARNING);
+            return;
         }
 
         this.customizedSave();
@@ -112,6 +126,9 @@ export class CourseStudySubjectAssignComponent extends BaseAddDialogComponent<Co
     }
     onChangeUnitCount() {
         this.updateTotalUnitCount();
+        // console.log("items:");
+        // console.log(this.inputItems);
+        // console.log("finalItems:");
+        // console.log(this.finalItems);
     }
-
 }

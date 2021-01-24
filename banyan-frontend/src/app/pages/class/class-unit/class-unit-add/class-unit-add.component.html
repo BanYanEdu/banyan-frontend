@@ -1,0 +1,87 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row mt-2">
+                <div class="col-sm-3">
+                    <div class="mat-elevation-z1" style="padding: 5px; min-height: 80px;">
+                        <span style="display: block;" align="center"><h4>{{ requestItem.studySubjectName }}</h4></span>
+                        <span style="display: block;" align="center" *ngIf="requestItem.studySubjectName == null"><h4><i class="fa fa-book mr-1"></i>Chọn môn học</h4></span>                     
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <mat-chip-list aria-label="Study Subjects">
+                        <mat-chip color="primary" *ngFor="let subject of classStudySubjects" (click)="onSubjectSelected(subject)">
+                            {{ subject.studySubjectName }} ({{ subject.unitCount }})
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-3">
+                    <div class="mat-elevation-z1" style="padding: 5px; min-height: 80px;">
+                        <span style="display: block;" align="center"><h4>{{ assignment?.employeeName }}</h4></span>
+                        <span style="display: block;" align="center">{{ assignment?.employeeCode }}</span>
+                        <span style="display: block;" align="center" *ngIf="assignment">{{ 'MODULE.CLASS.ROLE_VALUES.' + assignment?.role | translate }}</span>
+                        <span style="display: block;" align="center" *ngIf="!assignment"><h4><i class="fa fa-user mr-1"></i>Chọn giảng viên</h4></span>                     
+
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <mat-chip-list aria-label="Lecturers">
+                        <mat-chip color="primary" *ngFor="let classLecturer of classLecturers" (click)="onLecturerSelected(classLecturer)">
+                            {{ classLecturer.employeeName }}
+                            <span class="form-sub-label ml-1">
+                                ({{ classLecturer.employeeCode }} - {{ 'MODULE.CLASS.ROLE_VALUES.' + classLecturer.role | translate }} )
+                            </span>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <span style="display: block;" class="mt-2">
+                        <button class="btn btn-add" type="button" (click)="searchEmployee(searchEmployeeDialog)">
+                            <i class="fa fa-search"></i> Chọn giảng viên tạm thời
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm-3">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>{{ 'COMMON.GENERAL.STATUS' | translate }}</mat-label>
+                        <mat-select (selectionChange)="onStatusChanged()" formControlName="status" required>
+                            <mat-option value="{{ status }}" *ngFor="let status of statuses">{{
+                                'MODULE.CLASS.CLASS_UNIT_STATUS_VALUES.' + status | translate }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-9">
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Ghi chú</mat-label>
+                        <input type="text" matInput formControlName="remark">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>
+
+<ng-template #searchEmployeeDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">Tìm giảng viên</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-employee-search (valueChange)="onEmployeeSelected($event)"></app-employee-search>
+            </div>
+        </div>
+    </div>
+</ng-template>

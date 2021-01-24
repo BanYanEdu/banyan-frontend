@@ -1,10 +1,21 @@
+<!-- <form [formGroup]="mainForm"> -->
 <div class="app-content">
     <div class="row form-header">
-        <div class="col-sm-12">
+        <div class="col-sm-4">
             <span class="form-title">Ngày nghỉ lễ</span>
-            <button type="button" class="btn btn-default ml-2" (click)="onAdd(editDialog)">
-                Thêm
+            <button type="button" class="btn btn-add ml-2" (click)="onAdd(editDialog)">
+                <i class="fa fa-plus"></i>
             </button>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field class="input-full-width">
+                <mat-label>Năm</mat-label>
+                <mat-select (selectionChange)="onSearch()" [(value)]="selectedYear">
+                    <mat-option value="{{ year }}" *ngFor="let year of years">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
     </div>
     <div class="row form-body" style="margin: 5px">
@@ -12,24 +23,27 @@
             (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
             [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
             [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
-            <data-table-column [property]="'code'" [header]="'Mã'" [width]="100">
-            </data-table-column>
-            <data-table-column [property]="'name'" [header]="'Tên'">
-            </data-table-column>
-            <data-table-column [property]="'sortIndex'" [header]="'TTHT'" [styleClass]="'text-center'" [width]="120">
-            </data-table-column>
-            <data-table-column [property]="" [header]="'NTD'" [styleClass]="'text-center'" [width]="100">
+            <data-table-column [property]="" [header]="'Ngày'" [width]="100" [styleClass]="'text-center'">
                 <ng-template #dataTableCell let-item="item">
-                    <div class="">
-                        <span *ngIf="item.inactive"><i class="fa fa-check"></i></span>
-                    </div>
+                    {{ item.date | moment }}
                 </ng-template>
+            </data-table-column>
+            <data-table-column [property]="" [header]="'Loại'" [styleClass]="'text-center'" [width]="150">
+                <ng-template #dataTableCell let-item="item">
+                    {{ 'MODULE.SETTINGS.HOLIDAY_TYPE_VALUES.' + item.type | translate }}
+                </ng-template>
+            </data-table-column>
+            <data-table-column [property]="'remark'" [header]="'Ghi chú'">
             </data-table-column>
             <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
                 <ng-template #dataTableCell let-item="item">
-                    <button type="button" class="btn btn-default btn-sm space-right-small"
+                    <button type="button" class="btn btn-add btn-sm space-right-small"
                         (click)="onEdit(editDialog, item)">
                         <i class="fa fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-add btn-sm space-right-small ml-2"
+                        (click)="onDelete(item.uuid)">
+                        <i class="fa fa-trash"></i>
                     </button>
                 </ng-template>
             </data-table-column>
@@ -43,18 +57,24 @@
                     <h4 class="modal-title pull-left">
                         Ngày nghỉ lễ
                         <span *ngIf="isEditMode"> - Sửa</span>
-                        <span *ngIf="!isEditMode"> - Thêm</span></h4>
+                        <span *ngIf="!isEditMode"> - Thêm</span>
+                    </h4>
                     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <app-holiday-add [item]="selectedItem" [mode]="mode" (valueChange)='onChanged($event)'>
+                    <app-holiday-add [item]="selectedItem" [mode]="mode" [year]="selectedYear"
+                        (valueChange)='onChanged($event)'>
                     </app-holiday-add>
                 </div>
             </div>
         </div>
     </ng-template>
+
+    <app-confirm-dialog iconCls="fa fa-trash" [title]="'MESSAGE.CONFIRM_DELETE_TITLE' | translate"
+        [content]="'MESSAGE.CONFIRM_DELETE_MSG' | translate">
+    </app-confirm-dialog>
 
     <!-- <app-confirm-dialog iconCls="fa fa-trash" >
     </app-confirm-dialog> -->

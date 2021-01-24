@@ -12,10 +12,10 @@ import { Contact } from 'app/model/student/Contact';
 export class StudentService {
     private url = {
         // Student
-        banyan_ems_student_create: iNet.getPUrl('crm/ems/contact/create'),
-        banyan_ems_student_update: iNet.getPUrl('crm/ems/contact/update'),
-        // banyan_ems_student_delete: iNet.getPUrl('crm/ems/student/delete'),
-        banyan_ems_student_list: iNet.getPUrl('crm/ems/contact/list'),
+        banyan_ems_student_create: iNet.getPUrl('banyan/ems/contact/create'),
+        banyan_ems_student_update: iNet.getPUrl('banyan/ems/contact/update'),
+        // banyan_ems_student_delete: iNet.getPUrl('banyan/ems/student/delete'),
+        banyan_ems_student_list: iNet.getPUrl('banyan/ems/contact/list'),
     };
 
     constructor(private http: HttpClientService, ) { }

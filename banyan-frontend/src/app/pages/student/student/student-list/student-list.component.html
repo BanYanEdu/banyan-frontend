@@ -15,7 +15,7 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-3">
-                <app-outlet-selector matInput [uuid]="outletId" [mode]="mode" [firstValue]="'E_ALL'" (valueChange)="onChangeOutlet($event)">
+                <app-outlet-selector matInput [uuid]="currentOutletId" [mode]="mode" [firstValue]="'E_ALL'" (valueChange)="onChangeOutlet($event)">
                 </app-outlet-selector>
             </div>
             <div class="col-sm-2">

@@ -32,22 +32,34 @@ import { MinuteSelectorComponent } from './time-selector/minute-selector.compone
 import { ProgramSelectorComponent } from './program-selector/program-selector.component';
 import { StudySubjectSelectorComponent } from './study-subject-selector/study-subject-selector.component';
 import { CourseSelectorComponent } from './course-selector/course-selector.component';
-import { MatCheckboxModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatDividerModule,
+         MatBadgeModule,
+         MatCardModule, 
+         MatCheckboxModule, 
+         MatInputModule, 
+         MatSelectModule,
+         MatListModule,
+         MatChipsModule,
+         MatMenuModule,
+         MatButtonModule,
+         } from '@angular/material';
 import { SourceSelectorComponent } from './source-selector/source-selector.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
 import { StudentAddComponent } from '../student/student/student-add/student-add.component';
 import { ClassSearchComponent } from '../class/class-search/class-search.component';
 import { ClassTransferComponent } from '../class/class-transfer/class-transfer.component';
-import { ClassEnrollmentComponent } from '../class/class-enrollment/class-enrollment.component';
-import { ClassEnrollComponent } from '../class/class-enroll/class-enroll.component';
-import { ClassAssignmentComponent } from '../class/class-assignment/class-assignment.component';
-import { ClassAssignComponent } from '../class/class-assign/class-assign.component';
 import { EmployeeSearchComponent } from '../employee/employee/employee-search/employee-search.component';
-import { TestSubjectSelectorComponent } from '../settings/test-subject/test-subject-selector/test-subject-selector.component';
+import { ExamSubjectSelectorComponent } from '../settings/exam-subject/exam-subject-selector/exam-subject-selector.component';
+import { ClassEnrollmentListComponent } from '../class/class-enrollment/class-enrollment-list/class-enrollment-list.component';
+import { ClassEnrollmentAddComponent } from '../class/class-enrollment/class-enrollment-add/class-enrollment-add.component';
+import { ClassAssignmentListComponent } from '../class/class-assignment/class-assignment-list/class-assignment-list.component';
+import { ClassAssignmentAddComponent } from '../class/class-assignment/class-assignment-add/class-assignment-add.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { CommentAddComponent } from './comment/comment-add/comment-add.component';
+import { ExaminationAddComponent } from '../exam/examination/examination-add/examination-add.component';
 
 @NgModule({
     imports: [
-        // NgxMaskModule.forRoot(),
         CloudTranslateModule.forRoot({
             loader: CustomTranslateLoader
         }),
@@ -62,77 +74,93 @@ import { TestSubjectSelectorComponent } from '../settings/test-subject/test-subj
         FormsModule,
         GridModule,
         CoreModule,
-        // TreeviewModule.forRoot(),
-        // DropdownTreeviewSelectModule,
         DialogModule,
         RouterModule,
-        MatInputModule,
+        MatBadgeModule,
+        MatButtonModule,
+        MatCardModule,
         MatCheckboxModule,
-        MatSelectModule
+        MatDividerModule,
+        MatInputModule,
+        MatSelectModule,
+        MatListModule,
+        MatMenuModule,
+        MatChipsModule
     ],
     declarations: [ 
         MomentPipe,
-        // ReversePipe,
         InputCharacterMaskDirective,
-        // NumericSeparatorDirective,
         NumericOnlyDirective,
         OutletSelectorComponent,
         ProgramSelectorComponent,
+        ClassSearchComponent,
+        ClassTransferComponent,
+        ClassEnrollmentListComponent,
+        ClassEnrollmentAddComponent,
+        ClassAssignmentListComponent,
+        ClassAssignmentAddComponent,
+        CommentAddComponent,
+        CommentListComponent,
         CourseSelectorComponent,
-        StudySubjectSelectorComponent,
+        EmployeeSearchComponent,
+        ExamSubjectSelectorComponent,
+        ExaminationAddComponent,
         HourSelectorComponent,
         MinuteSelectorComponent,
         SourceSelectorComponent,
+        StudySubjectSelectorComponent,
         StudentSearchComponent,
         StudentAddComponent,
-        ClassSearchComponent,
-        ClassTransferComponent,
-        ClassEnrollmentComponent,
-        ClassEnrollComponent,
-        ClassAssignmentComponent,
-        ClassAssignComponent,
-        EmployeeSearchComponent,
-        TestSubjectSelectorComponent
+        
     ],
     exports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        CoreModule,
+        BsDatepickerModule,
         CloudTranslateModule,
-        ModalModule,
-        RouterModule,
+        CommonModule,
+        CoreModule,
+        FormsModule,
+        HttpClientModule,
         InterceptorModule,
+        MatBadgeModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDividerModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatSelectModule,
+        ModalModule,
+        MomentPipe,
+        ReactiveFormsModule,
+        RouterModule,
         PopoverModule,
         TabsModule,
-        BsDatepickerModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        MomentPipe,
-        // ReversePipe,
         InputCharacterMaskDirective,
-        // NumericSeparatorDirective,
         NumericOnlyDirective,
         DialogModule,
-        OutletSelectorComponent,
-        ProgramSelectorComponent,
+        ClassSearchComponent,
+        ClassTransferComponent,
+        ClassEnrollmentListComponent,
+        ClassEnrollmentAddComponent,
+        ClassAssignmentListComponent,
+        ClassAssignmentAddComponent,
+        CommentAddComponent,
+        CommentListComponent,
         CourseSelectorComponent,
-        StudySubjectSelectorComponent,
+        EmployeeSearchComponent,
+        ExamSubjectSelectorComponent,
+        ExaminationAddComponent,
         HourSelectorComponent,
         MinuteSelectorComponent,
+        OutletSelectorComponent,
+        ProgramSelectorComponent,
+        StudySubjectSelectorComponent,
         SourceSelectorComponent,
         StudentSearchComponent,
         StudentAddComponent,
-        ClassSearchComponent,
-        ClassTransferComponent,
-        ClassEnrollmentComponent,
-        ClassEnrollComponent,
-        ClassAssignmentComponent,
-        ClassAssignComponent,
-        EmployeeSearchComponent,
-        TestSubjectSelectorComponent
+        
     ],
     providers: [
         ComponentLoaderFactory,

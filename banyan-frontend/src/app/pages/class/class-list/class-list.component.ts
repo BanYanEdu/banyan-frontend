@@ -18,12 +18,12 @@ export class ClassListComponent extends BaseListComponent<SchoolClass> implement
     public mainForm: FormGroup;
     @ViewChild("searchValue") erSearchValue: ElementRef;
     mode: FormMode = FormMode.E_EDIT;
-    programId: string ="E_ALL";
-    outletId: string = "E_ALL";
+    programId: string = "E_ALL";
+    outletId: string = localStorage.getItem("currentOutletId");
     classStatuses: any[] = ClassStatuses;
-    statuses: any[] =['E_PLANNING','E_RECRUITING', 'E_STARTED'];
+    statuses: any[] = ['E_PLANNING', 'E_RECRUITING', 'E_STARTED'];
     serviceStatuses: any[] = ServiceStatuses;
-    
+
     constructor(
         commonService: CommonService,
         protected classService: ClassService,
@@ -35,7 +35,7 @@ export class ClassListComponent extends BaseListComponent<SchoolClass> implement
     }
 
     ngOnInit() {
-        this.config.class="modal-medium";
+        this.config.class = "modal-medium";
 
         this.mainForm = new FormGroup({
             'searchValue': new FormControl(null),
@@ -55,14 +55,17 @@ export class ClassListComponent extends BaseListComponent<SchoolClass> implement
     }
 
     protected callLoadList(callbackFn: Function, errorFn: Function): void {
+
+        // console.log("Load data: " + this.outletId);
+
         let searchValue = this.mainForm.get('searchValue').value;
         searchValue = searchValue.replace(/[*\\]/g, '');
-        this.params.searchValue = searchValue; 
+        this.params.searchValue = searchValue;
         this.mainForm.get('searchValue').setValue(searchValue);
-        if (this.programId != "E_ALL" ) {
+        if (this.programId != "E_ALL") {
             this.params.programId = this.programId;
         }
-        if (this.outletId != "E_ALL" ) {
+        if (this.outletId != "E_ALL") {
             this.params.outletId = this.outletId;
         }
         this.statuses = this.mainForm.get('statuses').value;
@@ -75,12 +78,16 @@ export class ClassListComponent extends BaseListComponent<SchoolClass> implement
         this.dataTableRef.firstPage();
     }
     onChangeProgram(event) {
-        this.programId = event[0];
-        this.onSearch();
+        if (this.programId != event[0]) {
+            this.programId = event[0];
+            this.onSearch();
+        }
     }
     onChangeOutlet(event) {
-        this.outletId = event[0];
-        this.onSearch();
+        if (this.outletId != event[0]) {
+            this.outletId = event[0];
+            this.onSearch();
+        }
     }
     onChangeStatus() {
         this.onSearch();
@@ -88,5 +95,4 @@ export class ClassListComponent extends BaseListComponent<SchoolClass> implement
     onChangeServiceStatus() {
         this.onSearch();
     }
-
 }

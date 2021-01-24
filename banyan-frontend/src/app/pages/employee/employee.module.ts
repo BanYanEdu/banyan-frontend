@@ -11,6 +11,8 @@ import { AppCommonModule } from '../common/app-common.module';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeViewComponent } from './employee/employee-view/employee-view.component';
 import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
+import { EmployeePermissionProfileViewComponent } from './employee/employee-permission-profile-view/eppv.component';
+import { EmployeePermissionProfileAddComponent } from './employee/employee-permission-profile-add/eppa.component';
 
 @NgModule({
     imports: [
@@ -26,7 +28,9 @@ import { EmployeeAddComponent } from './employee/employee-add/employee-add.compo
         EmployeeHomeComponent,
         EmployeeListComponent,
         EmployeeViewComponent,
-        EmployeeAddComponent
+        EmployeeAddComponent,
+        EmployeePermissionProfileViewComponent,
+        EmployeePermissionProfileAddComponent
     ],
     providers: [
         CommonService,

@@ -9,8 +9,10 @@
     <link rel="icon" type="image/x-icon" href="src/assets/images/banyan.png">
     <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <!--link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"-->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+    
+    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -52,14 +54,14 @@
     <script type="text/javascript">
 
         // Config server here
-        /*var pathServer = 'http://172.16.3.166:8080/collaboration/vinaco';*/
         var pathServer = 'https://calista-dev.inetcloud.vn/hrm/vinaco';
-         // var pathServer = 'https://app.dxsoft.vn/collaboration/inetcorp';
+        // var pathServer = 'https://calista-dev.inetcloud.vn/hrm/kanata';
         // Don't need config anything else`
         var arrPath = pathServer.split('/');
         var domainPath = arrPath.slice(0, 3).join('/');
         iNet.apply(iNet, {
-            prefix: 'vinaco',
+            // prefix: 'kanata',
+            prefix: 'vinacoo',
             imgFolder: '//media.inetcloud.vn/images/banyan-ems',
             commonImageFolder: '//media.inetcloud.vn/images/common',
             jsFolder: '',

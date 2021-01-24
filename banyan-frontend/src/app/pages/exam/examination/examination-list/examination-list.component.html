@@ -1,0 +1,114 @@
+<form [formGroup]="mainForm">
+    <div class="app-content">
+        <div class="row form-header">
+            <div class="col-sm-4">
+                <span class="form-title">Kỳ thi</span>
+                <!-- <button type="button" class="btn btn-add ml-4" (click)="onAdd(editDialog)" disabled>
+                    <i class="fa fa-plus"></i>
+                </button> -->
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Giá trị tìm kiếm</mat-label>
+                    <input type="text" matInput formControlName="searchValue" maxlength="250" (keyup.enter)="onSearch()"
+                        #searchValue placeholder="Mã, tên">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <app-outlet-selector matInput [uuid]="currentOutletId" [mode]="mode" [firstValue]="'E_ALL'"
+                    (valueChange)="onChangeOutlet($event)">
+                </app-outlet-selector>
+            </div>
+            <div class="col-sm-2">
+                <mat-form-field class="input-full-width">
+                    <mat-label>{{ 'COMMON.GENERAL.STATUS' | translate }}</mat-label>
+                    <mat-select  formControlName="statuses" multiple (selectionChange)="onChangeStatus()" >
+                            <mat-option value="{{ status }}" *ngFor="let status of examStatuses">
+                                {{ 'MODULE.EXAM.EXAM_STATUS_VALUES.' + status | translate }}
+                            </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                    <!-- {{ 'COMMON.ACTION.SEARCH' | translate }} -->
+                </button>
+            </div>
+            
+        </div>
+        <div class="row form-body" style="margin: 5px">
+            <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
+                [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <a routerLink="../../examination/view/{{item.uuid}}" class="link-text">{{ item.name}}</a>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'MENU.CLASS' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <a routerLink="../../../class/class/view/{{item?.classInfo.classId }}" class="link-text">{{ item?.classInfo.className}}</a>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'MENU.OUTLET' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ item.classInfo.outletName }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Ngày bắt đầu'"
+                    [styleClass]="'text-center'" [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item?.startDate">{{ item?.startDate | moment }}</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Ngày kết thúc'" [styleClass]="'text-center'" [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item?.endDate">{{ item?.endDate | moment }}</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.STATUS' | translate"
+                    [styleClass]="'text-center'" [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ 'MODULE.EXAM.EXAM_STATUS_VALUES.' + item?.status | translate }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-add btn-sm space-right-small"
+                            (click)="onEdit(editDialog, item)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+
+        <ng-template #editDialog>
+            <div class="modal-form">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">
+                            {{ 'MENU.EXAMINATION' | translate }}
+                            <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                            <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                        </h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <app-examination-add [item]="selectedItem" [mode]="mode" (valueChange)='onChanged($event)'>
+                        </app-examination-add>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- <app-confirm-dialog iconCls="fa fa-trash" >
+    </app-confirm-dialog> -->
+
+    </div>
+</form>
