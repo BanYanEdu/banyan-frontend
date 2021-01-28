@@ -1,23 +1,6 @@
 <div class="app-content-white">
-    <div class="row mat-elevation-z1" style="padding-bottom: 5px;">
-        <div class="col-sm-5">
-            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
-            <span class="form-title"><a routerLink="/class/class/view/{{schoolClass?.uuid}}" class="link-text">{{
-                    schoolClass?.name }}</a></span>
-        </div>
-        <div class="col-sm-1">
-            <span class="form-sub-label" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
-            <span style="display:block">{{ schoolClass?.facilityNo }}</span>
-        </div>
-        <div class="col-sm-1" align="center">
-            <span class="form-sub-label" style="display:block">Bắt đầu</span>
-            <span style="display:block">{{ schoolClass?.actualStartDate | moment }}</span>
-        </div>
-        <div class="col-sm-1" align="center">
-            <span class="form-sub-label" style="display:block">Kết thúc</span>
-            <span style="display:block">{{ schoolClass?.actualEndDate | moment }}</span>
-        </div>
-        <div class="col-sm-4" align="right">
+    <div class="row" style="padding-bottom: 5px; background-color: whitesmoke;">
+        <div class="col-sm-12" align="right">
             <div class="mt-2">
                 <span>
                     <button type="button" class="btn-add btn-lite mr-1" (click)="onFirst()">

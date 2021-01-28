@@ -1,0 +1,80 @@
+<div class="app-content-white">
+    <div class="row mat-elevation-z1" style="padding-bottom: 5px;">
+        <div class="col-sm-5">
+            <span class="form-sub-label" style="display: block;">{{ 'MENU.CLASS' | translate | uppercase }}</span>
+            <span class="form-title"><a routerLink="/class/view/{{class?.uuid}}" class="link-text">{{
+                    class?.name }}</a></span>
+        </div>
+        <div class="col-sm-1">
+            <span class="form-sub-label mt-1" style="display:block">{{ 'MENU.FACILITY' | translate }}</span>
+            <span style="display:block">{{ class?.facilityNo }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label mt-1" style="display:block">Bắt đầu</span>
+            <span style="display:block">{{ class?.actualStartDate | moment }}</span>
+        </div>
+        <div class="col-sm-1" align="center">
+            <span class="form-sub-label mt-1" style="display:block">Kết thúc</span>
+            <span style="display:block">{{ class?.actualEndDate | moment }}</span>
+        </div>
+        <div class="col-sm-4" align="right">
+            <div class="mt-2">
+                <span *ngIf="class?.status=='E_STARTED'" class="mr-4">
+                    <button type="button" class="btn btn-add" (click)="onGenerate()" *ngIf="!class?.classUnitsGenerated && items.length==0">
+                        <i class="fa fa-plus"></i> Tạo hàng loạt
+                    </button>
+                </span>
+                <span>
+                    <button type="button" class="btn btn-add mr-1" (click)="onCalendarView()">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                    <button type="button" class="btn btn-add mr-1" (click)="onTableView()">
+                        <i class="fa fa-table"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div *ngIf="viewMode=='E_TABLE'">
+                <app-class-unit-list [class]="class" [classId]="id" ></app-class-unit-list>
+            </div>
+            <div *ngIf="viewMode=='E_CALENDAR'">
+                <app-class-single-schedule [schoolClass]="class" [classId]="id" ></app-class-single-schedule>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    <span>
+                        <i class="fa fa-calendar mr-1"></i>
+                        {{ 'COMMON.TIME.WEEK_DAY_SHORT_VALUES.' + selectedDate.getDay() | translate }},
+                        {{ selectedItem?.date | moment }}
+                    </span>
+                    <span>
+                        <i class="fa fa-clock-o mr-1 ml-3"></i>
+                        {{ selectedItem?.hourFrom }}:{{selectedItem?.minuteFrom }} - {{ selectedItem?.hourTo
+                        }}:{{selectedItem?.minuteTo }}
+                    </span>
+                </h4>
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-class-unit-add [inputItem]="selectedItem" [classId]="selectedItem.classInfo.classId" [mode]="mode"
+                    [class]="class" [classStudySubjects]="classStudySubjects" [classLecturers]="classLecturers"
+                    (valueChange)='onChanged($event)'>
+                </app-class-unit-add>
+            </div>
+        </div>
+    </div>
+</ng-template> -->

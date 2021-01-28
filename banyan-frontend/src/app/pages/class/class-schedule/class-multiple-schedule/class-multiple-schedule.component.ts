@@ -47,7 +47,7 @@ export class ClassMultipleScheduleComponent extends BaseComponent {
         this.load();
 
         this.setCurrentFirstDate(new Date());
-        this.generateDateRange();       
+        this.generateDateRange();    
     }
 
     // Load Class

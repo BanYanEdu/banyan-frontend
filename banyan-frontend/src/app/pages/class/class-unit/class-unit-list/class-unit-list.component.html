@@ -1,5 +1,5 @@
 <div class="app-content-white">
-    <div class="" style="margin: 5px">
+    <!-- <div class="" style="margin: 5px">
         <div class="row" *ngIf="class?.status=='E_STARTED'">
             <div class="col-sm-3">
                 <button type="button" class="btn btn-add" *ngIf="items.length == 0" (click)="onGenerate()">
@@ -7,12 +7,12 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="row mt-2">
         <div class="col-sm-12">
             <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
                 (reload)="load($event)" [limit]="pageLimit" [selectColumn]="false" [multiSelect]="false"
-                [pagination_input]="true" [pagination_range]="false" [indexColumnHeader]="'#'"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'"
                 [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="false" [pagination_limit]="true">
                 <data-table-column [property]="" [header]="'Ngày'" [styleClass]="'text-left'">
                     <ng-template #dataTableCell let-item="item">
@@ -62,19 +62,14 @@
                     </ng-template>
                 </data-table-column>
 
-                <ng-template #basicSearch>
+                <!-- <ng-template #basicSearch>
                     <div class="row">
                         <div class="col-sm-12">
-                            <!-- <button type="button" class="btn btn-add" (click)="onAdd(editDialog)">
-                                <i class="fa fa-plus"></i>                                
-                            </button> -->
                             <a routerLink="../../../class/single-schedule/{{classId}}" class="link-text"><i
                                     class="fa fa-calendar mt-2 mr-1"></i> <strong>Lịch học</strong></a>
                         </div>
-                        <!-- <div class="col-sm-6">
-                        </div> -->
                     </div>
-                </ng-template>
+                </ng-template> -->
             </data-table>
         </div>
     </div>

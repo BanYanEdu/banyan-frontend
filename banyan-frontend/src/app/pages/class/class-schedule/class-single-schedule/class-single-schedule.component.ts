@@ -15,10 +15,10 @@ import { Utils } from 'app/shared/Utils';
     templateUrl: './class-single-schedule.component.html'
 })
 export class ClassSingleScheduleComponent extends BaseComponent {
-    id: string;
-    schoolClass: SchoolClass;
-    // today: any;
-    // todayDay: number;
+    @Input() schoolClass: SchoolClass;
+    @Input() classId: string;
+    // id: string;
+    // schoolClass: SchoolClass;
     currentFirstDate: any;
     startingDay: number = 1;  // 1: Monday
     days: any[] = [];
@@ -44,37 +44,28 @@ export class ClassSingleScheduleComponent extends BaseComponent {
     ) { super(commonService)}
 
     ngOnInit() {
-        this.load();
-
+        
         this.setCurrentFirstDate(new Date());
-        this.generateDateRange();       
+        this.generateDateRange();
+        this.load();       
     }
 
     // Load Class
     load() {
-        this.route.params.subscribe(params => {
-            this.id = params['id'];
-            // Get Class Data
-            this.classService.classList({uuid: this.id}).subscribe(data =>
-                {
-                    this.schoolClass = data.items[0];
-                }
-            );                
-            this.loadSchedule();
+        this.loadSchedule();
             // Get Study Subjects
-            this.classService.studySubjectList({classId: this.id}).subscribe(data =>
+            this.classService.studySubjectList({classId: this.classId}).subscribe(data =>
                 {
                     this.classStudySubjects = data.items;
                 }
             );
             // Get Lecturers
-            this.classService.assignmentList({classId: this.id}).subscribe(data =>
+            this.classService.assignmentList({classId: this.classId}).subscribe(data =>
                 {
                     this.classLecturers = data.items;
                 }
             );
 
-        });
     }
 
     // Generate Date Range
@@ -93,11 +84,14 @@ export class ClassSingleScheduleComponent extends BaseComponent {
 
     // Load Class Units
     loadSchedule(){
-        // console.log("loadSchedule...");
-        this.classService.unitList({classId: this.id}).subscribe(data =>
+        let params: any = {};
+        params.classId = this.classId;
+        params.dateFrom = this.days[0].dateLong;
+        params.dateTo = this.days[6].dateLong;
+
+        this.classService.unitList(params).subscribe(data =>
             {
                 this.classUnits = data.items;
-                // console.log(this.classUnits);
                 this.refineDate();
             }
         );
@@ -156,4 +150,6 @@ export class ClassSingleScheduleComponent extends BaseComponent {
             this.currentFirstDate = Utils.addDays(date, this.startingDay - date.getDay() - 7);
         }
     }
+
+    
 }

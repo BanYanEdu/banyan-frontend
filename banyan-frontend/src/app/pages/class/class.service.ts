@@ -38,6 +38,7 @@ export class ClassService {
         banyan_ems_class_unit_delete: iNet.getPUrl('banyan/ems/class-unit/delete'),
         banyan_ems_class_unit_generate: iNet.getPUrl('banyan/ems/class-unit/generate'),
         banyan_ems_class_unit_split: iNet.getPUrl('banyan/ems/class-unit/split'),
+        banyan_ems_class_unit_time_conflict_check: iNet.getPUrl('banyan/ems/class-unit-time-conflict/check'),
     };
 
     constructor(private http: HttpClientService, ) { }
@@ -67,5 +68,6 @@ export class ClassService {
    unitGenerate(id: string): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_unit_generate, {classId: id}); }
    unitDelete(id: string): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_unit_delete, {uuid: id}); }
    unitSplit(id: string): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_unit_split, {classUnitId: id}); }
+   unitTimeConflictCheck(criteria: any): Observable<any> { return this.http.postJSON(this.url.banyan_ems_class_unit_time_conflict_check, criteria); }
    
   }

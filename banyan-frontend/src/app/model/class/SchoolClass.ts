@@ -31,6 +31,7 @@ export class SchoolClass extends BaseEditableMdModel {
     facilityNo?: string;
     defaultFee?: number;
     remark?: string;
+    classUnitsGenerated?: boolean;
 }
 
   

@@ -1,0 +1,22 @@
+<div class="admin-layout">
+    <div class="nav-fixed-top cp-toolbar">
+      <h5><i class="fa fa-table" aria-hidden="true"></i> Pagination</h5>
+    </div>
+    <div class="cp-content">
+      <div class="p-2">
+        <div id="grid-container">
+
+            
+          <angular-slickgrid gridId="grid2" #angularSlickGrid
+                             [columnDefinitions]="columnDefinitions"
+                             [gridOptions]="gridOptions"
+                             [dataset]="dataset"
+                             (onAngularGridCreated)="angularGridReady($event)" >
+          </angular-slickgrid>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

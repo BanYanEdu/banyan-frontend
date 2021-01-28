@@ -12,4 +12,8 @@ export class ClassInfo{
     classId?: string;
     classCode?: string;
     className?: string;
+    facilityId?: string;
+    facilityCode?: string;
+    facilityName?: string;
+    facilityNo?: string;
 }

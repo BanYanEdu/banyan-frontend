@@ -8,6 +8,9 @@ import { FocusService } from 'app/shared/services/focus.service';
 import { AppCommonModule } from '../common/app-common.module';
 import { TestingRoutingModule } from './testing-routing.module';
 import { D3Component } from './d3/d3.component';
+import { SlickgridComponent } from './slickgrid/slickgrid.component';
+import { AngularSlickgridComponent, AngularSlickgridModule } from 'angular-slickgrid';
+import { TestingHomeComponent } from './testing-home/testing-home.component';
 
 @NgModule({
     imports: [
@@ -15,10 +18,14 @@ import { D3Component } from './d3/d3.component';
         AppCommonModule,
         GridModule,
         ReactiveFormsModule,
-        TestingRoutingModule
+        TestingRoutingModule,
+        AngularSlickgridModule
+        // AngularSlickgridComponent
     ],
     declarations: [
-        D3Component
+        D3Component,
+        SlickgridComponent,
+        TestingHomeComponent
     ],
     providers: [
         CommonService,

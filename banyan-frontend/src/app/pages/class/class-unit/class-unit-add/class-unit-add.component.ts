@@ -12,6 +12,7 @@ import { ClassUnitStatuses } from 'app/data/global/ClassUnitStatuses';
 import { ClassUnitAssignment } from 'app/model/class/ClassUnitAssignment';
 import { SchoolClass } from 'app/model/class/SchoolClass';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { NotificationType } from 'app/shared/models/NotificationType';
 
 @Component({
     selector: 'app-class-unit-add',
@@ -29,6 +30,7 @@ export class ClassUnitAddComponent extends BaseAddDialogComponent<ClassUnit> {
     assignment: ClassUnitAssignment = new ClassUnitAssignment();
     classUnitAssignments: ClassUnitAssignment[] = [];
     classUnitAssignmentsStr: string;
+    hasConflict: boolean = false;
 
     modalRef: BsModalRef;
     config = {
@@ -114,6 +116,7 @@ export class ClassUnitAddComponent extends BaseAddDialogComponent<ClassUnit> {
         this.requestItem.studySubjectName = subject.studySubjectName;
     }
     onLecturerSelected(lecturer: any) {
+        this.hasConflict = false;
         this.mainForm.get('employeeId').setValue(lecturer.employeeId);
 
         this.assignment = {
@@ -122,12 +125,16 @@ export class ClassUnitAddComponent extends BaseAddDialogComponent<ClassUnit> {
             employeeName: lecturer.employeeName,
             role: lecturer.role
         }
+
+        this.checkTimeConflict();
     }
     searchEmployee(template: TemplateRef<any>) {
         this.config.class = "modal-search";
         this.modalRef = this.modalService.show(template, this.config);
     }
+
     onEmployeeSelected(event) {
+        this.hasConflict = false;
         this.mainForm.get('employeeId').setValue(event[0].uuid);
 
         this.assignment = {
@@ -138,5 +145,35 @@ export class ClassUnitAddComponent extends BaseAddDialogComponent<ClassUnit> {
         }
 
         this.modalRef.hide();
+        
+        if (this.item.assignments.length == 0) return;
+
+        if (this.assignment.employeeId != this.item.assignments[0].employeeId) {
+            this.checkTimeConflict();
+        }
+    }
+
+    checkTimeConflict(){
+        var params: any = {};
+        params.classUnitId = this.item.uuid;
+        params.employeeId = this.assignment.employeeId;
+        params.date = this.item.date;
+        params.hourFrom = this.item.hourFrom;
+        params.minuteFrom = this.item.minuteFrom;
+        params.hourTo = this.item.hourTo;
+        params.minuteTo = this.item.minuteTo;
+
+        this.classService.unitTimeConflictCheck(params).subscribe(data => {
+            if (data) {
+                this.showMessage("Trùng lịch", "Thông báo", NotificationType.WARNING);
+                this.hasConflict = true;
+            }
+        });
+    }
+
+    getColor() {
+        if (this.hasConflict) {
+            return "red";
+        } else { return "white"}
     }
 }

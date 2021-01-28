@@ -20,10 +20,12 @@ import { ClassAssignmentViewComponent } from './class-assignment/class-assignmen
 import { ClassExaminationListComponent } from './class-examination/class-examination-list/class-examination-list.component';
 import { ClassUnitListComponent } from './class-unit/class-unit-list/class-unit-list.component';
 import { ClassSingleScheduleComponent } from './class-schedule/class-single-schedule/class-single-schedule.component';
-import { ClassUnitEmbedViewComponent } from './class-schedule/class-unit-embed-view/class-unit-embed-view.component';
 import { ClassUnitAddComponent } from './class-unit/class-unit-add/class-unit-add.component';
 import { ClassAttendanceSummaryComponent } from './class-attendance/class-attendance-summary.component';
 import { ClassMultipleScheduleComponent } from './class-schedule/class-multiple-schedule/class-multiple-schedule.component';
+import { ClassUnitEmbedViewComponent } from './class-schedule/class-single-schedule/class-unit-embed-view.component';
+import { ClassMultipleScheduleEmbedViewComponent } from './class-schedule/class-multiple-schedule/cms-embed-view.component';
+import { ClassUnitMasterComponent } from './class-unit/class-unit-master/class-unit-master.component';
 
 @NgModule({
     imports: [
@@ -49,7 +51,9 @@ import { ClassMultipleScheduleComponent } from './class-schedule/class-multiple-
         ClassUnitEmbedViewComponent,
         ClassUnitAddComponent,
         ClassAttendanceSummaryComponent,
-        ClassMultipleScheduleComponent
+        ClassMultipleScheduleComponent,
+        ClassMultipleScheduleEmbedViewComponent,
+        ClassUnitMasterComponent
         
     ],
     providers: [

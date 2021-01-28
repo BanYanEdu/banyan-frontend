@@ -18,7 +18,11 @@
                     </button>
                 </span>
             </div>
-
+        </div>
+        <div class="col-sm-8" align="right">
+            <div class="mt-2">
+                <span>{{ currentOutletName }}</span>
+            </div>
         </div>
     </div>
 
@@ -33,48 +37,58 @@
                 <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
                     <div *ngFor="let unit of classUnits" class="mt-1">
                         <div *ngIf="unit.date == day.dateLong && unit.hourFrom=='08'">
-                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
-                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="min-height: 20px; background-color: #CCF5FF;" >
+            <div class="row" style="min-height: 20px; background-color: #5FEE96;">
                 <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
                     <div *ngFor="let unit of classUnits" class="mt-1">
                         <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='09' || unit.hourFrom=='10')">
-                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
-                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="min-height: 20px; background-color: #FFF4CC;" >
+            <div class="row" style="min-height: 20px; background-color: #FFF4CC;">
                 <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
                     <div *ngFor="let unit of classUnits" class="mt-1">
-                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='13' || unit.hourFrom=='14' || unit.hourFrom=='15' || unit.hourFrom=='16')">
-                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
-                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='13' || unit.hourFrom=='14')">
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="min-height: 20px; background-color: #E9EAF0;" >
+            <div class="row" style="min-height: 20px; background-color: #FFD666;">
+                <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
+                    <div *ngFor="let unit of classUnits" class="mt-1">
+                        <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='15' || unit.hourFrom=='16')">
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height: 20px; background-color: #CCF5FF;">
                 <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
                     <div *ngFor="let unit of classUnits" class="mt-1">
                         <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='18')">
-                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
-                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="min-height: 20px; background-color: #E8F3FF;" >
+            <div class="row" style="min-height: 20px; background-color: #66D0FF;">
                 <div class="col" *ngFor="let day of days" style="padding: 2px; margin: 0px;">
                     <div *ngFor="let unit of classUnits" class="mt-1">
                         <div *ngIf="unit.date == day.dateLong && (unit.hourFrom=='19' || unit.hourFrom=='20')">
-                            <span style="display: block;">{{ unit.classInfo.courseName }}</span>
-                            <span style="display: block;">{{ unit.hourFrom }}:{{ unit.minuteFrom }}</span>
+                            <app-class-multiple-schedule-embed-view [classUnit]=unit>
+                            </app-class-multiple-schedule-embed-view>
                         </div>
                     </div>
                 </div>

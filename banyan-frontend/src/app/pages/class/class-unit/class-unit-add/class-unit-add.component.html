@@ -4,7 +4,7 @@
             <div class="row mt-2">
                 <div class="col-sm-3">
                     <div class="mat-elevation-z1" style="padding: 5px; min-height: 80px;">
-                        <span style="display: block;" align="center"><h4>{{ requestItem.studySubjectName }}</h4></span>
+                        <span style="display: block;" align="center"><h5>{{ requestItem.studySubjectName }}</h5></span>
                         <span style="display: block;" align="center" *ngIf="requestItem.studySubjectName == null"><h4><i class="fa fa-book mr-1"></i>Chọn môn học</h4></span>                     
                     </div>
                 </div>
@@ -18,8 +18,8 @@
             </div>
             <div class="row mt-3">
                 <div class="col-sm-3">
-                    <div class="mat-elevation-z1" style="padding: 5px; min-height: 80px;">
-                        <span style="display: block;" align="center"><h4>{{ assignment?.employeeName }}</h4></span>
+                    <div class="mat-elevation-z1" [ngStyle]="{'background-color':getColor()}" style="padding: 5px; min-height: 80px;">
+                        <span style="display: block;" align="center"><h5>{{ assignment?.employeeName }}</h5></span>
                         <span style="display: block;" align="center">{{ assignment?.employeeCode }}</span>
                         <span style="display: block;" align="center" *ngIf="assignment">{{ 'MODULE.CLASS.ROLE_VALUES.' + assignment?.role | translate }}</span>
                         <span style="display: block;" align="center" *ngIf="!assignment"><h4><i class="fa fa-user mr-1"></i>Chọn giảng viên</h4></span>                     

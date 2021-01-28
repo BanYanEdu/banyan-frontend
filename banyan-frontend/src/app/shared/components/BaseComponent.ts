@@ -5,6 +5,8 @@ export abstract class BaseComponent {
     imgFolder: string = iNet.imgFolder;
     currentLanguage: string;
     currentOutletId: string = localStorage.getItem("currentOutletId");
+    currentOutletCode: string = localStorage.getItem("currentOutletCode");
+    currentOutletName: string = localStorage.getItem("currentOutletName");
     
     constructor(protected commonService: CommonService) {
     }

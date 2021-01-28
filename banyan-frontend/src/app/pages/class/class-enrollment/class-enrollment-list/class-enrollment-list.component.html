@@ -41,7 +41,7 @@
                     <data-table-column [property]="" [header]="'MENU.CLASS' | translate" *ngIf="owner=='E_STUDENT'">
                         <ng-template #dataTableCell let-item="item">
                             <span style="display:block">
-                                <a routerLink="/class/class/view/{{item.classInfo.classId}}"
+                                <a routerLink="/class/view/{{item.classInfo.classId}}"
                                     class="link-text"><strong>{{ item?.classInfo.className }}</strong></a>
                             </span>
                             <span style="display:block" class="mt-1">
